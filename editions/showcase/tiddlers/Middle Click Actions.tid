@@ -1,0 +1,31 @@
+created: 20211017215407351
+modified: 20211019084929912
+title: Middle Click Actions
+type: text/vnd.tiddlywiki
+
+[[Full Readme|$:/plugins/EvidentlyCube/MiddleClickActions/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-MiddleClickActions]] --- [[Install|$:/plugins/EvidentlyCube/MiddleClickActions]]
+
+! Quick Description
+
+A widget that allows invoking an action when middle mouse button is pressed on an element.
+
+! Example - Simple
+
+<$button>
+<$middle-click-actions>
+<$action-sendmessage $message="tm-new-tiddler"/>
+</$middle-click-actions>
+Do nothing on Click but create new draft on Middle Click.
+</$button>
+
+! Example - StoryTabs
+
+[[Middle Click Actions - Example Storytabs]]
+
+! Installation
+
+Drag [[This Link|$:/plugins/EvidentlyCube/MiddleClickActions]] into the window/tab of your Wiki to import the plugin.
+
+! Possible uses
+
+* When used with [[StoryTabs plugin by BJ|http://bjtools.tiddlyspot.com/]], you can customize the macro for tabs to add closing the tabs with a middle click.

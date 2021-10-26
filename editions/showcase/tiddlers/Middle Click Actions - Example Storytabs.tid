@@ -1,0 +1,50 @@
+created: 20211018100615432
+modified: 20211018101233087
+title: Middle Click Actions - Example Storytabs
+type: text/vnd.tiddlywiki
+
+The below example contains modified version of code originally from [[StoryTabs plugin by BJ Tools|http://bjtools.tiddlyspot.com/]].
+
+The below tabs list all opened tiddlers. You can close them by pressing the X button (normal plugin behavior), but you can also use middle mouse click to close them.
+
+----
+
+<div class="tc-tab-buttons">
+	<$list filter="[list[$:/StoryList]]" history="$:/HistoryList" variable="currentTab">
+		<div data-tab=<<currentTab>>>
+			<$middle-click-actions>
+				<$action-sendmessage $message="tm-close-tiddler" $param=<<currentTab>> title=<<currentTab>>/>
+			</$middle-click-actions>
+			<$set name=class value="" filter="[[$:/HistoryList]get[current-tiddler]] -[<currentTab>]" emptyValue="tc-tab-selected">
+				<$button to=<<currentTab>> class=<<class>>>
+					<$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
+				</$button>
+				<$button message="tm-close-tiddler" param=<<currentTab>> class=<<class>>>&times;</$button>
+			</$set>
+		</div>
+	</$list>
+</div>
+
+----
+
+! The modified code
+
+Besides adding the `<$middle-click-actions>` widget, the changes include removing duplication and slimming the HTML generated. Original StoryTabs used `<$reveal>` instead of setting a variable, which resulted in two HTML elements per tab (one empty and one visible).
+
+```
+<div class="tc-tab-buttons">
+	<$list filter="[list[$:/StoryList]]" history="$:/HistoryList" variable="currentTab">
+		<div data-tab=<<currentTab>>>
+			<$middle-click-actions>
+				<$action-sendmessage $message="tm-close-tiddler" $param=<<currentTab>> title=<<currentTab>>/>
+			</$middle-click-actions>
+			<$set name=class value="" filter="[[$:/HistoryList]get[current-tiddler]] -[<currentTab>]" emptyValue="tc-tab-selected">
+				<$button to=<<currentTab>> class=<<class>>>
+					<$macrocall $name="currentTab" $type="text/plain" $output="text/plain"/>
+				</$button>
+				<$button message="tm-close-tiddler" param=<<currentTab>> class=<<class>>>&times;</$button>
+			</$set>
+		</div>
+	</$list>
+</div>
+```

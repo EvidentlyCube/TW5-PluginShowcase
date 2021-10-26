@@ -1,0 +1,21 @@
+{
+  "name": "tw5-evidentlycube-plugins",
+  "version": "1.0.0",
+  "author": "Maurycy Zarzycki",
+  "description": "Evidently Cube TiddlyWiki5 Plugin Showcase",
+  "scripts": {
+    "develop": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins nodemon -e tid,multids,js,info -w plugins -w editions/showcase/tiddlywiki.info -x tiddlywiki editions/showcase --verbose --server 8080 $:/core/save/all text/plain text/html",
+    "release": "tiddlywiki editions/showcase --verbose --build release"
+  },
+  "dependencies": {
+    "tiddlywiki": "5.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.14"
+  },
+  "bundleDependencies": [],
+  "engines": {
+    "node": ">=0.8.2"
+  }
+}

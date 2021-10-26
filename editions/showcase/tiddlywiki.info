@@ -1,0 +1,22 @@
+{
+	"description": "Evidently Cube's TiddlyWiki5 plugins showcase",
+	"plugins": [
+		"tiddlywiki/filesystem",
+		"tiddlywiki/tiddlyweb",
+		"EvidentlyCube/TW5-AutoCloseTags/plugin"
+	],
+	"themes": [
+		"tiddlywiki/vanilla"
+	],
+	"languages": [
+	  "pl-PL"
+	],
+	"build": {
+		"release": [
+			"--rendertiddler","$:/core/save/all","index.html","text/plain"
+    ]
+	},
+	"config": {
+		"retain-original-tiddler-path": true
+	}
+}
