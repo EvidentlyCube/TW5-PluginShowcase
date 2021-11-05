@@ -1,0 +1,12 @@
+[submodule "plugins/EvidentlyCube/TW5-GoToShortcut"]
+	path = plugins/EvidentlyCube/TW5-GoToShortcut
+	url = git@github.com:EvidentlyCube/TW5-GoToShortcut.git
+[submodule "plugins/EvidentlyCube/TW5-AutoCloseTags"]
+	path = plugins/EvidentlyCube/TW5-AutoCloseTags
+	url = git@github.com:EvidentlyCube/TW5-AutoCloseTags.git
+[submodule "plugins/EvidentlyCube/TW5-MiddleClickActions"]
+	path = plugins/EvidentlyCube/TW5-MiddleClickActions
+	url = git@github.com:EvidentlyCube/TW5-MiddleClickActions.git
+[submodule "plugins/EvidentlyCube/TW5-FieldPropagator"]
+	path = plugins/EvidentlyCube/TW5-FieldPropagator
+	url = git@github.com:EvidentlyCube/TW5-FieldPropagator.git

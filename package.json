@@ -4,7 +4,7 @@
   "author": "Maurycy Zarzycki",
   "description": "Evidently Cube TiddlyWiki5 Plugin Showcase",
   "scripts": {
-    "develop": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins nodemon -e tid,multids,js,info -w plugins -w editions/showcase/tiddlywiki.info -x tiddlywiki editions/showcase --verbose --server 8080 $:/core/save/all text/plain text/html",
+    "develop": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins nodemon -e tid,multids,js,info -w plugins -w editions/showcase/tiddlywiki.info -x tiddlywiki editions/showcase --verbose --server 55505 $:/core/save/all text/plain text/html",
     "release": "tiddlywiki editions/showcase --verbose --build release"
   },
   "dependencies": {

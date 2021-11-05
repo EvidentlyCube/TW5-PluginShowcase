@@ -1,0 +1,17 @@
+tags:
+title: Go To Shortcut
+type: text/vnd.tiddlywiki
+
+[[Full Readme|$:/plugins/EvidentlyCube/GoToShortcut/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-GoToShortcut]] --- [[Install|$:/plugins/EvidentlyCube/GoToShortcut]]
+
+! Quick Description
+
+Adds a configurable keyboard shortcut to open a modal where you can type the name of a tiddler and quickly navigate to it.
+
+! Example
+
+Press `Ctrl + Shift + P` to open the modal, type name or part of the tiddler's name, use arrows to select and enter to open it.
+
+! Installation
+
+Drag [[This Link|$:/plugins/EvidentlyCube/GoToShortcut]] into the window/tab of your Wiki to import the plugin.
