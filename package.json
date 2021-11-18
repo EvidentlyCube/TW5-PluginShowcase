@@ -5,7 +5,7 @@
   "description": "Evidently Cube TiddlyWiki5 Plugin Showcase",
   "scripts": {
     "develop": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins nodemon -e tid,multids,js,info -w plugins -w editions/showcase/tiddlywiki.info -w editions/develop/tiddlywiki.info -x tiddlywiki editions/develop --verbose --server 55505 $:/core/save/all text/plain text/html",
-    "release": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins tiddlywiki editions/release --verbose --output showcase --build release"
+    "release": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins tiddlywiki editions/release --verbose --output . --build release"
   },
   "dependencies": {
     "tiddlywiki": "5.2.0"
