@@ -1,5 +1,8 @@
 {
-	"description": "Evidently Cube's TiddlyWiki5 plugins showcase",
+	"description": "Release",
+	"includeWikis": [
+		"../showcase"
+	],
 	"plugins": [
 		"EvidentlyCube/TW5-AutoCloseTags/plugin",
 		"EvidentlyCube/TW5-FieldPropagator/plugin",
@@ -8,5 +11,13 @@
 	],
 	"themes": [
 		"tiddlywiki/vanilla"
-	]
+	],
+	"build": {
+		"release": [
+			"--rendertiddler","$:/core/save/all","index.html","text/plain"
+    ]
+	},
+	"config": {
+		"retain-original-tiddler-path": false
+	}
 }

@@ -1,0 +1,17 @@
+{
+	"description": "Develop",
+	"includeWikis": [
+		"../showcase"
+	],
+	"plugins": [
+		"tiddlywiki/filesystem",
+		"tiddlywiki/tiddlyweb"
+	],
+	"themes": [
+		"tiddlywiki/vanilla"
+	],
+	"config": {
+		"default-tiddler-location": "../showcase/tiddlers",
+		"retain-original-tiddler-path": false
+	}
+}
