@@ -1,3 +1,5 @@
+created: 20211117155148631
+modified: 20211117161540501
 propagator-base: visible
 propagator-preferred-value: 1
 propagator-propagated: has-visible-children
@@ -8,9 +10,15 @@ type: text/vnd.tiddlywiki
 \define toc()
 
 <ul>
-<$list filter="[all[]field:parent<currentTiddler>!is[draft]]">
+<$list filter="[all[]field:parent<currentTiddler>!is[draft]sort[]]">
 <li>
 <<currentTiddler>> ''(Visible={{!!visible}})'' ''(Has Visible Children={{!!has-visible-children}})''
+<$set name=VisToggle value="0" emptyValue="1" filter=[all[current]field:visible[1]]>
+<$button>
+<$action-listops $field="visible" $filter=<<VisToggle>>/>
+Toggle Visibility
+</$button>
+</$set>
 <<toc>>
 </li>
 </$list>
