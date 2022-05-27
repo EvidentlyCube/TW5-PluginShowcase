@@ -6,11 +6,33 @@ type: text/vnd.tiddlywiki
 
 ! Quick Description
 
-Adds a configurable keyboard shortcut to open a modal where you can type the name of a tiddler and quickly navigate to it.
+A very powerful quick search/goto mechanism that you access in a fraction of a second fully through the keyboard!
 
-! Example
+ * Access the Goto modal with a configurable keyboard shortcut (defaults to `Ctrl+Shift+P`)
+ * Customize the search:
+ ** By default it will skip drafts, tiddlers starting with `$:/` and ones with a field `goto-ignore`
+ ** Prefix the search with `*` to look in titles AND text
+ ** Prefix the search with `!` to look in all non-shadow tiddlers (and combine with the wildcard: `!*`)
+ ** Prefix the search with `>` to look in all regular and shadow tiddlers (and combine with the wildcard: `>*`)
+ ** Input a filter to search directly for it
+ * Configure the template either by overriding the shadow tiddler or providing your own template tiddler
+ * Full keyboard navigation (not customizable):
+ ** `Arrow Up` and `Arrow Down` navigate through the results list
+ ** `Enter` opens the selected tiddler
+ ** `Page Up` and `Page Down` navigate through one page of the results list
+ ** `Home` and `End` go directly to the start/end of the results list
+ ** `Escape` and `Ctr+Shift+P` closes the dialog
+ * You can also select the tiddlers with a mouset.
 
-Press `Ctrl + Shift + P` to open the modal, type name or part of the tiddler's name, use arrows to select and enter to open it.
+! Examples
+
+Press `Ctrl + Shift + P` to open the modal and input the following:
+
+ * `G` -- It will search for all tiddlers that contain the letter in their name, preferring ones which start with it: [[Go To Shortcut]] will be before [[Auto Close Tags]].
+ ** ''Note:'' [[GoTo Test - Ignored]] is not in the results because it has a value in field `goto-ignore`.
+ * `!G` -- `!` prefix will include drafts tiddlers, ignored tiddlers, and tiddlers that have a name starting with `$:/`
+ * `*duck` -- `*` prefix causes to expand the search into tiddlers' text.
+ * `>config` -- `>` prefix causes to expand the search into shadow tiddlers.
 
 ! Installation
 
