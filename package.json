@@ -8,7 +8,8 @@
     "release": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/release --verbose --output . --build release"
   },
   "dependencies": {
-    "tiddlywiki": "5.2.2"
+    "tiddlywiki": "5.2.2",
+    "ws": "^8.7.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
