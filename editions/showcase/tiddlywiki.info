@@ -4,7 +4,8 @@
 		"EvidentlyCube/TW5-AutoCloseTags/plugin",
 		"EvidentlyCube/TW5-FieldPropagator/plugin",
 		"EvidentlyCube/TW5-GoToShortcut/plugin",
-		"EvidentlyCube/TW5-MiddleClickActions/plugin"
+		"EvidentlyCube/TW5-MiddleClickActions/plugin",
+		"EvidentlyCube/TW5-SocketSync/plugin"
 	],
 	"themes": [
 		"tiddlywiki/vanilla"
