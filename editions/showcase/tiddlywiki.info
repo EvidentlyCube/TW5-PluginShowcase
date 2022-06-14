@@ -5,7 +5,7 @@
 		"EvidentlyCube/TW5-FieldPropagator/plugin",
 		"EvidentlyCube/TW5-GoToShortcut/plugin",
 		"EvidentlyCube/TW5-MiddleClickActions/plugin",
-		"EvidentlyCube/TW5-SocketSync/plugin"
+		"EvidentlyCube/TW5-SingleInstance/plugin"
 	],
 	"themes": [
 		"tiddlywiki/vanilla"

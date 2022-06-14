@@ -1,17 +1,24 @@
 {
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true
-    },
-    "search.exclude": {
-        "**/*.code-search": true,
-        "**/bower_components": true,
-        "**/node_modules": true,
-        "**/node_modules/tiddlywiki": false,
-    },
-    "search.useIgnoreFiles":false
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true
+	},
+	"search.exclude": {
+		"**/*.code-search": true,
+		"**/bower_components": true,
+		"**/node_modules": true,
+		"**/node_modules/tiddlywiki": false,
+	},
+	"search.useIgnoreFiles": false,
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"[javascript]": {
+		"editor.tabSize": 4,
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
 }

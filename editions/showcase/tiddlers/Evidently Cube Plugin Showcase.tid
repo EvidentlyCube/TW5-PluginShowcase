@@ -9,3 +9,4 @@ The following plugins are available:
 * [[Field Propagator]] - Propagates tiddler's field value up its parents.
 * [[Go To Shortcut]] - Adds a shortcut to open a powerful quick-navigation modal.
 * [[Middle Click Actions]] - Invoke an action when user clicks with middle mouse button.
+* [[Single Instance]] - Prevent using the same wiki in multiple tabs/browsers/machines simultaneously.

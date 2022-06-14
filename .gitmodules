@@ -11,5 +11,5 @@
 	path = plugins/EvidentlyCube/TW5-FieldPropagator
 	url = https://github.com/EvidentlyCube/TW5-FieldPropagator.git
 [submodule "plugins/EvidentlyCube/TW5-SocketSync"]
-	path = plugins/EvidentlyCube/TW5-SocketSync
-	url = git@github.com:EvidentlyCube/TW5-SocketSync.git
+	path = plugins/EvidentlyCube/TW5-SingleInstance
+	url = git@github.com:EvidentlyCube/TW5-SingleInstance.git
