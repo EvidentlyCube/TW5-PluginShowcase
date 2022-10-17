@@ -1,0 +1,13 @@
+caption: Simple Task List (TaskList)
+created: 20221017080348334
+modified: 20221017080357894
+tags: TaskList
+title: Simple Task List
+tl-filter-done: [all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]sort[text]]
+tl-filter-not-done: [all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]sort[text]]
+tl-sort-field: text
+tl-sort-filter: :sort[{!!text}]
+tl-sort-mode: ascending
+type: text/vnd.tiddlywiki
+
+<<ec-task-list "Simple Task List">>

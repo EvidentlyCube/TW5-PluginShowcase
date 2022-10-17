@@ -1,0 +1,12 @@
+caption: Color
+created: 20221016221927086
+field-name: color
+field-type: select-data
+field-width: 10
+meta-source: Data/ColorsHex
+modified: 20221016222932766
+parent: Task List Description
+priority: 3
+tags: TaskList/Field
+title: Task List Description/Field/Color
+type: text/vnd.tiddlywiki

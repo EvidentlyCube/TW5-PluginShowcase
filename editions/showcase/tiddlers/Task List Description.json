@@ -1,0 +1,19 @@
+[
+    {
+        "created": "20221016221927086",
+        "title": "Task List Description",
+        "tags": "TaskList",
+        "modified": "20221016222932767",
+        "text": "<<ec-task-list \"Task List Description\" 0>>",
+        "type": "text/vnd.tiddlywiki",
+        "tl-filter-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]sort[order]]",
+        "tl-filter-not-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]sort[order]]",
+        "tl-sort-mode": "ascending",
+        "tl-sort-field": "order",
+        "tl-sort-filter": ":sort[{!!text}]",
+        "caption": "Task List Description (TaskList)",
+        "tl-template": "<span style={{{ [[color: #]addsuffix{!!color}] }}}>\n{{!!icon}} {{!!text}}\n</span>",
+        "tl-class-filter": "[{!!css-class}]",
+        "tl-preview": "new"
+    }
+]

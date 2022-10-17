@@ -1,0 +1,12 @@
+caption: Icon
+created: 20221016221927086
+field-name: icon
+field-type: select-data
+field-width: 10
+meta-source: Data/Emoji
+modified: 20221016222932767
+parent: Task List Description
+priority: 4
+tags: TaskList/Field
+title: Task List Description/Field/Icon
+type: text/vnd.tiddlywiki

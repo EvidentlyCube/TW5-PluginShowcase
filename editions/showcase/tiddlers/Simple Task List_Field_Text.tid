@@ -1,0 +1,11 @@
+caption: Text
+created: 20221017080348335
+field-name: text
+field-type: text
+field-width: 10
+modified: 20221017080357893
+parent: Simple Task List
+priority: 1
+tags: TaskList/Field
+title: Simple Task List/Field/Text
+type: text/vnd.tiddlywiki

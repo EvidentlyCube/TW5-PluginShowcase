@@ -1,0 +1,13 @@
+_is-editing: 0
+color: 008800
+created: 20221013120355544
+css-class: 
+icon: 👍
+modified: 20221016222929029
+order: 1
+parent: Task List Description
+tags: TaskList/Item
+title: Task List Description/Item
+type: text/vnd.tiddlywiki
+
+Customize the fields of the task list

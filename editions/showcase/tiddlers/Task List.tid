@@ -1,0 +1,54 @@
+created: 20221013095514764
+modified: 20221017081925870
+title: Task List
+type: text/vnd.tiddlywiki
+
+[[Full Readme|$:/plugins/EvidentlyCube/TaskList/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-TaskList]] --- [[Install|$:/plugins/EvidentlyCube/FieldPropagator]]
+
+! Showcase
+
+Create the simplest Task List:
+
+<div style="margin: 0 2em">
+  {{Simple Task List}}
+</div>
+
+Or one where you customize everything:
+
+<div style="margin: 0 2em">
+  {{Task List Description}}
+</div>
+
+You can also easily extract data from the task list, all you need to know is its name. For example:
+
+```
+<ul>
+<$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
+  <li>
+    ''Text=''{{!!text}} 
+    --- ''Icon''={{!!icon}} 
+    --- <$link to=<<currentTiddler>>>Open Tiddler</$link>
+  </li>
+</$list>
+</ul>
+```
+
+<ul>
+<$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
+  <li>
+    ''Text=''{{!!text}} 
+    --- ''Icon''={{!!icon}} 
+    --- <$link to=<<currentTiddler>>>Open Tiddler</$link>
+  </li>
+</$list>
+</ul>
+
+! How to Use
+
+ * Create a new Tiddler with tag `TaskList` and save it
+ * Click "Initialize a new Task List"
+ * Then use the builder to customize the TaskList - it starts with the default `text` field.
+
+! Installation
+
+Drag [[This Link|$:/plugins/EvidentlyCube/TaskList]] into the window/tab of your Wiki to import the plugin.
