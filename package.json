@@ -5,6 +5,7 @@
   "description": "Evidently Cube TiddlyWiki5 Plugin Showcase",
   "scripts": {
     "develop": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/develop --verbose --server 55505 $:/core/save/all text/plain text/html",
+    "develop:watch": "nodemon --exec npm run develop",
     "release": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/release --verbose --output . --build release"
   },
   "dependencies": {
@@ -18,5 +19,9 @@
   "bundleDependencies": [],
   "engines": {
     "node": ">=0.8.2"
+  },
+  "nodemonConfig": {
+	"watch": ["plugins/**"],
+	"ext": "tid,meta,css,js,html,info,md"
   }
 }
