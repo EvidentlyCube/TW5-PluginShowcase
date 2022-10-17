@@ -3,7 +3,7 @@ modified: 20221017081925870
 title: Task List
 type: text/vnd.tiddlywiki
 
-[[Full Readme|$:/plugins/EvidentlyCube/TaskList/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-TaskList]] --- [[Install|$:/plugins/EvidentlyCube/FieldPropagator]]
+[[Github Repository|https://github.com/EvidentlyCube/TW5-TaskList]] --- [[Install|$:/plugins/EvidentlyCube/TaskList]]
 
 ! Showcase
 
@@ -25,8 +25,8 @@ You can also easily extract data from the task list, all you need to know is its
 <ul>
 <$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
   <li>
-    ''Text=''{{!!text}} 
-    --- ''Icon''={{!!icon}} 
+    ''Text=''{{!!text}}
+    --- ''Icon''={{!!icon}}
     --- <$link to=<<currentTiddler>>>Open Tiddler</$link>
   </li>
 </$list>
@@ -36,8 +36,8 @@ You can also easily extract data from the task list, all you need to know is its
 <ul>
 <$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
   <li>
-    ''Text=''{{!!text}} 
-    --- ''Icon''={{!!icon}} 
+    ''Text=''{{!!text}}
+    --- ''Icon''={{!!icon}}
     --- <$link to=<<currentTiddler>>>Open Tiddler</$link>
   </li>
 </$list>
