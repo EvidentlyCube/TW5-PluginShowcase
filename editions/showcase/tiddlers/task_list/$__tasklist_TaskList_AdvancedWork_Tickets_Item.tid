@@ -1,0 +1,11 @@
+_is-editing: 0
+created: 20221018085132765
+modified: 20221018091859964
+parent: TaskList/AdvancedWork/Tickets
+status: Others
+tags: TaskList/Item
+ticket: 30227
+title: $:/tasklist/TaskList/AdvancedWork/Tickets/Item
+type: text/vnd.tiddlywiki
+
+Generic export should support sorting

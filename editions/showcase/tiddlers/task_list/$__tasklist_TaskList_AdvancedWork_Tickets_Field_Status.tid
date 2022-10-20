@@ -1,0 +1,12 @@
+caption: Status
+created: 20221018090006028
+field-name: status
+field-type: select-list
+field-width: 10
+meta-source: Data/TicketType
+modified: 20221018091848517
+parent: TaskList/AdvancedWork/Tickets
+priority: 3
+tags: TaskList/Field
+title: $:/tasklist/TaskList/AdvancedWork/Tickets/Field/Status
+type: text/vnd.tiddlywiki

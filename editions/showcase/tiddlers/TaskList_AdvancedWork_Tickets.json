@@ -1,0 +1,18 @@
+[
+    {
+        "created": "20221018090006028",
+        "tags": "TaskList",
+        "modified": "20221018090152152",
+        "title": "TaskList/AdvancedWork/Tickets",
+        "text": "<<ec-task-list \"TaskList/AdvancedWork/Tickets\">>",
+        "type": "text/vnd.tiddlywiki",
+        "tl-filter-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]sort[ticket]]",
+        "tl-filter-not-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]sort[ticket]]",
+        "tl-sort-mode": "ascending",
+        "tl-sort-field": "ticket",
+        "tl-sort-filter": ":sort[{!!text}]",
+        "caption": "TaskList/AdvancedWork/Tickets (TaskList)",
+        "tl-template": "<$let \n  url={{{ [[https://example.com/ticket/]addsuffix{!!ticket}addsuffix[/]] }}}\n>\n    <a href=<<url>> target=\"__blank\">''#{{!!ticket}}''</a>\n    //({{!!text}})//\n    <span style=\"text-transform:uppercase;font-size:10px;color: #AAA;\">[{{!!status}}]</span>\n</$let>",
+        "tl-preview": "new"
+    }
+]

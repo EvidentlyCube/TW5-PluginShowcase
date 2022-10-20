@@ -1,6 +1,29 @@
 .bg-red {
   background: #FFDDDD;
 }
+
 .bg-blue {
   background: #DDDDFF;
+}
+
+cols {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+cols > c{
+    flex: 1 0 10%;
+    padding: 0 10px;
+    position: sticky;
+    top: 64px;
+}
+
+.tl-showcase-adv-textarea {
+    width: 100%;
+	font-family: monospace;
+}
+.muted {
+    color: #888;
+    font-style: italic;
 }

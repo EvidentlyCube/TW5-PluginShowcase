@@ -1,0 +1,65 @@
+created: 20221020211442759
+modified: 20221020212614099
+tags: 
+title: Task List Showcase - Extracting Data
+type: text/vnd.tiddlywiki
+
+We're working on this list:
+
+<div style="margin: 0 2em">
+  {{Task List Description}}
+</div>
+
+! Table with all the data:
+
+<p class="muted">Edit this tiddler to see the how this table is made.</p>
+
+<table>
+<thead>
+  <tr>
+    <th>Tiddler</th>
+    <th>Order</th>
+    <th>CSS Class</th>
+    <th>Color</th>
+    <th>Icon</th>
+    <th>Text</th>
+    <th>Is done?</th>
+  </tr>
+</thead>
+<tbody>
+<$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
+  <tr>
+    <td><$link to=<<currentTiddler>>><$text text=<<currentTiddler>>/></$link></td>
+    <td>{{!!order}}</td>
+    <td>{{!!css-class}}</td>
+    <td>{{!!color}}</td>
+    <td>{{!!icon}}</td>
+    <td>{{!!text}}</td>
+    <td>{{!!_is-done}}</td>
+  </tr>
+</$list>
+</tbody>
+</table>
+
+Feel free to add new items or edit the existing ones to see how the table behaves.
+
+!! Finding Task List's items
+
+* Every Task List item has a tag `TaskList/Item`
+* Every Task List item has a field `parent` set to the Task List's name.
+
+The following filter is used to retrieve the items above:
+
+```
+[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]
+```
+
+ * `all[tiddlers]` -- Matches all the stored non-system and non-shadow tiddlers.
+ * `tag[TaskList/Item]` -- Filter down to tiddlers with the tag `TaskList/Item`. Now we have a list of all items from all Task Lists.
+ * `field:parent[Task List Description]` -- Filter down to tiddlers with the field `parent` containing the name of our task list. Now we have only the items that belong to the above task list.
+
+If you want to get items from another Task List just replace `Task List Description` with the name of the Task List.
+
+!! Retrieving field contents
+
+When using Task List Builder you need to define an ''ID'' for each field -- this is the name of the tiddler field in which it will be stored. If you name a field `order` then to retrieve that field you'd use the text reference `{{!!order}}`.

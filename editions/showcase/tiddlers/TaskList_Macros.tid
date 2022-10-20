@@ -1,0 +1,35 @@
+created: 20221018094832723
+modified: 20221020214534095
+tags: $:/tags/Macro
+title: TaskList/Macros
+type: text/vnd.tiddlywiki
+
+\define t(id)
+<$let 
+  id=<<__id__>>
+  default-url={{{ [<id>addprefix[https://localhost/m/]addsuffix[/]] }}}>
+<$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[TaskList/AdvancedWork/Tickets]field:ticket<id>]" emptyMessage="""
+  <a href=<<default-url>> target="_blank">#<<id>></a> //(<<__desc__>>)//
+"""
+><a 
+    href={{{ [all[current]get[link]else<default-url>] }}}
+    target="_blank"
+  >#''{{!!ticket}}''</a> //({{!!text}})//</$list>
+</$let>
+\end
+
+\define pr(id)
+<$let 
+  id=<<__id__>>
+  url={{{ [[https://example.com/pr/]addsuffix<id>addsuffix[/]] }}}
+>
+<a 
+    href=<<url>>
+    target="_blank"
+  >PR#''<<id>>''</a>
+</$let>
+\end
+
+\define cr-count()
+<$text text={{{ [all[]tag[TaskList/Item]field:parent[TaskList/AdvancedWork/Todo]get[text]search[CR -]count[]] }}}/>
+\end

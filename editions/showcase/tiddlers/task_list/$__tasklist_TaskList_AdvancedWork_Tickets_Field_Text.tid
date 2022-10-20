@@ -1,0 +1,11 @@
+caption: Text
+created: 20221018090006028
+field-name: text
+field-type: text
+field-width: 20
+modified: 20221018091854507
+parent: TaskList/AdvancedWork/Tickets
+priority: 2
+tags: TaskList/Field
+title: $:/tasklist/TaskList/AdvancedWork/Tickets/Field/Text
+type: text/vnd.tiddlywiki

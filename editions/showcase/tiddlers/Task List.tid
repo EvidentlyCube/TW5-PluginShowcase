@@ -1,19 +1,24 @@
 created: 20221013095514764
-modified: 20221017081925870
+modified: 20221020214145727
 title: Task List
 type: text/vnd.tiddlywiki
 
 [[Github Repository|https://github.com/EvidentlyCube/TW5-TaskList]] --- [[Install|$:/plugins/EvidentlyCube/TaskList]]
 
+! Introduction
+
+A powerful task list that can be used for the simplest todos or for very customized solutions.
+
 ! Showcase
 
-Create the simplest Task List:
+!! A simple task list
 
 <div style="margin: 0 2em">
   {{Simple Task List}}
 </div>
 
-Or one where you customize everything:
+
+!! Heavily customized list
 
 <div style="margin: 0 2em">
   {{Task List Description}}
@@ -21,33 +26,21 @@ Or one where you customize everything:
 
 You can also easily extract data from the task list, all you need to know is its name. For example:
 
-```
-<ul>
-<$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
-  <li>
-    ''Text=''{{!!text}}
-    --- ''Icon''={{!!icon}}
-    --- <$link to=<<currentTiddler>>>Open Tiddler</$link>
-  </li>
-</$list>
-</ul>
-```
+!! More examples
 
-<ul>
-<$list filter="[all[tiddlers]tag[TaskList/Item]field:parent[Task List Description]]">
-  <li>
-    ''Text=''{{!!text}}
-    --- ''Icon''={{!!icon}}
-    --- <$link to=<<currentTiddler>>>Open Tiddler</$link>
-  </li>
-</$list>
-</ul>
+ * [[Task List Showcase - Advanced Work Todo]] --- a copy of the daily tracker I use for my day job.
+ * [[Task List Showcase - Extracting Data]] --- examples of ways to extract the data from the task lists.
+ * [[Task List Internals]] --- explains how Task List works internally which might be helpful if you want to mod it in any way.
 
 ! How to Use
 
- * Create a new Tiddler with tag `TaskList` and save it
- * Click "Initialize a new Task List"
- * Then use the builder to customize the TaskList - it starts with the default `text` field.
+After installing the plugin the steps to create a new Task List are simple:
+
+ * Create a new Tiddler with a tag `TaskList` and save it.
+ * Click on "Initialize a new Task List".
+ * This opens the Task List Builder, filled with some defaults, which you can use to construct your Task List.
+
+Afterwards you can either transclude the Task List directly or use the global macro `<<ec-task-list "Name Of Task List Tiddler">>`
 
 ! Installation
 

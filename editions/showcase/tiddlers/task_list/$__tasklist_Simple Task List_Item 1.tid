@@ -1,9 +1,8 @@
-_is-done: 1
 created: 20221017080348335
-modified: 20221017080348335
+modified: 20221020215000753
 parent: Simple Task List
 tags: TaskList/Item
-title: Simple Task List/Item 3
+title: $:/tasklist/Simple Task List/Item 1
 type: text/vnd.tiddlywiki
 
-Invent the universe
+Buy groceries

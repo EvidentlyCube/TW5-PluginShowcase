@@ -1,0 +1,12 @@
+[
+    {
+        "created": "20221018073058053",
+        "text": "Below contains an actual use case of advanced Task List features which I use in my day job to help me track my daily todo list and writing a summary of what I did on a given day.\n\n---\n\n! Explanations:\n\n<cols style=\"background: #F8F8F8\">\n<c>\n\n* This is my daily report where I write down what I did on a given day.\n* At the end of the day I tick ''Preview'', send the contents to my team and then archive it for posterity\n\n</c>\n<c>\n\n* I start my day by going through the mail I got overnight and putting everything into Todo\n* A [[Tampermonkey|https://www.tampermonkey.net/]] script allows me to copy a formatted Todo item directly from the email itself.\n* As the day goes, anything I can't action immediately I put here to not forget about it.\n\n</c>\n<c>\n\n!! Ticket list:\n\n * The ticket's number that gets linked to the issue tracker in the template.\n * Quick description of the ticket\n * Information whether it's assigned to me or I added it temporarily so it has a nice name in the report\n\n</c>\n</cols>\n\n----\n\n<cols>\n<c>\n\n! Next day\n\n<$checkbox field=\"workday-preview\" checked=\"1\" unchecked=\"\">\n  Preview?\n</$checkbox>\n\n<$list filter=\"[all[current]get[workday-preview]]\" variable=\"ignore\" emptyMessage=\"\"\"\n  <$edit-text field=\"workday\" class=\"tl-showcase-adv-textarea\" tag=\"textarea\" autoHeight=\"no\" />\n\"\"\">\n  <div>\n  <$wikify name=\"workday\" text={{!!workday}} output=\"html\">\n  <<workday>>\n  </$wikify>\n  </div>\n</$list>\n\n\n</c>\n<c>\n\n! Todo:\n\n{{TaskList/AdvancedWork/Todo}}\n\n</c>\n<c>\n\n! Non-integrated tickets\n\n{{TaskList/AdvancedWork/Tickets}}\n</c>\n</cols>\n",
+        "title": "Task List Showcase - Advanced Work Todo",
+        "modified": "20221020214907082",
+        "tags": "",
+        "type": "text/vnd.tiddlywiki",
+        "workday": "!!! ''Done Today:''\n * Code review (<<cr-count>> PRs)\n * <<t 27124>> -- Analyzed the failing tests, contacted Fernando about it\n!!! ''Sent into code review:''\n * <<t 31772>> -- <<pr 3302>> -- Fixed the edge case\n!!! ''Sent to QA:''\n!!! ''Integrated:''\n!!! ''Questions:''\n * @Bernar\n ** Any chance we could get a preview of the new designs?\n ** <<t 31557>> -- I checked the comments, its outside the scope of our work",
+        "workday-preview": ""
+    }
+]

@@ -3,11 +3,11 @@ color: 000000
 created: 20221013121538153
 css-class: 
 icon: 📌
-modified: 20221013210833258
+modified: 20221018092131080
 order: 2
 parent: Task List Description
 tags: TaskList/Item
-title: Task List Description/Item 1
+title: $:/tasklist/Task List Description/Item 1
 type: text/vnd.tiddlywiki
 
 Customize how items are displayed

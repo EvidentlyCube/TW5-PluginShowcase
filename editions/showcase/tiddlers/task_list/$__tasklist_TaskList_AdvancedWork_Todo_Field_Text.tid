@@ -1,0 +1,11 @@
+caption: Text
+created: 20221018092312961
+field-name: text
+field-type: text
+field-width: 20
+modified: 20221018112511599
+parent: TaskList/AdvancedWork/Todo
+priority: 2
+tags: TaskList/Field
+title: $:/tasklist/TaskList/AdvancedWork/Todo/Field/Text
+type: text/vnd.tiddlywiki

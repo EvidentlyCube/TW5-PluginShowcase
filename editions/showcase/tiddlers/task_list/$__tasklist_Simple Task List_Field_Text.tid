@@ -3,9 +3,9 @@ created: 20221017080348335
 field-name: text
 field-type: text
 field-width: 10
-modified: 20221017080357893
+modified: 20221018092049381
 parent: Simple Task List
 priority: 1
 tags: TaskList/Field
-title: Simple Task List/Field/Text
+title: $:/tasklist/Simple Task List/Field/Text
 type: text/vnd.tiddlywiki

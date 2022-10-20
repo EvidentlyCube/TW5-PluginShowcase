@@ -1,0 +1,17 @@
+[
+    {
+        "created": "20221018092312960",
+        "title": "TaskList/AdvancedWork/Todo",
+        "tags": "TaskList",
+        "modified": "20221018112511600",
+        "text": "<<ec-task-list \"TaskList/AdvancedWork/Todo\">>",
+        "type": "text/vnd.tiddlywiki",
+        "tl-filter-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]] :sort[{!!text}search-replace[Respond -],[2 -]search-replace[CR -],[1 -]search-replace[Needs Work -],[3 -]]",
+        "tl-filter-not-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]] :sort[{!!text}search-replace[Respond -],[2 -]search-replace[CR -],[1 -]search-replace[Needs Work -],[3 -]]",
+        "tl-sort-mode": "filter",
+        "tl-sort-field": "text",
+        "tl-sort-filter": ":sort[{!!text}search-replace[Respond -],[2 -]search-replace[CR -],[1 -]search-replace[Needs Work -],[3 -]]",
+        "caption": "TaskList/AdvancedWork/Todo (TaskList)",
+        "tl-template": "<$list filter=\"[{!!text}prefix[CR -]]\">🔍</$list>\n<$list filter=\"[{!!text}prefix[Respond -]]\">🪶</$list>\n<$list filter=\"[{!!text}prefix[Needs Work -]]\">🔧</$list>\n{{!!text}}\n<$list filter=\"[all[current]get[link]]\">\n  --- <a href=<<currentTiddler>> target=\"__blank\">[link]</a>\n</$list>"
+    }
+]
