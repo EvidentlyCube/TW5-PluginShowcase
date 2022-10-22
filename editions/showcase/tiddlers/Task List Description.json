@@ -1,10 +1,10 @@
 [
     {
-        "created": "20221017212750353",
+        "created": "20221022055442539",
+        "text": "<<ec-task-list \"Task List Description\" 0>>",
         "title": "Task List Description",
         "tags": "TaskList",
-        "modified": "20221017212753291",
-        "text": "<<ec-task-list \"Task List Description\" 0>>",
+        "modified": "20221022055541668",
         "type": "text/vnd.tiddlywiki",
         "tl-filter-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]sort[order]]",
         "tl-filter-not-done": "[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]sort[order]]",
@@ -14,6 +14,7 @@
         "caption": "Task List Description (TaskList)",
         "tl-template": "<span style={{{ [[color: #]addsuffix{!!color}] }}}>\n{{!!icon}} {{!!text}}\n</span>",
         "tl-class-filter": "[{!!css-class}]",
-        "tl-preview": "new"
+        "tl-preview": "new",
+        "tl-delete-checked": "1"
     }
 ]

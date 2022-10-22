@@ -1,0 +1,13 @@
+_is-editing: 0
+color: 008888
+created: 20221022055525478
+css-class: 
+icon: 📐
+modified: 20221022055535660
+order: 50
+parent: Task List Description
+tags: TaskList/Item
+title: $:/tasklist/Task List Description/Item 5
+type: text/vnd.tiddlywiki
+
+Hide delete button on unchecked items

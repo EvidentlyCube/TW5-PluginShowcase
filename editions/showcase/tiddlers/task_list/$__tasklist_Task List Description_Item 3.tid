@@ -2,8 +2,8 @@ _is-editing: 0
 color: 888800
 created: 20221013211256653
 css-class: bg-blue
-icon: 📐
-modified: 20221018092141311
+icon: 📓
+modified: 20221022055539115
 order: 4
 parent: Task List Description
 tags: TaskList/Item

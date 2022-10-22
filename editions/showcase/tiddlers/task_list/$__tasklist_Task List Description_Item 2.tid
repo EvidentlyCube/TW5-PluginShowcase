@@ -10,4 +10,4 @@ tags: TaskList/Item
 title: $:/tasklist/Task List Description/Item 2
 type: text/vnd.tiddlywiki
 
-Customize CSS of tasks via a filter
+Customize CSS of the items via a filter
