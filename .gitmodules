@@ -13,3 +13,6 @@
 [submodule "plugins/EvidentlyCube/TW5-TaskList"]
 	path = plugins/EvidentlyCube/TW5-TaskList
 	url = git@github.com:EvidentlyCube/TW5-TaskList.git
+[submodule "plugins/EvidentlyCube/TW5-AdvancedPerformance"]
+	path = plugins/EvidentlyCube/TW5-AdvancedPerformance
+	url = git@github.com:EvidentlyCube/TW5-AdvancedPerformance.git
