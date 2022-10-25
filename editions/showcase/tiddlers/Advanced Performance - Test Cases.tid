@@ -1,0 +1,43 @@
+created: 20221025202205570
+modified: 20221025203653764
+title: Advanced Performance - Test Cases
+type: text/vnd.tiddlywiki
+
+<$let
+  tid=<<currentTiddler>>
+  test="test"
+  test-count="20"
+>
+
+This tiddler contains a few test filters used in development. Each filter below runs <<test-count>> times.
+
+!! Variables
+
+Test that variables in filters are not accidentally treated as HTML in the logs:
+
+```
+[all[tiddlers]search<test>]
+```
+
+Runs: <code><$list filter="[range[1],<test-count>]" variable="ignore"><$list filter="[all[tiddlers]search<test>]">.</$list></$list></code>
+
+!! Backlinks
+
+Just so we have backlinks filter somewhere in logs:
+
+```
+[all[current]backlinks[]]
+```
+
+Runs: <code><$list filter="[range[1],<test-count>]" variable="ignore"><$list filter="[all[current]backlinks[]]">.</$list></$list></code>
+
+!! Slow filter
+
+A filter that does a lot of things and should take a bit longer than other filters on this TiddlyWiki:
+
+```
+[all[tiddlers+shadows]] :map[range[1],[100]] +[count[]]
+```
+
+Runs: <code><$list filter="[range[1],<test-count>]" variable="ignore"><$list filter="[all[tiddlers+shadows]] :map[range[1],[100]] +[count[]]">.</$list></$list></code>
+</$let>
