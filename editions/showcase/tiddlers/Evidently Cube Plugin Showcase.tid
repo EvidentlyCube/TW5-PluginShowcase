@@ -1,13 +1,14 @@
 created: 20211118101127971
-modified: 20221013095500245
+modified: 20221025152238696
 tags: 
 title: Evidently Cube Plugin Showcase
 type: text/vnd.tiddlywiki
 
 The following plugins are available:
 
+* [[Task List]] -- A very customizable TaskList/Todo module.
+* [[Advanced Performance]] -- A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
 * [[Auto Close Tags]] -- Automatically closes HTML tags when typing.
 * [[Field Propagator]] -- Propagates tiddler's field value up its parents.
 * [[Go To Shortcut]] -- Adds a shortcut to open a powerful quick-navigation modal.
 * [[Middle Click Actions]] -- Invoke an action when user clicks with middle mouse button.
-* [[Task List]] -- A very customizable TaskList/Todo module.
