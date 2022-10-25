@@ -1,5 +1,5 @@
 created: 20221025152248579
-modified: 20221025174123741
+modified: 20221025202201188
 title: Advanced Performance
 type: text/vnd.tiddlywiki
 
@@ -30,3 +30,7 @@ The bottom widget will now be available and advanced instrumentation will happen
 ! Installation
 
 Drag [[This Link|$:/plugins/EvidentlyCube/AdvancedPerformance]] into the window/tab of your Wiki to import the plugin.
+
+----
+
+[[Advanced Performance - Test Cases]]
