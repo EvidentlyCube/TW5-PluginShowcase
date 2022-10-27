@@ -1,14 +1,29 @@
 created: 20211118101127971
 modified: 20221025152238696
-tags: 
+tags:
 title: Evidently Cube Plugin Showcase
 type: text/vnd.tiddlywiki
 
-The following plugins are available:
+!! [[Task List]] <span class="muted">(1.0.13)</span>
+Customizable TaskList/Todo module.
 
-* [[Task List]] -- A very customizable TaskList/Todo module.
-* [[Advanced Performance]] -- A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
-* [[Auto Close Tags]] -- Automatically closes HTML tags when typing.
-* [[Field Propagator]] -- Propagates tiddler's field value up its parents.
-* [[Go To Shortcut]] -- Adds a shortcut to open a powerful quick-navigation modal.
-* [[Middle Click Actions]] -- Invoke an action when user clicks with middle mouse button.
+!! [[Advanced Performance]] <span class="muted">(1.1.0)</span>
+A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
+
+!! [[Go To Shortcut]] <span class="muted">(0.2.0)</span>
+Adds a shortcut to open a powerful quick-navigation modal.
+
+!![[Middle Click Actions]] <span class="muted">(1.0.0)</span>
+Invoke an action when user clicks with middle mouse button.
+
+----
+
+! Archived plugins
+
+Below are plugins I no longer support and are there only for archival purposes.
+
+!! [[Auto Close Tags]] <span class="muted">(0.0.5)</span>
+Automatically closes HTML tags when typing.
+
+!! [[Field Propagator]] <span class="muted">(0.0.1)</span>
+Propagates tiddler's field value up its parents.

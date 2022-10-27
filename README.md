@@ -1,14 +1,41 @@
-## Evidently Cube's TiddlyWiki 5 plugin showcase
+# Evidently Cube's TiddlyWiki 5 plugins
 
 [See the showcase.](https://evidentlycube.github.io/TW5-PluginShowcase/)
 
 This repository contains a showcase for all the TiddlyWiki5 plugins I've developed.
 
-The following plugins are available:
+## Task List
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Task%20List) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-TaskList)
 
-* [TW5-TaskList](https://evidentlycube.github.io/TW5-PluginShowcase/#Task%20List) *[[Repository](https://github.com/EvidentlyCube/TW5-TaskList)]*
-* [TW5-AdvancedPerformance](https://evidentlycube.github.io/TW5-PluginShowcase/#Advanced%20Performance) *[[Repository](https://github.com/EvidentlyCube/TW5-AdvancedPerformance)]*
-* [TW5-FieldPropagator](https://evidentlycube.github.io/TW5-PluginShowcase/#Field%20Propagator) - *[[Repository](https://github.com/EvidentlyCube/TW5-FieldPropagator)]*
-* [TW5-GoToShortcut](https://evidentlycube.github.io/TW5-PluginShowcase/#Go%20To%20Shortcut) - *[[Repository](https://github.com/EvidentlyCube/TW5-GoToShortcut)]*
-* [TW5-MiddleClickActions](https://evidentlycube.github.io/TW5-PluginShowcase/#Middle%20Click%20Actions) *[[Repository](https://github.com/EvidentlyCube/TW5-MiddleClickActions)]*
-* [TW5-AutoCloseTags](https://evidentlycube.github.io/TW5-PluginShowcase/#Auto%20Close%20Tags) *[[Repository](https://github.com/EvidentlyCube/TW5-AutoCloseTags)]*
+Customizable TaskList/Todo module.
+
+## Advanced Performance
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Advanced%20Performance) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-AdvancedPerformance)
+
+A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
+
+## Go To Shortcut
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Go%20To%20Shortcut) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-GoToShortcut)
+
+Adds a keyboard shortcut to open a powerful quick-navigation modal.
+
+## Middle Click Actions
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Middle%20Click%20Actions) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-MiddleClickActions)
+
+Invoke an action when user clicks with the middle mouse button.
+
+----
+
+# Archived plugins
+
+Below are plugins I no longer support and are there only for archival purposes.
+
+## Auto Close Tags
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Auto%20Close%20Tags) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-AutoCloseTags)
+Automatically closes HTML tags when typing.
+
+## Field Propagator
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Field%20Propagator) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-FieldPropagator)
+
+Propagates tiddler's field value up its parents.
+
