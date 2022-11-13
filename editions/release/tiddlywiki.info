@@ -1,5 +1,5 @@
 {
-	"description": "Release",
+	"description": "Evidently Cube's TiddlyWiki5 plugins showcase",
 	"includeWikis": [
 		"../showcase"
 	],
@@ -10,7 +10,8 @@
 		"EvidentlyCube/TW5-MiddleClickActions/plugin",
 		"EvidentlyCube/TW5-TaskList/plugin",
 		"EvidentlyCube/TW5-AdvancedPerformance/plugin",
-		"EvidentlyCube/TW5-AutoComplete/plugin"
+		"EvidentlyCube/TW5-AutoComplete/plugin",
+		"EvidentlyCube/TW5-Discloser/plugin"
 	],
 	"themes": [
 		"tiddlywiki/vanilla"
