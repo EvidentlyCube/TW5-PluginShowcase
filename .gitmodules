@@ -19,3 +19,6 @@
 [submodule "plugins/EvidentlyCube/TW5-AutoComplete"]
 	path = plugins/EvidentlyCube/TW5-AutoComplete
 	url = git@github.com:EvidentlyCube/TW5-AutoComplete.git
+[submodule "plugins/EvidentlyCube/TW5-Discloser"]
+	path = plugins/EvidentlyCube/TW5-Discloser
+	url = git@github.com:EvidentlyCube/TW5-Discloser.git
