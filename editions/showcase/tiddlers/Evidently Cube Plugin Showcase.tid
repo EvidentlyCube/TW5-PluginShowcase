@@ -7,7 +7,7 @@ type: text/vnd.tiddlywiki
 !! [[Task List]] <span class="muted">(1.0.13)</span>
 Customizable TaskList/Todo module.
 
-!! [[Advanced Performance]] <span class="muted">(1.1.0)</span>
+!! [[Advanced Performance]] <span class="muted">(1.1.1)</span>
 A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
 
 !! [[Go To Shortcut]] <span class="muted">(0.2.0)</span>
