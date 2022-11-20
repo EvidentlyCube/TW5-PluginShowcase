@@ -1,18 +1,21 @@
 [submodule "plugins/EvidentlyCube/TW5-GoToShortcut"]
 	path = plugins/EvidentlyCube/TW5-GoToShortcut
-	url = https://github.com/EvidentlyCube/TW5-GoToShortcut.git
+	url = git@github.com:EvidentlyCube/TW5-GoToShortcut.git
 [submodule "plugins/EvidentlyCube/TW5-MiddleClickActions"]
 	path = plugins/EvidentlyCube/TW5-MiddleClickActions
-	url = https://github.com/EvidentlyCube/TW5-MiddleClickActions.git
+	url = git@github.com:EvidentlyCube/TW5-MiddleClickActions.git
 [submodule "plugins/EvidentlyCube/TW5-AutoCloseTags"]
 	path = plugins/EvidentlyCube/TW5-AutoCloseTags
-	url = https://github.com/EvidentlyCube/TW5-AutoCloseTags.git
+	url = git@github.com:EvidentlyCube/TW5-AutoCloseTags.git
 [submodule "plugins/EvidentlyCube/TW5-FieldPropagator"]
 	path = plugins/EvidentlyCube/TW5-FieldPropagator
-	url = https://github.com/EvidentlyCube/TW5-FieldPropagator.git
+	url = git@github.com:EvidentlyCube/TW5-FieldPropagator.git
 [submodule "plugins/EvidentlyCube/TW5-TaskList"]
 	path = plugins/EvidentlyCube/TW5-TaskList
 	url = git@github.com:EvidentlyCube/TW5-TaskList.git
 [submodule "plugins/EvidentlyCube/TW5-AdvancedPerformance"]
 	path = plugins/EvidentlyCube/TW5-AdvancedPerformance
 	url = git@github.com:EvidentlyCube/TW5-AdvancedPerformance.git
+[submodule "plugins/EvidentlyCube/TW5-TiddlerCompletion"]
+	path = plugins/EvidentlyCube/TW5-TiddlerCompletion
+	url = git@github.com:EvidentlyCube/TW-TiddlerCompletion.git
