@@ -1,8 +1,0 @@
-title: $:/TiddlerCompletion/Link
-tags: $:/tags/plugin/CompletionManager/Trigger
-created: 20221120133259506
-modified: 20221120133544494
-filter: [all[tiddlers]!is[system]search:title<query>]
-template: [[${caret}|${tiddler}]]
-trigger: [[
-type: text/vnd.tiddlywiki
