@@ -1,0 +1,43 @@
+created: 20221125094854473
+modified: 20221125130432019
+title: Auto Complete
+type: text/vnd.tiddlywiki
+
+[[Github Repository|https://github.com/EvidentlyCube/TW5-AutoComplete]] --- [[Install|$:/plugins/EvidentlyCube/AutoComplete]]
+
+! Introduction
+
+Auto complete anything and anywhere!
+
+After installing this plugin go to Control Panel -> Evidently Cube -> Auto Complete and create your first trigger.
+
+! Features
+
+* Auto complete anything you want:
+** Tiddler titles
+** Field values
+** Any filter result
+* Define your own triggers
+** Customize the filter which retrieves the suggestions
+** Customize template used for inserting the selected suggestion
+** Customize how the suggestions are displayed in the completion window
+** Control auto-triggering separately for inputs and text areas
+* Clear interface for editing the triggers
+* Manually open auto complete with customizable keyboard shortcut
+
+! Demo:
+
+For the purpose of testing there are three triggers defined:
+
+* `[[` -- For inserting tiddlers, it's the only one that automatically triggers in single-line inputs
+* `field:` -- For inserting fields
+* `<` -- For inserting widgets
+
+Use <kbd>Ctrl+Space</kbd> to manually trigger completion
+
+<$edit-text class="wide" tag="input" tiddler="$:/temp/auto-complete/test" field="input"/><br/>
+<$edit-text class="wide" tag="textarea" tiddler="$:/temp/auto-complete/test" field="textarea"/>
+
+! Installation
+
+Drag [[This Link|$:/plugins/EvidentlyCube/AutoComplete]] into the window/tab of your Wiki to import the plugin.
