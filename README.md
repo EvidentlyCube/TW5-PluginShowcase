@@ -12,6 +12,11 @@ Customizable TaskList/Todo module.
 ## Advanced Performance
 [Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Advanced%20Performance) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-AdvancedPerformance)
 
+Easily and heavily customizable auto complete working in any text input (even Codemirror!) that can complete anything you want!
+
+## Auto Complete
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Auto%20Complete) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-AutoComplete)
+
 A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
 
 ## Go To Shortcut
