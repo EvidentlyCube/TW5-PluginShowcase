@@ -1,6 +1,6 @@
 created: 20211118101127971
 modified: 20221125094845061
-tags: 
+tags:
 title: Evidently Cube Plugin Showcase
 type: text/vnd.tiddlywiki
 
@@ -10,7 +10,7 @@ Customizable TaskList/Todo module.
 !! [[Advanced Performance]] <span class="muted">(1.1.1)</span>
 A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
 
-!! [[Auto Complete]] <span class="muted">(1.0.0)</span>
+!! [[Auto Complete]] <span class="muted">(1.0.1)</span>
 Easily and heavily customizable auto complete working in any text input (even Codemirror!) that can complete anything you want!
 
 !! [[Go To Shortcut]] <span class="muted">(0.2.1)</span>
