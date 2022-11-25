@@ -1,0 +1,15 @@
+auto-trigger-input: 1
+auto-trigger-textarea: 1
+created: 20221125095524098
+display-filter: [<currentTiddler>]
+filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
+modified: 20221125125955843
+tags: $:/tags/EC/AutoComplete/Trigger
+template: [[$caret$|$option$]]
+title: $:/EvidentlyCube/Trigger/1
+trigger: [[
+type: text/vnd.tiddlywiki
+
+This is identical to the trigger you get when you create a new one.
+
+It triggers after typing `[[` and simply lists all tiddlers matching your query, without any additional filtering or changing how the results display.

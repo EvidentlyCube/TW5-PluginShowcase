@@ -1,0 +1,14 @@
+auto-trigger-textarea: 1
+created: 20221125114519372
+display-filter: [<currentTiddler>] [[ (Uses: ]] [all[tiddlers]!is[system]has<currentTiddler>count[]] ) +[join[]]
+filter: [all[tiddlers]!is[system]!is[draft]fields[]search:title<query>sort[]]
+modified: 20221125125714692
+tags: $:/tags/EC/AutoComplete/Trigger
+template: field:$option$
+title: $:/EvidentlyCube/Trigger/2
+trigger: field:
+type: text/vnd.tiddlywiki
+
+-> Useful when writing filters, this trigger will list defined variables.
+-> Note that Display Filter has some additional logic to append (Uses: 123) after the name of the variable.
+-> Note that Template has no $caret$ in it, which causes the caret to be put at the end of inserted text

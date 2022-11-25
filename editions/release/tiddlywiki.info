@@ -9,7 +9,8 @@
 		"EvidentlyCube/TW5-GoToShortcut/plugin",
 		"EvidentlyCube/TW5-MiddleClickActions/plugin",
 		"EvidentlyCube/TW5-TaskList/plugin",
-		"EvidentlyCube/TW5-AdvancedPerformance/plugin"
+		"EvidentlyCube/TW5-AdvancedPerformance/plugin",
+		"EvidentlyCube/TW5-AutoComplete/plugin"
 	],
 	"themes": [
 		"tiddlywiki/vanilla"

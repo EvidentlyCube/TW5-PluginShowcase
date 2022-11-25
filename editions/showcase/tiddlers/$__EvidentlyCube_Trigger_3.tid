@@ -1,0 +1,14 @@
+auto-trigger-textarea: 1
+created: 20221125114929951
+display-filter: [<currentTiddler>search-replace[action-],[Action: ]search-replace:g:regexp[(\w)field],[$1 field]search-replace:g:regexp[(\w)tiddler],[$1 tiddler]search-replace:g:regexp[\bset(\w)],[set $1]]
+filter: [all[tiddlers+shadows]field:module-type[widget]search-replace:g:regexp[^.+/(.+)\.js$],[$1]search:title<query>]
+modified: 20221125125913688
+tags: $:/tags/EC/AutoComplete/Trigger
+template: <$$option$$caret$
+title: $:/EvidentlyCube/Trigger/3
+trigger: <
+type: text/vnd.tiddlywiki
+
+-> Auto complete for widgets
+-> It finds the widget names by looking at their file name - so if there is a filter which name doesn't match its file name it won't work correctly
+-> Display template does a lot of processing just to show its capabilities; plus regardless of what is displayed in the result you insert what `Filter` returns
