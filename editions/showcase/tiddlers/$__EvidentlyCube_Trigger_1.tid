@@ -1,0 +1,10 @@
+auto-trigger-textarea: 1
+created: 20221125095524098
+display-filter: [<currentTiddler>]
+filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
+modified: 20221125095830239
+tags: $:/tags/EC/AutoComplete/Trigger
+template: [[$caret$|$option$]]
+title: $:/EvidentlyCube/Trigger/1
+trigger: [[
+type: text/vnd.tiddlywiki
