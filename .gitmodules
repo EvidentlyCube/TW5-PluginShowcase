@@ -16,6 +16,3 @@
 [submodule "plugins/EvidentlyCube/TW5-AdvancedPerformance"]
 	path = plugins/EvidentlyCube/TW5-AdvancedPerformance
 	url = git@github.com:EvidentlyCube/TW5-AdvancedPerformance.git
-[submodule "plugins/EvidentlyCube/TW5-AutoComplete"]
-	path = plugins/EvidentlyCube/TW5-AutoComplete
-	url = git@github.com:EvidentlyCube/TW5-AutoComplete.git
