@@ -1,0 +1,14 @@
+auto-trigger-textarea: 1
+created: 20221126124436892
+display-filter: [<currentTiddler>addsuffix[ (]addsuffix{!!modified}addsuffix[)]]
+filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
+modified: 20221126130401488
+tags: $:/tags/EC/AutoComplete/Trigger
+template: $option$
+title: $:/EvidentlyCube/Trigger/4
+transform-filter: [<currentTiddler>get[modified]]
+trigger: modified:
+type: text/vnd.tiddlywiki
+
+-> Auto complete for modified value of a tiddler
+-> Serves as an example of Transfom Filter usage, instead if inserting tiddler's title it inserts its `modified` field

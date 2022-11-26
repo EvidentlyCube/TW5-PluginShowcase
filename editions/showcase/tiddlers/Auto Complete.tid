@@ -1,5 +1,5 @@
 created: 20221125094854473
-modified: 20221125130432019
+modified: 20221126130618244
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
@@ -27,13 +27,19 @@ Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-exte
 * Clear interface for editing the triggers
 * Manually open auto complete with customizable keyboard shortcut
 
+!! Plugin compatibility
+
+ * Official [[Code Mirror|https://tiddlywiki.com/plugins/tiddlywiki/codemirror/]] plugin
+ * [[Streams|https://saqimtiaz.github.io/streams/]] by saqimtiaz
+
 ! Demo:
 
 For the purpose of testing there are three triggers defined:
 
 * `[[` -- For inserting tiddlers, it's the only one that automatically triggers in single-line inputs
-* `field:` -- For inserting fields
-* `<` -- For inserting widgets
+* `field:` -- For inserting fields, showcases usage of ''Display Filter'' option
+* `<` -- For inserting widgets, showcases a complex usage
+* `modified:` -- For inserting tiddler's `modified` field value, showcases usage of `Transform Filter` option
 
 Use <kbd>Ctrl+Space</kbd> to manually trigger completion
 
