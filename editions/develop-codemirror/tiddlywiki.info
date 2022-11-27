@@ -1,0 +1,28 @@
+{
+	"description": "Develop",
+	"includeWikis": [
+		"../showcase"
+	],
+	"plugins": [
+		"tiddlywiki/filesystem",
+		"tiddlywiki/tiddlyweb",
+		"tiddlywiki/codemirror",
+		"tiddlywiki/codemirror-autocomplete",
+		"tiddlywiki/codemirror-closebrackets",
+		"tiddlywiki/codemirror-closetag",
+		"tiddlywiki/codemirror-fullscreen",
+		"tiddlywiki/codemirror-mode-css",
+		"tiddlywiki/codemirror-mode-javascript",
+		"tiddlywiki/codemirror-mode-markdown",
+		"tiddlywiki/codemirror-mode-x-tiddlywiki",
+		"tiddlywiki/codemirror-mode-xml",
+		"tiddlywiki/codemirror-search-replace"
+	],
+	"themes": [
+		"tiddlywiki/vanilla"
+	],
+	"config": {
+		"default-tiddler-location": "../showcase/tiddlers",
+		"retain-original-tiddler-path": false
+	}
+}
