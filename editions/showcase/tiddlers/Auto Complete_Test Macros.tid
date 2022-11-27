@@ -1,0 +1,9 @@
+created: 20221127121854565
+modified: 20221127121948602
+tags: $:/tags/Macro
+title: Auto Complete/Test Macros
+type: text/vnd.tiddlywiki
+
+\define ac-test-macro()
+hOI!!! tem iz a macro
+\end

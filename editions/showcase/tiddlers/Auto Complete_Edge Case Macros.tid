@@ -1,0 +1,12 @@
+created: 20221127121727037
+modified: 20221127121849682
+tags: $:/tags/Macro
+title: Auto Complete/Edge Case Macros
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+\define ac-test-oneliner() One Line Macro
+\define ac-test-multiliner()
+Multi line macro
+\end
+\defineincorrect - This tries to fool positive lookahead but we have protections against it

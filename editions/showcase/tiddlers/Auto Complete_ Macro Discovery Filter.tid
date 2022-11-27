@@ -1,0 +1,158 @@
+created: 20221127122011703
+modified: 20221127132658582
+tags: 
+title: Auto Complete: Macro Discovery Filter
+type: text/vnd.tiddlywiki
+
+\define show-search-filter(filter)
+<$action-setfield $tiddler="$:/temp/advancedsearch" $value="""$filter$"""/>
+<$action-setfield $tiddler="$:/temp/advancedsearch/input" $value="""$filter$"""/>
+<$action-setfield $tiddler="$:/temp/advancedsearch/refresh" text="yes"/>
+<$action-setfield $tiddler="$:/state/tab--1498284803" $value="$:/core/ui/AdvancedSearch/Filter"/>
+<$action-navigate $to="$:/AdvancedSearch"/>
+\end
+
+This page explains how [[this Auto Complete trigger works|$:/EvidentlyCube/Trigger/6]].
+
+! High level overview
+
+The general idea of this filter is as follows:
+
+ * Get the text of each global macro tiddler
+ * Transform the text such that you end up with a delimited sequence of macros that optionally has some cruft at the start and the end
+ * Remove the cruft
+ * Split the delimited sequence to get the final list of macros
+
+<$button actions=<<show-search-filter "[all[tiddlers]tag[$:/tags/Macro]!is[draft]]">>>Show global macro tiddlers</$button>
+
+! The filter itself
+
+```
+[all[tiddlers]tag[$:/tags/Macro]!is[draft]get[text]search:title[\define]search-replace:g:regexp[\\define\s+(.+?)\((\s|\S)+?(?=\\define|$)],[~$1|]search-replace:g[|~],[~]search-replace:g:regexp[^(\s|\S)*?~|\|(\s|\S)*$],[]split[~]!match[]]
+```
+
+! Filter breakdown
+
+```
+[
+	  // First we get all tiddlers - if you also want to include built-in/plugin 
+	  // macros then change this to `all[tiddlers+shadows]`, but at this point
+	  // you may want to just consider using `variables[]` and remove the
+	  // variables you have no interest in
+	  // WE HAVE: <list of all tiddlers>
+	all[tiddlers]
+
+	  // Only get the global macros
+	  // WE HAVE: <list of above tiddlers tagged with $:/tags/Macro>
+	tag[$:/tags/Macro]
+
+	  // We don't want drafts to be included
+	  // WE HAVE: <list of above tiddlers which are not drafts>
+	!is[draft]
+
+	  // Extract the text of each tiddler
+	  // WE HAVE: <list of text content of the above tiddlers>
+	get[text]
+
+	  // We are not interested in tiddlers which have no macro definition
+	  // WE HAVE: <list of above text content but only that which contains a macro definition>
+	search:title[\define]
+
+	  // This regular expression will remove everything that is not
+	  // a macro name, put a tilde before each macro name and a vertical pipe
+	  // afterwards. Both needed for some clever cleanups and workarounds.
+	  // Explanation of this regexp comes later.
+	  // WE HAVE: <list of strings of the structure other-pragma~macroname|~macroname|other-content>
+	search-replace:g:regexp[\\define\s+(.+?)\((\s|\S)+?(?=\\define|$)],[~$1|]
+
+	  // This regular expression serves as a companion to the next one. The idea
+	  // Is to get rid of all pipe characters except the last one, which delimits
+	  // last macro name from whatever content is after. Normally this could
+	  // be solved using a negated range but it uses square brackets which are
+	  // a reserved character. Hence why we do black magic here, even if it's
+	  // not completely foolproof.
+	  // WE HAVE: <list of strings of the structure other-pragma~macroname~macroname|other-content>
+	search-replace:g[|~],[~]
+	
+	 // Remove everything up until the first tilde and everything from the pipe
+	 // character until the end of the string.
+	 // Explanation of this regexp comes later.
+	 // WE HAVE: <list of strings of the structure macroname~macroname~macroname>
+	search-replace:g:regexp[^(\s|\S)*?~|\|(\s|\S)*$],[]
+
+	  // Split by the tilde
+	  // WE HAVE: <list of macro names>
+	split[~]
+
+	  // Remove any empty element. This one is probably not required
+	  // but I am not 100% confident in all the edge cases of this filter.
+	  // WE HAVE: <list of macro names without any empty results>
+	!match[]
+]
+```
+
+! First regular expression breakdown
+
+```
+  // Start by matching \define, backslash must be escaped hence two of them
+\\define
+
+  // Greedily match all whitespace we can
+\s+
+
+  // Capturing group which will lazily match text (name of the macro) up until...
+(.+?)
+
+  // ...we match an open parenthesis. Backslash is required to escape it so that
+  // regexp engine doesn't treat it like starting a capture group.
+\(
+
+  // Then keep lazily matching every character ahead of us until it's stopped by
+  // the next rule. We use `\s|\S` instead of `.` because the dot will not
+  // match newline characters by default and Tiddlywiki doesn't expose
+  // relevant flag.
+(\s|\S)+?
+
+  // Our lazy matching will stop once it encounters either one of those:
+(
+	  // Positive lookahead of another `\define`
+	?=\\define
+	|
+	  // Or the end of the string
+	$
+)
+
+  // Then this all will be replaced by ~<macroname>|.
+```
+
+! Second regular expression breakdown
+
+```
+// FIRST CASE START
+	  // Match start of the string
+	^
+	  // Lazily match everything...
+	(\s|\S)*?
+	  // ... until the first tilde is encountered. 
+	~
+// FIRST CASE END
+
+// This regexp will match either the first case or the second case, but because
+// we use global flag we will actually match both
+|
+
+// SECOND CASE START
+	  // Start by matching a pipe character which needs to be escaped
+	\|
+	  // Greedily match everything...
+	(\s|\S)*
+	  // Until the end of the string
+	$
+// SECOND CASE END
+```
+
+! Potential bugs
+
+* It won't detect if the text before the first `\define` is valid pragma, which means it'll detect macros even if they won't be accepted by Tiddly Wiki.
+* It will also catch any `\define` in the body of the Tiddler or the macro - the latter might be an issue if you nest macro definitions. 
+

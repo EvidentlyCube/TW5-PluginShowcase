@@ -1,0 +1,15 @@
+[
+    {
+        "created": "20221127122551304",
+        "title": "$:/EvidentlyCube/Trigger/6",
+        "modified": "20221127132801583",
+        "tags": "$:/tags/EC/AutoComplete/Trigger",
+        "type": "text/vnd.tiddlywiki",
+        "text": "-> It lists all of the macros defined in your own global macros\n-> The suggestion filter is really complicated and is explained in the Auto Complete page",
+        "auto-trigger-textarea": "1",
+        "display-filter": "[<currentTiddler>]",
+        "filter": "[all[tiddlers]tag[$:/tags/Macro]!is[draft]get[text]search:title[\\define]search-replace:g:regexp[\\\\define\\s+(.+?)\\((\\s|\\S)+?(?=\\\\define|$)],[~$1|]search-replace:g[|~],[~]search-replace:g:regexp[^(\\s|\\S)*?~|\\|(\\s|\\S)*$],[]split[~]!match[]search:title<query>]\n",
+        "template": "<<$option$>>$caret$",
+        "trigger": "macro:"
+    }
+]

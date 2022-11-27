@@ -3,13 +3,13 @@ auto-trigger-textarea: 1
 created: 20221125095524098
 display-filter: [<currentTiddler>]
 filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
-modified: 20221125125955843
+modified: 20221127122310464
 tags: $:/tags/EC/AutoComplete/Trigger
-template: [[$caret$|$option$]]
+template: [[$option$]]$caret$
 title: $:/EvidentlyCube/Trigger/1
 trigger: [[
 type: text/vnd.tiddlywiki
 
-This is identical to the trigger you get when you create a new one.
-
-It triggers after typing `[[` and simply lists all tiddlers matching your query, without any additional filtering or changing how the results display.
+-> This is identical to the trigger you get when you create a new one.
+-> It triggers after typing `[[` and simply lists all tiddlers matching your query, without any additional filtering or changing how the results display.
+-> Note that `$caret$` in Template is redundant as the caret will automatically be placed at the end of the inserted text if the caret token is not present
