@@ -1,0 +1,16 @@
+[
+    {
+        "created": "20221127135250538",
+        "tags": "$:/tags/EC/AutoComplete/Trigger",
+        "modified": "20221127135838556",
+        "title": "$:/EvidentlyCube/Trigger/7",
+        "text": "-> Showcases using dictionary tiddlers as a data source\n-> The magic in Display Filter is meant to uppercase the first character only",
+        "type": "text/vnd.tiddlywiki",
+        "trigger": "color:",
+        "filter": "[[Data/ColorsHexInverted]indexes[]search:title<query>]",
+        "display-filter": "[<currentTiddler>search-replace:g:regexp[(.).+],[$1]uppercase[]]\n[<currentTiddler>search-replace:g:regexp[.(.+)],[$1]] \n+[join[]]",
+        "template": "$option$$caret$",
+        "auto-trigger-textarea": "1",
+        "transform-filter": "[[Data/ColorsHexInverted]getindex<currentTiddler>]"
+    }
+]

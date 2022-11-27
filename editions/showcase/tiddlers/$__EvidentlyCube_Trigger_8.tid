@@ -1,0 +1,15 @@
+auto-trigger-textarea: 1
+created: 20221127133936716
+display-filter: [<currentTiddler>]
+filter: [[Data/Emoji]indexes[]] :map[[Data/Emoji]getindex<currentTiddler>addprefix[ (]addprefix<currentTiddler>addsuffix[)]] +[search:title<query>]
+modified: 20221127135617678
+tags: $:/tags/EC/AutoComplete/Trigger
+template: $option$
+title: $:/EvidentlyCube/Trigger/8
+transform-filter: [<currentTiddler>search-replace:g:regexp[ \(.+],[]]
+trigger: emoji:
+type: text/vnd.tiddlywiki
+
+-> Showcases using data indexes for pulling data
+-> This particular case deals with the issue that we want to be able to filter the emojis by their name but want to just insert the emoji. There is no good way in TiddlyWiki to get the key (index/preoprty) if you know its value, so we hack around this by having both the emoji and the text in the suggestion.
+-> We could also strip the name of the emoji in Display Filter using the same filter as in Transform Filter.

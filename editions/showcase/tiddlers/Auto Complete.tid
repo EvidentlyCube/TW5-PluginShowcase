@@ -1,5 +1,5 @@
 created: 20221125094854473
-modified: 20221127125108041
+modified: 20221127140010971
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
@@ -42,6 +42,8 @@ This wiki defines a couple of custom triggers to inspire you:
 * `field:` -- For inserting fields, showcases usage of ''Display Filter'' option
 * `modified:` -- For inserting tiddler's `modified` field value, showcases usage of `Transform Filter` option
 * `macro:` -- For inserting your own macros; a detailed explanation of how it works is [[available here|Auto Complete: Macro Discovery Filter]]
+* `color:` -- For inserting data from a dictionary tiddler [[Data/ColorsHexInverted]]
+* `emoji:` -- For inserting data from a dictionary tiddler [[Data/Emoji]] but one where we want to filter by value but insert key
 
 Use <kbd>Ctrl+Space</kbd> to manually trigger completion
 
