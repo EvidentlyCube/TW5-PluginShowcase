@@ -1,5 +1,5 @@
 created: 20221125094854473
-modified: 20221127140010971
+modified: 20221127203724541
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
@@ -29,8 +29,10 @@ Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-exte
 
 !! Plugin compatibility
 
- * Official [[Code Mirror|https://tiddlywiki.com/plugins/tiddlywiki/codemirror/]] plugin
- * [[Streams|https://saqimtiaz.github.io/streams/]] by saqimtiaz
+ * The official [[CodeMirror|https://tiddlywiki.com/plugins/tiddlywiki/codemirror/]] plugin -- Auto Complete triggers automatically, manually and is fully interactive
+ ** Also with its plugin [[CodeMirror Close brackets|https://tiddlywiki.com/plugins/tiddlywiki/codemirror/#%24%3A%2Fplugins%2Ftiddlywiki%2Fcodemirror-closebrackets]], if your trigger uses one of the characters that gets its mirror auto inserted it will still automatically open Auto Completion on typing
+ * [[Streams|https://saqimtiaz.github.io/streams/]] by //saqimtiaz// -- Pressing Enter to Auto Complete won't trigger a new stream insertion
+ * [[SideEditor|http://sideeditor.tiddlyspot.com/]] by //Mat von Twaddle// -- Auto Completion only appears in the currently focused window
 
 ! Demo:
 
