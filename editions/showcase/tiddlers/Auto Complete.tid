@@ -1,5 +1,5 @@
 created: 20221125094854473
-modified: 20221128115555457
+modified: 20221128130338701
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
@@ -56,3 +56,7 @@ Use <kbd>Ctrl+Space</kbd> to manually trigger completion
 ! Installation
 
 Drag [[This Link|$:/plugins/EvidentlyCube/AutoComplete]] into the window/tab of your Wiki to import the plugin.
+
+! Other
+
+A list of [[test cases is available|https://github.com/EvidentlyCube/TW5-AutoComplete/blob/main/TEST_CASES.md]] that shows all the tested scenarios before a release is made.
