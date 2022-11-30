@@ -1,0 +1,9 @@
+created: 20221130221338438
+filter: [all[tiddlers]prefix[Data]]
+modified: 20221130221435786
+tags: $:/tags/EC/Permaviews/View
+title: $:/EvidentlyCube/Permaview/2
+type: text/vnd.tiddlywiki
+view-name: view-all-data
+
+Displays all of existing tiddlers

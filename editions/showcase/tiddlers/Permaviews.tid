@@ -1,0 +1,35 @@
+created: 20221130222539143
+modified: 20221130223100830
+title: Permaviews
+type: text/vnd.tiddlywiki
+
+[[Plugin Readme|$:/plugins/EvidentlyCube/Permaviews/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-Permaviews]] --- [[Install|$:/plugins/EvidentlyCube/Permaviews]]
+
+----
+
+Define lists of tiddlers that automatically open when you visit a predefined permalink.
+
+!! How to use:
+
+Go to ''Control Panel -> Evidently Cube -> Permaviews'' and define as many views as you would like:
+
+ * Give it a name by which it can be accessed.
+ * Optionally describe it for bookkeeping.
+ * Write a filter or a list of tiddler you want to be opened when you visit the permalink
+
+Then use the permalink to change the story river to be those tiddlers only,
+
+!! Demo:
+
+Open either of these links in a new page:
+
+ * <a href="#view-example" target="_blank">#view-example</a> ([[Edit this permaview|$:/EvidentlyCube/Permaview/1]])
+ * <a href="#view-all-data" target="_blank">#view-all-data</a> ([[Edit this permaview|$:/EvidentlyCube/Permaview/2]])
+
+!! Known limitations:
+
+ * When you open a permaview through an external link or by reloading the page for a very brief moment Tiddlywiki will load a non-existant tiddler with the name of the permaview, before it is closed and the permaview tiddlers are opened. This is just a small visual inconvenience that's impossible to work around due to current Tiddlywiki internals not giving any way to hook or monkeypatch a solution without directly copy-pasting some of its code.
+
+! Installation
+
+Drag [[This Link|$:/plugins/EvidentlyCube/Permaviews]] into the window/tab of your Wiki to import the plugin.

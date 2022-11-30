@@ -1,5 +1,5 @@
 created: 20211118101127971
-modified: 20221126121151079
+modified: 20221130222527093
 tags: 
 title: Evidently Cube Plugin Showcase
 type: text/vnd.tiddlywiki
@@ -12,6 +12,9 @@ A big extension to TiddlyWiki's built-in performance instrumentation that makes 
 
 !! [[Auto Complete]] <span class="muted">({{$:/plugins/EvidentlyCube/AutoComplete!!version}})</span>
 Easily and heavily customizable auto complete working in any text input (even Codemirror!) that can complete anything you want!
+
+!! [[Permaviews]] <span class="muted">({{$:/plugins/EvidentlyCube/Permaviews!!version}})</span>
+Immediately open predefined list of tiddlers by visiting custom permalinks
 
 !! [[Go To Shortcut]] <span class="muted">({{$:/plugins/EvidentlyCube/GoToShortcut!!version}})</span>
 Adds a shortcut to open a powerful quick-navigation modal.
