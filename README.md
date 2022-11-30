@@ -19,6 +19,11 @@ Easily and heavily customizable auto complete working in any text input (even Co
 
 A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
 
+## Permaviews
+[Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Permaviews) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-Permaviews)
+
+Immediately open predefined list of tiddlers by visiting custom permalinks
+
 ## Go To Shortcut
 [Demo](https://evidentlycube.github.io/TW5-PluginShowcase/#Go%20To%20Shortcut) &mdash; [Repository](https://github.com/EvidentlyCube/TW5-GoToShortcut)
 
