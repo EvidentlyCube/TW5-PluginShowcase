@@ -1,8 +1,9 @@
 auto-trigger-textarea: 1
+caption: Field name
 created: 20221125114519372
 display-filter: [<currentTiddler>] [[ (Uses: ]] [all[tiddlers]!is[system]has<currentTiddler>count[]] ) +[join[]]
 filter: [all[tiddlers]!is[system]!is[draft]fields[]search:title<query>sort[]]
-modified: 20221125125714692
+modified: 20221201172332992
 tags: $:/tags/EC/AutoComplete/Trigger
 template: field:$option$
 title: $:/EvidentlyCube/Trigger/5

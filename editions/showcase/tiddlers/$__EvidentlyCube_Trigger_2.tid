@@ -1,8 +1,9 @@
 auto-trigger-textarea: 1
+caption: Tiddler with alias
 created: 20221127122132583
 display-filter: [<currentTiddler>]
 filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
-modified: 20221127122431470
+modified: 20221201172424103
 tags: $:/tags/EC/AutoComplete/Trigger
 template: [[$caret$|$option$]]
 title: $:/EvidentlyCube/Trigger/2

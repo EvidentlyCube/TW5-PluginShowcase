@@ -1,9 +1,10 @@
 auto-trigger-input: 1
 auto-trigger-textarea: 1
+caption: Tiddler
 created: 20221125095524098
 display-filter: [<currentTiddler>]
 filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
-modified: 20221127122310464
+modified: 20221201172414503
 tags: $:/tags/EC/AutoComplete/Trigger
 template: [[$option$]]$caret$
 title: $:/EvidentlyCube/Trigger/1

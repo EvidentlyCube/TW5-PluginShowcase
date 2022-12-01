@@ -1,8 +1,9 @@
 auto-trigger-textarea: 1
+caption: Emoji from dictionary
 created: 20221127133936716
 display-filter: [<currentTiddler>]
 filter: [[Data/Emoji]indexes[]] :map[[Data/Emoji]getindex<currentTiddler>addprefix[ (]addprefix<currentTiddler>addsuffix[)]] +[search:title<query>]
-modified: 20221127135617678
+modified: 20221201172358040
 tags: $:/tags/EC/AutoComplete/Trigger
 template: $option$
 title: $:/EvidentlyCube/Trigger/8
