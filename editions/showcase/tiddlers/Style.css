@@ -39,6 +39,8 @@ cols>c {
 	background: white;
 	border-radius: 32px;
 	padding: 0 32px;
+	font-size: 22px;
+	line-height: 28px;
 }
 
 .the-author img {
@@ -74,6 +76,7 @@ div[data-tiddler-title="Evidently Cube Plugins"] .tc-tiddler-controls {
 div[data-tiddler-title="Evidently Cube Plugins"] button {
 	display: none;
 }
+div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit"],
 div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose"] {
 	display: inline-block;
 	vertical-align: top;
@@ -102,6 +105,8 @@ div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2F
 
 .plugin .tagline {
 	flex-grow: 1;
+	font-size: 22px;
+	line-height: 28px;
 }
 
 .plugin .icon {
