@@ -1,7 +1,16 @@
+created: 20221205151102760
+image: Middle Click Actions Image
+modified: 20221205202825193
+plugin: $:/plugins/EvidentlyCube/MiddleClickActions
+priority: 2
+tagline: Invoke an action when user clicks with middle mouse button.
+tags: Plugin
 title: Middle Click Actions
 type: text/vnd.tiddlywiki
 
 [[Full Readme|$:/plugins/EvidentlyCube/MiddleClickActions/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-MiddleClickActions]] --- [[Install|$:/plugins/EvidentlyCube/MiddleClickActions]]
+
+//Mouse icon from <a href="https://www.vecteezy.com/png/1203995-mouse-middle-click">Vecteezy</a>.//
 
 ! Quick Description
 

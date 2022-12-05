@@ -1,3 +1,10 @@
+archived: 1
+created: 20221205160652765
+image: Auto Close Tags Image
+modified: 20221205160705191
+plugin: $:/plugins/EvidentlyCube/AutoCloseTags
+tagline: Automatically closes HTML tags when typing.
+tags: Plugin
 title: Auto Close Tags
 type: text/vnd.tiddlywiki
 

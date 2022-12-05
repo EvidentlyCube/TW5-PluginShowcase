@@ -1,5 +1,10 @@
 created: 20221025152248579
-modified: 20221025202201188
+image: Advanced Performance Image
+modified: 20221205151219575
+plugin: $:/plugins/EvidentlyCube/AdvancedPerformance
+priority: 1
+tagline: A big extension to TiddlyWiki's built-in performance instrumentation that makes it easier to use for everyone.
+tags: Plugin
 title: Advanced Performance
 type: text/vnd.tiddlywiki
 

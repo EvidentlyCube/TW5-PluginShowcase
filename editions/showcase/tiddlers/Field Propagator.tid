@@ -1,4 +1,10 @@
-tags:
+archived: 1
+created: 20221205160740774
+image: Field Propagator Image
+modified: 20221205160742288
+plugin: $:/plugins/EvidentlyCube/FieldPropagator
+tagline: Propagates tiddler's field value up its parents.
+tags: Plugin
 title: Field Propagator
 type: text/vnd.tiddlywiki
 

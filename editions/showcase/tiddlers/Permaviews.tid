@@ -1,5 +1,10 @@
 created: 20221130222539143
-modified: 20221130223100830
+image: Permaviews Image
+modified: 20221205151247180
+plugin: $:/plugins/EvidentlyCube/Permaviews
+priority: 1
+tagline: Immediately open predefined list of tiddlers by visiting custom permalinks
+tags: Plugin
 title: Permaviews
 type: text/vnd.tiddlywiki
 

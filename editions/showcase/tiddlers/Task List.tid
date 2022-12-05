@@ -1,5 +1,10 @@
 created: 20221013095514764
-modified: 20221022055852631
+image: Task List Image
+modified: 20221205151255661
+plugin: $:/plugins/EvidentlyCube/TaskList
+priority: 1
+tagline: Customizable TaskList/Todo module.
+tags: Plugin
 title: Task List
 type: text/vnd.tiddlywiki
 

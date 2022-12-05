@@ -1,6 +1,10 @@
 created: 20221006141208581
-modified: 20221006141852382
-tags: 
+image: Go To Shortcut Image
+modified: 20221205151239910
+plugin: $:/plugins/EvidentlyCube/GoToShortcut
+priority: 1
+tagline: Adds a shortcut to open a powerful quick-navigation modal.
+tags: Plugin
 title: Go To Shortcut
 type: text/vnd.tiddlywiki
 

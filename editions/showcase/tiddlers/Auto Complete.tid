@@ -1,5 +1,10 @@
 created: 20221125094854473
-modified: 20221128130338701
+image: Auto Complete Image
+modified: 20221205151231106
+plugin: $:/plugins/EvidentlyCube/AutoComplete
+priority: 1
+tagline: Easily and heavily customizable auto complete working in any text input (even Codemirror!) that can complete anything you want!
+tags: Plugin
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
