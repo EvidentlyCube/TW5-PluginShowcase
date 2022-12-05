@@ -1,0 +1,14 @@
+created: 20221202154240210
+modified: 20221202163730016
+title: Directive: No interference
+type: text/vnd.tiddlywiki
+
+This is one of the rules I follow while developing plugins. Its consequences are:
+
+* As much as it is possible the plugins use prefixes:
+** Tags are prefixed with `$:/tags/EC/<plugin name>`
+** Tiddlers are prefixed with `$:/<plugin name>`
+** CSS classes are prefixed with `ec_<plugin initials>-`
+* Not pollute the list of tiddlers with ones used only by the plugin
+* Not change any built-in or custom styles
+* Not overwrite any system tiddlers

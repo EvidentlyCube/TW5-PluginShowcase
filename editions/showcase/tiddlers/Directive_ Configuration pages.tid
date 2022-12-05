@@ -1,0 +1,8 @@
+created: 20221202153503879
+modified: 20221202153528267
+title: Directive: Configuration pages
+type: text/vnd.tiddlywiki
+
+This is one of the rules I follow while developing plugins. Its consequences are:
+
+* If a plugin is configurable it has a configuration page inside Control Panel.

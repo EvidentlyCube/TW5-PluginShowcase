@@ -1,32 +1,120 @@
 .wide {
-  width: 100%;
+	width: 100%;
 }
+
 .bg-red {
-  background: #FFDDDD;
+	background: #FFDDDD;
 }
 
 .bg-blue {
-  background: #DDDDFF;
+	background: #DDDDFF;
 }
 
 cols {
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
+	display: flex;
+	width: 100%;
+	align-items: flex-start;
 }
 
-cols > c{
-    flex: 1 0 10%;
-    padding: 0 10px;
-    position: sticky;
-    top: 64px;
+cols>c {
+	flex: 1 0 10%;
+	padding: 0 10px;
+	position: sticky;
+	top: 64px;
 }
 
 .tl-showcase-adv-textarea {
-    width: 100%;
+	width: 100%;
 	font-family: monospace;
 }
+
 .muted {
-    color: #888;
-    font-style: italic;
+	color: #888;
+	font-style: italic;
+}
+
+.the-author {
+	display: flex;
+	align-items: center;
+	background: white;
+	border-radius: 32px;
+	padding: 0 32px;
+}
+
+.the-author img {
+	float: left;
+	border-radius: 32px;
+	margin-right: 32px;
+	width: 120px;
+}
+
+div[data-tiddler-title="Evidently Cube Plugins"] {
+	background: none;
+	border: none;
+}
+
+div[data-tiddler-title="Evidently Cube Plugins"] .tc-tiddler-body>h1 {
+	padding: 32px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+div[data-tiddler-title="Evidently Cube Plugins"] .tc-titlebar {
+	padding: 32px;
+	display: flex;
+	justify-content: center;
+	text-transform: uppercase;
+	gap: 32px;
+}
+
+div[data-tiddler-title="Evidently Cube Plugins"] .tc-tiddler-controls {
+	float: none;
+	order: 1;
+}
+div[data-tiddler-title="Evidently Cube Plugins"] button {
+	display: none;
+}
+div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose"] {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.plugins-container {
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 32px;
+}
+
+.plugin {
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 400px;
+	padding: 0 32px 32px;
+	border-radius: 32px;
+	background: white;
+}
+
+.plugin h1 {
+	text-transform: small-caps;
+}
+
+.plugin .tagline {
+	flex-grow: 1;
+}
+
+.plugin .icon {
+	text-align: center;
+}
+
+.plugin h1 {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.links {
+	display: flex;
+	justify-content: center;
+	gap: 32px;
 }

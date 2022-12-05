@@ -1,0 +1,15 @@
+created: 20211118101127971
+modified: 20221205213233889
+tags: 
+title: Evidently Cube Plugins
+type: text/vnd.tiddlywiki
+
+{{The Author}}
+
+! Plugins
+
+<<plugin-boxes "[all[tiddlers]tag[Plugin]!field:archived[1]sort[title]sort[priority]]">>
+
+! Archived plugins
+
+<<plugin-boxes "[all[tiddlers]tag[Plugin]field:archived[1]sort[title]sort[priority]]">>

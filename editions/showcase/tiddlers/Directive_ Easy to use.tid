@@ -1,0 +1,9 @@
+created: 20221202150319557
+modified: 20221202153500970
+tags: 
+title: Directive: Easy to use
+type: text/vnd.tiddlywiki
+
+This is one of the rules I follow while developing plugins. Its consequences are:
+
+* A novice TiddlyWiki user should be able to install a plugin and be able to configure and use it without much of a problem.

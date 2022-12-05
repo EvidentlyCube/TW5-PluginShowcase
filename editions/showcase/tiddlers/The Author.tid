@@ -1,0 +1,33 @@
+created: 20221202141427301
+modified: 20221202172035083
+tags: 
+title: The Author
+type: text/vnd.tiddlywiki
+
+<style>
+.the-author {
+    display: flex;
+    align-items: center;
+}
+.the-author img {
+  float: left;
+  border-radius: 1em;
+  margin-right: 1em;
+  width: 120px;
+}
+</style>
+<div class="the-author">
+[img width=120 class="my-face" [Face.jpg]] 
+<div class="the-author-text">
+<h3>Hi!</h3>
+<p>This is me, the author of the plugins here. One thing that sets my plugins apart from a lot of ad-hoc TiddlyWiki content is that I develop them as if my users were paying customers. What does it mean? They are designed to:</p>
+<ul>
+<li>[[Be easy to use|Directive: Easy to use]]</li>
+<li>[[Have user interface for configuration|Directive: Configuration pages]]</li>
+<li>[[Clean-up after themselves|Directive: Clean up]]</li>
+<li>[[Not interfere with user's own TiddlyWiki content|Directive: No interference]]</li>
+</ul>
+
+<p>I also aim to support my plugins for as long as I am a TiddlyWiki user. [[And I never plan to stop.|Why do I plan to use TW forever]]</p>
+</div>
+</div>

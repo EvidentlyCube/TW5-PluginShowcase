@@ -1,0 +1,13 @@
+created: 20221205152650854
+modified: 20221205152738525
+tags: $:/tags/Macro
+title: Macro: Plugin Boxes
+type: text/vnd.tiddlywiki
+
+\define plugin-boxes(filter)
+<div class="plugins-container">
+  <$list filter=<<__filter__>>>
+    <$transclude tiddler="Plugin Box"/>
+  </$list>
+</div>
+\end

@@ -1,0 +1,10 @@
+created: 20221202153535157
+modified: 20221202154228693
+title: Directive: Clean up
+type: text/vnd.tiddlywiki
+
+This is one of the rules I follow while developing plugins. Its consequences are:
+
+* Any tiddlers that the plugin creates can be easily removed.
+* Any tiddlers that are created as a relation to another plugin are removed if the parent plugin is removed.
+* If a plugin has relations to other tiddlers, those relations are updated when relevant tiddlers are renamed.

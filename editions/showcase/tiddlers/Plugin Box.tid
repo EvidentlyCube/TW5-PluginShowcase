@@ -1,0 +1,22 @@
+created: 20221205152248808
+modified: 20221205212910377
+tags: 
+title: Plugin Box
+type: text/vnd.tiddlywiki
+
+<div class="plugin">
+<h1><$link to{{!!title}}>{{!!title}}</$link></h1>
+<aside class="tc-muted">Version <$text text={{{ [all[current]get[plugin]get[version]else[n/a]] }}}/></aside>
+<p class="tagline">{{!!tagline}}</p>
+<p class="links">
+<$link to=<<currentTiddler>>>Readme</$link>
+&bull;
+<$link to=<<currentTiddler>>>Demo</$link>
+&bull;
+<$link to=<<currentTiddler>>>Install</$link>
+&bull;
+<$link to=<<currentTiddler>>>Github</$link>
+</p>
+<hr/>
+<$link to={{!!title}} class="icon"><$image source={{!!image}}/></$link>
+</div>

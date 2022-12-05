@@ -1,0 +1,28 @@
+created: 20221202164039261
+modified: 20221202171931193
+tags: 
+title: Why do I plan to use TW forever
+type: text/vnd.tiddlywiki
+
+! Vendor lock-in
+
+<<<
+In economics, ''vendor lock-in'' [...] makes a customer dependent on a vendor for products, unable to use another vendor without substantial switching costs.
+<<< From [[Wikipedia|https://en.wikipedia.org/wiki/Vendor_lock-in]]
+
+The oldest tiddler in my oldest TiddlyWiki instance was created on 2021-09-28. Since then I've done the following:
+
+ * Created a system for worldbuilding, tracking and running a tabletop RPG campaign.
+ * Created all the plugins on this TW. 
+ * Created a system for tracking missing LEGO pieces in old sets I owned as a kid.
+ * Created a system for tracking my daily work at my job --- [[as seen here|Task List Showcase - Advanced Work Todo]].
+ * Created multiple other small subsystems in my personal TW which I use a lot. 
+ * Migrated all my notes from Nimbus Note to my personal TW instance (which previously I migrated from Notion.so)
+
+Switching to something else would take substantial amount of time and effort. But I am unlikely to want to do this, because...
+
+! TiddlyWiki is insanely flexible
+
+* No other tool allows me to create a rudimentary data-driven web-app in 10 minutes, even if it's just for personal use.
+* The core is simple enough that extending the functionality is usually a breeze.
+* I can store all the various types of information in one place while having customized interfaced for interacting with all of it.
