@@ -1,3 +1,9 @@
+created: 20221013210631560
+modified: 20221206101340530
+tags: $:/tags/Stylesheet
+title: Style
+type: text/vnd.tiddlywiki
+
 .wide {
 	width: 100%;
 }
@@ -36,7 +42,7 @@ cols>c {
 .the-author {
 	display: flex;
 	align-items: center;
-	background: white;
+	background: <<colour background>>;
 	border-radius: 32px;
 	padding: 0 32px;
 	font-size: 22px;
@@ -96,7 +102,7 @@ div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2F
 	flex: 1 0 400px;
 	padding: 0 32px 32px;
 	border-radius: 32px;
-	background: white;
+	background: <<colour background>>;
 }
 
 .plugin h1 {
