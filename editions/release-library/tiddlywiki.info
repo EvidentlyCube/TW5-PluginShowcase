@@ -21,7 +21,7 @@
 		"library": [
 			"--makelibrary-patch",
 			"--makelibrary", "$:/UpgradeLibrary",
-			"--savelibrarytiddlers", "$:/UpgradeLibrary", "[prefix[$:/plugins/EvidentlyCube]]", ".", "$:/UpgradeLibrary/List",
+			"--savelibrarytiddlers", "$:/UpgradeLibrary", "[prefix[$:/plugins/EvidentlyCube]!suffix[Discloser]]", ".", "$:/UpgradeLibrary/List",
 			"--savetiddler", "$:/UpgradeLibrary/List", "library.json",
 			"--rendertiddler", "$:/plugins/tiddlywiki/pluginlibrary/library.template.html", "library.html", "text/plain"
 		]
