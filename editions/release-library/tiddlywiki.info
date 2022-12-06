@@ -4,6 +4,7 @@
 		"../showcase"
 	],
 	"plugins": [
+		"tiddlywiki/pluginlibrary",
 		"EvidentlyCube/TW5-AutoCloseTags/plugin",
 		"EvidentlyCube/TW5-FieldPropagator/plugin",
 		"EvidentlyCube/TW5-GoToShortcut/plugin",
@@ -17,8 +18,12 @@
 		"tiddlywiki/vanilla"
 	],
 	"build": {
-		"release": [
-			"--rendertiddler", "$:/core/save/all", "index.html", "text/plain"
+		"library": [
+			"--makelibrary-patch",
+			"--makelibrary", "$:/UpgradeLibrary",
+			"--savelibrarytiddlers", "$:/UpgradeLibrary", "[prefix[$:/plugins/EvidentlyCube]]", ".", "$:/UpgradeLibrary/List",
+			"--savetiddler", "$:/UpgradeLibrary/List", "library.json",
+			"--rendertiddler", "$:/plugins/tiddlywiki/pluginlibrary/library.template.html", "library.html", "text/plain"
 		]
 	},
 	"config": {
