@@ -4,27 +4,22 @@
   "author": "Maurycy Zarzycki",
   "description": "Evidently Cube TiddlyWiki5 Plugin Showcase",
   "scripts": {
-    "develop": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/develop --verbose --server 55505 $:/core/save/all text/plain text/html",
-    "develop-codemirror": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/develop-codemirror --verbose --server 55505 $:/core/save/all text/plain text/html",
-    "develop:watch": "nodemon --exec npm run develop",
-    "develop-codemirror:watch": "nodemon --exec npm run develop-codemirror",
-    "release": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/release --verbose --output . --build release",
-	"release:library": "cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/release --verbose --output . --build library"
+    "develop": "npx cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/develop --verbose --server 55505 $:/core/save/all text/plain text/html",
+    "develop-codemirror": "npx cross-env TIDDLYWIKI_PLUGIN_PATH=plugins npx tiddlywiki editions/develop-codemirror --verbose --server 55505 $:/core/save/all text/plain text/html",
+    "develop:watch": "npx nodemon --exec npm run develop",
+    "develop-codemirror:watch": "npx nodemon --exec npm run develop-codemirror",
+	"release": "node scripts/release.js"
   },
   "dependencies": {
-    "tiddlywiki": "5.2.2",
-    "ws": "^8.7.0"
+    "tiddlywiki": "5.2.2"
   },
-  "devDependencies": {
-    "cross-env": "^7.0.3",
-    "nodemon": "^2.0.14"
-  },
-  "bundleDependencies": [],
   "engines": {
     "node": ">=0.8.2"
   },
   "nodemonConfig": {
-	"watch": ["plugins/**"],
-	"ext": "tid,meta,css,js,html,info,md"
+    "watch": [
+      "plugins/**"
+    ],
+    "ext": "tid,meta,css,js,html,info,md"
   }
 }
