@@ -1,0 +1,8 @@
+created: 20221209141850172
+list-after: $:/config/ViewTemplateBodyFilters/hide-body
+modified: 20221209171016501
+tags: $:/tags/ViewTemplateBodyFilter
+title: $:/system/Cascades
+type: text/vnd.tiddlywiki
+
+[tag[PluginInstall]then[$:/template/PluginInstall]] ~[tag[Plugin]then[$:/template/Plugin]]

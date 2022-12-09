@@ -1,0 +1,13 @@
+created: 20221209150434477
+modified: 20221209150654040
+tags: PluginInstall
+title: Permaviews/Install
+type: text/vnd.tiddlywiki
+
+ * This plugin can be installed either via the [[plugin library|Plugin Library]] or directly by dragging [[this link|$:/plugins/EvidentlyCube/Permaviews]] to your TiddlyWiki instance.
+ * After installation go to ''Control Panel -> Evidently Cube -> Permaviews'' to create and edit the permaviews.
+ ** Give it a name by which it can be accessed.
+ ** Optionally describe it for bookkeeping.
+ ** Write a filter or a list of tiddlers you want to be opened when you visit the permalink
+
+Once defined, Permaview's name can be used in a permalink to open those tiddlers.

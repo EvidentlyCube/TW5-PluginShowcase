@@ -1,7 +1,8 @@
+code-body: yes
 created: 20221013210631560
-modified: 20221206101340530
+modified: 20221209162228380
 tags: $:/tags/Stylesheet
-title: Style
+title: $:/system/Style
 type: text/vnd.tiddlywiki
 
 .wide {
@@ -59,6 +60,9 @@ cols>c {
 div[data-tiddler-title="Evidently Cube Plugins"] {
 	background: none;
 	border: none;
+}
+div[data-tiddler-title="Evidently Cube Plugins"] .tc-tiddler-body {
+    max-width: 100%;
 }
 
 div[data-tiddler-title="Evidently Cube Plugins"] .tc-tiddler-body>h1 {
@@ -128,4 +132,25 @@ div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2F
 	display: flex;
 	justify-content: center;
 	gap: 32px;
+}
+
+.tc-tiddler-body {
+    max-width: 1200px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 26px;
+}
+.task-list-bordered {
+	margin: 0 2em;
+	border: 1px solid #AAA;
+	border-radius: 1em;
+	padding: 1em;
+}
+warning {
+background: #FCC;
+display: block;
+font-size: 20px;
+line-height: 28px;
+padding: 1em;
+text-align: center;
 }

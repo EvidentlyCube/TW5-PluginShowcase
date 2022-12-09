@@ -1,0 +1,13 @@
+created: 20221209142657153
+modified: 20221209144547013
+tags: 
+title: Advanced Performance/Demo
+type: text/vnd.tiddlywiki
+
+# Open the tiddler [[Advanced Performance - Test Cases]], as it will run a bunch of filters that take a considerable amount of time.
+# Now click on "Show details" at the bottom bar. This will allow you to explore the performance of the last 50 refreshes:
+## The first tab lists all the refreshes and time taken by various parts of the refresh process.
+## The remaining tabs show execution time of the filters from these refreshes.
+## You can select specific parts of specific refreshes to display filters only from those.
+
+The UI of this plugin is done outside of TiddlyWiki core to avoid polluting the results from just exploring the performance data.

@@ -1,0 +1,11 @@
+created: 20221209145009436
+modified: 20221209145232797
+tags: PluginInstall
+title: Auto Complete/Install
+type: text/vnd.tiddlywiki
+
+ * This plugin can be installed either via the [[plugin library|Plugin Library]] or directly by dragging [[this link|$:/plugins/EvidentlyCube/AutoComplete]] to your TiddlyWiki instance.
+ * After installation go to ''Control Panel'' -> ''Evidently Cube'' -> ''Auto Complete'' and configure the triggers and the plugin.
+ * A good starting point might be to inspect the triggers defined in this very TiddlyWiki.
+
+Once the plugin is installed auto complete will be enabled in every text input in the wiki.

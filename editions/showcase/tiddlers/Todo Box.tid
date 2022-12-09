@@ -1,0 +1,19 @@
+created: 20221207103723740
+modified: 20221207104857321
+tags: 
+title: Todo Box
+type: text/vnd.tiddlywiki
+
+<$list filter="[all[tiddlers]search:text[<!-- @TODO]!is[draft]!field:title[Todo Box]limit[1]count[]match[1]]">
+<div style="border: 4px solid red; background: white; padding: 1px 32px; border-radius: 32px;">
+
+! Whoops!
+
+The author has left some Todo sections unfinished, here is the list:
+<ul>
+<$list filter="[all[tiddlers]search:text[<!-- @TODO]!is[draft]!field:title[Todo Box]]">
+<li><$link to=<<currentTiddler>>><$text text=<<currentTiddler>>/></$link></li>
+</$list>
+</ul>
+</div>
+</$list>

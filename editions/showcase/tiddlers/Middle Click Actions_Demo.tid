@@ -1,0 +1,18 @@
+created: 20221209160057755
+modified: 20221209160124869
+tags: 
+title: Middle Click Actions/Demo
+type: text/vnd.tiddlywiki
+
+! Simple Example
+
+<$button>
+<$middle-click-actions>
+<$action-sendmessage $message="tm-new-tiddler"/>
+</$middle-click-actions>
+Do nothing on Click but create a new draft on Middle Click.
+</$button>
+
+! StoryTabs Example
+
+[[Middle Click Actions - Example Storytabs]]

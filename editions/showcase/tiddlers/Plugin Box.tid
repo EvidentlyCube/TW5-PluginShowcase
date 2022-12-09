@@ -1,5 +1,5 @@
 created: 20221205152248808
-modified: 20221205214902545
+modified: 20221209145516872
 tags: 
 title: Plugin Box
 type: text/vnd.tiddlywiki
@@ -8,17 +8,17 @@ type: text/vnd.tiddlywiki
 <h1><$link to{{!!title}}>{{!!title}}</$link></h1>
 <aside class="tc-muted">Version <$text text={{{ [all[current]get[plugin]get[version]else[n/a]] }}}/></aside>
 <p class="tagline">{{!!tagline}}</p>
-<!--
+
 <p class="links">
 <$link to=<<currentTiddler>>>Readme</$link>
 &bull;
-<$link to=<<currentTiddler>>>Demo</$link>
+<$link to={{{ [<currentTiddler>addsuffix[/Demo]] }}}>Demo</$link>
 &bull;
-<$link to=<<currentTiddler>>>Install</$link>
+<$link to={{{ [<currentTiddler>addsuffix[/Install]] }}}>Install</$link>
 &bull;
-<$link to=<<currentTiddler>>>Github</$link>
+<a href={{!!github}} class="tc-tiddlylink tc-tiddlylink-external">Github</a>
 </p>
--->
+
 <hr/>
 <$link to={{!!title}} class="icon"><$image source={{!!image}}/></$link>
 </div>

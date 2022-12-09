@@ -21,8 +21,8 @@
 		"library": [
 			"--makelibrary-patch",
 			"--makelibrary", "$:/UpgradeLibrary",
-			"--savelibrarytiddlers", "$:/UpgradeLibrary", "[prefix[$:/plugins/EvidentlyCube]!suffix[Discloser]]", ".", "$:/UpgradeLibrary/List",
-			"--savetiddler", "$:/UpgradeLibrary/List", "library.json",
+			"--savelibrarytiddlers", "$:/UpgradeLibrary", "[prefix[$:/plugins/EvidentlyCube]!suffix[Discloser]!suffix[AutoCloseTags]!suffix[FieldPropagator]]", "recipes/library/tiddlers/", "$:/UpgradeLibrary/List",
+			"--savetiddler", "$:/UpgradeLibrary/List", "recipes/library/tiddlers.json",
 			"--rendertiddler", "$:/plugins/tiddlywiki/pluginlibrary/library.template.html", "library.html", "text/plain"
 		]
 	},

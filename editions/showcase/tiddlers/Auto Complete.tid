@@ -1,6 +1,7 @@
 created: 20221125094854473
+github: https://github.com/EvidentlyCube/TW5-AutoComplete
 image: Auto Complete Image
-modified: 20221205151231106
+modified: 20221209145610693
 plugin: $:/plugins/EvidentlyCube/AutoComplete
 priority: 1
 tagline: Easily and heavily customizable auto complete working in any text input (even Codemirror!) that can complete anything you want!
@@ -8,17 +9,13 @@ tags: Plugin
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
-[[Github Repository|https://github.com/EvidentlyCube/TW5-AutoComplete]] --- [[Install|$:/plugins/EvidentlyCube/AutoComplete]]
+! Description 
 
-! Introduction
-
-Auto complete anything and anywhere!
-
-After installing this plugin go to Control Panel -> Evidently Cube -> Auto Complete and create your first trigger.
+Customizable and flexible Auto Complete mechanism that works with all TiddlyWiki text inputs.
 
 Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-extendedit]] plugin.
 
-! Features
+! Features 
 
 * Auto complete anything you want:
 ** Tiddler titles
@@ -32,7 +29,7 @@ Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-exte
 * Clear interface for editing the triggers
 * Manually open auto complete with customizable keyboard shortcut
 
-!! Plugin compatibility
+! Plugin Compatibility
 
  * The official [[CodeMirror|https://tiddlywiki.com/plugins/tiddlywiki/codemirror/]] plugin -- Auto Complete triggers automatically, manually and is fully interactive
  ** Also with its plugin ''CodeMirror Close Brackets'', if your trigger uses one of the characters that gets its mirror auto inserted it will still automatically open Auto Completion on typing
@@ -40,28 +37,14 @@ Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-exte
  * [[Streams|https://saqimtiaz.github.io/streams/]] by //saqimtiaz// -- Pressing Enter to Auto Complete won't trigger a new stream insertion
  * [[SideEditor|http://sideeditor.tiddlyspot.com/]] by //Mat von Twaddle// -- Auto Completion only appears in the currently focused window
 
-! Demo:
+! Installation 
 
-This wiki defines a couple of custom triggers to inspire you:
+{{Auto Complete/Install}}
 
-* `[[` -- For inserting tiddlers, it's the only one that automatically triggers in single-line inputs
-* `||` -- For inserting tiddlers and customizing how their name is displayed
-* `<$` -- For inserting widgets, showcases a complex usage
-* `field:` -- For inserting fields, showcases usage of ''Display Filter'' option
-* `modified:` -- For inserting tiddler's `modified` field value, showcases usage of `Transform Filter` option
-* `macro:` -- For inserting your own macros; a detailed explanation of how it works is [[available here|Auto Complete: Macro Discovery Filter]]
-* `color:` -- For inserting data from a dictionary tiddler [[Data/ColorsHexInverted]]
-* `emoji:` -- For inserting data from a dictionary tiddler [[Data/Emoji]] but one where we want to filter by value but insert key
+! Demo 
 
-Use <kbd>Ctrl+Space</kbd> to manually trigger completion
+See the demo [[here|Auto Complete/Demo]].
 
-<$edit-text class="wide" tag="input" tiddler="$:/temp/auto-complete/test" field="input"/><br/>
-<$edit-text class="wide" tag="textarea" tiddler="$:/temp/auto-complete/test" field="textarea"/>
+! Additional Information
 
-! Installation
-
-Drag [[This Link|$:/plugins/EvidentlyCube/AutoComplete]] into the window/tab of your Wiki to import the plugin.
-
-! Other
-
-A list of [[test cases is available|https://github.com/EvidentlyCube/TW5-AutoComplete/blob/main/TEST_CASES.md]] that shows all the tested scenarios before a release is made.
+ * I have a list of test cases that I go through before each new release. You can see it [[here|https://github.com/EvidentlyCube/TW5-AutoComplete/blob/main/TEST_CASES.md]].

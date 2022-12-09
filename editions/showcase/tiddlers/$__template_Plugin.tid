@@ -1,0 +1,19 @@
+created: 20221209171023582
+modified: 20221209171224639
+tags: 
+title: $:/template/Plugin
+type: text/vnd.tiddlywiki
+
+{{!!text}}
+
+<$list filter="[<currentTiddler>addsuffix[/Roadmap]is[tiddler]]">
+
+----
+
+! Roadmap
+
+This plugin has certain updates planned, though with no promise of them ever being implemented. To see the full roadmap for all my TW projects see [[here|Roadmap]].
+
+<$transclude tiddler=<<currentTiddler>>/>
+
+</$list>

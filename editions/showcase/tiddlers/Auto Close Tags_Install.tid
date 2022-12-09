@@ -1,0 +1,7 @@
+created: 20221209162300262
+modified: 20221209165929041
+tags: PluginInstall
+title: Auto Close Tags/Install
+type: text/vnd.tiddlywiki
+
+ * This plugin can only be installed directly by dragging [[this link|$:/plugins/EvidentlyCube/AutoCloseTags]] to your TiddlyWiki instance.

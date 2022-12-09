@@ -1,6 +1,7 @@
 created: 20221205151102760
+github: https://github.com/EvidentlyCube/TW5-MiddleClickActions
 image: Middle Click Actions Image
-modified: 20221205202825193
+modified: 20221209160207402
 plugin: $:/plugins/EvidentlyCube/MiddleClickActions
 priority: 2
 tagline: Invoke an action when user clicks with middle mouse button.
@@ -8,31 +9,16 @@ tags: Plugin
 title: Middle Click Actions
 type: text/vnd.tiddlywiki
 
-[[Full Readme|$:/plugins/EvidentlyCube/MiddleClickActions/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-MiddleClickActions]] --- [[Install|$:/plugins/EvidentlyCube/MiddleClickActions]]
-
 //Mouse icon from <a href="https://www.vecteezy.com/png/1203995-mouse-middle-click">Vecteezy</a>.//
 
-! Quick Description
+! Description 
 
-A widget that allows invoking an action when middle mouse button is pressed on an element.
+A widget that triggers actions inside of it when its parent is clicked with middle mouse button.
 
-! Example - Simple
+! Installation 
 
-<$button>
-<$middle-click-actions>
-<$action-sendmessage $message="tm-new-tiddler"/>
-</$middle-click-actions>
-Do nothing on Click but create new draft on Middle Click.
-</$button>
+{{Middle Click Actions/Install}}
 
-! Example - StoryTabs
+! Demo 
 
-[[Middle Click Actions - Example Storytabs]]
-
-! Installation
-
-Drag [[This Link|$:/plugins/EvidentlyCube/MiddleClickActions]] into the window/tab of your Wiki to import the plugin.
-
-! Possible uses
-
-* When used with [[StoryTabs plugin by BJ|http://bjtools.tiddlyspot.com/]], you can customize the macro for tabs to add closing the tabs with a middle click.
+See the demo [[here|Middle Click Actions/Demo]].

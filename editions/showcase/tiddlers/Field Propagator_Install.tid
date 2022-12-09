@@ -1,0 +1,13 @@
+created: 20221209163006178
+modified: 20221209170229636
+tags: PluginInstall
+title: Field Propagator/Install
+type: text/vnd.tiddlywiki
+
+ * This plugin can only be installed directly by dragging [[this link|$:/plugins/EvidentlyCube/FieldPropagator]] to your TiddlyWiki instance.
+
+After installing you can control propagation by adding the following fields to the root of your propagation tree:
+
+ * `propagator-base` -- name of the field which is propagated, eg. `visible`
+ * `propagator-propagated` -- name of the field in parents to indicate children's base field value, eg. `has-visible-children`.
+ * `propagator-preferred-value` -- the value that has most priority. By default the propagated field will be populated with the value of the last child, but if any child has this value, it'll take priority and will be used instead.

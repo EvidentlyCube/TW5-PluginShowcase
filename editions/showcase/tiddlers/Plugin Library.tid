@@ -1,0 +1,17 @@
+created: 20221209124642140
+modified: 20221209141322373
+tags: 
+title: Plugin Library
+type: text/vnd.tiddlywiki
+
+This is the plugin library for all of the plugin released by Maurycy. Instead of installing each plugin one-by-one you can just Install this plugin library and get the plugins right in your TW. To do so:
+
+* [[Drag this link to this tiddler|$:/plugin-library/EvidentlyCube]] and drop it in your TiddlyWiki.
+* Go to ''Control Panel'' -> ''Plugins'' -> ''Get more plugins''
+* Select the tab ''Evidently Cube Plugin Library''
+* Click ''Open plugin library''
+
+From then you can install, reinstall or update all of the plugins I release. The benefits of doing so?
+
+* Easier installation process -- no need to drag things around anymore.
+* Easier update process -- you just need to go to the plugin library to see which plugins were updated.

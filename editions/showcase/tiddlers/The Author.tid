@@ -1,5 +1,5 @@
 created: 20221202141427301
-modified: 20221202172035083
+modified: 20221209171712806
 tags: 
 title: The Author
 type: text/vnd.tiddlywiki
@@ -28,6 +28,6 @@ type: text/vnd.tiddlywiki
 <li>[[Not interfere with user's own TiddlyWiki content|Directive: No interference]]</li>
 </ul>
 
-<p>I also aim to support my plugins for as long as I am a TiddlyWiki user. [[And I never plan to stop.|Why do I plan to use TW forever]]</p>
+<p>I also aim to support my plugins for as long as I am a TiddlyWiki user. [[And I never plan to stop|Why do I plan to use TW forever]]. If you're curious about the future of these plugins have a loot at the [[roadmap|Roadmap]].</p>
 </div>
 </div>

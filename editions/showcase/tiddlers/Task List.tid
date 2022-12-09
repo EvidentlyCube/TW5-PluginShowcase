@@ -1,6 +1,7 @@
 created: 20221013095514764
+github: https://github.com/EvidentlyCube/TW5-TaskList
 image: Task List Image
-modified: 20221205151255661
+modified: 20221209151628230
 plugin: $:/plugins/EvidentlyCube/TaskList
 priority: 1
 tagline: Customizable TaskList/Todo module.
@@ -8,60 +9,27 @@ tags: Plugin
 title: Task List
 type: text/vnd.tiddlywiki
 
-[[Github Repository|https://github.com/EvidentlyCube/TW5-TaskList]] --- [[Install|$:/plugins/EvidentlyCube/TaskList]]
+! Description 
 
-<style>
-.task-list-bordered {
-	margin: 0 2em;
-	border: 1px solid #AAA;
-	border-radius: 1em;
-	padding: 1em;
-}
-</style>
+A powerful task list that can be used for anything from the simplest todos to Jira imitations (and everything in-between).
 
-! Introduction
+! Features 
 
-A powerful task list that can be used for the simplest todos, complex scenarios and everything in-between. Features include:
+* Define fields of different types.
+* Use a custom template for items in the Task List.
+* Customize filtering.
+* Give each task item a custom class decided by a filter.
+* A builder to make it simple to create new task lists.
 
-* Define multiple fields of different types
-* Use a custom template for items in the Task List
-* Customize filtering
-* Give each task item a custom class decided by a macro
-* A builder to make it simple to create new task lists
+! Installation 
 
-! Showcase
+{{Task List/Install}}
 
-<p class="muted">The borders around the below task lists are not part of the plugin, edit this tiddler to see the CSS that powers it. </p>
+! Demo 
 
-!! A simple task list
+See the demo [[here|Task List/Demo]].
 
-<div class="task-list-bordered">
-	{{Simple Task List}}
-</div>
+! Additional Information
 
-
-!! Heavily customized list
-
-<div class="task-list-bordered">
-	{{Task List Description}}
-</div>
-
-!! More examples
-
-* [[Task List Showcase - Advanced Work Todo]] --- a copy of the daily tracker I use for my day job.
 * [[Task List Showcase - Extracting Data]] --- examples of ways to extract the data from the task lists.
 * [[Task List Internals]] --- explains how Task List works internally which might be helpful if you want to mod it in any way.
-
-! How to Use
-
-After installing the plugin, follow these steps to create a new TaskList:
-
-# Create a new Tiddler with a tag `TaskList` and save it.
-# Click on "Initialize a new Task List".
-# Edit the Task List to your liking using the Builder that opens.
-
-Afterwards you can either transclude the Task List directly or use the global macro `<<ec-task-list "Name Of Task List Tiddler">>`
-
-! Installation
-
-Drag [[This Link|$:/plugins/EvidentlyCube/TaskList]] into the window/tab of your Wiki to import the plugin.

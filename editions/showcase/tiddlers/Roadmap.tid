@@ -1,0 +1,30 @@
+created: 20221208102948063
+modified: 20221209171251775
+tags: 
+title: Roadmap
+type: text/vnd.tiddlywiki
+
+! Disclaimer
+
+Just because somethings is in my roadmap does not mean it will be implemented. This is a general place to keep all the ideas in one place.
+
+! New plugins
+
+* ''Simple Publisher:'' A plugin for easy generating publicly available HTML files .
+* ''Manual Revisions:'' A plugin for manually tracking revisions of a tiddler
+** There already exists this [[Revisions|http://j.d.revisions.tiddlyspot.com/]] plugin but I am thinking about something that wo
+* ''Plugin update notification:'' A plugin that looks through installed libraries and checks if there are any plugin updates available.
+
+! Updates to existing plugins
+
+!! All plugins
+
+* Include `name` field in `plugin.info` 
+* Add icon to every plugin
+
+<$list filter="[all[tiddlers]tag[Plugin]addsuffix[/Roadmap]is[tiddler]removesuffix[/Roadmap]]">
+
+!! <$link to=<<currentTiddler>>><$text text=<<currentTiddler>>/></$link>
+
+<$transclude tiddler={{{ [<currentTiddler>addsuffix[/Roadmap]] }}} mode="block" />
+</$list>

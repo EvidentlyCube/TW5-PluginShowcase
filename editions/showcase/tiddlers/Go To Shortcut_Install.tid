@@ -1,0 +1,10 @@
+created: 20221209145732943
+modified: 20221209145838073
+tags: PluginInstall
+title: Go To Shortcut/Install
+type: text/vnd.tiddlywiki
+
+ * This plugin can be installed either via the [[plugin library|Plugin Library]] or directly by dragging [[this link|$:/plugins/EvidentlyCube/GoToShortcut]] to your TiddlyWiki instance.
+ * After installation go to ''Control Panel'' -> ''Evidently Cube'' -> ''Go To Shortcut'' and configure the plugin.
+
+The plugin is ready to use once installed and restarted. The default keyboard shortcut is <kbd>Ctrl+Shift+P</kbd> but it can be customized in ''Control Panel''.

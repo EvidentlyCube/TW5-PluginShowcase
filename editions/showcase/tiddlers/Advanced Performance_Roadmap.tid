@@ -1,0 +1,7 @@
+created: 20221209170538200
+modified: 20221209170552877
+tags: 
+title: Advanced Performance/Roadmap
+type: text/vnd.tiddlywiki
+
+* Track which widgets were fully rerendered or created on a given refresh.

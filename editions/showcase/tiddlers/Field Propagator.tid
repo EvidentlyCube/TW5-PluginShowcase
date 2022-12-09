@@ -1,37 +1,28 @@
 archived: 1
 created: 20221205160740774
+github: https://github.com/EvidentlyCube/TW5-FieldPropagator
 image: Field Propagator Image
-modified: 20221205160742288
+modified: 20221209170240167
 plugin: $:/plugins/EvidentlyCube/FieldPropagator
 tagline: Propagates tiddler's field value up its parents.
 tags: Plugin
 title: Field Propagator
 type: text/vnd.tiddlywiki
 
-[[Full Readme|$:/plugins/EvidentlyCube/FieldPropagator/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-FieldPropagator]] --- [[Install|$:/plugins/EvidentlyCube/FieldPropagator]]
+<warning>
+This plugin is archived! It remains here only for archival purposes.
+</warning>
 
-! Quick Description
+! Description 
 
 Propagates a value of a field upwards, through tiddler parents. It was developed to allow marking tiddlers as public/private, and to propagate the information up its parents if the parent has any public children, which was then displayed in a custom table of contents.
 
 Field `parent` is used to determine tiddler's parent, rather than tags.
 
-Currently it only really supports yes/no field propagation (eg. whether the parent has any visible children).
+! Installation 
 
-! Example
+{{Field Propagator/Install}}
 
-Here is the contents of [[Root]] tiddler, which lists its table of contents. Feel free to edit the children and change their `visible` field value.
+! Demo 
 
-{{Root}}
-
-! How to Use
-
-Every tree root must have the following fields defined:
-
- * `propagator-base` - name of the field which is propagated, eg. `visible`
- * `propagator-propagated` - name of the field in parents to indicate children's base field value, eg. `has-visible-children`.
- * `propagator-preferred-value` - the value that has most priority. By default the propagated field will be populated with the value of the last child, but if any child has this value, it'll take priority and will be used instead.
-
-! Installation
-
-Drag [[This Link|$:/plugins/EvidentlyCube/FieldPropagator]] into the window/tab of your Wiki to import the plugin.
+See the demo [[here|Field Propagator/Demo]].

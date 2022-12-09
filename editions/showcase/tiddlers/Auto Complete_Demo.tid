@@ -1,0 +1,21 @@
+created: 20221209144717238
+modified: 20221209144952821
+tags: 
+title: Auto Complete/Demo
+type: text/vnd.tiddlywiki
+
+This TiddlyWiki comes with many pre-created auto complete triggers to showcase various capabilities:
+
+* `[[` -- For inserting tiddlers, it's the only one that automatically triggers in single-line inputs
+* `||` -- For inserting tiddlers and customizing how their name is displayed
+* `<$` -- For inserting widgets, showcases a complex usage
+* `field:` -- For inserting fields, showcases usage of ''Display Filter'' option
+* `modified:` -- For inserting tiddler's `modified` field value, showcases usage of `Transform Filter` option
+* `macro:` -- For inserting your own macros; a detailed explanation of how it works is [[available here|Auto Complete: Macro Discovery Filter]]
+* `color:` -- For inserting data from a dictionary tiddler [[Data/ColorsHexInverted]]
+* `emoji:` -- For inserting data from a dictionary tiddler [[Data/Emoji]]; except here we filter by the value but insert the key
+
+By default use <kbd>Ctrl+Space</kbd> to manually trigger completion.
+
+<$edit-text class="wide" tag="input" tiddler="$:/temp/auto-complete/test" field="input"/><br/>
+<$edit-text class="wide" tag="textarea" tiddler="$:/temp/auto-complete/test" field="textarea"/>

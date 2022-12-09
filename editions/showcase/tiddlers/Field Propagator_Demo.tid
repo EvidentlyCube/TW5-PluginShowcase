@@ -1,0 +1,9 @@
+created: 20221209170001715
+modified: 20221209170046017
+tags: 
+title: Field Propagator/Demo
+type: text/vnd.tiddlywiki
+
+Here is the contents of [[Root]] tiddler, which lists its table of contents. Feel free to edit the children and change their `visible` field value.
+
+{{Root}}

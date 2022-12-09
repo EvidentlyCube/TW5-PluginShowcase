@@ -1,0 +1,21 @@
+created: 20221209151405204
+modified: 20221209151421408
+title: Task List/Demo
+type: text/vnd.tiddlywiki
+
+
+!! A simple task list
+
+<div class="task-list-bordered">
+	{{Simple Task List}}
+</div>
+
+!! Heavily customized list
+
+<div class="task-list-bordered">
+	{{Task List Description}}
+</div>
+
+!! More examples
+
+* [[Task List Showcase - Advanced Work Todo]] --- a copy of the daily tracker I use for my day job.

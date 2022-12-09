@@ -1,0 +1,14 @@
+created: 20221209170820681
+modified: 20221209170829459
+tags: 
+title: Auto Complete/Roadmap
+type: text/vnd.tiddlywiki
+
+* A way to consume characters or sequences following the insertion.
+** So if you use auto complete in a situation like this `[[|]]` you end up with `[[Tiddler]]` and not `[[Tiddler]]]]`
+* Conditions for auto cancelling insertion.
+** Perhaps a filter that returns a list of characters that will cancel the insertion?
+** Auto cancel after N characters are typed past the point you got No Results
+* Additional context for triggering or auto triggering:
+** Based on the class name of the input? Parents? 
+** Allow empty trigger value if additional context triggering is provided.

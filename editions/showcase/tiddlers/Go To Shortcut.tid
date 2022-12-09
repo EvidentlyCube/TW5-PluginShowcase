@@ -1,6 +1,7 @@
 created: 20221006141208581
+github: https://github.com/EvidentlyCube/TW5-GoToShortcut
 image: Go To Shortcut Image
-modified: 20221205151239910
+modified: 20221209150143017
 plugin: $:/plugins/EvidentlyCube/GoToShortcut
 priority: 1
 tagline: Adds a shortcut to open a powerful quick-navigation modal.
@@ -8,17 +9,11 @@ tags: Plugin
 title: Go To Shortcut
 type: text/vnd.tiddlywiki
 
-[[Full Readme|$:/plugins/EvidentlyCube/GoToShortcut/readme]] --- [[Github Repository|https://github.com/EvidentlyCube/TW5-GoToShortcut]] --- [[Install|$:/plugins/EvidentlyCube/GoToShortcut]]
+! Description 
 
-----
+Open a modal with a keyboard shortcut that makes it easy to navigate to tiddlers.
 
-//Inspired by VScode's and IntelliJ's ''Go To...'' functionalities.//
-
-----
-
-! Features
-
-A very powerful quick search/goto mechanism that you access in a fraction of a second fully through the keyboard!
+! Features 
 
  * Access the Goto modal with a configurable keyboard shortcut (defaults to `Ctrl+Shift+P`)
  * Customize the search:
@@ -36,23 +31,10 @@ A very powerful quick search/goto mechanism that you access in a fraction of a s
  ** `Escape` and `Ctr+Shift+P` closes the dialog
  * You can also select the tiddlers with a mouse.
 
-! Examples
+! Installation 
 
-Press `Ctrl + Shift + P` to open the modal and input the following:
+{{Go To Shortcut/Install}}
 
- * `G` --- It will search for all tiddlers that contain the letter in their name, preferring ones which start with it: [[Go To Shortcut]] will be before [[Auto Close Tags]].
- ** ''Note:'' [[GoTo Test - Ignored]] is not in the results because it has a value in the field `goto-ignore`.
- * `!G` --- `!` prefix will include drafts tiddlers, ignored tiddlers, and tiddlers that have a name starting with `$:/`
- * `*duck` --- `*` prefix causes to expand the search into tiddlers' text.
- * `>config` --- `>` prefix causes to expand the search into shadow tiddlers.
-* `[all[tiddlers+shadows]tag[$:/tags/Filter]]` --- Starting with `[` causes the whole input to be interpreted as a filter
+! Demo
 
-! Available customizations:
-
- * Provide your own filters for the results
- * Decide if the results are cleared between openings of the modal or not
- * Use your own template for a result row
-
-! Installation
-
-Drag [[This Link|$:/plugins/EvidentlyCube/GoToShortcut]] into the window/tab of your Wiki to import the plugin.
+See the demo [[here|Go To Shortcut/Demo]].

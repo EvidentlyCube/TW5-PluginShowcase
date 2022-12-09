@@ -1,0 +1,14 @@
+created: 20221209145929621
+modified: 20221209150057553
+tags: 
+title: Go To Shortcut/Demo
+type: text/vnd.tiddlywiki
+
+Press <kbd>Ctrl + Shift + P</kbd> to open the modal and try the following:
+
+ * `G` --- It will search for all tiddlers that contain the letter in their name, preferring ones which start with it: [[Go To Shortcut]] will be before [[Auto Close Tags]].
+ ** ''Note:'' [[GoTo Test - Ignored]] is not in the results because it has a value in the field `goto-ignore`.
+ * `!G` --- `!` prefix will include drafts tiddlers, ignored tiddlers, and tiddlers that have a name starting with `$:/`
+ * `*duck` --- `*` prefix causes to expand the search into tiddlers' text.
+ * `>config` --- `>` prefix causes to expand the search into shadow tiddlers.
+* `[all[tiddlers+shadows]tag[$:/tags/Filter]]` --- Starting with `[` causes the whole input to be interpreted as a filter
