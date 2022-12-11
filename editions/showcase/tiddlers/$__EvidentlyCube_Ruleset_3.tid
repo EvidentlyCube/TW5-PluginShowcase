@@ -1,0 +1,12 @@
+auto-ruleset-textarea: 1
+caption: Filter
+created: 20221211112741207
+display-filter: [<currentTiddler>]
+filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
+modified: 20221211112747239
+prefix: [
+ruleset: [[
+tags: $:/tags/EC/UniversalDialog/Ruleset
+template: [[$option$]]$caret$
+title: $:/EvidentlyCube/Ruleset/3
+type: text/vnd.tiddlywiki

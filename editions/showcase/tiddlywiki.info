@@ -9,7 +9,8 @@
 		"EvidentlyCube/TW5-AdvancedPerformance/plugin",
 		"EvidentlyCube/TW5-AutoComplete/plugin",
 		"EvidentlyCube/TW5-Permaviews/plugin",
-		"EvidentlyCube/TW5-ExtraFilters/plugin"
+		"EvidentlyCube/TW5-ExtraFilters/plugin",
+		"EvidentlyCube/TW5-UniversalDialog/plugin"
 	],
 	"themes": [
 		"tiddlywiki/vanilla"

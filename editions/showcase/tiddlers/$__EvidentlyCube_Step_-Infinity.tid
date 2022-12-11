@@ -1,0 +1,10 @@
+created: 20221210115044005
+hint: Title Pikle
+modified: 20221211111815228
+parent: $:/EvidentlyCube/Ruleset/1
+priority: -Infinity
+query-filter: 
+results-filter: [all[tiddlers]!is[draft]!prefix[$:/]prefix:caseinsensitive<query>]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/-Infinity
+type: text/vnd.tiddlywiki

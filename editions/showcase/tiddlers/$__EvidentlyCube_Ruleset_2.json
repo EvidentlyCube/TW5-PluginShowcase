@@ -1,0 +1,19 @@
+[
+    {
+        "created": "20221210212403639",
+        "title": "$:/EvidentlyCube/Ruleset/2",
+        "modified": "20221211212150932",
+        "tags": "$:/tags/EC/UniversalDialog/Ruleset",
+        "type": "text/vnd.tiddlywiki",
+        "auto-ruleset-textarea": "1",
+        "caption": "Tags",
+        "display-filter": "[<currentTiddler>]",
+        "exclude-prefix": "1",
+        "filter": "[all[tiddlers]!is[system]!is[draft]search:title<query>]",
+        "prefix": "#",
+        "ruleset": "[[",
+        "template": "[[$option$]]$caret$",
+        "actions": "<$action-sendmessage $message=\"tm-ec-ud-action\" $param=\"force-ruleset\" option=<<title>> ruleset=\"By Tag:\" query=\"\"/>\n",
+        "hint-forced": ""
+    }
+]

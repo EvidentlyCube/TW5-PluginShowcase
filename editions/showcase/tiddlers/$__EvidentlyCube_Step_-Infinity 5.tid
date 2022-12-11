@@ -1,0 +1,8 @@
+created: 20221211202244859
+modified: 20221211202249670
+parent: $:/EvidentlyCube/Ruleset/4
+priority: -Infinity
+results-filter: [all[tiddlers]tag<option>!is[draft]!prefix[$:/]search:title<query>]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/-Infinity 5
+type: text/vnd.tiddlywiki
