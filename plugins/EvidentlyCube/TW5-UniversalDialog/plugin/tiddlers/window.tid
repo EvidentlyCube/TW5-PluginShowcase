@@ -1,0 +1,65 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/window
+tags: $:/tags/PageTemplate
+
+\whitespace trim
+\define action-input()
+<$action-sendmessage $message="tm-ec-ud-action" $param="input" />
+\end
+\define action-link-click()
+	<$action-sendmessage $message="tm-ec-ud-action" $param="select-option" index=<<navigateTo>> />
+\end
+\define action-up() <$action-sendmessage $message="tm-ec-ud-action" $param="prev-result" />
+\define action-down() <$action-sendmessage $message="tm-ec-ud-action" $param="next-result" />
+\define action-close() <$action-sendmessage $message="tm-ec-ud-action" $param="close" />
+\define action-open-selected() <$action-sendmessage $message="tm-ec-ud-action" $param="select-option" />
+\define action-backspace()
+<$list filter="[{$:/temp/UniversalDialog/state!!text}match[]]" emptyMessage="""<$action-sendmessage $message="tm-ec-ud-action" $param="backspace" />""">
+	<$action-sendmessage $message="tm-ec-ud-action" $param="clear" />
+</$list>
+\end
+<$let
+	is-open={{$:/temp/UniversalDialog/state!!is-open}}
+	tab={{{ [charcode[9]] }}}
+	newline={{{ [charcode[10]] }}}
+>
+<$list filter="[<is-open>match[1]]" variable="ignore">
+
+<div class="ec_ud-dialog tc-modal" style="background: white; padding: 1em;">
+	<div class="ec_ud-input-row">
+		<$let option={{$:/temp/UniversalDialog/state!!option}}>
+		<span class="ec_ud-forced-hint tc-tag-label"><$transclude tiddler="$:/temp/UniversalDialog/state" field="hint-forced" /></span>
+		</$let>
+		<$keyboard actions=<<action-up>> key="up">
+		<$keyboard actions=<<action-down>> key="down">
+		<$keyboard actions=<<action-close>> key="escape">
+		<$keyboard actions=<<action-open-selected>> key="enter">
+		<$keyboard actions=<<action-backspace>> key="backspace">
+			<$edit-text tag="input" class="ec_ud-input" inputActions=<<action-input>> focus="yes" tiddler="$:/temp/UniversalDialog/state" field="text" default="" />
+		</$keyboard>
+		</$keyboard>
+		</$keyboard>
+		</$keyboard>
+		</$keyboard>
+	</div>
+	<$let
+		count={{$:/temp/UniversalDialog/state!!results-count}}
+		limit={{$:/temp/UniversalDialog/state!!limit}}
+		half-limit={{{ [<limit>divide[2]ceil[]] }}}
+		max-offset={{{ [<count>subtract<limit>] }}}
+		selected={{$:/temp/UniversalDialog/state!!selected}}
+		offset={{{ [<selected>subtract<half-limit>min<max-offset>max[0]] }}}
+	>
+		<div class={{{ [<offset>!match[0]then[ec_ud-show-label]] [[ec_ud-label]] +[join[ ]] }}}>...</div>
+		<$linkcatcher actions=<<action-link-click>>>
+			<$list filter="[{$:/temp/UniversalDialog/state!!results}split<newline>rest<offset>first<limit>]">
+				<$link to={{{ [<currentTiddler>split<tab>nth[1]] }}} overrideClass={{{ [<currentTiddler>split<tab>nth[1]match<selected>then[ec_ud-selected]] }}}>
+					<span class="ec_ud-title"><$text text={{{ [<currentTiddler>split<tab>nth[2]] }}}/></span>
+					<span class="ec_ud-hint"><$text text={{{ [<currentTiddler>split<tab>nth[3]] }}}/></span>
+				</$link>
+			</$list>
+		</$linkcatcher>
+		<div class={{{ [<offset>compare:number:lt<max-offset>then[ec_ud-show-label]] [[ec_ud-label]] +[join[ ]] }}}>&middot; &middot; &middot;</div>
+	</$let>
+</div>
+</$list>
+</$let>

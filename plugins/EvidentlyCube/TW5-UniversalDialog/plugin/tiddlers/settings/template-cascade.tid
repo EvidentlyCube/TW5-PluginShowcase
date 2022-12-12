@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/template-cascade
+tags: $:/tags/ViewTemplateBodyFilter
+list-after: $:/config/ViewTemplateBodyFilters/system
+
+[tag[$:/tags/EC/UniversalDialog/Ruleset]then[$:/plugins/EvidentlyCube/UniversalDialog/template]]

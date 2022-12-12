@@ -1,0 +1,220 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/template
+
+\define must-be-defined(field name)
+<$list filter="[{!!$field$}match[]]">
+	<span class="tc-error">
+		$name$ must be defined
+	</span>
+</$list>
+\end
+
+\define must-be-valid-filter(field)
+<$let
+	base-filter={{!!$field$}}
+	suffix=" +[limit[1]]"
+	filter={{{ [<base-filter>addsuffix<suffix>] }}}
+>
+<$list filter=<<filter>>>
+	<$list filter={{{ [<currentTiddler>prefix[Filter error]] }}}>
+		<span class="tc-error">
+			<$text text=<<currentTiddler>>/>
+		</span>
+	</$list>
+</$list>
+</$let>
+\end
+
+\define add-step()
+<$let
+ new-number={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]removeprefix[$:/EvidentlyCube/Step/]maxall[]add[1]] ~[[1]] }}}
+>
+	<$action-createtiddler
+		$basetitle={{{ [[$:/EvidentlyCube/Step/]addsuffix<new-number>] }}}
+		tags="$:/tags/EC/UniversalDialog/Step"
+		parent=<<currentTiddler>>
+		priority=<<new-number>>
+	/>
+</$let>
+\end
+
+\define delete-step()
+<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+\end
+
+<div class="ec_ac-options">
+<h1>Universal dialog ruleset</h1>
+
+<p>This tiddler defines configuration for a ruleset that can be used in universal dialog.</p>
+
+<h1>Bookkeeping</h1>
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Caption:''<br/>
+		<p class="ec_ac-muted">
+			Name for this ruleset
+		</p>
+	</td>
+	<td><$edit-text class="ec-tc-disabled" field="caption" default="" placeholder="Caption..."/></td>
+</tr>
+<tr>
+	<td align="center">
+		''Description:''<br/>
+		<p class="ec_ac-muted">
+			A description of this ruleset to make it easier to keep things clean.
+		</p>
+	</td>
+	<td><$edit-text class="ec-tc-disabled" field="text" default="" placeholder="Description for this ruleset..."/></td>
+</tr>
+</tbody>
+</table>
+
+<h1>Triggering</h1>
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Hint:''<br/>
+		<p class="ec_ac-muted">
+			A hint that is displayed to the right of the text input.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" field="hint" placeholder="Hint..."/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Prefix:''<br/>
+		<p class="ec_ac-muted">
+			The text prefix that activates this ruleset.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" field="prefix" placeholder="Prefix..."/>
+		<$list filter="[all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Ruleset]field:prefix{!!prefix}] -[<currentTiddler>] +[limit[1]]">
+			<span class="tc-error">
+				Prefix already used in: <<currentTiddler>>
+			</span>
+		</$list>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Exclude prefix from query:''<br/>
+		<p class="ec_ac-muted">
+			When checked the prefix will be excluded from the `<<query>>` variable sent to the steps.
+		</p>
+	</td>
+	<td>
+		<$checkbox field="exclude-prefix" checked="1">Exclude prefix from query</$checkbox>
+	</td>
+</tr>
+</tbody>
+</table>
+
+<h1>Advanced Triggering</h1>
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Select action:''<br/>
+		<p class="ec_ac-muted">
+			Actions invoked when a result item is selected.<br/>
+			Variable `<<index>>` contains the index of the selected result.<br/>
+			Variable `<<title>>` contains the text of the selected result.
+		</p>
+	</td>
+	<td>
+		<$edit-text tag="textarea" class="ec-tc-disabled" field="actions" placeholder="Actions..."/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Forced only:''<br/>
+		<p class="ec_ac-muted">
+			When checked this ruleset can only be triggered forcefully by sending a message with its prefix.<br/>
+			It's mostly useful in multi-step actions, where the first result feeds some variable to another one. <br/>
+			The forced option is available in `Results Filter`s as a variable `<<option>>`
+		</p>
+	</td>
+	<td>
+		<$checkbox field="forced-only" checked="1">Only use this filter when forced</$checkbox>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Forced hint:''<br/>
+		<p class="ec_ac-muted">
+			Optional hint displayed before the text input when this ruleset is active.
+		</p>
+	</td>
+	<td>
+		<$edit-text tag="input" class="ec-tc-disabled" field="hint-forced" placeholder="Forced hint..."/>
+	</td>
+</tr>
+</tbody>
+</table>
+
+<h1>Result steps</h1>
+<p>
+	The following steps are executed in order. Each subsequent step's results are appended to the result list
+	as long as they did not yet appear in the result set.<br/>
+	`<query>` is available in both filters and contains the value of the query as input by the user.<br/>
+	`Query Transform Filter` is a filter that optionally changes the query before it's passed to that step's
+	`Results Filter` -- if left empty query is not modified.<br/>
+	`Results Filter`'s results are displayed in the dialog. If left empty it will just execute `<query>` as if
+	it was a filter.
+<table>
+<colgroup>
+	<col width="10%"/>
+	<col width="35%"/>
+	<col width="35%"/>
+	<col width="10%"/>
+	<col width="10%"/>
+</colgroup>
+<thead>
+<tr>
+	<th>#</th>
+	<th>Query Transform Filter</th>
+	<th>Results Filter</th>
+	<th>Hint</th>
+	<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent<currentTiddler>]" counter="counter">
+<tr>
+	<td align="center"><<counter>></td>
+	<td>
+		<$edit-text tag="textarea" field="query-filter" placeholder="Query Transform Filter..."/>
+		<<must-be-valid-filter "query-filter">>
+	</td>
+	<td>
+		<$edit-text tag="textarea" field="results-filter" placeholder="Filter..."/>
+		<<must-be-valid-filter "results-filter">>
+	</td>
+	<td>
+		<$edit-text tag="input" field="hint" placeholder="Hint..."/>
+	</td>
+	<td>
+		<$button actions=<<delete-step>>>Delete</$button>
+	</td>
+</tr>
+</$list>
+<tr>
+	<td colspan="3"></td>
+	<td><$button actions=<<add-step>>>Add rule</$button></td>
+</tr>
+</tbody>
+</table>

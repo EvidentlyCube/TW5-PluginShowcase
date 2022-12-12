@@ -1,0 +1,62 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/style
+tags: $:/tags/Stylesheet
+
+.ec_ud-dialog {
+	top: 20%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ec_ud-input-row {
+	display: flex;
+}
+
+.ec_ud-dialog  .ec_ud-forced-hint {
+	color: <<colour foreground>>
+}
+
+.ec_ud-forced-hint:empty{
+	display: none;
+}
+
+.ec_ud-dialog input {
+	width: 100%;
+}
+.ec_ud-label {
+	text-align: center;
+}
+.ec_ud-label:not(.ec_ud-show-label) {
+	opacity: 0;
+	pointer-event: none;
+	user-select: none;
+}
+.ec_ud-dialog a {
+	display: flex;
+	color:  <<colour tiddler-link-foreground>>;
+	text-decoration: none;
+	padding: 2px;
+}
+
+.ec_ud-dialog a:hover,
+.ec_ud-dialog a.ec_ud-selected {
+	background:  <<colour tiddler-link-foreground>>;
+	color: <<colour background>>;
+}
+.ec_ud-dialog a:hover .ec_ud-hint,
+.ec_ud-dialog a.ec_ud-selected .ec_ud-hint{
+	color: <<colour background>>;
+}
+
+.ec_ud-title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	flex-grow: 1;
+}
+
+.ec_ud-hint {
+	white-space: nowrap;
+	color: <<colour foreground>>;
+	opacity: 0.75;
+	font-size: 90%;
+}

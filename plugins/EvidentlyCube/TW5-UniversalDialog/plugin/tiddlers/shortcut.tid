@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/KeyboardShortcut
+tags: $:/tags/KeyboardShortcut
+key: ((EC-OpenUniversalDialog))
+
+<$action-sendmessage $message="tm-ec-ud-action" $param="open" />
