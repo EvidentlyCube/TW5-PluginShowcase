@@ -2,7 +2,7 @@
     {
         "created": "20221210115020973",
         "title": "$:/EvidentlyCube/Ruleset/1",
-        "modified": "20221210212352266",
+        "modified": "20221212213434802",
         "tags": "$:/tags/EC/UniversalDialog/Ruleset",
         "type": "text/vnd.tiddlywiki",
         "auto-ruleset-textarea": "1",
@@ -12,6 +12,7 @@
         "prefix": "",
         "ruleset": "[[",
         "template": "[[$option$]]$caret$",
-        "actions": "<$action-navigate $to=<<title>> $scroll=\"yes\" />\n<$action-sendmessage $message=\"tm-ec-ud-action\" $param=\"close\" />"
+        "actions": "<$action-navigate $to=<<title>> $scroll=\"yes\" />\n<$action-sendmessage $message=\"tm-ec-ud-action\" $param=\"close\" />",
+        "hint": "DA HINT"
     }
 ]

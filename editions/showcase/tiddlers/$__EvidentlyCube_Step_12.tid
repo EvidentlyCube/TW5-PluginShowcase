@@ -1,0 +1,10 @@
+condition-filter: [<query>match[]]
+created: 20221213110711592
+hint: Opened
+modified: 20221213112203176
+parent: $:/EvidentlyCube/Ruleset/1
+priority: 4
+results-filter: [list[$:/StoryList]]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/12
+type: text/vnd.tiddlywiki

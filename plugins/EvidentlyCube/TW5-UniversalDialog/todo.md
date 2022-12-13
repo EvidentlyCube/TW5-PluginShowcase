@@ -1,4 +1,1 @@
-* Enter to select
-* Escape to cancel
-* Unfocus to cancel
-* Support params
+* Change priority of steps

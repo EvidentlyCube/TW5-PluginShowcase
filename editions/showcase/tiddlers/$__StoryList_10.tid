@@ -1,3 +1,3 @@
-list: $:/EvidentlyCube/Ruleset/2 $:/EvidentlyCube/Ruleset/4 $:/EvidentlyCube/Ruleset/3 $:/EvidentlyCube/Ruleset/1
+list: [[Task List/Demo]] $:/ControlPanel $:/EvidentlyCube/Ruleset/2 $:/EvidentlyCube/Ruleset/1
 title: $:/StoryList
 type: text/vnd.tiddlywiki

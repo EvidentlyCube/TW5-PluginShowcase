@@ -9,10 +9,25 @@ tags: $:/tags/Stylesheet
 
 .ec_ud-input-row {
 	display: flex;
+	gap: 2px;
+	border: 1px solid black;
+	padding: 2px 4px;
+	height: 24px;
+}
+
+.ec_ud-input-row:focus-within {
+	outline: auto;
+	outline-color: <<colour primary>>;
 }
 
 .ec_ud-dialog  .ec_ud-forced-hint {
-	color: <<colour foreground>>
+	color: <<colour foreground>>;
+	background: <<colour tab-background>>;
+	white-space: nowrap;
+	font-size: 0.9em;
+	line-height: 1.4em;
+	padding: 0 8px;
+	border-radius: 4px;
 }
 
 .ec_ud-forced-hint:empty{
@@ -21,9 +36,16 @@ tags: $:/tags/Stylesheet
 
 .ec_ud-dialog input {
 	width: 100%;
+	border: none;
+}
+.ec_ud-dialog input:focus,
+.ec_ud-dialog input:focus-visible {
+	outline: none;
 }
 .ec_ud-label {
-	text-align: center;
+	opacity: 0.75;
+	padding-left: 5px;
+	font-size: 20px;
 }
 .ec_ud-label:not(.ec_ud-show-label) {
 	opacity: 0;

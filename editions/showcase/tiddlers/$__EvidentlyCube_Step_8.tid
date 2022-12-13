@@ -1,8 +1,8 @@
-created: 20221211202154737
-modified: 20221211202201047
+created: 20221213110630001
+modified: 20221213110635166
 parent: $:/EvidentlyCube/Ruleset/4
-priority: -Infinity
+priority: 1
 results-filter: [all[tiddlers]tag<option>!is[draft]!prefix[$:/]prefix:caseinsensitive<query>]
 tags: $:/tags/EC/UniversalDialog/Step
-title: $:/EvidentlyCube/Step/-Infinity 4
+title: $:/EvidentlyCube/Step/8
 type: text/vnd.tiddlywiki

@@ -24,17 +24,42 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 </$let>
 \end
 
-\define add-step()
+\define action-add-step()
 <$let
- new-number={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]removeprefix[$:/EvidentlyCube/Step/]maxall[]add[1]] ~[[1]] }}}
+	new-number={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]search-replace:g:regexp[\D],[]!match[]maxall[]add[1]!match[-Infinity]] ~[[1]] }}}
+	new-priority={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]get[priority]search-replace:g:regexp[\D],[]!match[]maxall[]add[1]!match[-Infinity]] ~[[1]] }}}
 >
 	<$action-createtiddler
 		$basetitle={{{ [[$:/EvidentlyCube/Step/]addsuffix<new-number>] }}}
 		tags="$:/tags/EC/UniversalDialog/Step"
 		parent=<<currentTiddler>>
-		priority=<<new-number>>
+		priority=<<new-priority>>
 	/>
 </$let>
+\end
+\define action-move-step-down()
+	<$let
+		priority={{!!priority}}
+		next-priority={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}get[priority]compare:integer:gt<priority>minall[]] }}}
+		next-tiddler={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}field:priority<next-priority>] }}}
+	>
+		<$list filter="[<next-tiddler>is[tiddler]]" variable="ignore">
+			<$action-setfield $tiddler=<<currentTiddler>> priority=<<next-priority>>/>
+			<$action-setfield $tiddler=<<next-tiddler>> priority=<<priority>>/>
+		</$list>
+	</$let>
+\end
+\define action-move-step-up()
+	<$let
+		priority={{!!priority}}
+		prev-priority={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}get[priority]compare:integer:lt<priority>maxall[]] }}}
+		prev-tiddler={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}field:priority<prev-priority>] }}}
+	>
+		<$list filter="[<prev-tiddler>is[tiddler]]" variable="ignore">
+			<$action-setfield $tiddler=<<currentTiddler>> priority=<<prev-priority>>/>
+			<$action-setfield $tiddler=<<prev-tiddler>> priority=<<priority>>/>
+		</$list>
+	</$let>
 \end
 
 \define delete-step()
@@ -171,21 +196,24 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 	The following steps are executed in order. Each subsequent step's results are appended to the result list
 	as long as they did not yet appear in the result set.<br/>
 	`<query>` is available in both filters and contains the value of the query as input by the user.<br/>
+	`Condition Filter` -- Optional filter, if it's provided amd returns nothing then this step will be skipped.<br/>
 	`Query Transform Filter` is a filter that optionally changes the query before it's passed to that step's
 	`Results Filter` -- if left empty query is not modified.<br/>
 	`Results Filter`'s results are displayed in the dialog. If left empty it will just execute `<query>` as if
 	it was a filter.
 <table>
 <colgroup>
-	<col width="10%"/>
-	<col width="35%"/>
-	<col width="35%"/>
+	<col width="4%"/>
+	<col width="22%"/>
+	<col width="22%"/>
+	<col width="22%"/>
 	<col width="10%"/>
 	<col width="10%"/>
 </colgroup>
 <thead>
 <tr>
 	<th>#</th>
+	<th>Condition Filter</th>
 	<th>Query Transform Filter</th>
 	<th>Results Filter</th>
 	<th>Hint</th>
@@ -193,9 +221,13 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 </tr>
 </thead>
 <tbody>
-<$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent<currentTiddler>]" counter="counter">
+<$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent<currentTiddler>nsort[priority]]" counter="counter">
 <tr>
-	<td align="center"><<counter>></td>
+	<td align="center"><<counter>>, {{!!priority}}, <$text text=<<currentTiddler>>/></td>
+	<td>
+		<$edit-text tag="textarea" field="condition-filter" placeholder="Condition Filter..."/>
+		<<must-be-valid-filter "condition-filter">>
+	</td>
 	<td>
 		<$edit-text tag="textarea" field="query-filter" placeholder="Query Transform Filter..."/>
 		<<must-be-valid-filter "query-filter">>
@@ -209,12 +241,14 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 	</td>
 	<td>
 		<$button actions=<<delete-step>>>Delete</$button>
+		<$button actions=<<action-move-step-up>>>Up</$button>
+		<$button actions=<<action-move-step-down>>>Down</$button>
 	</td>
 </tr>
 </$list>
 <tr>
 	<td colspan="3"></td>
-	<td><$button actions=<<add-step>>>Add rule</$button></td>
+	<td><$button actions=<<action-add-step>>>Add rule</$button></td>
 </tr>
 </tbody>
 </table>

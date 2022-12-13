@@ -1,10 +1,10 @@
-created: 20221210115153437
-hint: Zupa z trupa
-modified: 20221211111816269
+condition-filter: [<query>!match[]]
+created: 20221213110727886
+hint: Title
+modified: 20221213112207054
 parent: $:/EvidentlyCube/Ruleset/1
-priority: -Infinity
-query-filter: 
+priority: 6
 results-filter: [all[tiddlers]!is[draft]!prefix[$:/]search:title<query>]
 tags: $:/tags/EC/UniversalDialog/Step
-title: $:/EvidentlyCube/Step/-Infinity 1
+title: $:/EvidentlyCube/Step/14
 type: text/vnd.tiddlywiki

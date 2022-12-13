@@ -132,7 +132,9 @@ API for the universal dialog
 			return;
 		}
 
+		$tw.wiki.setText(STATE_TIDDLER, 'selected', null, "1");
 		$tw.wiki.setText(STATE_TIDDLER, 'prefix', null, this.currentRuleset.prefix);
+		$tw.wiki.setText(STATE_TIDDLER, 'hint', null, this.currentRuleset.hint);
 
 		const encodedResults = [];
 		const resultsSet = new Set();
@@ -146,11 +148,17 @@ API for the universal dialog
 				resultsSet.add(result);
 			}
 		}
-		const baseQuery = this.currentRuleset.isPrefixExcluded
+		const baseQuery = this.currentRuleset.isPrefixExcluded && !this.forcedRuleset
 			? this.query.substring(this.currentRuleset.prefix.length)
 			: this.query;
 
 		for (const step of this.currentRuleset.steps) {
+			if (
+				step['condition-filter']
+				&& $tw.wiki.filterTiddlers(step['condition-filter'], getVariablesFauxWidget({query: baseQuery, option: this.option})).length === 0
+			) {
+				continue;
+			}
 			const query = this._transformQuery(baseQuery, step['query-filter']);
 
 			// Todo add query transform step
