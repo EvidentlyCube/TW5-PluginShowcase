@@ -12,6 +12,12 @@ API for the universal dialog
 	const STATE_TIDDLER = "$:/temp/UniversalDialog/state";
 	const DEFAULT_ACTION = '<$action-navigate $to=<<title>> $scroll="yes" />'
 		+ '<$action-sendmessage $message="tm-ec-ud-action" $param="close" />';
+
+	const TYPE_PREFIX = 'prefix';
+	const TYPE_NO_PREFIX = 'noprefix';
+	const TYPE_FILTER = 'filter';
+	const TYPE_FORCED = 'forced';
+
 	const NavigatorWidget = require('$:/core/modules/widgets/navigator.js').navigator;
 	const ResultStore = require('$:/plugins/EvidentlyCube/UniversalDialog/result-store.js').ResultStore;
 
@@ -214,17 +220,43 @@ API for the universal dialog
 		for (var i = 0; i < tiddlerList.length; i++) {
 			var title = tiddlerList[i];
 			var tiddlerFields = $tw.wiki.getTiddler(title).fields;
+			var prefix = tiddlerFields.prefix || '';
+			var type = tiddlerFields['ruleset-type'];
 
 			this.rulesets.push({
-				prefix: tiddlerFields.prefix || "",
+				prefix: prefix,
 				hint: tiddlerFields.hint || "",
 				selectAction: tiddlerFields.actions || DEFAULT_ACTION,
-				isPrefixExcluded: tiddlerFields['exclude-prefix'] === '1',
-				isForcedOnly: tiddlerFields['forced-only'] === '1',
-				hintForced: tiddlerFields['hint-forced'] || '',
-				steps: this._getRulesetSteps(title).map(function(title) {
-					return $tw.wiki.getTiddler(title).fields;
-				})
+				isPrefixExcluded: this._getRulesetPrefixExcluded(type, prefix),
+				isForced: type === TYPE_FORCED,
+				steps: this._getRulesetSteps(type, title)
+			});
+		}
+	}
+
+	UniversalDialog.prototype._getRulesetPrefixExcluded = function(type, prefix) {
+		if (type === TYPE_PREFIX) {
+			return false;
+		} else if (type === TYPE_NO_PREFIX || type === TYPE_FORCED) {
+			return true;
+		} else {
+			return prefix === '[';
+		}
+	};
+
+	UniversalDialog.prototype._getRulesetSteps = function(type, title) {
+		if (type === TYPE_FILTER) {
+			return [
+				{
+					'condition-filter': '',
+					'query-filter': '',
+					'results-filter': '',
+					'hint': ''
+				}
+			];
+		} else {
+			return this._getRulesetSteps(title).map(function(title) {
+				return $tw.wiki.getTiddler(title).fields;
 			});
 		}
 	}
