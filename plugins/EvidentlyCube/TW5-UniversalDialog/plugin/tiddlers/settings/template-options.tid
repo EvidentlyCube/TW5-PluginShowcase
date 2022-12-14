@@ -1,0 +1,43 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/template-options
+
+<h1>Options</h1>
+<p>
+	Forced rulesets can accept one or more optional options that can be used for more complex scenarios - like stacking
+	multiple filters while still allowing searching through the results.
+</p>
+<table>
+<colgroup>
+	<col width="4%"/>
+	<col width="22%"/>
+	<col width="10%"/>
+	<col width="10%"/>
+</colgroup>
+<thead>
+<tr>
+	<th>#</th>
+	<th>Option name</th>
+	<th>Hint</th>
+	<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Option]field:parent<currentTiddler>nsort[created]]" counter="counter">
+<tr>
+	<td align="center"><<counter>></td>
+	<td>
+		<$edit-text tag="textarea" field="name" placeholder="Option Name..."/>
+	</td>
+	<td>
+		<$edit-text tag="textarea" field="hint" placeholder="Hint..."/>
+	</td>
+	<td>
+		<$button actions=<<action-option-delete>>>Delete</$button>
+	</td>
+</tr>
+</$list>
+<tr>
+	<td colspan="3"></td>
+	<td><$button actions=<<action-option-add>>>Add option</$button></td>
+</tr>
+</tbody>
+</table>

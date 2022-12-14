@@ -1,2 +1,2 @@
-list: $:/EvidentlyCube/Ruleset/2 $:/EvidentlyCube/Ruleset/1
+list: $:/ControlPanel $:/EvidentlyCube/Ruleset/4 $:/EvidentlyCube/Ruleset/1 $:/EvidentlyCube/Ruleset/3
 title: $:/StoryList

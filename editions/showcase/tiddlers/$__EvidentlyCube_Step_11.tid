@@ -1,10 +1,10 @@
-condition-filter: [<query>match[]]
+condition-filter: [<query>!match[]]
 created: 20221213110704171
-hint: History
-modified: 20221213112211468
+hint: Starts with
+modified: 20221214204008161
 parent: $:/EvidentlyCube/Ruleset/1
-priority: 7
-results-filter: [[$:/HistoryList]get[text]search-replace:g:regexp[\n|\r],[ ]search-replace:g:regexp[.+?"title":\s*"(.+?)"],[$1~~]split[~~]limit[-1]is[tiddler]unique[]]
+priority: 6
+results-filter: [all[tiddlers]!is[draft]!prefix[$:/]prefix:caseinsensitive<query>]
 tags: $:/tags/EC/UniversalDialog/Step
 title: $:/EvidentlyCube/Step/11
 type: text/vnd.tiddlywiki

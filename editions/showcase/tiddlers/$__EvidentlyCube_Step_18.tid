@@ -1,0 +1,9 @@
+created: 20221214204320175
+hint: Title
+modified: 20221214204349625
+parent: $:/EvidentlyCube/Ruleset/3
+priority: 11
+results-filter: [all[tiddlers]!is[draft]prefix[$:/]search:title<query>]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/18
+type: text/vnd.tiddlywiki

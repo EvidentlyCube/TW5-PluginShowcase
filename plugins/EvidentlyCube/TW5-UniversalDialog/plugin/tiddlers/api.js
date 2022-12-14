@@ -154,7 +154,7 @@ API for the universal dialog
 				resultsSet.add(result);
 			}
 		}
-		const baseQuery = this.currentRuleset.isPrefixExcluded && !this.forcedRuleset
+		const baseQuery = this.currentRuleset.isPrefixExcluded
 			? this.query.substring(this.currentRuleset.prefix.length)
 			: this.query;
 
@@ -207,7 +207,7 @@ API for the universal dialog
 		return $tw.wiki.getTiddlersWithTag("$:/tags/EC/UniversalDialog/Ruleset");
 	};
 
-	UniversalDialog.prototype._getRulesetSteps = function(rulesetTitle) {
+	UniversalDialog.prototype._getRulesetStepTiddlers = function(rulesetTitle) {
 		return $tw.wiki.filterTiddlers(
 			"[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]field:parent<parent>]",
 			getVariablesFauxWidget({parent: rulesetTitle})
@@ -255,7 +255,7 @@ API for the universal dialog
 				}
 			];
 		} else {
-			return this._getRulesetSteps(title).map(function(title) {
+			return this._getRulesetStepTiddlers(title).map(function(title) {
 				return $tw.wiki.getTiddler(title).fields;
 			});
 		}

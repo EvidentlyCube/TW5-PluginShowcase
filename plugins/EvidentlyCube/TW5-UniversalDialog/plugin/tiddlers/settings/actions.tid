@@ -1,0 +1,70 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/actions
+
+\define must-be-defined(field name)
+<$list filter="[{!!$field$}match[]]">
+	<span class="tc-error">
+		$name$ must be defined
+	</span>
+</$list>
+\end
+
+\define must-be-valid-filter(field)
+<$let
+	base-filter={{!!$field$}}
+	suffix=" +[limit[1]]"
+	filter={{{ [<base-filter>addsuffix<suffix>] }}}
+>
+<$list filter=<<filter>>>
+	<$list filter={{{ [<currentTiddler>prefix[Filter error]] }}}>
+		<span class="tc-error">
+			<$text text=<<currentTiddler>>/>
+		</span>
+	</$list>
+</$list>
+</$let>
+\end
+
+\define action-step-add()
+<$let
+	new-number={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]search-replace:g:regexp[\D],[]!match[]maxall[]add[1]!match[-Infinity]] ~[[1]] }}}
+	new-priority={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]get[priority]search-replace:g:regexp[\D],[]!match[]maxall[]add[1]!match[-Infinity]] ~[[1]] }}}
+>
+	<$action-createtiddler
+		$basetitle={{{ [[$:/EvidentlyCube/Step/]addsuffix<new-number>] }}}
+		tags="$:/tags/EC/UniversalDialog/Step"
+		parent=<<currentTiddler>>
+		priority=<<new-priority>>
+	/>
+</$let>
+\end
+\define action-step-move-down()
+<$let
+	priority={{!!priority}}
+	next-priority={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}get[priority]compare:integer:gt<priority>minall[]] }}}
+	next-tiddler={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}field:priority<next-priority>] }}}
+>
+	<$list filter="[<next-tiddler>is[tiddler]]" variable="ignore">
+		<$action-setfield $tiddler=<<currentTiddler>> priority=<<next-priority>>/>
+		<$action-setfield $tiddler=<<next-tiddler>> priority=<<priority>>/>
+	</$list>
+</$let>
+\end
+\define action-step-move-up()
+<$let
+	priority={{!!priority}}
+	prev-priority={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}get[priority]compare:integer:lt<priority>maxall[]] }}}
+	prev-tiddler={{{ [all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent{!!parent}field:priority<prev-priority>] }}}
+>
+	<$list filter="[<prev-tiddler>is[tiddler]]" variable="ignore">
+		<$action-setfield $tiddler=<<currentTiddler>> priority=<<prev-priority>>/>
+		<$action-setfield $tiddler=<<prev-tiddler>> priority=<<priority>>/>
+	</$list>
+</$let>
+\end
+
+\define action-step-delete()
+<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+\end
+\define action-option-delete()
+<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+\end

@@ -1,14 +1,8 @@
-auto-ruleset-textarea: 1
-caption: By Tag
-created: 20221211202134577
-display-filter: [<currentTiddler>]
-exclude-prefix: 1
-filter: [all[tiddlers]!is[system]!is[draft]search:title<query>]
-hint-forced: By tag <$text text=<<option>>/>
-modified: 20221212182334225
-prefix: By Tag:
-ruleset: [[
+caption: Unnamed ruleset 4
+created: 20221214204441447
+modified: 20221214205145871
+prefix: By Tag
+ruleset-type: forced
 tags: $:/tags/EC/UniversalDialog/Ruleset
-template: [[$option$]]$caret$
 title: $:/EvidentlyCube/Ruleset/4
 type: text/vnd.tiddlywiki

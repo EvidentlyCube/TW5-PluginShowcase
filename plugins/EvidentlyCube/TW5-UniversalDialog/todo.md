@@ -1,1 +1,2 @@
-* Change priority of steps
+* Support for multiple options in a ruleset
+* Deleting ruleset deletes steps

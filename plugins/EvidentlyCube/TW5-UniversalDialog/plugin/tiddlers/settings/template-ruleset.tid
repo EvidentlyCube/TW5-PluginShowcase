@@ -1,0 +1,119 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/template-ruleset
+
+\import [[$:/plugins/EvidentlyCube/UniversalDialog/actions]]
+
+<div class="ec_ac-options">
+<h1>Universal dialog ruleset</h1>
+
+<p>This tiddler defines configuration for a ruleset that can be used in universal dialog.</p>
+
+<h1>Bookkeeping</h1>
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Caption:''<br/>
+		<p class="ec_ac-muted">
+			Name for this ruleset
+		</p>
+	</td>
+	<td><$edit-text class="ec-tc-disabled" field="caption" default="" placeholder="Caption..."/></td>
+</tr>
+<tr>
+	<td align="center">
+		''Description:''<br/>
+		<p class="ec_ac-muted">
+			A description of this ruleset to make it easier to keep things clean.
+		</p>
+	</td>
+	<td><$edit-text class="ec-tc-disabled" field="text" default="" placeholder="Description for this ruleset..."/></td>
+</tr>
+</tbody>
+</table>
+
+<h1>Triggering</h1>
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Ruleset type:''<br/>
+		<p class="ec_ac-muted">
+			A hint that is displayed to the right of the text input.
+		</p>
+	</td>
+	<td>
+		<$select field="ruleset-type">
+			<option value="prefix">Prefixed</option>
+			<option value="noprefix">Excluded Prefix</option>
+			<option value="filter">Run as Filter</option>
+			<option value="forced">Forced</option>
+		</$select>
+		<p><$text text={{{ [[$:/plugins/EvidentlyCube/UniversalDialog/ruleset-types]getindex{!!ruleset-type}] }}}/></p>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Hint:''<br/>
+		<p class="ec_ac-muted">
+			A hint that is displayed to the right of the text input.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" field="hint" placeholder="Hint..."/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Prefix:''<br/>
+		<p class="ec_ac-muted">
+			The text prefix that activates this ruleset.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" field="prefix" placeholder="Prefix..."/>
+		<$list filter="[all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Ruleset]field:prefix{!!prefix}] -[<currentTiddler>] +[limit[1]]">
+			<span class="tc-error">
+				Prefix already used in: <<currentTiddler>>
+			</span>
+		</$list>
+	</td>
+</tr>
+</tbody>
+</table>
+
+<h1>Actions</h1>
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Select action:''<br/>
+		<p class="ec_ac-muted">
+			Actions invoked when a result item is selected.<br/>
+			Variable `<<index>>` contains the index of the selected result.<br/>
+			Variable `<<title>>` contains the text of the selected result.
+		</p>
+	</td>
+	<td>
+		<$edit-text tag="textarea" class="ec-tc-disabled" field="actions" placeholder="Actions..."/>
+	</td>
+</tr>
+</tbody>
+</table>
+
+<$list filter="[{!!ruleset-type}!match[forced]]" variable="ignore">
+	<$transclude tiddler="$:/plugins/EvidentlyCube/UniversalDialog/template-options" />
+</$list>
+
+<$list filter="[{!!ruleset-type}!match[filter]]" variable="ignore">
+	<$transclude tiddler="$:/plugins/EvidentlyCube/UniversalDialog/template-steps" />
+</$list>
+</div>

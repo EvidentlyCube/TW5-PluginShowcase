@@ -1,9 +1,0 @@
-created: 20221213110815862
-hint: Tag
-modified: 20221213110818833
-parent: $:/EvidentlyCube/Ruleset/2
-priority: 8
-results-filter: [all[tiddlers]!is[draft]tags[]search:title<query>]
-tags: $:/tags/EC/UniversalDialog/Step
-title: $:/EvidentlyCube/Step/15
-type: text/vnd.tiddlywiki

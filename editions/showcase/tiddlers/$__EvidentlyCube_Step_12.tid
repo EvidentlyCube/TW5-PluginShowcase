@@ -1,9 +1,9 @@
 condition-filter: [<query>match[]]
 created: 20221213110711592
 hint: Opened
-modified: 20221214081604373
+modified: 20221214203553279
 parent: $:/EvidentlyCube/Ruleset/1
-priority: 6
+priority: 5
 results-filter: [list[$:/StoryList]]
 tags: $:/tags/EC/UniversalDialog/Step
 title: $:/EvidentlyCube/Step/12

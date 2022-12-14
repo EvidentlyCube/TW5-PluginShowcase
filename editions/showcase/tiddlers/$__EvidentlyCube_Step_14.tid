@@ -1,9 +1,9 @@
 condition-filter: [<query>!match[]]
 created: 20221213110727886
 hint: Title
-modified: 20221214081604373
+modified: 20221214204011477
 parent: $:/EvidentlyCube/Ruleset/1
-priority: 5
+priority: 7
 results-filter: [all[tiddlers]!is[draft]!prefix[$:/]search:title<query>]
 tags: $:/tags/EC/UniversalDialog/Step
 title: $:/EvidentlyCube/Step/14

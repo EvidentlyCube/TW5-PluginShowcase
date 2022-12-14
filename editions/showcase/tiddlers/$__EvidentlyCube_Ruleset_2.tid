@@ -1,0 +1,9 @@
+caption: Filtering
+created: 20221214204106863
+hint: Run filter
+modified: 20221214204210917
+prefix: [
+ruleset-type: filter
+tags: $:/tags/EC/UniversalDialog/Ruleset
+title: $:/EvidentlyCube/Ruleset/2
+type: text/vnd.tiddlywiki

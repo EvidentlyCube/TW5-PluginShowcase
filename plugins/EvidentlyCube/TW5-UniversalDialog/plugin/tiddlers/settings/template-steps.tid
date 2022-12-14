@@ -1,0 +1,64 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/template-steps
+
+<h1>Result steps</h1>
+<p>
+	The following steps are executed in order. Each subsequent step's results are appended to the result list
+	as long as they did not yet appear in the result set.<br/>
+	`<query>` is available in both filters and contains the value of the query as input by the user.<br/>
+	`Condition Filter` -- Optional filter, if it's provided amd returns nothing then this step will be skipped.<br/>
+	`Query Transform Filter` is a filter that optionally changes the query before it's passed to that step's
+	`Results Filter` -- if left empty query is not modified.<br/>
+	`Results Filter`'s results are displayed in the dialog. If left empty it will just execute `<query>` as if
+	it was a filter.
+</p>
+<table>
+<colgroup>
+	<col width="4%"/>
+	<col width="22%"/>
+	<col width="22%"/>
+	<col width="22%"/>
+	<col width="10%"/>
+	<col width="10%"/>
+</colgroup>
+<thead>
+<tr>
+	<th>#</th>
+	<th>Condition Filter</th>
+	<th>Query Transform Filter</th>
+	<th>Results Filter</th>
+	<th>Hint</th>
+	<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent<currentTiddler>nsort[priority]]" counter="counter">
+<tr>
+	<td align="center"><<counter>></td>
+	<td>
+		<$edit-text tag="textarea" field="condition-filter" placeholder="Condition Filter..."/>
+		<<must-be-valid-filter "condition-filter">>
+	</td>
+	<td>
+		<$edit-text tag="textarea" field="query-filter" placeholder="Query Transform Filter..."/>
+		<<must-be-valid-filter "query-filter">>
+	</td>
+	<td>
+		<$edit-text tag="textarea" field="results-filter" placeholder="Filter..."/>
+		<<must-be-valid-filter "results-filter">>
+	</td>
+	<td>
+		<$edit-text tag="input" field="hint" placeholder="Hint..."/>
+	</td>
+	<td>
+		<$button actions=<<action-step-delete>>>Delete</$button>
+		<$button actions=<<action-step-move-up>>>Up</$button>
+		<$button actions=<<action-step-move-down>>>Down</$button>
+	</td>
+</tr>
+</$list>
+<tr>
+	<td colspan="3"></td>
+	<td><$button actions=<<action-step-add>>>Add rule</$button></td>
+</tr>
+</tbody>
+</table>
