@@ -2,7 +2,7 @@
     {
         "created": "20221210212403639",
         "title": "$:/EvidentlyCube/Ruleset/2",
-        "modified": "20221211212150932",
+        "modified": "20221214092349928",
         "tags": "$:/tags/EC/UniversalDialog/Ruleset",
         "type": "text/vnd.tiddlywiki",
         "auto-ruleset-textarea": "1",
@@ -14,6 +14,7 @@
         "ruleset": "[[",
         "template": "[[$option$]]$caret$",
         "actions": "<$action-sendmessage $message=\"tm-ec-ud-action\" $param=\"force-ruleset\" option=<<title>> ruleset=\"By Tag:\" query=\"\"/>\n",
-        "hint-forced": ""
+        "hint-forced": "",
+        "ruleset-type": "filter"
     }
 ]

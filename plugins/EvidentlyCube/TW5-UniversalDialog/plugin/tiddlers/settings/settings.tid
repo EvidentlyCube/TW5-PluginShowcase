@@ -7,11 +7,7 @@ caption: Universal Dialog
 	$basetitle={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Ruleset]!is[draft]count[]add[1]addprefix[$:/EvidentlyCube/Ruleset/]] }}}
 	tags="$:/tags/EC/UniversalDialog/Ruleset"
 	caption={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Ruleset]!is[draft]count[]add[1]addprefix[Unnamed ruleset ]] }}}
-	ruleset="[["
-	filter="[all[tiddlers]!is[system]!is[draft]search:title<query>]"
-	display-filter="[<currentTiddler>]"
-	template="[[$option$]]$caret$"
-	auto-ruleset-textarea="1"
+	ruleset-type="prefix"
 >
 	<$action-navigate $to=<<createTiddler-title>> scroll="yes"/>
 </$action-createtiddler>

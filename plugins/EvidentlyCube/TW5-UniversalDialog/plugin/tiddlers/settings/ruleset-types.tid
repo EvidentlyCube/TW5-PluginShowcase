@@ -1,0 +1,7 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/ruleset-types
+type: application/x-tiddler-dictionary
+
+prefix: This ruleset is triggered by a specific prefix that is part of the the query itself.
+noprefix: This ruleset is triggered by a specific prefix that is not part of the query itself.
+filter: This just runs the provided input as a query. If the prefix is `[` then it is part of the filter, otherwise the prefix is not part of the filter.
+forced: This ruleset can only be activated by a Send Message widget and can optionally receive one or more options.

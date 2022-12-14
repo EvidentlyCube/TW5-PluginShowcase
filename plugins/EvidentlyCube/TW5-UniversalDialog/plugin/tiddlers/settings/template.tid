@@ -106,6 +106,23 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 <tbody>
 <tr>
 	<td align="center">
+		''Ruleset type:''<br/>
+		<p class="ec_ac-muted">
+			A hint that is displayed to the right of the text input.
+		</p>
+	</td>
+	<td>
+		<$select field="ruleset-type">
+			<option value="prefix">Prefixed</option>
+			<option value="noprefix">Excluded Prefix</option>
+			<option value="filter">Run as Filter</option>
+			<option value="forced">Forced</option>
+		</$select>
+		<p><$text text={{{ [[$:/plugins/EvidentlyCube/UniversalDialog/ruleset-types]getindex{!!ruleset-type}] }}}/></p>
+	</td>
+</tr>
+<tr>
+	<td align="center">
 		''Hint:''<br/>
 		<p class="ec_ac-muted">
 			A hint that is displayed to the right of the text input.
@@ -131,17 +148,6 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 		</$list>
 	</td>
 </tr>
-<tr>
-	<td align="center">
-		''Exclude prefix from query:''<br/>
-		<p class="ec_ac-muted">
-			When checked the prefix will be excluded from the `<<query>>` variable sent to the steps.
-		</p>
-	</td>
-	<td>
-		<$checkbox field="exclude-prefix" checked="1">Exclude prefix from query</$checkbox>
-	</td>
-</tr>
 </tbody>
 </table>
 
@@ -162,30 +168,6 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 	</td>
 	<td>
 		<$edit-text tag="textarea" class="ec-tc-disabled" field="actions" placeholder="Actions..."/>
-	</td>
-</tr>
-<tr>
-	<td align="center">
-		''Forced only:''<br/>
-		<p class="ec_ac-muted">
-			When checked this ruleset can only be triggered forcefully by sending a message with its prefix.<br/>
-			It's mostly useful in multi-step actions, where the first result feeds some variable to another one. <br/>
-			The forced option is available in `Results Filter`s as a variable `<<option>>`
-		</p>
-	</td>
-	<td>
-		<$checkbox field="forced-only" checked="1">Only use this filter when forced</$checkbox>
-	</td>
-</tr>
-<tr>
-	<td align="center">
-		''Forced hint:''<br/>
-		<p class="ec_ac-muted">
-			Optional hint displayed before the text input when this ruleset is active.
-		</p>
-	</td>
-	<td>
-		<$edit-text tag="input" class="ec-tc-disabled" field="hint-forced" placeholder="Forced hint..."/>
 	</td>
 </tr>
 </tbody>
@@ -223,7 +205,7 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template
 <tbody>
 <$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]field:parent<currentTiddler>nsort[priority]]" counter="counter">
 <tr>
-	<td align="center"><<counter>>, {{!!priority}}, <$text text=<<currentTiddler>>/></td>
+	<td align="center"><<counter>></td>
 	<td>
 		<$edit-text tag="textarea" field="condition-filter" placeholder="Condition Filter..."/>
 		<<must-be-valid-filter "condition-filter">>
