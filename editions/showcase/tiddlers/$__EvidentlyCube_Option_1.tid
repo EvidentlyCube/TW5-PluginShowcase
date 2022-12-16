@@ -1,0 +1,8 @@
+created: 20221215053732569
+hint: By Tag <$text={{!!option-tag}}/>
+modified: 20221215083020508
+name: tag
+parent: $:/EvidentlyCube/Ruleset/4
+tags: $:/tags/EC/UniversalDialog/Option
+title: $:/EvidentlyCube/Option/1
+type: text/vnd.tiddlywiki

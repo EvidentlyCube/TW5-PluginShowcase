@@ -37,6 +37,18 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/actions
 	/>
 </$let>
 \end
+\define action-option-add()
+<$let
+	new-number={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Option]!is[draft]search-replace:g:regexp[\D],[]!match[]maxall[]add[1]!match[-Infinity]] ~[[1]] }}}
+	new-priority={{{ [all[shadows+tiddlers]tag[$:/tags/EC/UniversalDialog/Option]!is[draft]get[priority]search-replace:g:regexp[\D],[]!match[]maxall[]add[1]!match[-Infinity]] ~[[1]] }}}
+>
+	<$action-createtiddler
+		$basetitle={{{ [[$:/EvidentlyCube/Option/]addsuffix<new-number>] }}}
+		tags="$:/tags/EC/UniversalDialog/Option"
+		parent=<<currentTiddler>>
+	/>
+</$let>
+\end
 \define action-step-move-down()
 <$let
 	priority={{!!priority}}

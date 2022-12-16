@@ -109,7 +109,7 @@ title: $:/plugins/EvidentlyCube/UniversalDialog/template-ruleset
 </tbody>
 </table>
 
-<$list filter="[{!!ruleset-type}!match[forced]]" variable="ignore">
+<$list filter="[{!!ruleset-type}match[forced]]" variable="ignore">
 	<$transclude tiddler="$:/plugins/EvidentlyCube/UniversalDialog/template-options" />
 </$list>
 
