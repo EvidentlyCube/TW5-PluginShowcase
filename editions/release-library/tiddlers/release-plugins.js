@@ -24,23 +24,24 @@ var Command = function(params,commander,callback) {
 
 Command.prototype.execute = function() {
 	if(this.params.length < 1) {
-		return "Missing skinny tiddler list";
+		return "Plugin list filter missing";
 	} else if (this.params.length < 2) {
 		return "Plugins directory not given";
 	}
 	const self = this,
 		fs = require("fs"),
 		path = require("path"),
-		skinnyListTitle = this.params[0],
+		filter = this.params[0],
 		pluginsDir = path.resolve(this.params[1]),
-		skinnyList = this.commander.wiki.getTiddlerDataCached(skinnyListTitle);
+		skinnyList = [];
 
 	try {
 		fs.accessSync(pluginsDir, fs.constants.R_OK);
-
 	} catch (e) {
 		return `Cannot read plugins directory '${pluginsDir}'`;
 	}
+	const pluginTitles = self.commander.wiki.filterTiddlers(filter);
+
 	const titleToPathMap = new Map();
 	$tw.utils.each(fs.readdirSync(pluginsDir), function(file) {
 		const pluginInfoPath = `${pluginsDir}${path.sep}${file}${path.sep}plugin${path.sep}plugin.info`;
@@ -51,12 +52,12 @@ Command.prototype.execute = function() {
 			titleToPathMap.set(json.title, `${pluginsDir}${path.sep}${file}`);
 		} catch (e) {}
 	});
-	$tw.utils.each(skinnyList, function(tiddler) {
-		const plugin = self.commander.wiki.getTiddler(tiddler.title);
-		const pluginPath = titleToPathMap.get(tiddler.title);
+	$tw.utils.each(pluginTitles, function(pluginTitle) {
+		const plugin = self.commander.wiki.getTiddler(pluginTitle);
+		const pluginPath = titleToPathMap.get(pluginTitle);
 
 		if (!pluginPath) {
-			console.error(`Failed to find path for plugin '${tiddler.title}'`);
+			console.error(`Failed to find path for plugin '${pluginTitle}'`);
 			return;
 		}
 
@@ -64,6 +65,7 @@ Command.prototype.execute = function() {
 
 		$tw.utils.createFileDirectories(releasePath);
 		fs.writeFileSync(releasePath,JSON.stringify(plugin),"utf8");
+		console.log(`Released plugin version ${releasePath}`);
 	});
 	return null;
 };
