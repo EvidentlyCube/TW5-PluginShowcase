@@ -22,6 +22,7 @@
 			"--makelibrary-patch",
 			"--makelibrary", "$:/UpgradeLibrary",
 			"--savelibrarytiddlers", "$:/UpgradeLibrary", "[prefix[$:/plugins/EvidentlyCube]!suffix[Discloser]!suffix[AutoCloseTags]!suffix[FieldPropagator]]", "recipes/library/tiddlers/", "$:/UpgradeLibrary/List",
+			"--release-plugins", "$:/UpgradeLibrary/List", "plugins/EvidentlyCube/",
 			"--savetiddler", "$:/UpgradeLibrary/List", "recipes/library/tiddlers.json",
 			"--rendertiddler", "$:/plugins/tiddlywiki/pluginlibrary/library.template.html", "library.html", "text/plain"
 		]
