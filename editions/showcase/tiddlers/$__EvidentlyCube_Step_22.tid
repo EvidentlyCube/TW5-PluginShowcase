@@ -1,0 +1,8 @@
+created: 20221222150318286
+modified: 20221222150934520
+parent: $:/EvidentlyCube/Ruleset/4
+priority: 15
+results-filter: [<currentTiddler>fields[]] :map[<..currentTiddler>get<currentTiddler>]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/22
+type: text/vnd.tiddlywiki

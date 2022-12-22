@@ -107,8 +107,14 @@ API for the universal dialog
 			this.currentRuleset = forcedRuleset;
 			this.forcedRuleset = true;
 
+			for (const option of this.currentRuleset.options) {
+				const fieldName = `option-${option.name}`;
+
+				if (typeof e.paramObject[fieldName] !== 'undefined') {
+					$tw.wiki.setText(STATE_TIDDLER, fieldName, null, String(e.paramObject[fieldName]));
+				}
+			}
 			this.option = e.paramObject.option || "";
-			$tw.wiki.setText(STATE_TIDDLER, 'option', null, this.option);
 			$tw.wiki.setText(STATE_TIDDLER, 'hint-forced', null, this.currentRuleset.hintForced);
 		} else {
 			this.forcedRuleset = false;
@@ -161,14 +167,14 @@ API for the universal dialog
 		for (const step of this.currentRuleset.steps) {
 			if (
 				step['condition-filter']
-				&& $tw.wiki.filterTiddlers(step['condition-filter'], getVariablesFauxWidget({query: baseQuery, option: this.option})).length === 0
+				&& $tw.wiki.filterTiddlers(step['condition-filter'], getVariablesFauxWidget({query: baseQuery, option: this.option, currentTiddler: STATE_TIDDLER})).length === 0
 			) {
 				continue;
 			}
 			const query = this._transformQuery(baseQuery, step['query-filter']);
 
 			// Todo add query transform step
-			const stepResults = $tw.wiki.filterTiddlers(step['results-filter'] || query, getVariablesFauxWidget({query: query, option: this.option}));
+			const stepResults = $tw.wiki.filterTiddlers(step['results-filter'] || query, getVariablesFauxWidget({query: query, option: this.option, currentTiddler: STATE_TIDDLER}));
 
 			addStepResults(stepResults, step);
 		}
@@ -209,10 +215,17 @@ API for the universal dialog
 
 	UniversalDialog.prototype._getRulesetStepTiddlers = function(rulesetTitle) {
 		return $tw.wiki.filterTiddlers(
-			"[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]field:parent<parent>]",
+			"[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]field:parent<parent>sort[priority]]",
 			getVariablesFauxWidget({parent: rulesetTitle})
 		);
-	}
+	};
+
+	UniversalDialog.prototype._getRulesetOptionTiddlers = function(rulesetTitle) {
+		return $tw.wiki.filterTiddlers(
+			"[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Option]!is[draft]field:parent<parent>]",
+			getVariablesFauxWidget({parent: rulesetTitle})
+		);
+	};
 
 	UniversalDialog.prototype._updateRulesetList = function(tiddlerList) {
 		this.rulesets.length = 0;
@@ -229,7 +242,8 @@ API for the universal dialog
 				selectAction: tiddlerFields.actions || DEFAULT_ACTION,
 				isPrefixExcluded: this._getRulesetPrefixExcluded(type, prefix),
 				isForced: type === TYPE_FORCED,
-				steps: this._getRulesetSteps(type, title)
+				steps: this._getRulesetSteps(type, title),
+				options: this._getRulesetOptions(title)
 			});
 		}
 	}
@@ -259,6 +273,19 @@ API for the universal dialog
 				return $tw.wiki.getTiddler(title).fields;
 			});
 		}
+	}
+
+	UniversalDialog.prototype._getRulesetOptions = function(title) {
+		return this._getRulesetOptionTiddlers(title).map(function(title) {
+			const fields = $tw.wiki.getTiddler(title).fields;
+
+			return {
+				name: fields.name || '',
+				hint: fields.hint || ''
+			};
+		}).filter(function(option) {
+			return option.name !== '';
+		});
 	}
 
 	function getVariablesFauxWidget(vars) {
