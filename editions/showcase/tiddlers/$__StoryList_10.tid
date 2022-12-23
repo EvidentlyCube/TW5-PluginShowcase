@@ -1,3 +1,5 @@
-list: $:/ControlPanel $:/EvidentlyCube/Ruleset/4 $:/EvidentlyCube/Ruleset/5
+created: 20221223155829371
+list: $:/EvidentlyCube/Ruleset/4 $:/EvidentlyCube/Ruleset/5
+modified: 20221223155829371
 title: $:/StoryList
 type: text/vnd.tiddlywiki

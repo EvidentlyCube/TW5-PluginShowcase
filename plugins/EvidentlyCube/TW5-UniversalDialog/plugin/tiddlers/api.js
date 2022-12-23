@@ -95,7 +95,6 @@ API for the universal dialog
 				$tw.wiki.setText(STATE_TIDDLER, 'limit', null, "11");
 				$tw.wiki.setText(STATE_TIDDLER, 'selected', null, "1");
 				$tw.wiki.setText(STATE_TIDDLER, 'option', null, "");
-				$tw.wiki.setText(STATE_TIDDLER, 'hint-forced', null, "");
 				this.refreshResults();
 				break;
 		}
@@ -115,7 +114,6 @@ API for the universal dialog
 				}
 			}
 			this.option = e.paramObject.option || "";
-			$tw.wiki.setText(STATE_TIDDLER, 'hint-forced', null, this.currentRuleset.hintForced);
 		} else {
 			this.forcedRuleset = false;
 		}
@@ -145,6 +143,7 @@ API for the universal dialog
 		}
 
 		$tw.wiki.setText(STATE_TIDDLER, 'selected', null, "1");
+		$tw.wiki.setText(STATE_TIDDLER, 'current-ruleset', null, this.currentRuleset.title);
 		$tw.wiki.setText(STATE_TIDDLER, 'prefix', null, this.currentRuleset.prefix);
 		$tw.wiki.setText(STATE_TIDDLER, 'hint', null, this.currentRuleset.hint);
 
@@ -152,7 +151,7 @@ API for the universal dialog
 		const resultsSet = new Set();
 		const addStepResults = function(results, step) {
 			for (const result of results) {
-				if (resultsSet.has(result)) {
+				if (result === '' || resultsSet.has(result)) {
 					continue;
 				}
 
@@ -237,6 +236,7 @@ API for the universal dialog
 			var type = tiddlerFields['ruleset-type'];
 
 			this.rulesets.push({
+				title: title,
 				prefix: prefix,
 				hint: tiddlerFields.hint || "",
 				selectAction: tiddlerFields.actions || DEFAULT_ACTION,

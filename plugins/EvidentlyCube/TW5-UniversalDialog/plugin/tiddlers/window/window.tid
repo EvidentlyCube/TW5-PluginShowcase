@@ -30,9 +30,7 @@ tags: $:/tags/PageTemplate
 	<$keyboard actions=<<action-close>> key="escape">
 	<$keyboard actions=<<action-open-selected>> key="enter">
 	<$keyboard tag="div" class="ec_ud-input-row" actions=<<action-backspace>> key="backspace">
-		<$let option={{$:/temp/UniversalDialog/state!!option}}>
-		<span class="ec_ud-forced-hint"><$transclude tiddler="$:/temp/UniversalDialog/state" field="hint-forced" /></span>
-		</$let>
+		<$transclude tiddler="$:/plugins/EvidentlyCube/UniversalDialog/window-options" />
 		<$edit-text tag="input" class="ec_ud-input" inputActions=<<action-input>> focus="yes" tiddler="$:/temp/UniversalDialog/state" field="text" default="" />
 		<span class="ec_ud-hint"><$transclude tiddler="$:/temp/UniversalDialog/state" field="hint" /></span>
 	</$keyboard>

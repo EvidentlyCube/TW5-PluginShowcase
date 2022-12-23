@@ -2,13 +2,13 @@
     {
         "created": "20221222142716766",
         "tags": "$:/tags/EC/UniversalDialog/Ruleset",
-        "modified": "20221222150549349",
+        "modified": "20221223155416546",
         "title": "$:/EvidentlyCube/Ruleset/5",
         "type": "text/vnd.tiddlywiki",
         "caption": "Tags",
         "ruleset-type": "noprefix",
         "prefix": "#",
         "hint": "Find tags",
-        "actions": "<$action-sendmessage \n$message=\"tm-ec-ud-action\" \n$param=\"force-ruleset\" \nruleset=\"By Tag\"\noption-tag=<<title>> />"
+        "actions": "<$action-sendmessage \n$message=\"tm-ec-ud-action\" \n$param=\"force-ruleset\" \nruleset=\"By Tag\"\nquery=\"\"\noption-tag=<<title>> />"
     }
 ]

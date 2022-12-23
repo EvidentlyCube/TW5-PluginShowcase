@@ -1,0 +1,13 @@
+title: $:/plugins/EvidentlyCube/UniversalDialog/window-options
+tags: $:/tags/PageTemplate
+
+\whitespace trim
+<$let currentTiddler="$:/temp/UniversalDialog/state">
+	<$list filter="[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Option]field:parent{!!current-ruleset}]" variable="option">
+		<$let option-name={{{ [<option>get[name]addprefix[option-]] }}}>
+			<$list filter="[<currentTiddler>has<option-name>]" variable="_">
+				<span class="ec_ud-forced-hint"><$transclude tiddler={{{ [<option>get[hint]] }}} field="title"/></span>
+			</$list>
+		</$let>
+	</$list>
+</$let>

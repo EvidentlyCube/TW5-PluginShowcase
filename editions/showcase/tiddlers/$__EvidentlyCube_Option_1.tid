@@ -1,6 +1,6 @@
 created: 20221215053732569
-hint: By Tag <$text={{!!option-tag}}/>
-modified: 20221215083020508
+hint: By Tag <$text text={{!!option-tag}}/>
+modified: 20221223154946466
 name: tag
 parent: $:/EvidentlyCube/Ruleset/4
 tags: $:/tags/EC/UniversalDialog/Option

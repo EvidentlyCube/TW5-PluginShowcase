@@ -29,8 +29,8 @@ Result store for the API
 				hint = "";
 			}
 			return isNaN(oneBasedIndex) ? 0 : oneBasedIndex
-				+ "\t" + title
-				+ "\t" + hint;
+				+ "\t" + this.stripReservedCharacters(title)
+				+ "\t" + this.stripReservedCharacters(hint);
 		},
 
 		storeResults: function(encodedResults) {
@@ -108,6 +108,10 @@ Result store for the API
 				title: String(title),
 				hint: String(hint)
 			};
+		},
+
+		stripReservedCharacters: function(text) {
+			return String(text).replace(/\t|\n/g, '');
 		}
 	};
 })();
