@@ -1,0 +1,19 @@
+{
+	"description": "Mocha",
+	"plugins": [
+		"EvidentlyCube/TW5-AutoCloseTags/plugin",
+		"EvidentlyCube/TW5-FieldPropagator/plugin",
+		"EvidentlyCube/TW5-GoToShortcut/plugin",
+		"EvidentlyCube/TW5-MiddleClickActions/plugin",
+		"EvidentlyCube/TW5-TaskList/plugin",
+		"EvidentlyCube/TW5-AdvancedPerformance/plugin",
+		"EvidentlyCube/TW5-AutoComplete/plugin",
+		"EvidentlyCube/TW5-Permaviews/plugin",
+		"EvidentlyCube/TW5-ExtraFilters/plugin"
+	],
+	"themes": [
+		"tiddlywiki/vanilla"
+	],
+	"config": {
+	}
+}
