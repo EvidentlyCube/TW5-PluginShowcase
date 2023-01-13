@@ -22,3 +22,6 @@
 [submodule "plugins/EvidentlyCube/TW5-Permaviews"]
 	path = plugins/EvidentlyCube/TW5-Permaviews
 	url = git@github.com:EvidentlyCube/TW5-Permaviews.git
+[submodule "plugins/EvidentlyCube/TW5-ExtraFilters"]
+	path = plugins/EvidentlyCube/TW5-ExtraFilters
+	url = git@github.com:EvidentlyCube/TW5-FilterOperators.git
