@@ -2,15 +2,16 @@ var TiddlyWiki = require("tiddlywiki").TiddlyWiki;
 
 process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
 
-releaseShowcase();
+releaseShowcase('release');
+releaseShowcase('release-codemirror');
 releaseLibrary();
 
-function releaseShowcase() {
+function releaseShowcase(version) {
 	var $tw = TiddlyWiki();
 
 	// Pass the command line arguments to the boot kernel
 	$tw.boot.argv = [
-		"editions/release", "--verbose", "--output",
+		`editions/${version}`, "--verbose", "--output",
 		"docs/",
 		"--build", "release"
 	];

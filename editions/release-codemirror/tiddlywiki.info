@@ -1,0 +1,38 @@
+{
+	"description": "Release",
+	"includeWikis": [
+		"../showcase"
+	],
+	"plugins": [
+		"tiddlywiki/codemirror",
+		"tiddlywiki/codemirror-autocomplete",
+		"tiddlywiki/codemirror-closebrackets",
+		"tiddlywiki/codemirror-closetag",
+		"tiddlywiki/codemirror-fullscreen",
+		"tiddlywiki/codemirror-mode-css",
+		"tiddlywiki/codemirror-mode-javascript",
+		"tiddlywiki/codemirror-mode-markdown",
+		"tiddlywiki/codemirror-mode-x-tiddlywiki",
+		"tiddlywiki/codemirror-mode-xml",
+		"tiddlywiki/codemirror-search-replace",
+		"EvidentlyCube/TW5-AutoCloseTags/plugin",
+		"EvidentlyCube/TW5-FieldPropagator/plugin",
+		"EvidentlyCube/TW5-GoToShortcut/plugin",
+		"EvidentlyCube/TW5-MiddleClickActions/plugin",
+		"EvidentlyCube/TW5-TaskList/plugin",
+		"EvidentlyCube/TW5-AdvancedPerformance/plugin",
+		"EvidentlyCube/TW5-AutoComplete/plugin",
+		"EvidentlyCube/TW5-Permaviews/plugin"
+	],
+	"themes": [
+		"tiddlywiki/vanilla"
+	],
+	"build": {
+		"release": [
+			"--rendertiddler", "$:/core/save/all", "index-codemirror.html", "text/plain"
+		]
+	},
+	"config": {
+		"retain-original-tiddler-path": false
+	}
+}
