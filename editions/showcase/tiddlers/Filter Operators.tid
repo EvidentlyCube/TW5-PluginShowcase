@@ -1,0 +1,30 @@
+created: 20230108162151706
+github: https://github.com/EvidentlyCube/TW5-FilterOperators
+image: Filter Operators Image
+modified: 20230110113506334
+plugin: $:/plugins/EvidentlyCube/FilterOperators
+priority: 2
+tagline: Additional filter operators
+tags: Plugin
+title: Filter Operators
+type: text/vnd.tiddlywiki
+
+! Description 
+
+A collection of awesome filter operators.
+
+! Features 
+
+ * [[searchsort|Extra Filter: searchsort]] -- sort input in a natural way with a search query.
+
+! Installation 
+
+{{Auto Complete/Install}}
+
+! Demo 
+
+See the demo [[here|Auto Complete/Demo]].
+
+! Additional Information
+
+ * I have a list of test cases that I go through before each new release. You can see it [[here|https://github.com/EvidentlyCube/TW5-AutoComplete/blob/main/TEST_CASES.md]].
