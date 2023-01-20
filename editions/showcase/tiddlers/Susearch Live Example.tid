@@ -6,8 +6,8 @@ field: text
 field-name: text
 modified: 20230120202705434
 query: sds
-source: [Data/Searchsort-idioms]get[text]splitregexp[\r?\n]
-tags: 
+source: [Data/susearch-idioms]get[text]splitregexp[\r?\n]
+tags:
 title: Susearch Live Example
 type: text/vnd.tiddlywiki
 
@@ -15,7 +15,7 @@ type: text/vnd.tiddlywiki
 !! Live example
 
 <$let
-	temp=<<qualify $:/temp/searchsort-example>>
+	temp=<<qualify $:/temp/susearch-example>>
 	lb="["
 	rb="]"
 >
@@ -25,8 +25,8 @@ type: text/vnd.tiddlywiki
    <$checkbox field="do-marking" checked="1" unchecked="0">Do marking</$checkbox>
 
 	<$select field="source">
-		<option value="[Data/Searchsort-ducks]get[text]splitregexp[\r?\n]">Ducks</option>
-		<option value="[Data/Searchsort-idioms]get[text]splitregexp[\r?\n]">Idioms</option>
+		<option value="[Data/susearch-ducks]get[text]splitregexp[\r?\n]">Ducks</option>
+		<option value="[Data/susearch-idioms]get[text]splitregexp[\r?\n]">Idioms</option>
 		<option value="all[tiddlers]!prefix[$:/]!is[draft]">All Tiddlers</option>
 		<option value="all[tiddlers+shadows]!prefix[$:/temp/]!is[draft]">All + Shadow Tiddlers</option>
 		<option value="all[tiddlers+shadows]tags[]">Tags</option>
