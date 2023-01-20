@@ -1,6 +1,6 @@
 code-body: yes
 created: 20221013210631560
-modified: 20221209162228380
+modified: 20230120130601324
 tags: $:/tags/Stylesheet
 title: $:/system/Style
 type: text/vnd.tiddlywiki
@@ -147,10 +147,84 @@ div[data-tiddler-title="Evidently Cube Plugins"] button[class~="tc-btn-%24%3A%2F
 	padding: 1em;
 }
 warning {
-background: #FCC;
-display: block;
-font-size: 20px;
-line-height: 28px;
-padding: 1em;
-text-align: center;
+	background: #FCC;
+	display: block;
+	font-size: 20px;
+	line-height: 28px;
+	padding: 1em;
+	text-align: center;
+}
+
+/* Filter Presentation */
+.ec-filter-example {
+	padding: 1em 0 6em;
+	position: relative;
+}
+.ec-filter-example aside {
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0.75;
+}
+.ec-filter-example main {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	font-size: 24px;
+	gap: 4px;
+}
+.ec-filter-example div {
+	padding-bottom: 5px;
+	border-radius: 5px;
+	border-bottom: 2px solid <<color foreground>>;
+}
+.ec-filter-example main:hover div {
+	opacity: 0.5;
+}
+.ec-filter-example:hover div:hover {
+	opacity: 1;
+	cursor: default;
+	color: <<colour foreground>>;
+}
+.ec-filter-example div.optional{
+	color: #884;
+	border-color: #884;
+}
+.ec-filter-example div:hover span.comment {
+	display: block;
+}
+.ec-filter-example div span.comment {
+	display: none;
+	position: absolute;
+	bottom: -10px;
+	color: <<colour foreground>>;
+	transform: translatey(100%);
+	left: 0;
+	right: 0;
+	font-size: 12px;
+	text-align: center;
+	user-select: none;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+/* Macros */
+.doc-example {
+    border: 1px solid #888;
+    border-radius: 1em;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+}
+.doc-example p {
+    padding: 0;
+    margin: 0;
+}
+.doc-example h3 {
+    margin-bottom: 0.5em;
+}
+.doc-example input {
+    width: 100%;
+    font-family: monospace;
 }

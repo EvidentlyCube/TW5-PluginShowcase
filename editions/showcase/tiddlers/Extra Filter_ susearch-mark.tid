@@ -1,0 +1,74 @@
+created: 20230120192902958
+description: Create a preview of the search results with highlighted matches. Ignore wikitext, strip wikitext or parse wikitext and decide whether to display it as text or HTML.
+filter: susearch-mark
+modified: 20230120195730952
+tagline: Highlight search results
+tags: ExtraFilter
+title: Extra Filter: susearch-mark
+type: text/vnd.tiddlywiki
+
+!! Highlight search results
+
+Create a preview of the search results with highlighted matches. Works best in conjunction with [[susearch-sort|Extra Filter: susearch-sort]] and [[susearch-mark|Extra Filter: susearch-mark]].
+
+<pre class="ec-filter-example">
+<aside>Move mouse over parts of the filter to get more information.</aside>
+<main>
+<div class="bit">susearch-mark<span class="comment">Filter name</span></div>
+<div class="bit optional">:mode<span class="comment">''Optional''<br>Controls how the title is processed while marking.<br>''Defaults to:'' `default`.</span></div>
+<div class="bit">[query]<span class="comment">The search query used to mark the matches. Case-insensitive.</span></div>
+<div class="bit">,[template]<span class="comment">''optional''<br>Template used to mark the matches, use `$1` in place of the match.<br>''Defaults to:'' `<mark>$1</mark>`</span></div>
+</main>
+</pre>
+
+----
+
+! Structure
+
+```
+susearch-mark[query]
+
+susearch-mark:mode[query],[template]
+```
+
+* ''Input:'' A selection of titles.
+* ''Suffixes:''
+** `:mode`: //(optional)// Indicates how the input is processed while marking matches. Supported values are:
+*** `default` -- No processing is done. If the input contains WikiText or HTML it will attempt to mark these too. Most useful when marking raw-text content. ''Default option.''
+*** `raw-strip` -- Strips all WikiText and HTML before marking. Much faster than the other wikify options but won't parse macros, transclusions, widgets and such.
+*** `wikify-strip` -- Wikifies the input and then extract only the text content before marking. This will parse macros, transclusions, widgets and such.
+*** `wikify-safe` -- Wikifies the input and marks the matches in such a way that the HTML tags remain untouched. The slowest option but results in a faithful (though non-interactive) render of the tiddler.
+* ''Operands:''
+** `[query]` -- The query containing words to mark. Matching is case-insensitive. It will match:
+*** The whole phrase
+*** Every word in the phrase as-is
+*** Every word in the phrase with stripped special characters.
+** `[template]` -- //(optional)// The template used to replace matches with markings. All occurrences of `$1` will be replaced by the match in the template. ''Defaults to: `<mark>$1</mark>`'' 
+* ''Output:'' Input titles that passed the search query, with matches marked, in the same order.
+
+!! Edge cases:
+
+* If `[query]` operand is empty no changes are done.
+* If `input` is empty `output` will also be empty.
+
+! Examples:
+
+See the [[Live Search Example|Susearch Live Example]] showcasing the full capabilities of this filter in the context of other filters.
+
+<<operator-example 1 "[[There is full phrase here]susearch-mark[full phrase]]" "Mark full phrase">>
+
+<<operator-example 2 "[[Have foo in this abaria]susearch-mark[foo bar]]" "Mark words">>
+
+<<operator-example 3 "[[Dollars Do$$ars]susearch-mark[Do$$ars]]" "Mark words with special characters">>
+
+<<operator-example 4 "[[Me dont do]susearch-mark[don't]]" "Mark words while stripping special characters from query">>
+
+<<operator-example 5 "[[abcdefghik]susearch-mark[fgh],[__$1__]]" "Custom template">>
+
+<<operator-example 6 "[[<img>test</img>]susearch-mark[img]]" "HTML has no special handling by default">>
+
+<<operator-example 7 "[[''img''<img>img</img> <<img>>]susearch-mark:raw-strip[img]]" "`raw-strip` removes HTML and wikitext">>
+
+<<operator-example 8 """[[''img''<a href="img">img</a> <<img>>]susearch-mark:wikify-strip[img]]""" "`wikify-strip` parses wikitext and removes the HTML">>
+
+<<operator-example 9 """[[''img''<a href="img">img</a> <<img>>]susearch-mark:wikify-safe[img]]""" "`wikify-safe` parses wikitext and safely marks around the HTML tags">>

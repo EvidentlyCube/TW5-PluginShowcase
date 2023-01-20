@@ -1,0 +1,49 @@
+created: 20230120120448408
+modified: 20230120123856313
+tags: $:/tags/Macro
+title: Macro: Operator example
+type: text/vnd.tiddlywiki
+
+\define state-prefix() $:/temp/OperatorExample/
+\define operator-example-tryit-actions()
+	<$action-setfield $tiddler=<<state>> text="show" filter=<<__filter__>>/>
+\end
+\define operator-example(testIndex, filter, description)
+<div class="doc-example">
+<$let state={{{ [title<state-prefix>addsuffix{!!title}addsuffix[/]addsuffix<__testIndex__>] }}}>
+
+<$list filter="[<state>!has[text]]" variable="_">
+	<h3>
+		<<__description__>>
+		<$button actions=<<operator-example-tryit-actions>>>Try it</$button>
+	</h3>
+	 `$filter$`
+</$list>
+<$list filter="[<state>get[text]]" variable="_">
+	<h3>
+		<<__description__>>
+		<$button set=<<state>> setTo="">Hide</$button>
+		<$list filter="[<state>get[filter]else[]!match<__filter__>]" variable="_">
+			<$button actions=<<operator-example-tryit-actions>>>Reset</$button>
+		</$list>
+	</h3>
+    <$edit-text tiddler=<<state>> field="filter" tag="input" type=search focus="true"/>
+
+	<div class="doc-example-result">
+	<ul><$list filter={{{[<state>get[filter]]}}} emptyMessage="<li>//No results.//</li>">
+	<li><$text text=<<currentTiddler>>/></li>
+	</$list></ul>
+	</div>
+</$list>
+</$let>
+\end
+
+<<operator-example 1 "abc">>
+
+----
+
+<<operator-example 2 "abc" "def">>
+
+----
+
+<<operator-example 3 "[all[current]backlinks[]]" "tiddlers that link to this one">>

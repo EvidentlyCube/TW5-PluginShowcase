@@ -1,11 +1,14 @@
 created: 20230111103747452
+do-marking: 1
 do-search: 1
 do-sort: 1
-modified: 20230111122510592
+field: text
+field-name: title
+modified: 20230120132434938
 query: 
-source: all[tiddlers]!prefix[$:/temp/]!is[draft]
+source: all[tiddlers+shadows]tags[]
 tags: 
-title: susearch live example
+title: Susearch Live Example
 type: text/vnd.tiddlywiki
 
 
@@ -13,8 +16,8 @@ type: text/vnd.tiddlywiki
 
 <$let
 	temp=<<qualify $:/temp/searchsort-example>>
-    lb="["
-    rb="]"
+	lb="["
+	rb="]"
 >
 
    <$checkbox field="do-search" checked="1">Do search</$checkbox>
@@ -28,22 +31,22 @@ type: text/vnd.tiddlywiki
 		<option value="all[tiddlers+shadows]!prefix[$:/temp/]!is[draft]">All + Shadow Tiddlers</option>
 		<option value="all[tiddlers+shadows]tags[]">Tags</option>
 	</$select>
-	<$select field="field" default="title">
+	<$select field="field-name" default="title">
 		<option value="title">Search in title</option>
 		<option value="text">Search in text</option>
 	</$select>
 	<$edit-text tag="input" field="query" default="" placeholder="Search query"/>
 
 	<$let
-        query={{!!query}}
+		query={{!!query}}
 		source={{!!source}}
-		field={{{ [<temp>get[field]else[title]] }}}
-        search-base={{{ [[susearch:]addsuffix<field>addsuffix[<query>]] }}}
-        search={{{ [<currentTiddler>get[do-search]then<search-base>] }}}
-        sort-base={{{ [[susearch-sort:]addsuffix<field>addsuffix[<query>]] }}}
-        sort={{{ [<currentTiddler>get[do-sort]then<sort-base>] }}}
-limit="limit[20]"
-        filter={{{ [<source>addsuffix<search>addsuffix<sort>addsuffix<limit>addprefix<lb>addsuffix<rb>] }}}
+		field={{{ [{!!field-name}else[title]] }}}
+		search-base={{{ [[susearch:]addsuffix<field>addsuffix[:raw-strip]addsuffix[<query>]] }}}
+		search={{{ [<currentTiddler>get[do-search]then<search-base>] }}}
+		sort-base={{{ [[susearch-sort:]addsuffix<field>addsuffix[:raw-strip]addsuffix[<query>]] }}}
+		sort={{{ [<currentTiddler>get[do-sort]then<sort-base>] }}}
+		limit="limit[20]"
+		filter={{{ [<source>addsuffix<search>addsuffix<sort>addsuffix<limit>addprefix<lb>addsuffix<rb>] }}}
 	>
 
 		//Idioms list has been taken from [[jbrew/idiomash on Github|https://github.com/jbrew/idiomash/blob/master/text/idioms.txt]]//
@@ -52,7 +55,14 @@ limit="limit[20]"
 
 		<ul>
 		<$list filter=<<filter>> emptyMessage="""<li>//No results//</li>""">
-		<li><<currentTiddler>></li>
+		<li><$list filter="[{susearch live example!!do-marking}match[1]]" emptyMessage="<<currentTiddler>>" variable="_">
+			<$transclude tiddler={{{ [<currentTiddler>susearch-mark<query>] }}} field="title" />
+			<$list filter="[<field>match[text]]" variable="_">
+				<blockquote><$transclude tiddler={{{
+					[<currentTiddler>get[text]susearch-mark:raw-strip<query>focus-on[<mark>]]
+				}}} field="title" /></blockquote>
+			</$list>
+		</$list></li>
 		</$list>
 		</ul>
 	</$let>
