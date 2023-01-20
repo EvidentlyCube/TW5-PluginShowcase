@@ -1,0 +1,69 @@
+created: 20230120161250153
+description: intelligently sort search results by how relevant they are to a search query.
+filter: susearch-sort
+modified: 20230120201448063
+tagline: Intelligent sort of search results
+tags: ExtraFilter
+title: Extra Filter: susearch-sort
+type: text/vnd.tiddlywiki
+
+!! Intelligent sort of search results
+
+This filter will intelligently sort search results by how relevant they are to a search query. Works best in conjunction with [[susearch|Extra Filter: susearch]] and [[susearch-mark|Extra Filter: susearch-mark]].
+
+<pre class="ec-filter-example">
+<aside>Move mouse over parts of the filter to get more information.</aside>
+<main>
+<div class="bit">susearch-sort<span class="comment">Filter name</span></div>
+<div class="bit optional">:field<span class="comment">''Optional''<br>Name of the field by which to sort.<br>''Defaults to:'' `title`.</span></div>
+<div class="bit optional">:flags<span class="comment">''Optional''<br>Set to `raw-input` to remove WikiText and HTML tags before sorting.</span></div>
+<div class="bit">[query]<span class="comment">The search query used to sort the input. Case-insensitive.</span></div>
+</main>
+</pre>
+
+----
+
+! Structure
+
+```
+susearch-sort[query]
+
+susearch-sort:field:flags[query]
+```
+
+* ''Input:'' A selection of titles.
+* ''Suffixes:''
+** `:field` -- //(optional)// Field by which to sort. ''Defaults to `title`''
+** `:flags` -- //(optional)// Set to `raw-strip` to strip all WikiText and HTML before sorting. Most useful when searching through the contents of tiddlers.
+* ''Operands:''
+** `[query]` -- The text by which to sort. Read through ''Sorting algorithm'' to better understand how it works under the hood.
+* ''Output:'' Input titles sorted by 
+
+! Sorting algorithm
+
+The sorting algorithm gives each title a score and then sorts by the score. The rules are as follows:
+
+# Matches full phrase.
+## Prefer full phrase match at the start of the text.
+## Prefer prefix match at the start of the text.
+## Prefer full phrase match earlier in the text.
+## Prefer prefix match earlier in the text.
+## Prefer infix match earlier in the text.
+# Matches the most words.
+## Prefer full matches at the start of the text.
+## Prefer prefix matches at the start of the text.
+## Prefer full matches.
+## Prefer prefix matches.
+## Prefer infix matches.
+# Matches the most words stripping special characters.
+## Prefer full matches at the start of the text.
+## Prefer prefix matches at the start of the text.
+## Prefer full matches.
+## Prefer prefix matches.
+## Prefer infix matches.
+# Sort alphabetically like <code>[[sortan|https://tiddlywiki.com/#sortan%20Operator]]</code> does, ignoring letter case
+# Sort alphabetically like <code>[[sortan|https://tiddlywiki.com/#sortan%20Operator]]</code> does in a case-sensitive manner
+
+! Examples:
+
+{{Extra Filter: susearch-sort/Examples}}

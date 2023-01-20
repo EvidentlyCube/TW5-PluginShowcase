@@ -1,0 +1,23 @@
+created: 20230120200640453
+modified: 20230120201024329
+title: Extra Operators/Demo
+type: text/vnd.tiddlywiki
+
+! Broad examples:
+
+* [[Susearch Live Example]] -- A showcase of using [[susearch|Extra Filter: susearch]], [[susearch-sort|Extra Filter: susearch-sort]] and [[susearch-mark|Extra Filter: susearch-mark]] to create a smarter and more natural search experience. [[focus-on|Extra Filter: focus-on]] is used to display previews when searching in the `text` field.
+
+! Filter's examples:
+
+Each filter has its own, dedicated examples page.
+
+<ul>
+<$list filter="[all[tiddlers]tag[ExtraFilter]!is[draft]sort[filter]]">
+<h2>
+<$link to=<<currentTiddler>>>{{!!filter}}</$link>
+--- 
+<$link to={{{ [<currentTiddler>addsuffix[/Examples]] }}}>Examples</$link>
+</h2>
+<p>{{!!description}}</p>
+</$list>
+</ul>

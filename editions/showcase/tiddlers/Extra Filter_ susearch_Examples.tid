@@ -1,0 +1,21 @@
+created: 20230120200510093
+modified: 20230120200527811
+tags: ExtraFilterExamples
+title: Extra Filter: susearch/Examples
+type: text/vnd.tiddlywiki
+
+See the [[Live Search Example|Susearch Live Example]] showcasing the full capabilities of this filter in the context of other filters.
+
+<<operator-example 1 "[[No Match]susearch[test]]" "Exclude results that don't match">>
+
+<<operator-example 2 "[[test]susearch[test]]" "Include results that match...">>
+
+<<operator-example 3 "[[TEst]susearch[test]]" "...Case-insensitive">>
+
+<<operator-example 4 "[[two words]susearch[two]]" "Include results even if only a single word matches">>
+
+<<operator-example 5 "[[two words]susearch[or]]" "Include results even if only part of the word matches">>
+
+<<operator-example 6 "[[$$ test]susearch[$$]]" "Correctly work with special characters...">>
+
+<<operator-example 7 "[[$ollar$]susearch[@ollar@]]" "...Also find results as-if special characters were removed">>

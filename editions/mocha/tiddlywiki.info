@@ -1,5 +1,5 @@
 {
-	"description": "Evidently Cube's TiddlyWiki5 plugins showcase",
+	"description": "Mocha",
 	"plugins": [
 		"EvidentlyCube/TW5-AutoCloseTags/plugin",
 		"EvidentlyCube/TW5-FieldPropagator/plugin",
@@ -13,5 +13,7 @@
 	],
 	"themes": [
 		"tiddlywiki/vanilla"
-	]
+	],
+	"config": {
+	}
 }

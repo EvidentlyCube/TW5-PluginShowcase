@@ -1,0 +1,57 @@
+created: 20230120115114933
+description: Find specific text and its context and remove everything else.
+filter: focus-on
+modified: 20230120201413276
+tagline: Focus on part of the text
+tags: ExtraFilter
+title: Extra Filter: focus-on
+type: text/vnd.tiddlywiki
+
+!! Focus on part of the text
+
+This filter will look for the given `[search match]` and extract it along with its context. Most useful for adding context to search results
+
+<pre class="ec-filter-example">
+<aside>Move mouse over parts of the filter to get more information.</aside>
+<main>
+<div class="bit">focus-on<span class="comment">Filter name</span></div>
+<div class="bit optional">:flags<span class="comment">''Optional''<br>Configures the behavior. Supports:<br>''HTML-related options:'' expand-html (default), strip-html, ignore-html<br>casesensitive, regexp</span></div>
+<div class="bit">[search match]<span class="comment">First occurrence of this text will be used for focusing.<br>Flags can control if it's a regular expression and make it case sensitive.</span></div>
+<div class="bit optional">,[prefix length]<span class="comment">''Optional''<br>Number of character before the matched element to include.<br>''Defaults to:'' 20</span></div>
+<div class="bit optional">,[focus length]<span class="comment">''Optional''<br>Number of characters from the matched element to include.<br>Starts from the first character of the match, not the last.<br>''Defaults to:'' 128</span></div>
+<div class="bit optional">,[ellipsis]<span class="comment">''Optional''<br>Ellipsis used at the start and the end of the focused fragment if there is any text before/after it that was excluded.<br>''Defaults to:'' ...</span></div>
+</main>
+</pre>
+
+----
+
+! Structure
+
+```
+focus-on[search query]
+
+focus-on:flags[search query],[prefix length],[focus length],[ellipsis]
+```
+
+* ''Input:'' A selection of titles.
+* ''Suffixes:''
+** `:flags` //(optional)// Multiple flags can be provided using a comma `,`.
+*** `regexp` -- Causes `[search query]` operand to be treated as a regular expression.
+*** `casesensitive` -- Cases matching to be done in a case-sensitive manner.
+*** `expand-html` (default), `strip-html` or `ignore-html` -- Controls how HTML tags are treated if the edges of the focused text land in the middle of them.
+* ''Operands:''
+** `[search match]` -- The text on which to focus. Case-insensitive by default.
+** `[prefix length]` -- //(optional)// Number of character before the match to include. ''Defaults to 20''.
+** `[focus length]` -- //(optional)// Number of character including the match to display. ''Defaults to 128''.
+** `[ellipsis]` -- //(optional)// Ellipsis use at the start and the end of the focused fragment if there is any text before/after it that was excluded. ''Defaults to'' `...`.
+* ''Output:'' Input titles in the same order as they were given, transformed by the filter.
+
+!! Edge cases:
+
+* With the `regexp` flag if `[search match]` operand contains an invalid regular expression it will focus on the first character of the input text.
+* If `[search match]` operand is empty it will focus on the first character.
+* If filter doesn't find anything to focus on, it will focus on the first character.
+
+! Examples:
+
+{{Extra Filter: focus-on/Examples}}
