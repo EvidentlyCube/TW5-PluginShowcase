@@ -1,0 +1,10 @@
+created: 20230120200038673
+modified: 20230120200142399
+tags: PluginInstall
+title: Extra Operators/Install
+type: text/vnd.tiddlywiki
+
+ * This plugin can be installed either via the [[plugin library|Plugin Library]] or directly by dragging [[this link|$:/plugins/EvidentlyCube/ExtraOperators]] to your TiddlyWiki instance.
+ * After installation save and restart your wiki.
+
+You're now ready to use the new operators in your filters.

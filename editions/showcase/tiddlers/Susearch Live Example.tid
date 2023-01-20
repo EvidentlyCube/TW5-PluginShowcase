@@ -1,12 +1,12 @@
 created: 20230111103747452
-do-marking: 1
+do-marking: 0
 do-search: 1
 do-sort: 1
 field: text
-field-name: title
-modified: 20230120132434938
-query: 
-source: all[tiddlers+shadows]tags[]
+field-name: text
+modified: 20230120202705434
+query: sds
+source: [Data/Searchsort-idioms]get[text]splitregexp[\r?\n]
 tags: 
 title: Susearch Live Example
 type: text/vnd.tiddlywiki
@@ -20,14 +20,14 @@ type: text/vnd.tiddlywiki
 	rb="]"
 >
 
-   <$checkbox field="do-search" checked="1">Do search</$checkbox>
+   <$checkbox tiddler=<<currentTiddler>> field="do-search" checked="1">Do search</$checkbox>
    <$checkbox field="do-sort" checked="1">Do sort</$checkbox>
-   <$checkbox field="do-marking" checked="1">Do marking</$checkbox>
+   <$checkbox field="do-marking" checked="1" unchecked="0">Do marking</$checkbox>
 
 	<$select field="source">
 		<option value="[Data/Searchsort-ducks]get[text]splitregexp[\r?\n]">Ducks</option>
 		<option value="[Data/Searchsort-idioms]get[text]splitregexp[\r?\n]">Idioms</option>
-		<option value="all[tiddlers]!prefix[$:/temp/]!is[draft]">All Tiddlers</option>
+		<option value="all[tiddlers]!prefix[$:/]!is[draft]">All Tiddlers</option>
 		<option value="all[tiddlers+shadows]!prefix[$:/temp/]!is[draft]">All + Shadow Tiddlers</option>
 		<option value="all[tiddlers+shadows]tags[]">Tags</option>
 	</$select>
@@ -47,6 +47,7 @@ type: text/vnd.tiddlywiki
 		sort={{{ [<currentTiddler>get[do-sort]then<sort-base>] }}}
 		limit="limit[20]"
 		filter={{{ [<source>addsuffix<search>addsuffix<sort>addsuffix<limit>addprefix<lb>addsuffix<rb>] }}}
+		regexp-query={{{ [<query>escaperegexp[]search-replace:g[ ],[|]] }}}
 	>
 
 		//Idioms list has been taken from [[jbrew/idiomash on Github|https://github.com/jbrew/idiomash/blob/master/text/idioms.txt]]//
@@ -55,14 +56,16 @@ type: text/vnd.tiddlywiki
 
 		<ul>
 		<$list filter=<<filter>> emptyMessage="""<li>//No results//</li>""">
-		<li><$list filter="[{susearch live example!!do-marking}match[1]]" emptyMessage="<<currentTiddler>>" variable="_">
-			<$transclude tiddler={{{ [<currentTiddler>susearch-mark<query>] }}} field="title" />
-			<$list filter="[<field>match[text]]" variable="_">
-				<blockquote><$transclude tiddler={{{
-					[<currentTiddler>get[text]susearch-mark:raw-strip<query>focus-on[<mark>]]
-				}}} field="title" /></blockquote>
+		<li>
+			<$list filter="[{Susearch Live Example!!do-marking}match[1]]" emptyMessage="""<$text text=<<currentTiddler>>/>""" variable="_">
+				<$transclude tiddler={{{ [<currentTiddler>susearch-mark<query>] }}} field="title" />
+				<$list filter="[<field>match[text]]" variable="_">
+					<blockquote><$transclude tiddler={{{
+						[<currentTiddler>get[text]susearch-mark:raw-strip<query>focus-on:regexp<regexp-query>]
+					}}} field="title" /></blockquote>
+				</$list>
 			</$list>
-		</$list></li>
+		</li>
 		</$list>
 		</ul>
 	</$let>

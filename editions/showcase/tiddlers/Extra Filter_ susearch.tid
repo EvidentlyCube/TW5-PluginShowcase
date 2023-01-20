@@ -1,0 +1,52 @@
+created: 20230120131219720
+description: Intelligently search through tiddler fields optionally including or ignoring the wikitext.
+filter: susearch
+modified: 20230120200559521
+tagline: Intelligent search
+tags: ExtraFilter
+title: Extra Filter: susearch
+type: text/vnd.tiddlywiki
+
+!! Intelligent search
+
+This filter will intelligently search through a given field, optionally ignoring WikiText and HTML. Works best in conjunction with [[susearch-sort|Extra Filter: susearch-sort]] and [[susearch-mark|Extra Filter: susearch-mark]].
+
+<pre class="ec-filter-example">
+<aside>Move mouse over parts of the filter to get more information.</aside>
+<main>
+<div class="bit">susearch<span class="comment">Filter name</span></div>
+<div class="bit optional">:field<span class="comment">''Optional''<br>Name of the field through which to search.<br>''Defaults to:'' `title`.</span></div>
+<div class="bit optional">:flags<span class="comment">''Optional''<br>Set to `raw-input` to exclude WikiText and HTML from the search.</span></div>
+<div class="bit">[query]<span class="comment">The search query used to filter the input. Case-insensitive.</span></div>
+</main>
+</pre>
+
+----
+
+! Structure
+
+```
+susearch[query]
+
+susearch:field:flags[query]
+```
+
+* ''Input:'' A selection of titles.
+* ''Suffixes:''
+** `:field` -- //(optional)// Field through which to search. ''Defaults to `title`''
+** `:flags` -- //(optional)// Set to `raw-strip` to strip all WikiText and HTML before searching. Most useful when searching through the contents of tiddlers.
+* ''Operands:''
+** `[query]` -- The text to search for. It will match:
+*** The whole phrase
+*** Every word in the phrase as-is
+*** Every word in the phrase with stripped special characters, while also stripping the same special characters from the searched text.
+* ''Output:'' Input titles that passed the search query, unchanged, in the same order as they were provided.
+
+!! Edge cases:
+
+* If `[query]` operand is empty all input titles will be returned.
+* If `input` is empty `output` will also be empty.
+
+! Examples:
+
+{{Extra Filter: susearch/Examples}}

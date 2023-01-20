@@ -1,7 +1,7 @@
 created: 20230120115114933
-description: This filter will look for the given operand in the inputs and extract it along with context. Most useful for adding context to search results.
+description: Find specific text and its context and remove everything else.
 filter: focus-on
-modified: 20230120172339679
+modified: 20230120201413276
 tagline: Focus on part of the text
 tags: ExtraFilter
 title: Extra Filter: focus-on
@@ -54,25 +54,4 @@ focus-on:flags[search query],[prefix length],[focus length],[ellipsis]
 
 ! Examples:
 
-As a basis all the examples use the contents of [[Data/focus-on example]] stored in variable `<<text>>`
-
-<$let text={{Data/focus-on example!!text}}>
-<<operator-example 1 "[<text>focus-on[Ishmael]]" "Find and focus on the selected text">>
-
-<<operator-example 2 "[<text>focus-on[Ishmael],[3],[20],[···]]" "Customize lengths and ellipsis">>
-
-<<operator-example 3 "[<text>focus-on[this],[3],[10]]" "Default to case-insensitive search...">>
-
-<<operator-example 4 "[<text>focus-on:casesensitive[this],[3],[10]]" "...Enable case-sensitivity search">>
-
-<<operator-example 5 "[<text>focus-on:regexp[::(a|b){2}],[3],[10]]" "Use regular expressions...">>
-
-<<operator-example 6 "[<text>focus-on:regexp,casesensitive[::(a|b){2}],[3],[10]]" "...And case-sensitive regular expressions">>
-
-<<operator-example 7 "[<text>focus-on:ignore-html[HTML],[8],[10]]" "Disable special HTML handling while focusing...">>
-
-<<operator-example 8 "[<text>focus-on:strip-html[HTML],[8],[10]]" "...Strip HTML tags...">>
-
-<<operator-example 9 "[<text>focus-on:expand-html[HTML],[8],[10]]" "...Expand the focus to include them (default behavior)">>
-
-</$let>
+{{Extra Filter: focus-on/Examples}}

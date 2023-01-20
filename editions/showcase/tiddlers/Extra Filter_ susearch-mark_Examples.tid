@@ -1,0 +1,26 @@
+created: 20230120201058157
+modified: 20230120201102599
+tags: ExtraFilterExamples
+title: Extra Filter: susearch-mark/Examples
+type: text/vnd.tiddlywiki
+
+
+See the [[Live Search Example|Susearch Live Example]] showcasing the full capabilities of this filter in the context of other filters.
+
+<<operator-example 1 "[[There is full phrase here]susearch-mark[full phrase]]" "Mark full phrase">>
+
+<<operator-example 2 "[[Have foo in this abaria]susearch-mark[foo bar]]" "Mark words">>
+
+<<operator-example 3 "[[Dollars Do$$ars]susearch-mark[Do$$ars]]" "Mark words with special characters">>
+
+<<operator-example 4 "[[Me dont do]susearch-mark[don't]]" "Mark words while stripping special characters from query">>
+
+<<operator-example 5 "[[abcdefghik]susearch-mark[fgh],[__$1__]]" "Custom template">>
+
+<<operator-example 6 "[[<img>test</img>]susearch-mark[img]]" "HTML has no special handling by default">>
+
+<<operator-example 7 "[[''img''<img>img</img> <<img>>]susearch-mark:raw-strip[img]]" "`raw-strip` removes HTML and wikitext">>
+
+<<operator-example 8 """[[''img''<a href="img">img</a> <<img>>]susearch-mark:wikify-strip[img]]""" "`wikify-strip` parses wikitext and removes the HTML">>
+
+<<operator-example 9 """[[''img''<a href="img">img</a> <<img>>]susearch-mark:wikify-safe[img]]""" "`wikify-safe` parses wikitext and safely marks around the HTML tags">>
