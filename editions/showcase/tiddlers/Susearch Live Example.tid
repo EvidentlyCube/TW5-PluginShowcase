@@ -1,5 +1,5 @@
 created: 20230111103747452
-modified: 20230121224607309
+modified: 20230121230231213
 title: Susearch Live Example
 type: text/vnd.tiddlywiki
 
@@ -32,8 +32,9 @@ Play around with the options below to enable/disable various features. ''Current
     <$let
 		default-source="[Data/Susearch-ducks]get[text]splitregexp[\r?\n]"
 		query={{{ [{$:/temp/SusearchLiveExample!!query}else[]] }}}
-		source={{{ [{$:/temp/SusearchLiveExample!!source}else<default-source>] }}}
-		field={{{ [{$:/temp/SusearchLiveExample!!field-name}else[title]] }}}
+		has-source={{{ [[$:/temp/SusearchLiveExample]has[source]count[]] }}}
+		source={{{ [[$:/temp/SusearchLiveExample]get[source]else<default-source>] }}}
+		field={{{ [[$:/temp/SusearchLiveExample]get[field-name]else[title]] }}}
 		search-base={{{ [[susearch:]addsuffix<field>addsuffix[:raw-strip]addsuffix[<query>]] }}}
 		search={{{ [{$:/temp/SusearchLiveExample!!do-search}match[1]then<search-base>] }}}
 		sort-base={{{ [[susearch-sort:]addsuffix<field>addsuffix[:raw-strip]addsuffix[<query>]] }}}
@@ -82,9 +83,9 @@ The WikiText used to display the text preview:
 <$let
     regexp-query={{{ [<query>escaperegexp[]search-replace:g[ ],[|]] }}}
 >
-<$transclude 
-    tiddler={{{ [<currentTiddler>get[text]susearch-mark:raw-strip<query>focus-on:regexp<regexp-query>] }}} 
-    field="title" 
+<$transclude
+    tiddler={{{ [<currentTiddler>get[text]susearch-mark:raw-strip<query>focus-on:regexp<regexp-query>] }}}
+    field="title"
 />
 </$let>
 ```
