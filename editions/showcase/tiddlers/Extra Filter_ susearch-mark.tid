@@ -1,7 +1,7 @@
 created: 20230120192902958
 description: Create a preview of the search results with highlighted matches. Ignore wikitext, strip wikitext or parse wikitext and decide whether to display it as text or HTML.
 filter: susearch-mark
-modified: 20230120201051088
+modified: 20230121224314248
 tagline: Highlight search results
 tags: ExtraFilter
 title: Extra Filter: susearch-mark
@@ -50,6 +50,46 @@ susearch-mark:mode[query],[template]
 
 * If `[query]` operand is empty no changes are done.
 * If `input` is empty `output` will also be empty.
+
+
+! Important caveat -- Displaying marked text
+
+In order to correctly output HTML/WikiText you must use either [[variable transclusion|https://tiddlywiki.com/#Variables%20in%20WikiText]] or [[TranscludeWidget|https://tiddlywiki.com/#TranscludeWidget]]. Other solution will result in the HTML or WikiText being escaped and displayed as-is. Here are some examples:
+
+!! Transclude Widget
+```
+<$transclude tiddler={{{ [[Test]susearch-mark[es]] }}} field="title"/>
+```
+
+<$transclude tiddler={{{ [[Test]susearch-mark[es]] }}} field="title"/>
+
+!! Variable Transclusion
+
+```
+<$let output={{{ [[Test]susearch-mark[es]] }}}>
+  <<output>>
+</$let>
+```
+<$let output={{{ [[Test]susearch-mark[es]] }}}>
+  <<output>>
+</$let>
+
+!! View Widget
+
+```
+<$view tiddler={{{ [[Test]susearch-mark[es]] }}} field="title"/>
+```
+
+<$view tiddler={{{ [[Test]susearch-mark[es]] }}} field="title"/>
+
+!! Filtered Transclusion
+
+```
+{{{ [[Test]susearch-mark[es]] }}}
+```
+
+{{{ [[Test]susearch-mark[es]] }}}
+
 
 ! Examples:
 
