@@ -1,5 +1,5 @@
 created: 20230120200510093
-modified: 20230120200527811
+modified: 20230122201247656
 tags: ExtraFilterExamples
 title: Extra Filter: susearch/Examples
 type: text/vnd.tiddlywiki
@@ -19,3 +19,5 @@ See the [[Live Search Example|Susearch Live Example]] showcasing the full capabi
 <<operator-example 6 "[[$$ test]susearch[$$]]" "Correctly work with special characters...">>
 
 <<operator-example 7 "[[$ollar$]susearch[@ollar@]]" "...Also find results as-if special characters were removed">>
+
+<<operator-example 8 "[[one two three]] [[two three four]] +[susearch:title:strict[one two three]]" "Strict matching requires all words to be matched">>

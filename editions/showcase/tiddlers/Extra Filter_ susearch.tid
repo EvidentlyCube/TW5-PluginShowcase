@@ -16,7 +16,7 @@ This filter will intelligently search through a given field, optionally ignoring
 <main>
 <div class="bit">susearch<span class="comment">Filter name</span></div>
 <div class="bit optional">:field<span class="comment">''Optional''<br>Name of the field through which to search.<br>''Defaults to:'' `title`.</span></div>
-<div class="bit optional">:flags<span class="comment">''Optional''<br>Set to `raw-input` to exclude WikiText and HTML from the search.</span></div>
+<div class="bit optional">:flags<span class="comment">''Optional''<br>`raw-input` will exclude all WikiText and HTML while matching.<br>`strict` will only match if the whole phrase or all words are found.</span></div>
 <div class="bit">[query]<span class="comment">The search query used to filter the input. Case-insensitive.</span></div>
 </main>
 </pre>
@@ -34,7 +34,9 @@ susearch:field:flags[query]
 * ''Input:'' A selection of titles.
 * ''Suffixes:''
 ** `:field` -- //(optional)// Field through which to search. ''Defaults to `title`''
-** `:flags` -- //(optional)// Set to `raw-strip` to strip all WikiText and HTML before searching. Most useful when searching through the contents of tiddlers.
+** `:flags` //(optional)// Multiple flags can be provided by delimiting them with a comma `,`.
+*** `raw-strip` will exclude all WikiText and HTML while matching. Most useful when searching through the contents of tiddlers.
+*** `strict` will only match if the whole phrase or all words are found.
 * ''Operands:''
 ** `[query]` -- The text to search for. It will match:
 *** The whole phrase

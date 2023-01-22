@@ -35,7 +35,7 @@ focus-on:flags[search query],[prefix length],[focus length],[ellipsis]
 
 * ''Input:'' A selection of titles.
 * ''Suffixes:''
-** `:flags` //(optional)// Multiple flags can be provided using a comma `,`.
+** `:flags` //(optional)// Multiple flags can be provided by delimiting them with a comma `,`.
 *** `regexp` -- Causes `[search query]` operand to be treated as a regular expression.
 *** `casesensitive` -- Cases matching to be done in a case-sensitive manner.
 *** `expand-html` (default), `strip-html` or `ignore-html` -- Controls how HTML tags are treated if the edges of the focused text land in the middle of them.
