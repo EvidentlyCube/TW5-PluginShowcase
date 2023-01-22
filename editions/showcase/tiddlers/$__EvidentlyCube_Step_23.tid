@@ -1,0 +1,10 @@
+condition-filter: [<query>!match[]]
+created: 20230122203310794
+hint: Title (Partial)
+modified: 20230122203343484
+parent: $:/EvidentlyCube/Ruleset/1
+priority: 16
+results-filter: [all[tiddlers]!is[draft]!prefix[$:/]susearch:title<query>susearch-sort<query>]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/23
+type: text/vnd.tiddlywiki

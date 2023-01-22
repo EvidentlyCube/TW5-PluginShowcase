@@ -214,7 +214,7 @@ API for the universal dialog
 
 	UniversalDialog.prototype._getRulesetStepTiddlers = function(rulesetTitle) {
 		return $tw.wiki.filterTiddlers(
-			"[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]field:parent<parent>sort[priority]]",
+			"[all[tiddlers]tag[$:/tags/EC/UniversalDialog/Step]!is[draft]field:parent<parent>nsort[priority]]",
 			getVariablesFauxWidget({parent: rulesetTitle})
 		);
 	};

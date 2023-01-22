@@ -1,10 +1,10 @@
 condition-filter: [<query>!match[]]
 created: 20221214203832818
 hint: In Text
-modified: 20221214204017276
+modified: 20230122202556195
 parent: $:/EvidentlyCube/Ruleset/1
 priority: 9
-results-filter: [all[tiddlers]!is[draft]!prefix[$:/]search:text<query>]
+results-filter: [all[tiddlers]!is[draft]!prefix[$:/]susearch:text:strict<query>susearch-sort:text<query>]
 tags: $:/tags/EC/UniversalDialog/Step
 title: $:/EvidentlyCube/Step/16
 type: text/vnd.tiddlywiki

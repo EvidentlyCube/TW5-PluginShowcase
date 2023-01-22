@@ -1,0 +1,10 @@
+condition-filter: [<query>!match[]]
+created: 20230122203311397
+hint: In Text (Partial)
+modified: 20230122203344048
+parent: $:/EvidentlyCube/Ruleset/1
+priority: 17
+results-filter: [all[tiddlers]!is[draft]!prefix[$:/]susearch:text<query>susearch-sort:text<query>]
+tags: $:/tags/EC/UniversalDialog/Step
+title: $:/EvidentlyCube/Step/24
+type: text/vnd.tiddlywiki
