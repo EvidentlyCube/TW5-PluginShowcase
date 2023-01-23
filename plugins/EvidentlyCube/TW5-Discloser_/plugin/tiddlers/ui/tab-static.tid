@@ -1,0 +1,37 @@
+title: $:/plugins/EvidentlyCube/Discloser/ui-tab-static
+type: text/vnd.tiddlywiki
+caption: Static files
+
+\whitespace trim
+<p class="tc-muted">Below are tiddlers that will be published as static files without going through a template. This is useful for outputting binary files, CSS or JS.</p>
+
+<h2>Static files:</h2>
+<table>
+<thead>
+<tr>
+<th>Tiddler</th>
+<th>File name</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+	<$list filter="[all[tiddlers]tag[$:/tags/EC/Discloser/Link]field:collection<currentTiddler>link-type[static]!is[draft]sort[tiddler]]" variable="link" emptyMessage="""
+		<tr><td colspan="3" class="tc-muted">No tiddlers added yet</td></tr>
+	""">
+		<$let
+			linked-tiddler={{{ [<link>get[tiddler]] }}}
+			linked-modified={{{ [<linked-tiddler>get[modified]ec_d_timestamp[]]}}}
+		>
+			<tr>
+				<td><$link to=<<linked-tiddler>>><$text text=<<linked-tiddler>>/></$link> <span class="ec_d-muted"></span></td>
+				<td><$edit-text tag="input" tiddler=<<item>> field=<<file-name>> default="" placeholder="File name..."/></td>
+				<td align="center"><<comp-link-status>></td>
+				<td><$button actions=<<action-remove-link>> class="tc-btn-invisible">🗙</$button></td>
+			</tr>
+		</$let>
+	</$list>
+</tbody>
+</table>
+
+<<comp-search "static" "[!is[draft]]">>

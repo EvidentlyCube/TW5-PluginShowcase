@@ -1,0 +1,55 @@
+title: $:/plugins/EvidentlyCube/Discloser/ui-tab-proposed
+type: text/vnd.tiddlywiki
+caption: Related tiddlers
+
+\whitespace trim
+<p class="tc-muted">Below are tiddlers that you might want to also publish that are related to the already published tiddlers.</p>
+
+<$set name="existing-items" filter="[all[tiddlers]tag[$:/tags/EC/Discloser/Link]field:collection<currentTiddler>field:link-type[tiddler]get[tiddler]]">
+<$set name="link-type" value="tiddler">
+	<h2>Linked tiddlers:</h2>
+	<p class="tc-muted">Tiddlers to which already published tiddlers link.</p>
+	<div class="ec_d-tidlist">
+		<$list filter="[enlist<existing-items>]" variable="existing-item">
+		<$list
+			filter="[<existing-item>links[]] -[enlist<existing-items>] +[!is[draft]!is[shadow]!is[system]]"
+			variable="item"
+		>
+			<$button actions=<<action-link-tiddler>> class="tc-btn-invisible">➕</$button>
+			<$link to=<<item>>><$text text=<<item>>/></$link>
+			<br>
+		</$list>
+		</$list>
+	</div>
+
+	<h2>Child tiddlers:</h2>
+	<p class="tc-muted">Tiddlers which are children of already published tiddlers (mechanism can be customized)</p>
+	<div class="ec_d-tidlist">
+		<$list filter="[enlist<existing-items>]" variable="existing-item">
+		<$list
+			filter="[all[tiddlers]field:parent<existing-item>] -[enlist<existing-items>] +[!is[draft]!is[shadow]!is[system]]"
+			variable="item"
+		>
+			<$button actions=<<action-link-tiddler>> class="tc-btn-invisible">➕</$button>
+			<$link to=<<item>>><$text text=<<item>>/></$link>
+			<br>
+		</$list>
+		</$list>
+	</div>
+
+	<h2>Tagged tiddlers:</h2>
+	<p class="tc-muted">Tiddlers which are tagged with already published tiddlers</p>
+	<div class="ec_d-tidlist">
+		<$list filter="[enlist<existing-items>]" variable="existing-item">
+		<$list
+			filter="[all[tiddlers]tag<existing-item>] -[enlist<existing-items>] +[!is[draft]!is[shadow]!is[system]]"
+			variable="item"
+		>
+			<$button actions=<<action-link-tiddler>> class="tc-btn-invisible">➕</$button>
+			<$link to=<<item>>><$text text=<<item>>/></$link>
+			<br>
+		</$list>
+		</$list>
+	</div>
+</$set>
+</$set>

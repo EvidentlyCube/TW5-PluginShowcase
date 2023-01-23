@@ -1,0 +1,43 @@
+title: $:/plugins/EvidentlyCube/Discloser/settings
+tags: $:/tags/ControlPanel
+caption: Discloser
+
+! Config
+
+This is the configuration for the Discloser plugin which aims to help in making some of your tiddlers publicly available.
+
+[[Edit public collections|$:/plugins/EvidentlyCube/Discloser/ui]]
+
+!! How does it all work?
+
+1. Create a collection in [[the UI|Edit public collections]].
+2. Add tiddlers to the collection you want to make public.
+3. Optionally configure the template and other aspects of the collection.
+4. Hit the Publish button in the collection.
+
+Once the operation finishes the files should be available un
+
+
+<table>
+<tbody>
+<tr>
+	<td align="center">
+		''Output directory''<br/>
+		//This is the directory in which published tiddlers are rendered. If not an absolute path it'll be relative to the working directory of the Node instance, which is usually going to be the
+		 directory of the script which starts TiddlyWiki.//
+	</td>
+	<td>
+		<$edit-text type="input" tiddler="$:/plugins/EvidentlyCube/Discloser/Config" field="output-path"/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Output directory URL''<br/>
+		//This is the URL that points to the output directory. It is used to allow to easily open your published tiddlers.//
+	</td>
+	<td>
+		<$edit-text type="input" tiddler="$:/plugins/EvidentlyCube/Discloser/Config" field="output-url"/>
+	</td>
+</tr>
+</tbody>
+</table>

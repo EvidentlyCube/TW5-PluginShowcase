@@ -1,0 +1,44 @@
+title: $:/plugins/EvidentlyCube/Discloser/ui-actions
+type: text/vnd.tiddlywiki
+
+\define action-create-collection()
+	<$let
+		now=<<now "DDmmmYYYYhhmmssXXX">>
+		id={{{ [<now>] [all[tiddlers]] [variables[]] +[join[]sha256[32]] }}}
+		name={{$:/temp/discloser!!collection-name}}
+		basename={{{ [[$:/discloser/Collection-]addsuffix<id>] }}}
+	>
+		<$action-createtiddler
+			$basetitle=<<basename>>
+			tags="$:/tags/EC/Discloser/Collection"
+			name=<<name>>
+			caption={{{ [<name>addsuffix[ (Discloser Collection)]] }}}
+			id=<<id>>
+		/>
+		<$action-setfield $tiddler="$:/temp/discloser" $field="collection-name"/>
+	</$let>
+\end
+
+\define action-link-tiddler()
+<$let
+	now=<<now "DDmmmYYYYhhmmssXXX">>
+	id={{{ [<now>] [all[tiddlers]] [variables[]] +[join[]sha256[32]] }}}
+	link-title={{{ [[$:/discloser/Link-]addsuffix<id>] }}}
+>
+	<$list filter="[all[tiddlers]tag[$:/tags/EC/Discloser/Link]field:collection<currentTiddler>field:tiddler<item>field:link-type<link-type>count[]match[0]]" variable="ignore">
+		<$action-createtiddler
+			$basetitle=<<link-title>>
+			tags="$:/discloser/Link"
+			collection=<<currentTiddler>>
+			tiddler=<<item>>
+			link-type=<<link-type>>
+		/>
+		<$action-setfield $tiddler=<<search-temp>> $field="text" />
+		<$action-setfield $tiddler=<<focus-temp>> $field="text" />
+	</$list>
+</$let>
+\end
+
+\define action-remove-link()
+	<$action-deletetiddler $tiddler=<<link>>/>
+\end

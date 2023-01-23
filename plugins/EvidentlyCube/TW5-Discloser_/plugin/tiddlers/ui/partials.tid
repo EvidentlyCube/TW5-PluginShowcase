@@ -1,0 +1,47 @@
+title: $:/plugins/EvidentlyCube/Discloser/ui-partials
+type: text/vnd.tiddlywiki
+
+\define comp-search(link-type tiddlers-filter:"[!is[shadow]!is[draft]!is[system]]")
+	<$let
+		search-temp={{{ [[$:/temp/publish/new-search-]addsuffix{!!id}] }}}
+		focus-temp={{{ [[$:/temp/publish/new-focus-]addsuffix{!!id}] }}}
+		link-type=<<__link-type__>>
+		tiddlers-filter=<<__tiddlers-filter__>>
+	>
+		<$edit-text
+			tiddler=<<search-temp>>
+			field="text"
+			tag="input"
+			default=""
+			placeholder="Search tiddler to add..."
+			class="subtle tc-popup-handle"
+			focusPopup=<<focus-temp>>
+		/>
+
+		<$reveal tag="div" class="tc-block-dropdown tc-edit-type-dropdown" state=<<focus-temp>> type="nomatch" text="" default="">
+			<div class="tc-dropdown-item">Tiddlers:</div>
+			<$set name="search" value={{{ [<search-temp>get[text]] }}}>
+				<$list
+					filter="[all[tiddlers+shadows]subfilter<tiddlers-filter>] +[search:title<search>]
+						-[all<tiddler-types>tag[$:/tags/EC/Discloser/Link]field:collection<currentTiddler>field:link-type<link-type>get[tiddler]]
+						+[sort[]limit[8]]"
+					variable="item">
+					<$button tag="a" actions=<<action-link-tiddler>> class="tc-btn-invisible">
+						<$text text=<<item>>/>
+					</$button>
+				</$list>
+			</$set>
+		</$reveal>
+	</$let>
+\end
+
+\define comp-link-status()
+<$list filter="[<link>has[last-publish-at]]" emptyMessage="""<span class="tc-tag-label ec_d-not-published">Not published</span>""">
+	<$list filter="[<link>get[last-publish-at]compare:number:lt<linked-modified>]" emptyMessage="""<span class="tc-tag-label ec_d-published">Published</span>""">
+		<span class="tc-tag-label ec_d-outdated">Outdated</span>
+	</$list>
+</$list>
+\end
+
+"20221117204357481"
+"20221117213206549"

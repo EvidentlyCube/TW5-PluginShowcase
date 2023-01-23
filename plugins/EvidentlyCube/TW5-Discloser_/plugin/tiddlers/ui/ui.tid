@@ -1,0 +1,36 @@
+title: $:/plugins/EvidentlyCube/Discloser/ui
+type: text/vnd.tiddlywiki
+caption: Discloser -- Published Collections
+
+\import [[$:/plugins/EvidentlyCube/Discloser/ui-actions]] [[$:/plugins/EvidentlyCube/Discloser/ui-partials]]
+\whitespace trim
+
+<$list filter="[tag[$:/tags/EC/Discloser/Collection]!is[draft]]" emptyMessage="""<span class="ec_d-muted">No collections published yet</span>""">
+<$let
+	last-published-at={{{ [<currentTiddler>get[last-publish-at]] }}}
+	date-format="YYYY0MM0DD0hh0mm0ss0XXX"
+>
+<div class="ec_d-collection">
+	<h1>
+		{{!!name}}
+		<$link to=<<currentTiddler>> class="ec_d-underless">🔗</$link>
+	</h1>
+	<span class="ec_d-muted" title="ID of this collection">({{!!id}})</span>
+
+	<$macrocall $name="tabs"
+		tabsList="$:/plugins/EvidentlyCube/Discloser/ui-tab-options $:/plugins/EvidentlyCube/Discloser/ui-tab-tiddlers $:/plugins/EvidentlyCube/Discloser/ui-tab-proposed $:/plugins/EvidentlyCube/Discloser/ui-tab-static"
+		default="$:/plugins/EvidentlyCube/Discloser/ui-tab-options"
+		template="$:/plugins/EvidentlyCube/Discloser/ui-tab-template"
+		state={{{ [[$:/state/Discloser/ui-tab]addsuffix{!!id}] }}}
+	/>
+
+</div>
+</$let>
+</$list>
+
+----
+
+<$keyboard actions=<<action-create-collection>> key="enter">
+
+!! Share a new collection: <$edit-text tag="input" tiddler="$:/temp/discloser" field="collection-name" placeholder="Collection name"/>
+</$keyboard>

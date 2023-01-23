@@ -1,0 +1,10 @@
+{
+    "title": "$:/plugins/EvidentlyCube/Discloser",
+    "version": "0.0.1",
+    "core-version": ">=5.2.3",
+    "description": "A plugin for easier management of publicly accessible tiddlers.",
+    "author": "Maurycy Zarzycki",
+    "source": "https://github.com/EvidentlyCube/TW5-Discloser",
+    "plugin-type": "plugin",
+    "list": "readme license history"
+}

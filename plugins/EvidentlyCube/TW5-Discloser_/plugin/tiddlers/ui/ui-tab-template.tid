@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/Discloser/ui-tab-template
+type: text/vnd.tiddlywiki
+caption: Tiddlers
+
+<$transclude tiddler=<<currentTab>> mode="inline"/>
