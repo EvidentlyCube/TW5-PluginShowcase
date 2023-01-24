@@ -1,7 +1,7 @@
 created: 20230120131219720
 description: Intelligently search through tiddler fields optionally including or ignoring the wikitext.
 filter: susearch
-modified: 20230120200559521
+modified: 20230124145326171
 tagline: Intelligent search
 tags: ExtraFilter
 title: Extra Filter: susearch
@@ -9,14 +9,19 @@ type: text/vnd.tiddlywiki
 
 !! Intelligent search
 
-This filter will intelligently search through a given field, optionally ignoring WikiText and HTML. Works best in conjunction with [[susearch-sort|Extra Filter: susearch-sort]] and [[susearch-mark|Extra Filter: susearch-mark]].
+Filter input tiddlers by searching through a field. Expands on TiddlyWiki's built-in <a href="https://tiddlywiki.com/#search%20Operator" target="_blank">`search` Operator</a> with the following:
+
+ * `raw-strip` flag strips WikiText and HTML when searching -- this avoids false positives when search query matches against an HTML tag, attribute or any WikiText construct.
+ * Also matches without special characters -- searching for either `can't` or `cant` will match either.
+
+Works best in conjuction with [[susearch-sort|Extra Filter: susearch-sort]] and [[susearch-mark|Extra Filter: susearch-mark]].
 
 <pre class="ec-filter-example">
 <aside>Move mouse over parts of the filter to get more information.</aside>
 <main>
 <div class="bit">susearch<span class="comment">Filter name</span></div>
 <div class="bit optional">:field<span class="comment">''Optional''<br>Name of the field through which to search.<br>''Defaults to:'' `title`.</span></div>
-<div class="bit optional">:flags<span class="comment">''Optional''<br>`raw-input` will exclude all WikiText and HTML while matching.<br>`strict` will only match if the whole phrase or all words are found.</span></div>
+<div class="bit optional">:flags<span class="comment">''Optional''<br>`raw-input` will exclude all WikiText and HTML while matching.<br>`all-words` will only match if the whole phrase or all words are found.</span></div>
 <div class="bit">[query]<span class="comment">The search query used to filter the input. Case-insensitive.</span></div>
 </main>
 </pre>
@@ -36,16 +41,18 @@ susearch:field:flags[query]
 ** `:field` -- //(optional)// Field through which to search. ''Defaults to `title`''
 ** `:flags` //(optional)// Multiple flags can be provided by delimiting them with a comma `,`.
 *** `raw-strip` will exclude all WikiText and HTML while matching. Most useful when searching through the contents of tiddlers.
-*** `strict` will only match if the whole phrase or all words are found.
+*** `all-words` will only match if the whole phrase or all words are found.
 * ''Operands:''
-** `[query]` -- The text to search for. It will match:
-*** The whole phrase
-*** Every word in the phrase as-is
-*** Every word in the phrase with stripped special characters, while also stripping the same special characters from the searched text.
+** `[query]` -- The text to search for. It will match if any of the following is satisfied:
+*** The whole phrase as-is.
+*** Any word in the phrase ''(default)''; or all words in any order with `all-words` flag. 
+*** Same as above but while ignoring special characters.
 * ''Output:'' Input titles that passed the search query, unchanged, in the same order as they were provided.
 
-!! Edge cases:
+!! Caveats:
 
+* Order of the words never matter.
+* By default it includes the input if any of the words is matches unless `all-words` flag is set
 * If `[query]` operand is empty all input titles will be returned.
 * If `input` is empty `output` will also be empty.
 
