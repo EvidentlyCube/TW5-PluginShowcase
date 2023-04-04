@@ -1,5 +1,5 @@
 created: 20221025202205570
-modified: 20230404165701682
+modified: 20230404172805016
 title: Advanced Performance - Test Cases
 type: text/vnd.tiddlywiki
 
@@ -53,6 +53,8 @@ Runs: <code><$list filter="[range[1],<test-count>]" variable="ignore"><$list fil
 </$let>
 
 !! Subfilters
+
+^^(Test case provided by [[Yaisog Bonegnasher|https://github.com/yaisog]])^^
 
 A filter that runs multiple nested subfilters, intended to validate that:
 
