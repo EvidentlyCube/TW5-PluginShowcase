@@ -1,7 +1,17 @@
 created: 20221025202205570
-modified: 20221025203653764
+modified: 20230404165701682
 title: Advanced Performance - Test Cases
 type: text/vnd.tiddlywiki
+
+\define subfilter1() [range[1000]] :map[all[shadows]search:*[wiki]] :and[first[]]
+\define subfilter2() [reverse[]subfilter<subfilter1>]
+\define subfilter3() [uppercase[]subfilter<subfilter2>]
+\define subfilter4() [lowercase[]subfilter<subfilter3>]
+\define subfilter5() [sort[]subfilter<subfilter4>]
+
+\define actions-subfilter-test()
+<$action-setfield $tiddler="$:/temp/test" $value={{{ [[NewTiddler]subfilter<subfilter5>] }}} />
+\end
 
 <$let
   tid=<<currentTiddler>>
@@ -41,3 +51,12 @@ A filter that does a lot of things and should take a bit longer than other filte
 
 Runs: <code><$list filter="[range[1],<test-count>]" variable="ignore"><$list filter="[all[tiddlers+shadows]] :map[range[1],[100]] +[count[]]">.</$list></$list></code>
 </$let>
+
+!! Subfilters
+
+A filter that runs multiple nested subfilters, intended to validate that:
+
+ * Subfilters are displayed differently in the logs
+ * `other` refresh does not incorrectly double count the subfilters' duration
+
+<$button actions=<<actions-subfilter-test>>>Click</$button> -- Warning, can take a few seconds to finish!
