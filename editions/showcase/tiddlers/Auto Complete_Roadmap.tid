@@ -1,6 +1,6 @@
 created: 20221209170820681
 modified: 20221209170829459
-tags: 
+tags:
 title: Auto Complete/Roadmap
 type: text/vnd.tiddlywiki
 
@@ -10,5 +10,6 @@ type: text/vnd.tiddlywiki
 ** Perhaps a filter that returns a list of characters that will cancel the insertion?
 ** Auto cancel after N characters are typed past the point you got No Results
 * Additional context for triggering or auto triggering:
-** Based on the class name of the input? Parents? 
+** Based on the class name of the input? Parents?
 ** Allow empty trigger value if additional context triggering is provided.
+* Throttling for auto completion
