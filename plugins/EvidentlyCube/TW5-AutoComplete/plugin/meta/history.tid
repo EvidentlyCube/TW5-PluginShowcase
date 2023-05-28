@@ -1,6 +1,7 @@
 title: $:/plugins/EvidentlyCube/AutoComplete/history
 type: text/vnd.tiddlywiki
 
+* ''1.0.16'' -- The two `<p>` tags that were wrapping around the auto complete window have been reduced to a single `<p>` tag.
 * ''1.0.15'':
 ** ''Code Mirror integration:'' No longer throws an exception when triggering completion in non-codemirror input when codemirror editor is opened
 ** ''Code Mirror integration:'' Completion opens at the correct position even when window is scrolled
