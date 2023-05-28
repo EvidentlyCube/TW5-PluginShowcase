@@ -1,5 +1,5 @@
 created: 20221013095514764
-github: https://github.com/EvidentlyCube/TW5-TaskList
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-TaskList
 image: Task List Image
 modified: 20221209151628230
 plugin: $:/plugins/EvidentlyCube/TaskList
@@ -9,11 +9,11 @@ tags: Plugin
 title: Task List
 type: text/vnd.tiddlywiki
 
-! Description 
+! Description
 
 A powerful task list that can be used for anything from the simplest todos to Jira imitations (and everything in-between).
 
-! Features 
+! Features
 
 * Define fields of different types.
 * Use a custom template for items in the Task List.
@@ -21,11 +21,11 @@ A powerful task list that can be used for anything from the simplest todos to Ji
 * Give each task item a custom class decided by a filter.
 * A builder to make it simple to create new task lists.
 
-! Installation 
+! Installation
 
 {{Task List/Install}}
 
-! Demo 
+! Demo
 
 See the demo [[here|Task List/Demo]].
 

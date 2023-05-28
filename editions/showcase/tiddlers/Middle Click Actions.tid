@@ -1,5 +1,5 @@
 created: 20221205151102760
-github: https://github.com/EvidentlyCube/TW5-MiddleClickActions
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-MiddleClickActions
 image: Middle Click Actions Image
 modified: 20221209160207402
 plugin: $:/plugins/EvidentlyCube/MiddleClickActions
@@ -11,14 +11,14 @@ type: text/vnd.tiddlywiki
 
 //Mouse icon from <a href="https://www.vecteezy.com/png/1203995-mouse-middle-click">Vecteezy</a>.//
 
-! Description 
+! Description
 
 A widget that triggers actions inside of it when its parent is clicked with middle mouse button.
 
-! Installation 
+! Installation
 
 {{Middle Click Actions/Install}}
 
-! Demo 
+! Demo
 
 See the demo [[here|Middle Click Actions/Demo]].

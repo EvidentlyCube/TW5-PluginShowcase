@@ -1,6 +1,6 @@
 archived: 1
 created: 20221205160740774
-github: https://github.com/EvidentlyCube/TW5-FieldPropagator
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-FieldPropagator
 image: Field Propagator Image
 modified: 20221209170240167
 plugin: $:/plugins/EvidentlyCube/FieldPropagator
@@ -13,16 +13,16 @@ type: text/vnd.tiddlywiki
 This plugin is archived! It remains here only for archival purposes.
 </warning>
 
-! Description 
+! Description
 
 Propagates a value of a field upwards, through tiddler parents. It was developed to allow marking tiddlers as public/private, and to propagate the information up its parents if the parent has any public children, which was then displayed in a custom table of contents.
 
 Field `parent` is used to determine tiddler's parent, rather than tags.
 
-! Installation 
+! Installation
 
 {{Field Propagator/Install}}
 
-! Demo 
+! Demo
 
 See the demo [[here|Field Propagator/Demo]].

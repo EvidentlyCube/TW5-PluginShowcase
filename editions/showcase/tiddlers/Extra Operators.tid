@@ -1,5 +1,5 @@
 created: 20230108162151706
-github: https://github.com/EvidentlyCube/TW5-FilterOperators
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-ExtraFilters
 image: Extra Operators Image
 modified: 20230120200652376
 plugin: $:/plugins/EvidentlyCube/ExtraOperators
@@ -9,21 +9,21 @@ tags: Plugin
 title: Extra Operators
 type: text/vnd.tiddlywiki
 
-! Description 
+! Description
 
 A collection of awesome filter operators.
 
-! Features 
+! Features
 
 <$list filter="[all[tiddlers]tag[ExtraFilter]!is[draft]sort[filter]]">
 <h2><$link to=<<currentTiddler>>>{{!!filter}} -- {{!!tagline}}</$link></h2>
 <p>{{!!description}}</p>
 </$list>
 
-! Installation 
+! Installation
 
 {{Extra Operators/Install}}
 
-! Demo 
+! Demo
 
 See the demo [[here|Extra Operators/Demo]].

@@ -1,5 +1,5 @@
 created: 20221006141208581
-github: https://github.com/EvidentlyCube/TW5-GoToShortcut
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-GoToShortcut
 image: Go To Shortcut Image
 modified: 20221209150143017
 plugin: $:/plugins/EvidentlyCube/GoToShortcut
@@ -9,11 +9,11 @@ tags: Plugin
 title: Go To Shortcut
 type: text/vnd.tiddlywiki
 
-! Description 
+! Description
 
 Open a modal with a keyboard shortcut that makes it easy to navigate to tiddlers.
 
-! Features 
+! Features
 
  * Access the Goto modal with a configurable keyboard shortcut (defaults to `Ctrl+Shift+P`)
  * Customize the search:
@@ -31,7 +31,7 @@ Open a modal with a keyboard shortcut that makes it easy to navigate to tiddlers
  ** `Escape` and `Ctr+Shift+P` closes the dialog
  * You can also select the tiddlers with a mouse.
 
-! Installation 
+! Installation
 
 {{Go To Shortcut/Install}}
 

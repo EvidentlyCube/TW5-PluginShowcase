@@ -1,5 +1,5 @@
 created: 20221125094854473
-github: https://github.com/EvidentlyCube/TW5-AutoComplete
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-AutoComplete
 image: Auto Complete Image
 modified: 20221209145610693
 plugin: $:/plugins/EvidentlyCube/AutoComplete
@@ -9,13 +9,13 @@ tags: Plugin
 title: Auto Complete
 type: text/vnd.tiddlywiki
 
-! Description 
+! Description
 
 Customizable and flexible Auto Complete mechanism that works with all TiddlyWiki text inputs.
 
 Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-extendedit]] plugin.
 
-! Features 
+! Features
 
 * Auto complete anything you want:
 ** Tiddler titles
@@ -37,14 +37,14 @@ Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-exte
  * [[Streams|https://saqimtiaz.github.io/streams/]] by //saqimtiaz// -- Pressing Enter to Auto Complete won't trigger a new stream insertion
  * [[SideEditor|http://sideeditor.tiddlyspot.com/]] by //Mat von Twaddle// -- Auto Completion only appears in the currently focused window
 
-! Installation 
+! Installation
 
 {{Auto Complete/Install}}
 
-! Demo 
+! Demo
 
 See the demo [[here|Auto Complete/Demo]].
 
 ! Additional Information
 
- * I have a list of test cases that I go through before each new release. You can see it [[here|https://github.com/EvidentlyCube/TW5-AutoComplete/blob/main/TEST_CASES.md]].
+ * I have a list of test cases that I go through before each new release. You can see it [[here|https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-AutoComplete/blob/main/TEST_CASES.md]].

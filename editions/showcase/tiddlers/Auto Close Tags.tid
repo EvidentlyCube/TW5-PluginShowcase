@@ -1,6 +1,6 @@
 archived: 1
 created: 20221205160652765
-github: https://github.com/EvidentlyCube/TW5-AutoCloseTags
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-AutoCloseTags
 image: Auto Close Tags Image
 modified: 20221209162753008
 plugin: $:/plugins/EvidentlyCube/AutoCloseTags
@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 This plugin is archived and has problems! It remains here only for archival purposes, its use is not recommended.
 </warning>
 
-! Description 
+! Description
 
 Automatically closes HTML tags in the editor as you type. I don't recommend using it as it doesn't work very reliably.
 
@@ -21,14 +21,14 @@ Automatically closes HTML tags in the editor as you type. I don't recommend usin
 
  * Does not work with the [[CodeMirror|https://tiddlywiki.com/plugins/tiddlywiki/codemirror/]] plugin.
 
-! Installation 
+! Installation
 
 {{Auto Close Tags/Install}}
 
-! Demo 
+! Demo
 
 Demo is unavailable because the plugin is disabled.
 
-! Known Bugs 
+! Known Bugs
 
 * It is overzealous and in many situation closes tags when you mean to do other things, like referring to a variable in a filter.

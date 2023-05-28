@@ -1,5 +1,5 @@
 created: 20221025152248579
-github: https://github.com/EvidentlyCube/TW5-AdvancedPerformance
+github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-AdvancedPerformance
 image: Advanced Performance Image
 modified: 20221209142955223
 plugin: $:/plugins/EvidentlyCube/AdvancedPerformance
@@ -9,11 +9,11 @@ tags: Plugin
 title: Advanced Performance
 type: text/vnd.tiddlywiki
 
-! Description 
+! Description
 
 Expand TiddlyWiki's performance instrumentation and make its results available directly in your wiki, without having to use developer console of the browser.
 
-! Features 
+! Features
 
  * See exactly how much time was taken by a given TiddlyWiki refresh.
  * See detailed information about execution time of filters, sorted by various criteria.
