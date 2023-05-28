@@ -1,0 +1,6 @@
+title: $:/plugins/EvidentlyCube/TaskList/core-input-fields
+type: text/vnd.tiddlywiki
+
+<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid>nsort[priority]]">
+	<$transclude tiddler={{{ [[$:/plugins/EvidentlyCube/TaskList/Inputs/]addsuffix{!!field-type}]  }}}/>
+</$list>

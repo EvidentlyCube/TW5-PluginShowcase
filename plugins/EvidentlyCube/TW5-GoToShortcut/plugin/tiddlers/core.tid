@@ -1,0 +1,28 @@
+title: $:/plugins/EvidentlyCube/GoToShortcut/Core
+type: text/vnd.tiddlywiki
+tags: $:/tags/BelowStory
+
+<$list filter="[[$:/temp/EC-GoToShortcut/Store]field:active[1]]">
+<div class="ec-goto_modal">
+  <$button tag="div" class="ec-goto_close">
+	<$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store" active="0"/>
+  </$button>
+  <div class="core">
+
+  ! <$text text={{$:/temp/EC-GoToShortcut/Store!!header}} />:
+
+  {{$:/plugins/EvidentlyCube/GoToShortcut/Input}}
+  <div class="help">
+	,,Supported prefixes:
+	<code title="Run the filter as-is">[</code>,
+	<code title="Include draft , $:/ prefixed and excluded tiddlers">!</code>,
+	<code title="Search in titles and text and include draft , $:/ prefixed and excluded tiddlers">!*</code>,
+	<code title="Include all regular and shadow tiddlers">&gt;</code>,
+	<code title="Search in titles and text of all regular and shadow tiddlers">&gt;*</code>,
+	<code title="Search in titles and text of regular tiddlers">*</code>. Hover for more details.,,
+  </div>
+  {{$:/plugins/EvidentlyCube/GoToShortcut/Results}}
+
+  </div>
+</div>
+</$list>

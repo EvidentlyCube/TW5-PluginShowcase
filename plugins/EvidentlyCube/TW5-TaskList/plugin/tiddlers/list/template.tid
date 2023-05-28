@@ -1,0 +1,30 @@
+title: $:/plugins/EvidentlyCube/TaskList/list-template
+type: text/vnd.tiddlywiki
+
+\import [[$:/plugins/EvidentlyCube/TaskList/action-init]]
+
+\define action-reopen-editor()
+	<$action-sendmessage $message="tm-close-tiddler" param=<<currentTiddler>>/>
+	<$action-navigate $to=<<tid-edit>> scroll="yes"/>
+\end
+
+<$let
+	tid=<<currentTiddler>>
+	tid-edit={{{ [<tid>addsuffix[.edit]] }}}
+	fields-count={{{ [all[tiddlers]tag[TaskList/Field]field:parent<tid>count[]] }}}
+>
+	<$list filter="[<tid-edit>!is[tiddler]]" variable="ignore" emptyMessage="""
+
+		You're already editing this list - <$button actions=<<action-reopen-editor>>>Open Editor</$button>
+	""">
+		<$list filter="[<fields-count>match[0]]" variable="ignore">
+			<$button actions=<<__action-initialize-new-list>>>
+				Initialize a new Task List
+			</$button>
+		</$list>
+		<$list filter="[<fields-count>!match[0]]" variable="ignore">
+
+			<$macrocall $name="ec-task-list" tiddler=<<currentTiddler>> editable="1"/>
+		</$list>
+	</$list>
+</$let>

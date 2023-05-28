@@ -1,0 +1,42 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/builder-add-field
+type: text/vnd.tiddlywiki
+
+\define action-add-new-field()
+	<$let
+		new-field={{{ [<temp>get[new-field]] }}}
+		new-field-caption={{{ [<temp>get[new-field-caption]] }}}
+		new-title={{{ [[$:/tasklist/]addsuffix<tid-base>addsuffix[/Field]addsuffix<new-field-caption>addsuffix[.edit]] }}}
+		is-new-field-empty={{{ [<new-field>match[]then[1]else[0]] }}}
+		is-new-caption-empty={{{ [<new-field-caption>match[]then[1]else[0]] }}}
+		is-unique-field={{{ [all[tiddlers]tag[TaskList/Field]field:parent<tid>get[field-name]match<new-field>then[1]else[0]] }}}
+		is-field-title-used={{{ [<new-title>is[tiddler]then[1]else[0]] }}}
+		is-reserved-field={{{ [list[$:/plugins/EvidentlyCube/TaskList/Builder/reserved-fields]match<new-field>then[1]else[0]] }}}
+		error-count={{{
+			[<is-new-field-empty>match[1]]
+			=[<is-new-caption-empty>match[1]]
+			=[<is-unique-field>match[1]]
+			=[<is-field-title-used>match[1]]
+			=[<is-reserved-field>match[1]]
+
+			+[count[]]
+		}}}
+	>
+	<$list filter="[<error-count>match[0]]" variable="ignore">
+		<$action-createtiddler
+			$basetitle=<<new-title>>
+			tags="TaskList/Field"
+			parent=<<tid>>
+			priority=<<next-priority>>
+			caption=<<new-field-caption>>
+			field-name=<<new-field>>
+			field-type="text"
+			field-width="10"
+		/>
+
+		<$action-setfield
+			$tiddler=<<temp>>
+			new-field=""
+			new-field-caption="" />
+	</$list>
+	</$let>
+\end

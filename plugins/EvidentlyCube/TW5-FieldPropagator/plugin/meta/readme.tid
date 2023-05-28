@@ -1,0 +1,8 @@
+title: $:/plugins/EvidentlyCube/FieldPropagator/readme
+type: text/vnd.tiddlywiki
+
+[[Github|https://github.com/EvidentlyCube/TW5-FieldPropagator]]
+
+----
+
+Propagates a value of children's field up through its parents. Primary use case was to allow marking tiddlers as public/private, and have the option to display in Table of Contents if a given parent tiddler has any public children.

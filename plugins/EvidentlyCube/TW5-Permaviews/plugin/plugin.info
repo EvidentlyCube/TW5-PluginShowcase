@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/EvidentlyCube/Permaviews",
+	"name": "Permaviews",
+	"version": "1.0.0",
+	"core-version": ">=5.2.3",
+	"description": "Immediately open predefined list of tiddlers by visiting custom permalinks",
+	"author": "Maurycy Zarzycki",
+	"source": "https://github.com/EvidentlyCube/TW5-Permaviews",
+	"plugin-type": "plugin",
+	"list": "readme license history"
+}

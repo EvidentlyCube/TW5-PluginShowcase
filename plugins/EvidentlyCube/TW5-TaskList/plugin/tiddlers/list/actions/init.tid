@@ -1,0 +1,65 @@
+title: $:/plugins/EvidentlyCube/TaskList/action-init
+type: text/vnd.tiddlywiki
+
+\define __action-initialize-new-list()
+	<$action-createtiddler
+		$basetitle={{{ [<currentTiddler>addsuffix[.edit]] }}}
+		$overwrite="yes"
+		tags="TaskList"
+	>
+		<$let
+			content='<<ec-task-list "%%">>'
+			content-replaced={{{ [<content>search-replace[%%],<tid>] }}}
+		>
+			<$action-setfield
+				$tiddler=<<createTiddler-title>>
+				text=<<content-replaced>>
+				draft.of=<<tid>>
+				draft.title=<<tid>>
+				tl-filter-done="[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]sort[text]]"
+				tl-filter-not-done="[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]sort[text]]"
+				tl-sort-mode="ascending"
+				tl-sort-field="text"
+				tl-sort-filter=":sort[{!!text}]"
+				caption={{{ [<tid>addsuffix[ (TaskList)]] }}}
+			/>
+		</$let>
+		<$action-createtiddler
+			$basetitle={{{ [[$:/tasklist/]addsuffix<currentTiddler>addsuffix[/Field/Text.edit]] }}}
+			tags="TaskList/Field"
+			parent=<<createTiddler-title>>
+			priority=1
+			caption="Text"
+			field-name="text"
+			field-type="text"
+			field-width="10"
+		/>
+		<$action-createtiddler
+			$basetitle={{{ [[$:/tasklist/]addsuffix<currentTiddler>addsuffix[/Item]] }}}
+			tags="TaskList/Item"
+			parent=<<currentTiddler>>
+			text="Make an apple pie"
+		/>
+		<$action-createtiddler
+			$basetitle={{{ [[$:/tasklist/]addsuffix<currentTiddler>addsuffix[/Item]] }}}
+			tags="TaskList/Item"
+			parent=<<currentTiddler>>
+			text="Buy groceries"
+		/>
+		<$action-createtiddler
+			$basetitle={{{ [[$:/tasklist/]addsuffix<currentTiddler>addsuffix[/Item]] }}}
+			tags="TaskList/Item"
+			parent=<<currentTiddler>>
+			text="Lookup the definition of 'scratch'"
+			_is-done="1"
+		/>
+		<$action-createtiddler
+			$basetitle={{{ [[$:/tasklist/]addsuffix<currentTiddler>addsuffix[/Item]] }}}
+			tags="TaskList/Item"
+			parent=<<currentTiddler>>
+			text="Invent the universe"
+			_is-done="1"
+		/>
+		<$action-navigate $to=<<createTiddler-title>>/>
+	</$action-createtiddler>
+\end

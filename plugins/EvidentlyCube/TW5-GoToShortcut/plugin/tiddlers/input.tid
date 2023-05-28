@@ -1,0 +1,143 @@
+title: $:/plugins/EvidentlyCube/GoToShortcut/Input
+type: text/vnd.tiddlywiki
+
+\define action-navigate-up()
+<$let selected={{$:/temp/EC-GoToShortcut/Store!!selected}} count={{$:/temp/EC-GoToShortcut/Store!!results-count}}>
+  <$action-setfield
+	$tiddler="$:/temp/EC-GoToShortcut/Store"
+	selected={{{ [<selected>subtract[2]add<count>remainder<count>add[1]] }}}/>
+</$let>
+\end
+
+\define action-navigate-down()
+<$let selected={{$:/temp/EC-GoToShortcut/Store!!selected}} count={{$:/temp/EC-GoToShortcut/Store!!results-count}}>
+  <$action-setfield
+	$tiddler="$:/temp/EC-GoToShortcut/Store"
+	selected={{{ [<selected>remainder<count>add[1]] }}}/>
+</$let>
+\end
+
+\define action-navigate-pageup()
+<$let
+	selected={{$:/temp/EC-GoToShortcut/Store!!selected}}
+	count={{$:/temp/EC-GoToShortcut/Store!!results-count}}
+	limit={{$:/plugins/EvidentlyCube/GoToShortcut/Config!!rows}}>
+  <$action-setfield
+	$tiddler="$:/temp/EC-GoToShortcut/Store"
+	selected={{{ [<selected>compare:number:eq[1]then<count>] ~[<selected>subtract<limit>max[1]] }}}/>
+</$let>
+\end
+
+\define action-navigate-pagedown()
+<$let
+	selected={{$:/temp/EC-GoToShortcut/Store!!selected}}
+	count={{$:/temp/EC-GoToShortcut/Store!!results-count}}
+	limit={{$:/plugins/EvidentlyCube/GoToShortcut/Config!!rows}}>
+  <$action-setfield
+	$tiddler="$:/temp/EC-GoToShortcut/Store"
+	selected={{{ [<selected>compare:number:eq<count>then[1]] ~[<selected>add<limit>min<count>] }}}/>
+</$let>
+\end
+
+\define action-navigate-home()
+  <$action-setfield
+	$tiddler="$:/temp/EC-GoToShortcut/Store"
+	selected=1/>
+\end
+
+\define action-navigate-end()
+  <$action-setfield
+	$tiddler="$:/temp/EC-GoToShortcut/Store"
+	selected={{$:/temp/EC-GoToShortcut/Store!!results-count}}/>
+\end
+
+\define action-navigate-close()
+  <$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store" active="0"/>
+\end
+
+\define action-navigate-select()
+  <$let results={{$:/temp/EC-GoToShortcut/Store!!results}} selected={{$:/temp/EC-GoToShortcut/Store!!selected}}>
+  <$list filter="[enlist<results>nth<selected>]">
+	<$action-navigate to=<<currentTiddler>> $scroll="yes"/>
+	<$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store" active="0"/>
+  </$list>
+  </$let>
+\end
+
+\define action-search-changed(reset:no)
+<$let
+	reset=<<__reset__>>
+	lookupSource={{$:/temp/EC-GoToShortcut/Store!!lookup}}
+	lookup={{{ [<reset>compare:string:eq[yes]then[]] [<lookupSource>] +[nth[1]] }}}
+	filter-start="["
+	mode={{{ [<lookup>prefix<filter-start>then[filter]]
+			 [<lookup>prefix[>*]then[system-deep]]
+			 [<lookup>prefix[>]then[system]]
+			 [<lookup>prefix[!*]then[all-deep]]
+			 [<lookup>prefix[!]then[all]]
+			 [<lookup>prefix[*]then[normal-deep]]
+			 [[normal]] }}}
+	query={{{ [<lookup>removeprefix[>*]]
+			  [<lookup>removeprefix[>]]
+			  [<lookup>removeprefix[!*]]
+			  [<lookup>removeprefix[!]]
+			  [<lookup>removeprefix[*]]
+			  [<lookup>] }}}
+>
+  <$macrocall $name="action-save-results" mode=<<mode>>  query=<<query>>/>
+</$let>
+
+\end
+
+\define action-save-results(mode query)
+<$let
+	mode=<<__mode__>>
+	header={{{ [<mode>addprefix[header-]] }}}
+	filter-name={{{ [<mode>addprefix[filter-]] }}}
+	query=<<__query__>>
+	filter={{{ [[$:/plugins/EvidentlyCube/GoToShortcut/Config]get<filter-name>] }}}>
+
+  <$list filter="[<mode>compare:string:ne[filter]]" emptyMessage="""
+	<$set name="results" filter=<<query>>>
+	  <$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store"
+		header={{{ [[$:/plugins/EvidentlyCube/GoToShortcut/Config]get<header>] }}}
+		results=<<results>>
+		results-count={{{ [enlist<results>count[]] }}}
+		selected=1
+	  />
+	</$set>
+  """>
+  <$set name="results" filter=<<filter>>>
+	<$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store"
+	  header={{{ [[$:/plugins/EvidentlyCube/GoToShortcut/Config]get<header>] }}}
+	  results=<<results>>
+	  results-count={{{ [enlist<results>count[]] }}}
+	  selected=1
+	/>
+  </$set>
+  </$list>
+</$let>
+\end
+
+<$keyboard key="Down" actions=<<action-navigate-down>>>
+<$keyboard key="Up" actions=<<action-navigate-up>>>
+<$keyboard key="Page_down" actions=<<action-navigate-pagedown>>>
+<$keyboard key="Page_up" actions=<<action-navigate-pageup>>>
+<$keyboard key="Ctrl+Home" actions=<<action-navigate-home>>>
+<$keyboard key="Ctrl+End" actions=<<action-navigate-end>>>
+<$keyboard key="Enter" actions=<<action-navigate-select>>>
+<$keyboard key="Escape" actions=<<action-navigate-close>>>
+<$edit-text
+  tiddler="$:/temp/EC-GoToShortcut/Store"
+  field="lookup"
+  placeholder="Input tiddler name here"
+  focus="yes"
+  inputActions=<<action-search-changed>>/>
+</$keyboard>
+</$keyboard>
+</$keyboard>
+</$keyboard>
+</$keyboard>
+</$keyboard>
+</$keyboard>
+</$keyboard>

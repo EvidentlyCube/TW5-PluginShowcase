@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/Permaviews/template-cascade
+tags: $:/tags/ViewTemplateBodyFilter
+list-after: $:/config/ViewTemplateBodyFilters/system
+
+[tag[$:/tags/EC/Permaviews/View]then[$:/plugins/EvidentlyCube/Permaviews/template]]

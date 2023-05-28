@@ -1,0 +1,18 @@
+title: $:/plugins/EvidentlyCube/TaskList/draft-template
+type: text/vnd.tiddlywiki
+
+<div class="ec_tl-draft">
+<$list filter="[all[current]get[draft.of]is[tiddler]]" emptyMessage="""
+
+	<h1>You're creating a new Task List</h1>
+
+	You can access the TaskList editor after you save this Tiddler.
+""">
+
+	<h1>Be careful!</h1>
+
+	You are editing an existing TaskList. Please do not edit any fields prefixed with `tl-`. If you rename
+	this Task List all the fields and items will be updated to point to the newly named Task List.
+
+</$list>
+</div>

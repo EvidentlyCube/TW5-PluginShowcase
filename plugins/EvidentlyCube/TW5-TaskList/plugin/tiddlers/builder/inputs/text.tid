@@ -1,0 +1,7 @@
+title: $:/plugins/EvidentlyCube/TaskList/Builder/Inputs/text
+
+<td class="ec_tl-field-cell" colspan="2">
+	<strong>Field Width:</strong>
+	<$edit-text field="field-width" type="number" size="4"/>
+	<p class="ec_tl-hint">Width of the input field in characters.</p>
+</td>

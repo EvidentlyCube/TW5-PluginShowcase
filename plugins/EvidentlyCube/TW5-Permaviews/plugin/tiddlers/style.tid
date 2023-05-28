@@ -1,0 +1,29 @@
+title: $:/plugins/EvidentlyCube/Permaviews/Style
+tags: $:/tags/Stylesheet
+type: text/vnd.tiddlywiki
+
+.ec_pv-muted {
+	color: <<colour foreground>>;
+	opacity: 0.75;
+	font-style: italic;
+}
+
+.ec_pv-options table {
+	width: 100%;
+}
+
+.ec_pv-options p {
+	margin-top: 0;
+}
+.ec_pv-options input:not([type="checkbox"]),
+.ec_pv-options textarea {
+	display: block;
+	width: 100%;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.ec_pv-options .tc-error a {
+	color: white;
+	text-decoration: underline;
+}

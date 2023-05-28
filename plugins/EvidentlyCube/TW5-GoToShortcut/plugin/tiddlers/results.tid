@@ -1,0 +1,40 @@
+title: $:/plugins/EvidentlyCube/GoToShortcut/Results
+type: text/vnd.tiddlywiki
+
+<$set name="results" value={{$:/temp/EC-GoToShortcut/Store!!results}}>
+<$let
+	limit={{$:/plugins/EvidentlyCube/GoToShortcut/Config!!rows}}
+	css-row-class={{$:/plugins/EvidentlyCube/GoToShortcut/Config!!result-row-class}}
+	template-base={{$:/plugins/EvidentlyCube/GoToShortcut/Config!!template}}
+	template={{{ [<template-base>is[tiddler]else[$:/plugins/EvidentlyCube/GoToShortcut/Template]] }}}
+	halfLimit={{{ [<limit>divide[2]ceil[]] }}}
+	count={{$:/temp/EC-GoToShortcut/Store!!results-count}}
+	maxOffset={{{ [<count>subtract<limit>] }}}
+	selected={{$:/temp/EC-GoToShortcut/Store!!selected}}
+	offset={{{ [<selected>subtract<halfLimit>min<maxOffset>max[0]] }}}>
+<div class="row meta">
+  <$list filter="[<offset>compare:number:gt[0]]">
+  //(<$text text=<<offset>>/> more)//
+  </$list>
+</div>
+<div class="rows">
+  <$list filter="[enlist<results>rest<offset>first<limit>]" counter="counter" emptyMessage="""
+  <div class="row meta no-results">
+  No results
+  </div>
+  """>
+	<$let classes={{{ [<counter>add<offset>compare:string:eq<selected>then[selected]] ~[[]] +[addprefix[ ]addprefix<css-row-class>] }}}>
+	  {{||$:/plugins/EvidentlyCube/GoToShortcut/ResultRow}}
+	</$let>
+  </$list>
+</div>
+<div class="row meta">
+  <$list filter="[<offset>compare:number:lt<maxOffset>]">
+  //(<$text text={{{ [<maxOffset>subtract<offset>] }}}/> more)//
+  </$list>
+</div>
+<$list filter="[<count>compare:number:eq[0]]">
+</$list>
+
+</$let>
+</$set>

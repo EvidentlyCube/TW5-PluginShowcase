@@ -1,0 +1,87 @@
+title: $:/plugins/EvidentlyCube/Permaviews/template
+
+\define must-be-defined(field name)
+<$list filter="[{!!$field$}match[]]">
+	<span class="tc-error">
+		$name$ must be defined
+	</span>
+</$list>
+\end
+
+\define must-be-valid-filter(field)
+<$let
+	base-filter={{!!$field$}}
+	suffix=" +[limit[1]]"
+	filter={{{ [<base-filter>addsuffix<suffix>] }}}
+>
+<$list filter=<<filter>>>
+	<$list filter={{{ [<currentTiddler>prefix[Filter error]] }}}>
+		<span class="tc-error">
+			<$text text=<<currentTiddler>>/>
+		</span>
+	</$list>
+</$list>
+</$let>
+\end
+
+<div class="ec_pv-options">
+<h1>Permaview</h1>
+
+<p>This tiddler defines a view that can be accessed by a permalink to open a predefined list of tiddlers.</p>
+
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Name:''<br/>
+		<p class="ec_pv-muted">
+			Name which is used in the permalink to open the tiddlers defined in the Filter.
+		</p>
+	</td>
+	<td>
+		<$edit-text field="view-name" default="" placeholder="Name for the view..."/>
+		<a href={{{ [{!!view-name}addprefix[#]] }}}>Permalink</a>
+		<<must-be-defined "view-name" "Name">>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Description:''<br/>
+		<p class="ec_pv-muted">
+			A description of this view to make it easier to keep things clean.
+		</p>
+	</td>
+	<td><$edit-text field="text" default="" placeholder="Description for this view..."/></td>
+</tr>
+
+<tr>
+	<td align="center">
+		''Filter:''<br/>
+		<p class="ec_pv-muted">
+			A filter that returns the list of tiddlers which will be opened with this view.<br/>
+			Can be a filter or a space-separated list of tiddlers.<br/>
+			Keep in mind that tiddlers with a space in their name must be wrapped in double square brackets \[\[like that]].
+		</p>
+	</td>
+	<td>
+		<$edit-text tag="textarea" field="filter" placeholder="Filter..."/>
+		<<must-be-valid-filter "filter">>
+		<<must-be-defined "filter" "Filter">>
+	</td>
+</tr>
+</tbody>
+</table>
+
+<h1>Tiddlers available in the view</h1>
+
+<ul>
+<$list filter={{!!filter}} emptyMessage="""<li class="ec_pv-muted">No tiddlers returned by the filter</li>""">
+<li>
+<$link to=<<currentTiddler>>><$text text=<<currentTiddler>>/></$link>
+</li>
+</$list>
+
+</ul>

@@ -1,0 +1,12 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-start-item-edit
+type: text/vnd.tiddlywiki
+
+\define action-start-item-edit()
+	<$action-setfield _is-editing="1"/>
+	<$action-createtiddler
+		$basetitle={{{ [[$:/temp/tasklist/]addsuffix<currentTiddler>]  }}}
+		$overwrite="yes"
+		$template=<<currentTiddler>>
+		parent=""
+	/>
+\end

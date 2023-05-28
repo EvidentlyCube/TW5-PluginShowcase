@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/EvidentlyCube/ExtraOperators",
+	"name": "Extra Operators",
+	"version": "1.2.0",
+	"core-version": ">=5.2.2",
+	"description": "Adds new filter operators",
+	"author": "Maurycy Zarzycki",
+	"source": "https://github.com/EvidentlyCube/TW5-FilterOperators",
+	"plugin-type": "plugin",
+	"list": "readme license history"
+}

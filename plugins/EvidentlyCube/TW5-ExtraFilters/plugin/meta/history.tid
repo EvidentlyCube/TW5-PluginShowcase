@@ -1,0 +1,11 @@
+title: $:/plugins/EvidentlyCube/ExtraOperators/history
+type: text/vnd.tiddlywiki
+
+* ''1.2.0'' -- `susearch` rework:
+** Inverting results is supported
+** By default all words must have a match, which can be changed with a flag `some-words`
+** Added `ordered` flag match only when words appear in the same order
+* ''1.1.0'' -- `susearch` now supports `strict` flag which requires all words to match to include in the output.
+* ''1.0.2'' -- `susearch`, `susearch-sort` and `susearch-mark` no longer ignore spaces when matching words (ie. `sand` no longer matches `s and`).
+* ''1.0.1'' -- `focus-on` fixed a bug where last character would not be displayed if the whole text was supposed to be visible
+* ''1.0.0'' -- Initial release

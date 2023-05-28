@@ -1,0 +1,6 @@
+title: $:/plugins/EvidentlyCube/TaskList/builder-tab-template
+type: text/vnd.tiddlywiki
+
+<$tiddler tiddler=<<currentTab>>>
+	<$transclude mode="inline" />
+</$tiddler>

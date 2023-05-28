@@ -1,0 +1,8 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-save-field-hidden-field
+type: text/vnd.tiddlywiki
+
+<$action-setfield
+	$tiddler=<<item-tid>>
+	$field={{!!meta-name}}
+	$value={{!!meta-value}}
+/>

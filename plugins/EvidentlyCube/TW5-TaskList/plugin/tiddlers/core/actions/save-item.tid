@@ -1,0 +1,21 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-save-item
+type: text/vnd.tiddlywiki
+
+\define action-save-item()
+	<$action-createtiddler
+		$basetitle={{{ [[$:/tasklist/]addsuffix<tid-base>addsuffix[/Item]] }}}
+		tags="TaskList/Item"
+		parent=<<tid-base>>
+	>
+
+		<$let
+			item-tid=<<createTiddler-title>>
+		>
+			<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid>]">
+				<$transclude tiddler={{{ [[$:/plugins/EvidentlyCube/TaskList/Actions/core-save-field-]addsuffix{!!field-type}] }}}/>
+			</$list>
+		</$let>
+	</$action-createtiddler>
+
+	<$action-deletetiddler $tiddler=<<temp>>/>
+\end

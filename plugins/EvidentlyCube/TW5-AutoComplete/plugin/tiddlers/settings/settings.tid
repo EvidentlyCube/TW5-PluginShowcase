@@ -1,0 +1,80 @@
+title: $:/plugins/EvidentlyCube/AutoComplete/Settings
+tags: $:/tags/EvidentlyCube/SettingsTab
+caption: Auto Complete
+
+\define action-new-trigger()
+<$action-createtiddler
+	$basetitle={{{ [all[shadows+tiddlers]tag[$:/tags/EC/AutoComplete/Trigger]!is[draft]count[]add[1]addprefix[$:/EvidentlyCube/Trigger/]] }}}
+	tags="$:/tags/EC/AutoComplete/Trigger"
+	caption={{{ [all[shadows+tiddlers]tag[$:/tags/EC/AutoComplete/Trigger]!is[draft]count[]add[1]addprefix[Unnamed trigger ]] }}}
+	trigger="[["
+	filter="[all[tiddlers]!is[system]!is[draft]search:title<query>]"
+	display-filter="[<currentTiddler>]"
+	template="[[$option$]]$caret$"
+	auto-trigger-textarea="1"
+>
+	<$action-navigate $to=<<createTiddler-title>> scroll="yes"/>
+</$action-createtiddler>
+\end
+
+\define action-open-keyboard-shortcuts()
+<$action-setfield $tiddler="$:/state/tab-1749438307" text="$:/core/ui/ControlPanel/KeyboardShortcuts" />
+\end
+
+\define comp-open-keyboard-shortcuts()
+<$button
+	tag="a"
+	class="tc-tiddlylink tc-tiddlylink-resolves ec_ac-pointer"
+	actions=<<action-open-keyboard-shortcuts>>
+>Keyboard Shortcuts</$button>
+
+\end
+
+Configuration for the [[Auto Complete|$:/plugins/EvidentlyCube/AutoComplete]] plugin.
+
+! Registered Triggers
+
+<ul>
+	<$list filter="[all[shadows+tiddlers]tag[$:/tags/EC/AutoComplete/Trigger]!is[draft]sortan[title]sortan[caption]]">
+		<li><$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link> (Trigger <code>{{!!trigger}}</code>)</li>
+	</$list>
+	<li><$button actions=<<action-new-trigger>>>Create a new trigger</$button></li>
+</ul>
+
+! Config
+
+<table>
+<colgroup>
+	<col width="60%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Displayed results''<br/>
+		//Maximum number of results to display in the auto complete window, must be between 1 and 99//
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/AutoComplete/Config" field="rows" default="8"/>
+		<$list filter="""
+			[{$:/plugins/EvidentlyCube/AutoComplete/Config!!rows}floor[]compare:number:lt[1]]
+			[{$:/plugins/EvidentlyCube/AutoComplete/Config!!rows}floor[]compare:number:gt[99]]
+			+[count[]!match[0]]
+		""">
+			<div class="tc-error">Must be a number between 1 and 99</div>
+		</$list>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Keyboard Shortcut''<br/>
+		//Use this keyboard shortcut right in front of a trigger to manually open the completion window; can be changed in <<comp-open-keyboard-shortcuts>>tab//
+	</td>
+	<td>
+	<$list filter="$:/config/shortcuts/ $:/config/shortcuts-mac/ $:/config/shortcuts-not-mac/ $:/config/shortcuts-linux/ $:/config/shortcuts-not-linux/ $:/config/shortcuts-windows/ $:/config/shortcuts-not-windows/">
+		<$macrocall $name="displayshortcuts" $output="text/html" shortcuts={{{ [<currentTiddler>addsuffix[EC-AutoComplete]get[text]] }}} prefix="<kbd>" separator="</kbd> <kbd>" suffix="</kbd>"/>
+	</$list>
+	</td>
+</tr>
+</tbody>
+</table>
+

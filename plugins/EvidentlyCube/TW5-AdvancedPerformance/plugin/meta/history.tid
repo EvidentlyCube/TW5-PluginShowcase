@@ -1,0 +1,16 @@
+title: $:/plugins/EvidentlyCube/AdvancedPerformance/history
+type: text/vnd.tiddlywiki
+
+* ''1.1.4'' -- Two fixes:
+** `other` refresh now correctly ignores subfilters when calculating its duration
+** Tabs ''Median'' and ''Average'' now display subfilters just like other tabs do
+* ''1.1.3'' -- Filters that run as subfilters are now explicitly marked in the tables.
+* ''1.1.2'' -- Fixed a bug where in certain situations, startup script loading order would cause performance tracking to be delayed by //one refresh//
+* ''1.1.1'' -- Colors are now taken from the current palette so that it works with dark ones too
+* ''1.1.0'':
+** Added option to filter the tables of filters to only show ones that run during specific refreshes
+** Filters that run outside the defined refresh mechanism are now also counted and grouped as "other"
+* ''1.0.1'' -- Fixed Z-index on the UI elements to (try to) be always on top + filters with variables now display correctly,
+  rather than the variables being treated as HTML tags
+* ''1.0.0'' -- Initial release
+* ''0.0.1'' -- Development version

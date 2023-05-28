@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/EvidentlyCube/AutoComplete",
+	"name": "Auto Complete",
+	"version": "1.0.15",
+	"core-version": ">=5.2.3",
+	"description": "Enable easy tiddler name completion in various contexts",
+	"author": "Maurycy Zarzycki",
+	"source": "https://github.com/EvidentlyCube/TW5-AutoComplete",
+	"plugin-type": "plugin",
+	"list": "readme license history"
+}

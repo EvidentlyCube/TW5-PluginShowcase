@@ -1,0 +1,17 @@
+title: $:/plugins/EvidentlyCube/GoToShortcut/KeyboardShortcut
+tags: $:/tags/KeyboardShortcut
+key: ((EC-GoToModal))
+
+<$importvariables filter="[[$:/plugins/EvidentlyCube/GoToShortcut/Input]]">
+<$list filter="[[$:/temp/EC-GoToShortcut/Store]!field:active[1]]" emptyMessage="""
+
+	<$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store" active="0"/>
+
+""">
+	<$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store" active="1" />
+	<$list filter="[[$:/plugins/EvidentlyCube/GoToShortcut/Config]get[clear-on-open]match[1]]">
+		<$action-setfield $tiddler="$:/temp/EC-GoToShortcut/Store" lookup="" />
+		<<action-search-changed "yes">>
+	</$list>
+</$list>
+</$importvariables>

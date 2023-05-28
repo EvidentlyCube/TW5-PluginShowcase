@@ -1,0 +1,66 @@
+title: $:/plugins/EvidentlyCube/TaskList/Components/builder-new-field
+type: text/vnd.tiddlywiki
+
+<$keyboard key="enter" class="ec_tl-builder-new-field" actions=<<action-add-new-field>>>
+	<h2>Add a new field</h2>
+
+	<p>
+		''Caption:''
+		<$edit-text
+			tiddler=<<temp>>
+			field="new-field-caption"
+			placeholder="Field name"
+		/>
+	</p>
+	<p class="ec_tl-muted">How this field is displayed in the input list</p>
+
+	<p>
+		''ID:''
+		<$edit-text
+			tiddler=<<temp>>
+			field="new-field"
+			placeholder="Field Name"
+		/>
+	</p>
+	<p class="ec_tl-muted">Actual tiddler field name used to store this field</p>
+
+	<$let
+		new-field={{{ [<temp>get[new-field]] }}}
+		new-field-caption={{{ [<temp>get[new-field-caption]] }}}
+		new-title={{{ [<tid>addsuffix[/Field/]addsuffix<new-field-caption>] }}}
+		is-new-field-empty={{{ [<new-field>match[]then[1]else[0]] }}}
+		is-new-caption-empty={{{ [<new-field-caption>match[]then[1]else[0]] }}}
+		is-unique-field={{{ [all[tiddlers]tag[TaskList/Field]field:parent<tid>get[field-name]match<new-field>then[1]else[0]] }}}
+		is-field-title-used={{{ [<new-title>is[tiddler]then[1]else[0]] }}}
+		is-reserved-field={{{ [list[$:/plugins/EvidentlyCube/TaskList/Builder/reserved-fields]match<new-field>then[1]else[0]] }}}
+		error-count={{{
+			[<is-new-field-empty>match[1]]
+			=[<is-new-caption-empty>match[1]]
+			=[<is-unique-field>match[1]]
+			=[<is-field-title-used>match[1]]
+			=[<is-reserved-field>match[1]]
+
+			+[count[]]
+		}}}
+	>
+		<$list filter="[<is-new-field-empty>match[1]]">
+			<p class="ec_tl-error">Field ID must not be empty.</p>
+		</$list>
+		<$list filter="[<is-new-caption-empty>match[1]]">
+			<p class="ec_tl-error">Field Caption must not be empty.</p>
+		</$list>
+		<$list filter="[<is-unique-field>match[1]]">
+			<p class="ec_tl-error">A field with this ID already exists.</p>
+		</$list>
+		<$list filter="[<is-field-title-used>match[1]]">
+			<p class="ec_tl-error">There already exists a tiddler <$link to=<<new-title>>><$text text=<<new-title>>/></$link>.</p>
+		</$list>
+		<$list filter="[<is-reserved-field>match[1]]">
+			<p class="ec_tl-error"><code><$text text=<<new-field>>/></code> is a built-in field name, please use a different ID.</p>
+		</$list>
+
+		<$button actions=<<action-add-new-field>> disabled={{{ [<error-count>!match[0]then[yes]] }}}>
+			Add new field
+		</$button>
+	</$let>
+</$keyboard>

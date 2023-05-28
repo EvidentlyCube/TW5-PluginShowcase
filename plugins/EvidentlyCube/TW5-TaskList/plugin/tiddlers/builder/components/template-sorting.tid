@@ -1,0 +1,97 @@
+title: $:/plugins/EvidentlyCube/TaskList/builder-template-sorting
+type: text/vnd.tiddlywiki
+caption: Sorting
+
+\define action-rebuild-sorting-filters()
+	<$let
+		simple-sort-base-done="[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]%1%sort[%2%]]"
+		simple-sort-base-not-done="[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]%1%sort[%2%]]"
+		complex-sort-base-done="[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>field:_is-done[1]]"
+		complex-sort-base-not-done="[all[tiddlers]tag[TaskList/Item]field:parent<tid-base>!field:_is-done[1]]"
+		sort-field={{{ [<tid>get[tl-sort-field]] }}}
+		sort-filter={{{ [<tid>get[tl-sort-filter]] }}}
+		excl="!"
+	>
+		<$list filter="[<tid>field:tl-sort-mode[ascending]]">
+			<$action-setfield
+				$tiddler=<<tid>>
+				$field="tl-filter-not-done"
+				$value={{{ [<simple-sort-base-not-done>search-replace[%1%],[]search-replace[%2%],<sort-field>] }}}
+			/>
+			<$action-setfield
+				$tiddler=<<tid>>
+				$field="tl-filter-done"
+				$value={{{ [<simple-sort-base-done>search-replace[%1%],[]search-replace[%2%],<sort-field>] }}}
+			/>
+		</$list>
+		<$list filter="[<tid>field:tl-sort-mode[descending]]">
+			<$action-setfield
+				$tiddler=<<tid>>
+				$field="tl-filter-not-done"
+				$value={{{ [<simple-sort-base-not-done>search-replace[%1%],[!]search-replace[%2%],<sort-field>] }}}
+			/>
+			<$action-setfield
+				$tiddler=<<tid>>
+				$field="tl-filter-done"
+				$value={{{ [<simple-sort-base-done>search-replace[%1%],[!]search-replace[%2%],<sort-field>] }}}
+			/>
+		</$list>
+		<$list filter="[<tid>field:tl-sort-mode[filter]]">
+			<$action-setfield
+				$tiddler=<<tid>>
+				$field="tl-filter-not-done"
+				$value={{{ [<complex-sort-base-not-done>addsuffix[ ]addsuffix<sort-filter>] }}}
+			/>
+			<$action-setfield
+				$tiddler=<<tid>>
+				$field="tl-filter-done"
+				$value={{{ [<complex-sort-base-done>addsuffix[ ]addsuffix<sort-filter>] }}}
+			/>
+		</$list>
+	</$let>
+\end
+
+<h2>Sorting</h2>
+
+<p class="ec_tl-muted">
+	In what order should the items in the task list appear?
+</p>
+
+<table style="width: 100%">
+<colgroup>
+	<col style="width: 250px">
+	<col>
+</colgroup>
+<tbody>
+	<tr>
+		<td>
+			<$radio tiddler=<<tid>> field="tl-sort-mode" value="ascending" actions=<<action-rebuild-sorting-filters>>> Simple Ascending</$radio><br>
+			<$radio tiddler=<<tid>> field="tl-sort-mode" value="descending" actions=<<action-rebuild-sorting-filters>>> Simple Descending</$radio>
+			<p class="ec_tl-muted">
+				Provide the field name by which to sort the task list items.
+			</p>
+		</td>
+		<td>
+			<$edit-text tiddler=<<tid>> class="ec_tl-template-edit" field="tl-sort-field"  inputActions=<<action-rebuild-sorting-filters>>/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<$radio tiddler=<<tid>> field="tl-sort-mode" value="filter" actions=<<action-rebuild-sorting-filters>>> Custom filter</$radio>
+			<p class="ec_tl-muted">
+				Provide a custom filter run or runs for sorting.
+			</p>
+		</td>
+		<td>
+			<$edit-text tiddler=<<tid>> class="ec_tl-template-edit" field="tl-sort-filter"  inputActions=<<action-rebuild-sorting-filters>>/>
+			<$list filter={{{ [<tid>get[tl-filter-done]] }}}>
+				<p class="ec_tl-error">
+					<$list filter={{{ [<currentTiddler>prefix[Filter error]]}}}>
+						<<currentTiddler>>
+					</$list>
+				</p>
+			</$list>
+		</td>
+	</tr>
+</tbody>
+</table>

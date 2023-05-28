@@ -1,0 +1,26 @@
+title: $:/plugins/EvidentlyCube/TaskList/builder-template-fields
+type: text/vnd.tiddlywiki
+caption: Fields
+
+<h2>Fields editor</h2>
+
+<p class="ec_tl-muted">
+	What fields do you want to have in this task list?
+</p>
+
+<table class="ec_tl-builder-field-edit">
+<thead>
+	<tr>
+		<th>Name&nbsp;(ID)</th>
+		<th colspan="3">Field details</th>
+		<th>Actions</th>
+	</tr>
+</thead>
+<tbody>
+	<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid>nsort[priority]]">
+		{{||$:/plugins/EvidentlyCube/TaskList/Builder/field-edit}}
+	</$list>
+</tbody>
+</table>
+
+{{||$:/plugins/EvidentlyCube/TaskList/Components/builder-new-field}}

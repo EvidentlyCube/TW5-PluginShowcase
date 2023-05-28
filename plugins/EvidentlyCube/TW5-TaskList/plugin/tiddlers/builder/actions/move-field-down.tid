@@ -1,0 +1,15 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/builder-move-field-down
+type: text/vnd.tiddlywiki
+
+\define action-move-field-down()
+	<$let
+		priority={{!!priority}}
+		next-priority={{{ [all[tiddlers]tag[TaskList/Field]field:parent{!!parent}get[priority]compare:integer:gt<priority>minall[]] }}}
+		next-tiddler={{{ [all[tiddlers]tag[TaskList/Field]field:parent{!!parent}field:priority<next-priority>] }}}
+	>
+		<$list filter="[<next-tiddler>is[tiddler]]" variable="ignore">
+			<$action-setfield $tiddler=<<currentTiddler>> priority=<<next-priority>>/>
+			<$action-setfield $tiddler=<<next-tiddler>> priority=<<priority>>/>
+		</$list>
+	</$let>
+\end

@@ -1,0 +1,6 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/builder-delete-field
+type: text/vnd.tiddlywiki
+
+\define action-delete-field()
+	<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+\end

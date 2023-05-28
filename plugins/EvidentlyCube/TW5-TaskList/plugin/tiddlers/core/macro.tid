@@ -1,0 +1,44 @@
+title: $:/plugins/EvidentlyCube/TaskList/core-macro
+type: text/vnd.tiddlywiki
+tags: $:/tags/Macro
+
+\define ec-task-list(tiddler)
+\whitespace trim
+
+	<$importvariables
+		filter="
+			[[$:/plugins/EvidentlyCube/TaskList/Actions/core-save-item]]
+			[[$:/plugins/EvidentlyCube/TaskList/Actions/core-start-item-edit]]
+			[[$:/plugins/EvidentlyCube/TaskList/Actions/core-save-edited-item]]
+			[[$:/plugins/EvidentlyCube/TaskList/Actions/core-cancel-item-edit]]
+			[[$:/plugins/EvidentlyCube/TaskList/Actions/core-start-tasklist-edit]]
+		"
+	>
+	<$let
+		currentTiddler=<<__tiddler__>>
+		tid=<<__tiddler__>>
+		tid-edit={{{ [<tid>addsuffix[.edit]] }}}
+		tid-base={{{ [<tid>removesuffix[.edit]else<tid>] }}}
+		temp=<<qualify "$:/temp/ec-task-list">>
+	>
+		<div class={{{ [[ec_tl-container]] [<tid>slugify[]addprefix[tasklist-]] +[join[ ]] }}}>
+			{{||$:/plugins/EvidentlyCube/TaskList/core-input-row}}
+			<div class="ec_tl-tasks">
+				<$list filter={{!!tl-filter-not-done}}>
+					<$transclude tiddler={{{
+						[all[current]field:_is-editing[1]then[$:/plugins/EvidentlyCube/TaskList/core-item-edit]else[$:/plugins/EvidentlyCube/TaskList/core-item]]
+					}}}/>
+				</$list>
+			</div>
+
+			<div class="ec_tl-tasks">
+				<$list filter={{!!tl-filter-done}}>
+					<$transclude tiddler={{{
+						[all[current]field:_is-editing[1]then[$:/plugins/EvidentlyCube/TaskList/core-item-edit]else[$:/plugins/EvidentlyCube/TaskList/core-item]]
+					}}}/>
+				</$list>
+			</div>
+		</div>
+	</$let>
+	</$importvariables>
+\end

@@ -1,0 +1,21 @@
+title: $:/plugins/EvidentlyCube/AdvancedPerformance/readme
+type: text/vnd.tiddlywiki
+
+
+[[Github|https://github.com/EvidentlyCube/TW5-AdvancedPerformance]]
+
+----
+
+! Features
+
+Expand TiddlyWiki's performance instrumentation and make its results available directly in your wiki,
+without having to use developer console of the browser.
+
+!! How to Use
+
+* Install the plugin
+* Enable //Performance Instrumentation// (Control Panel -> Settings -> Performance Instrumentation)
+* Save wiki
+* Refresh the page
+
+The bottom widget will now be available and advanced instrumentation will happen. The functionality of this plugin can be easily toggled off by disabling //Performance Instrumentation// and refreshing the page.

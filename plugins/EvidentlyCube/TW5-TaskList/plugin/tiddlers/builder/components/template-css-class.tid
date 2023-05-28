@@ -1,0 +1,20 @@
+title: $:/plugins/EvidentlyCube/TaskList/builder-template-css-class
+type: text/vnd.tiddlywiki
+caption: CSS Class
+
+<h2>CSS Class</h2>
+
+<p class="ec_tl-muted">
+	Do you want a certain CSS class to be applied to task items? Provide the filter that returns the class below.
+	The current tiddler is the task item, so you can use Text Reference to take value from fields.
+</p>
+
+<$edit-text tiddler=<<tid>> tag="textarea" class="ec_tl-template-edit" field="tl-class-filter"/>
+
+<$list filter={{{ [<tid>get[tl-class-filter]] }}}>
+	<p class="ec_tl-error">
+		<$list filter={{{ [<currentTiddler>prefix[Filter error]]}}}>
+			<<currentTiddler>>
+		</$list>
+	</p>
+</$list>

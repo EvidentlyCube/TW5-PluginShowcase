@@ -1,0 +1,24 @@
+title: $:/plugins/EvidentlyCube/Permaviews/Settings
+tags: $:/tags/EvidentlyCube/SettingsTab
+caption: Permaviews
+
+\define action-new-view()
+<$action-createtiddler
+	$basetitle={{{ [all[shadows+tiddlers]tag[$:/tags/EC/Permaviews/View]count[]add[1]addprefix[$:/EvidentlyCube/Permaview/]] }}}
+	tags="$:/tags/EC/Permaviews/View"
+	filter=""
+>
+	<$action-navigate $to=<<createTiddler-title>> scroll="yes"/>
+</$action-createtiddler>
+\end
+
+Configuration for the [[Permaviews|$:/plugins/EvidentlyCube/Permaviews]] plugin.
+
+! Created Views
+
+<ul>
+	<$list filter="[all[shadows+tiddlers]tag[$:/tags/EC/Permaviews/View]!is[draft]]">
+		<li><$link to=<<currentTiddler>>><$text text={{!!view-name}}/></$link></li>
+	</$list>
+	<li><$button actions=<<action-new-view>>>Create a new view</$button></li>
+</ul>

@@ -1,0 +1,38 @@
+title: $:/plugins/EvidentlyCube/TaskList/core-item-edit
+type: text/vnd.tiddlywiki
+
+<$let temp={{{ [[$:/temp/tasklist/]addsuffix<currentTiddler>] }}}>
+	<$keyboard
+		tag="div"
+		key="enter"
+		actions=<<action-save-edited-item>>
+	>
+	<$keyboard
+		tag="div"
+		class={{{ [all[current]field:_is-done[1]then[ec_tl-checked]] [[ec_tl-task-editing]] [[ec_tl-task]] +[join[ ]] }}}
+		key="escape"
+		actions=<<action-cancel-item-edit>>
+	>
+		<span class="ec_tl-muted">Editing</span>
+
+		{{||$:/plugins/EvidentlyCube/TaskList/core-input-fields}}
+
+		<$button
+			class="tc-btn-invisible ec_tl-button"
+			actions=<<action-cancel-item-edit>>
+			tooltip="Cancel changes"
+		>
+			<$action-setfield _is-editing="0"/>
+			{{$:/core/images/cancel-button}}
+		</$button>
+		<$button
+			class="tc-btn-invisible ec_tl-button"
+			actions=<<action-save-edited-item>>
+			tooltip="Save changes"
+		>
+			{{$:/core/images/done-button}}
+		</$button>
+	</$keyboard>
+	</$keyboard>
+</$let>
+

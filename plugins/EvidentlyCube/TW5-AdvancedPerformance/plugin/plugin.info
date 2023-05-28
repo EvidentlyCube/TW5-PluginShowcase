@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/EvidentlyCube/AdvancedPerformance",
+	"name": "Advanced Performance",
+	"version": "1.1.4",
+	"core-version": ">=5.2.3",
+	"description": "Additional functionalities to measure your TW's performance.",
+	"author": "Maurycy Zarzycki",
+	"source": "https://github.com/EvidentlyCube/TW5-AdvancedPerformance",
+	"plugin-type": "plugin",
+	"list": "readme license history"
+}

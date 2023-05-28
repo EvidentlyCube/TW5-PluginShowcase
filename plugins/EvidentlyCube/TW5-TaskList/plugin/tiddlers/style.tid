@@ -1,0 +1,164 @@
+title: $:/plugins/EvidentlyCube/TaskList/Style
+tags: $:/tags/Stylesheet
+type: text/vnd.tiddlywiki
+
+.ec_tl-draft {
+	background-color: <<colour alert-background>>;
+	border: 1px solid <<colour alert-border>>;
+	padding: 1em;
+	margin: 1em;
+}
+
+.ec_tl-draft h1 {
+	margin-top: 0;
+}
+
+.ec_tl-muted {
+	font-style: italic;
+	opacity: 0.6;
+}
+
+
+.ec_tl-error {
+	font-style:italic;
+	color: #F00;
+	margin: 0;
+}
+
+.ec_tl-builder-field,
+.ec_tl-builder-new-field {
+	border: 1px solid #EEE;
+	background: #F8F8F8;
+	padding: 0 1em 1em;
+	margin-bottom: 1em;
+	flex: 0 1 300px;
+}
+.ec_tl-builder-new-field {
+	background: #F8F8FF;
+}
+
+.ec_tl-builder-field-edit {
+	width: 100%;
+}
+.ec_tl-builder-field-edit header{
+	font-weight: bold;
+}
+.ec_tl-builder-field-edit p{
+	margin: 0;
+}
+.ec_tl-builder-field-edit input,
+.ec_tl-builder-field-edit select{
+	width: 100%;
+}
+
+.ec_tl-hint{
+	font-style:italic;
+	color: #888;
+	margin: 0;
+}
+.ec_tl-error {
+	font-style:italic;
+	color: #F00;
+	margin: 0;
+}
+.ec_tl-field-cell {
+	vertical-align: top;
+}
+
+.ec_tl-inputs {
+	width: 100%;
+	display: flex;
+	gap: 1em;
+	margin-bottom: 0.5em;
+}
+
+.ec_tl-inputs div:last-child {
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+input.ec_tl-input,
+select.ec_tl-input {
+	border: none;
+	border-bottom: 1px solid #888;
+	flex-grow: 1;
+	flex-shrink: 1;
+	min-width: 0;
+}
+
+select.ec_tl-input option {
+	color: black;
+}
+
+select.ec_tl-input option:first-child,
+.ec_tl-input.ec_tl-placeholder {
+	color: #888;
+}
+.ec_tl-preview-btn {
+	color: <<colour tiddler-link-foreground>>;
+}
+
+.ec_tl-template-edit {
+	width: 100%;
+	resize: vertical;
+	font-family: monospace;
+}
+
+.ec_tl-button {
+	flex-shrink: 0;
+}
+.ec_tl-inputs .ec_tl-button svg {
+	width: 1.5em;
+	height: 1.5em;
+}
+button.ec_tl-button svg {
+	fill: <<colour tiddler-controls-foreground>>;
+}
+.ec_tl-button:hover svg {
+	fill: <<colour tiddler-controls-foreground-hover>>;
+}
+.ec_tl-filler {
+	flex-grow: 1;
+}
+
+.ec_tl-tasks {
+	margin-bottom: 1em;
+}
+
+.ec_tl-task {
+	display: flex;
+	align-items: center;
+	gap: 0.3em;
+	padding: 0 0.5em;
+}
+.ec_tl-task.ec_tl-checked {
+	text-decoration: line-through;
+}
+.ec_tl-task:hover {
+	outline: 1px solid rgb(0, 0, 0, 0.2);
+}
+.ec_tl-task:hover .ec_tl-button svg {
+	fill: <<colour tiddler-controls-foreground-hover>>;
+}
+.ec_tl-check {
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+.ec_tl-check input {
+	width: 16px;
+	height: 16px;
+	vertical-align: baseline;
+}
+
+.ec_tl-task-editing {
+	margin: 0.2em 0;
+}
+.ec_tl-preview {
+	border: 1px solid black;
+	border-radius: 1em;
+	padding: 0 1em;
+}
+.ec_tl-preview .ec_tl-container{
+	padding: 0 1em;
+}

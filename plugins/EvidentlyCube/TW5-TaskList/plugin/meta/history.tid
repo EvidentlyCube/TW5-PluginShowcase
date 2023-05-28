@@ -1,0 +1,18 @@
+title: $:/plugins/EvidentlyCube/TaskList/history
+type: text/vnd.tiddlywiki
+
+* ''1.0.13'' -- Fixed cleanup JS being overriden + added support for renaming the task list
+* ''1.0.12'' -- Enter can now be used to save a new field
+* ''1.0.11'' -- CSS Class in builder now proactively reports of error in the filter
+* ''1.0.10'' -- HTML and CSS cleanup to remove excessive HTML structures
+* ''1.0.9'' -- Disallow using built-in field IDs
+* ''1.0.8'' -- Added UI options to builder; only show delete on checked options
+* ''1.0.7'' -- Added tooltips to all buttons
+* ''1.0.6'' -- Removed redundant logging actions + wrapped the task list in a div
+* ''1.0.5'' -- Fields and Items are now stored in `$:/tasklist/` prefixed tiddlers to not be available in search
+* ''1.0.4'' -- Fixed broken saving for Select (List)
+* ''1.0.3'' -- Table for sorting options now takes whole width and has larger input
+* ''1.0.2'' -- Fixed a bug where it was impossible to edit a task list outside its tiddler
+* ''1.0.1'' -- Fixed an error being triggered when using `zoomin` story view
+* ''1.0.0'' -- Official release
+* ''0.0.1'' -- First version

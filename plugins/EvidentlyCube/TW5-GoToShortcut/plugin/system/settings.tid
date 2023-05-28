@@ -1,0 +1,145 @@
+title: $:/plugins/EvidentlyCube/GoToShortcut/Settings
+tags: $:/tags/EvidentlyCube/SettingsTab
+caption: Go To Shortcut
+
+\define headers-row(name prefix field)
+<tr>
+	<td align="center">
+		''<<__name__>>''<br>
+		//<<__prefix__>>//
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field=<<__field__>> size="40"/>
+	</td>
+</tr>
+\end
+
+\define filters-row(name prefix field)
+<tr>
+	<td align="center">
+		''<<__name__>>''<br>
+		//<<__prefix__>>//
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field=<<__field__>> size="40" tag="textarea"/>
+	</td>
+</tr>
+\end
+
+Configuration for the [[Go To Shortcut|$:/plugins/EvidentlyCube/GoToShortcut]] plugin.
+
+! Config
+
+The keyboard shortcut can be configured in //Keyboard Shortcuts// tab.
+
+<table>
+<tbody>
+<tr>
+	<td align="center">
+		''Open mode''<br/>
+		//What should happen with the results when opening the modal//
+	</td>
+	<td>
+		<$select tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field="clear-on-open">
+			<option value="1">Clear results</option>
+			<option value="0">Show last results</option>
+		</$select>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Displayed results''<br/>
+		//Maximum number of results to display, must be between 1 and 99//
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field="rows"/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Result row height''<br/>
+		//Height, in pixels, of a results row//<br/>
+		//Use `auto` if you don't want a fixed height//<br/>
+		//If you use a custom template you may want to declare a different static height for everything to fit snuggly//
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field="row-height"/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Modal size''<br/>
+		//Whether the modal with results should have fixed height//<br/>
+		//or fit the currently displayed number of rows//
+	</td>
+	<td>
+		<$select tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field="modal-size">
+			<option value="static">Fixed size</option>
+			<option value="fluid">Resize to fit</option>
+		</$select>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Template''<br/>
+		//Original template: [[$:/plugins/EvidentlyCube/GoToShortcut/Template]]//<br/>
+		//`currentTiddler` contains the tiddler//<br/>
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field="template"/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Result row CSS class''<br/>
+		//Change this to avoid the default styling of result rows//
+	</td>
+	<td>
+		<$edit-text tiddler="$:/plugins/EvidentlyCube/GoToShortcut/Config" field="result-row-class"/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Keyboard Shortcut''<br/>
+		//Use this keyboard shortcut to open Go To modal; can be changed in <<comp-open-keyboard-shortcuts>>tab//
+	</td>
+	<td>
+	<$list filter="$:/config/shortcuts/ $:/config/shortcuts-mac/ $:/config/shortcuts-not-mac/ $:/config/shortcuts-linux/ $:/config/shortcuts-not-linux/ $:/config/shortcuts-windows/ $:/config/shortcuts-not-windows/">
+		<$macrocall $name="displayshortcuts" $output="text/html" shortcuts={{{ [<currentTiddler>addsuffix[EC-GoToModal]get[text]] }}} prefix="<kbd>" separator="</kbd> <kbd>" suffix="</kbd>"/>
+	</$list>
+	</td>
+</tr>
+</tbody>
+</table>
+
+! Headers
+
+ * These are the headers displayed in the modal that change depending on the prefix you use.
+
+<table>
+<tbody>
+<<headers-row "Go To header" "No prefix" "header-normal">>
+<<headers-row "Search header" "`*` prefix" "header-normal-deep">>
+<<headers-row "Go To All header" "`!` prefix" "header-all">>
+<<headers-row "Search All header" "`!*` prefix" "header-all-deep">>
+<<headers-row "Go To All+Shadow header" "`>` prefix" "header-system">>
+<<headers-row "Search All+Shadow header" "`>*` prefix" "header-system-deep">>
+<<headers-row "Filter header" "`[` prefix, runs the filter as-is" "header-filter">>
+</tbody>
+</table>
+
+! Filters
+
+ * These are the filters that are executed when matching against all the available prefixes.
+ * //The search query is stored in the variable `<query>`.//
+
+<table>
+<tbody>
+<<filters-row "Go To filter" "No prefix" "filter-normal">>
+<<filters-row "Search filter" "`*` prefix" "filter-normal-deep">>
+<<filters-row "Go To All filter" "`!` prefix" "filter-all">>
+<<filters-row "Search All filter" "`!*` prefix" "filter-all-deep">>
+<<filters-row "Go To All+Shadow filter" "`>` prefix" "filter-system">>
+<<filters-row "Search All+Shadow filter" "`>*` prefix" "filter-system-deep">>
+</tbody>
+</table>

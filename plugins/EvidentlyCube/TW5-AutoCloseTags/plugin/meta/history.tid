@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/AutoCloseTags/history
+type: text/vnd.tiddlywiki
+
+* ''0.1.0'' -- Refactored to require less code and be compatible with other plugins expanding editText widgets
+* ''0.0.5'' -- First version of the plugin

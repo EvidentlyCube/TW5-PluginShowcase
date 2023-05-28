@@ -1,0 +1,22 @@
+title: $:/plugins/EvidentlyCube/TaskList/builder-header-bar
+type: text/vnd.tiddlywiki
+
+<div class="tc-tiddler-title">
+	<div class="tc-titlebar">
+		<span class="tc-tiddler-controls">
+			<div class=" tc-reveal" hidden="true"></div>
+			<$button class="tc-btn-invisible" tooltip="Discard changes to this TaskList" aria-label="cancel" actions=<<action-cancel-edit>>>
+				{{$:/core/images/cancel-button}}
+			</$button>
+			<$button class="tc-btn-invisible" tooltip="Save changes to this TaskList" aria-label="ok" actions=<<action-save-edit>>>
+				{{$:/core/images/done-button}}
+			</$button>
+		</span>
+		<span>
+			<h2 class="tc-title">
+				<$text text={{{ [all[current]removesuffix[.edit]] }}}/>
+				<span class="ec_tl-muted"> --- Editing TaskList</span>
+			</h2>
+		</span>
+	</div>
+</div>

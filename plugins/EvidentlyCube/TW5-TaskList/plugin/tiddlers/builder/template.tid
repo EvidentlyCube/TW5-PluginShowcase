@@ -1,0 +1,55 @@
+title: $:/plugins/EvidentlyCube/TaskList/builder-template
+type: text/vnd.tiddlywiki
+
+\import [[$:/plugins/EvidentlyCube/TaskList/Actions/builder-add-field]] [[$:/plugins/EvidentlyCube/TaskList/Actions/builder-save-edit]]  [[$:/plugins/EvidentlyCube/TaskList/Actions/builder-cancel-edit]] [[$:/plugins/EvidentlyCube/TaskList/Actions/builder-delete-field]] [[$:/plugins/EvidentlyCube/TaskList/Actions/builder-move-field-up]] [[$:/plugins/EvidentlyCube/TaskList/Actions/builder-move-field-down]]
+
+\define toggle-preview()
+	<$action-setfield $tiddler=<<tid>> tl-preview={{{ [<tid>field:tl-preview[original]then[new]else[original]] }}} />
+\end
+\whitespace trim
+
+<$let
+	tid=<<currentTiddler>>
+	tid-base={{{ [<tid>removesuffix[.edit]] }}}
+	temp=<<qualify "$:/temp/new-task-data">>
+	next-priority={{{ [all[tiddlers]tag[TaskList/Field]field:parent<tid>get[priority]maxall[]add[1]else[1]] }}}
+>
+<div class="tc-tiddler-frame tc-tiddler-view-frame">
+	{{||$:/plugins/EvidentlyCube/TaskList/builder-header-bar}}
+	<div class="tc-tiddler-body">
+		<$macrocall
+			$name="tabs"
+			tabsList="[[$:/plugins/EvidentlyCube/TaskList/builder-template-fields]]
+			 [[$:/plugins/EvidentlyCube/TaskList/builder-template-task-view]]
+			 [[$:/plugins/EvidentlyCube/TaskList/builder-template-sorting]]
+			 [[$:/plugins/EvidentlyCube/TaskList/builder-template-css-class]]
+			 [[$:/plugins/EvidentlyCube/TaskList/builder-template-ui]]"
+			default="$:/plugins/EvidentlyCube/TaskList/builder-template-fields"
+			state="$:/temp/task-list"
+			template="$:/plugins/EvidentlyCube/TaskList/builder-tab-template"
+		/>
+
+		<div class="ec_tl-preview">
+			<$list filter="[<tid>!field:tl-preview[original]]">
+				<h2>
+					Preview (new&nbsp;|&nbsp;<$button actions=<<toggle-preview>> class="tc-btn-invisible ec_tl-preview-btn">original</$button>)
+				</h2>
+
+				<p class="ec_tl-muted">Currently previewing the edited version of the Task List.</p>
+
+				<$macrocall $name="ec-task-list" tiddler=<<tid>>/>
+			</$list>
+
+			<$list filter="[<tid>field:tl-preview[original]]">
+				<h2>
+					Preview (<$button actions=<<toggle-preview>> class="tc-btn-invisible ec_tl-preview-btn">new</$button>&nbsp;|&nbsp;original)
+				</h2>
+
+				<p class="ec_tl-muted">Currently previewing the version of the Task List without any changes.</p>
+
+				<$macrocall $name="ec-task-list" tiddler=<<tid-base>>/>
+			</$list>
+		</div>
+	</div>
+</div>
+</$let>

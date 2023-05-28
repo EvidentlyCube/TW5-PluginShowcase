@@ -1,0 +1,23 @@
+{
+	"title": "$:/plugins/EvidentlyCube/GoToShortcut/Config",
+	"type": "text/vnd.tiddlywiki",
+	"rows": "9",
+	"row-height": "72",
+	"clear-on-open": "1",
+	"modal-size": "static",
+	"header-system-deep": "Search in any tiddler",
+	"result-row-class": "ec-goto_row",
+	"template": "$:/plugins/EvidentlyCube/GoToShortcut/Template",
+	"filter-system-deep": "[all[tiddlers+shadows]search:text:words<query>sort[]]\n[all[tiddlers+shadows]search:title:words<query>!sort[]]\n[all[tiddlers+shadows]search:title:literal<query>!sort[]]\n[all[tiddlers+shadows]prefix:caseinsensitive<query>!sort[]]\n+[reverse[]]",
+	"header-system": "Go to any tiddler",
+	"filter-system": "[all[tiddlers+shadows]search:title:words<query>!sort[]]\n[all[tiddlers+shadows]search:title:literal<query>!sort[]]\n[all[tiddlers+shadows]prefix:caseinsensitive<query>!sort[]]\n+[reverse[]]",
+	"header-all-deep": "Search in tiddlers (include hidden)",
+	"filter-all-deep": "[all[tiddlers]search:text:words<query>sort[]]\n[all[tiddlers]search:title:words<query>!sort[]]\n[all[tiddlers]search:title:literal<query>!sort[]]\n[all[tiddlers]prefix:caseinsensitive<query>!sort[]]\n+[reverse[]]",
+	"header-all": "Go to tiddler (include hidden)",
+	"filter-all": "[all[tiddlers]search:title:words<query>!sort[]]\n[all[tiddlers]search:title:literal<query>!sort[]]\n[all[tiddlers]prefix:caseinsensitive<query>!sort[]]\n+[reverse[]]",
+	"header-normal-deep": "Search in tiddlers",
+	"filter-normal-deep": "[all[tiddlers]search:text:words<query>sort[]]\n[all[tiddlers]search:title:words<query>!sort[]]\n[all[tiddlers]search:title:literal<query>!sort[]]\n[all[tiddlers]prefix:caseinsensitive<query>!sort[]]\n+[!is[draft]!prefix[$:/]field:goto-ignore[]]\n+[reverse[]]",
+	"header-normal": "Go to tiddler",
+	"filter-normal": "[all[tiddlers]search:title:words<query>!sort[]]\n[all[tiddlers]search:title:literal<query>!sort[]]\n[all[tiddlers]prefix:caseinsensitive<query>!sort[]]\n+[!is[draft]!prefix[$:/]field:goto-ignore[]]\n+[reverse[]]",
+	"header-filter": "Run filter"
+}

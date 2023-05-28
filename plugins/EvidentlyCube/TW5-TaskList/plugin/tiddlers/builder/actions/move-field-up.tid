@@ -1,0 +1,15 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/builder-move-field-up
+type: text/vnd.tiddlywiki
+
+\define action-move-field-up()
+	<$let
+		priority={{!!priority}}
+		prev-priority={{{ [all[tiddlers]tag[TaskList/Field]field:parent{!!parent}get[priority]compare:integer:lt<priority>maxall[]] }}}
+		prev-tiddler={{{ [all[tiddlers]tag[TaskList/Field]field:parent{!!parent}field:priority<prev-priority>] }}}
+	>
+		<$list filter="[<prev-tiddler>is[tiddler]]" variable="ignore">
+			<$action-setfield $tiddler=<<currentTiddler>> priority=<<prev-priority>>/>
+			<$action-setfield $tiddler=<<prev-tiddler>> priority=<<priority>>/>
+		</$list>
+	</$let>
+\end

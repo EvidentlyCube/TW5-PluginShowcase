@@ -1,0 +1,24 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-start-tasklist-edit
+type: text/vnd.tiddlywiki
+
+\define action-start-tasklist-edit()
+	<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid>]">
+		<$action-createtiddler
+			$basetitle={{{ [all[current]addsuffix[.edit]]  }}}
+			$overwrite="yes"
+			$template=<<currentTiddler>>
+			parent=<<tid-edit>>
+		/>
+	</$list>
+	<$action-createtiddler
+		$basetitle=<<tid-edit>>
+		$overwrite="yes"
+		$template=<<tid>>
+		draft.of=<<tid>>
+		draft.title=<<tid>>
+		caption={{{ [<tid>addsuffix[ (TaskList)]] }}}
+	>
+		<$action-navigate $to=<<createTiddler-title>>/>
+	</$action-createtiddler>
+	<$action-sendmessage $message="tm-close-tiddler" param=<<currentTiddler>>/>
+\end

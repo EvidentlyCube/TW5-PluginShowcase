@@ -1,0 +1,37 @@
+title: $:/plugins/EvidentlyCube/TaskList/core-item
+type: text/vnd.tiddlywiki
+
+<$let css-class-filter={{{ [<tid>get[tl-class-filter]] }}}>
+<div class={{{ [all[current]field:_is-done[1]then[ec_tl-checked]] [subfilter<css-class-filter>] [[ec_tl-task]] +[join[ ]] }}}>
+	<$checkbox field="_is-done" checked="1" class="ec_tl-check" />
+
+	<div class="ec_tl-task-template">
+		<$list filter="[<tid>field:tl-template[]]" emptyMessage={{{ [<tid>get[tl-template]] }}} variable="ignore">
+			<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid>]" variable="field" counter="field-counter">
+				<$let field-name={{{ [<field>get[field-name]] }}}>
+					<$list filter="[<field-counter-first>match[no]]">---</$list>
+					<$text text={{{ [all[current]get<field-name>else[n/a]] }}}/>
+				</$let>
+			</$list>
+		</$list>
+	</div>
+
+	<div style="flex-grow: 1"></div>
+	<$button
+		class="tc-btn-invisible ec_tl-button"
+		actions=<<action-start-item-edit>>
+		tooltip="Edit this item"
+	>
+		{{$:/core/images/edit-button}}
+	</$button>
+	<$list filter="[<tid>field:tl-delete-checked[1]then[0]else[1]] [<currentTiddler>get[_is-done]then[1]else[0]] +[sum[]match[1]]" variable="ignore">
+		<$button
+			class="tc-btn-invisible ec_tl-button"
+			tooltip="Delete this item"
+		>
+			<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+			{{$:/core/images/close-button}}
+		</$button>
+	</$list>
+</div>
+</$let>

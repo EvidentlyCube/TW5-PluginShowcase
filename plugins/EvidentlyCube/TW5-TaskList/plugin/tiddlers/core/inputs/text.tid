@@ -1,0 +1,12 @@
+title: $:/plugins/EvidentlyCube/TaskList/Inputs/text
+type: text/vnd.tiddlywiki
+
+<$edit-text
+	tag="input"
+	class="ec_tl-input"
+	default=""
+	tiddler=<<temp>>
+	field={{!!field-name}}
+	size={{!!field-width}}
+	placeholder={{!!caption}}
+/>

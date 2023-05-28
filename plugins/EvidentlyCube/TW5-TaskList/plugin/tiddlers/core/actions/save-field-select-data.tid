@@ -1,0 +1,8 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-save-field-select-data
+type: text/vnd.tiddlywiki
+
+<$action-setfield
+	$tiddler=<<item-tid>>
+	$field={{!!field-name}}
+	$value={{{ [<temp>get{!!field-name}] }}}
+/>

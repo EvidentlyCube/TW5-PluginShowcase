@@ -1,0 +1,8 @@
+title: $:/plugins/EvidentlyCube/TaskList/Builder/Inputs/hidden-tag
+type: text/vnd.tiddlywiki
+
+<td class="ec_tl-field-cell" colspan="2">
+	<header>Tag name:</header>
+	<$edit-text field="meta-tag"/>
+	<p class="ec_tl-hint">Name of the tag to add to the task item.</p>
+</td>

@@ -1,0 +1,9 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-save-field-hidden-tag
+type: text/vnd.tiddlywiki
+
+<$fieldmangler tiddler=<<item-tid>>>
+	<$action-sendmessage
+		$message="tm-add-tag"
+		$param={{!!meta-tag}}
+	/>
+</$fieldmangler>

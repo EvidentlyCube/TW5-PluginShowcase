@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/AutoComplete/template-cascade
+tags: $:/tags/ViewTemplateBodyFilter
+list-after: $:/config/ViewTemplateBodyFilters/system
+
+[tag[$:/tags/EC/AutoComplete/Trigger]then[$:/plugins/EvidentlyCube/AutoComplete/template]]

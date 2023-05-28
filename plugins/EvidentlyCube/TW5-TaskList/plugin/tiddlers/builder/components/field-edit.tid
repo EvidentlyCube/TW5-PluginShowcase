@@ -1,0 +1,44 @@
+title: $:/plugins/EvidentlyCube/TaskList/Builder/field-edit
+type: text/vnd.tiddlywiki
+
+<tr>
+	<td style="text-align: center;">
+		<$text text={{!!caption}}/> <span class="ec_tl-muted"><br>(<$text text={{!!field-name}}/>)</span>
+	</td>
+	<td class="ec_tl-field-cell">
+		<header>Type:</header>
+		<$select field="field-type">
+			<option value="text">Text</option>
+			<option value="hidden-field">Hidden (Field)</option>
+			<option value="hidden-tag">Hidden (Tag)</option>
+			<option value="select-data">Select (Dictionary)</option>
+			<option value="select-data-vals">Select (Dictionary values)</option>
+			<option value="select-list">Select (List)</option>
+		</$select>
+		<p class="ec_tl-hint">
+			<$text text={{{ [[$:/plugins/EvidentlyCube/TaskList/Builder/field-type-descriptions]getindex{!!field-type}] }}}/>
+		</p>
+	</td>
+	<$transclude
+		tiddler={{{ [[$:/plugins/EvidentlyCube/TaskList/Builder/Inputs/]addsuffix{!!field-type}] }}} />
+	<td style="white-space:nowrap;">
+		<$let title-escaped={{{ [all[current]addprefix<ll>addsuffix<rr>] }}}>
+			<$button class="tc-btn-invisible" tooltip="Move field up" actions=<<action-move-field-up>>>
+				{{$:/core/images/up-arrow}}
+			</$button>
+			<$button class="tc-btn-invisible" tooltip="Move field down" actions=<<action-move-field-down>>>
+				{{$:/core/images/down-arrow}}
+			</$button>
+			<$button class="tc-btn-invisible" tooltip="Delete field" actions=<<action-delete-field>>>
+				{{$:/core/images/cancel-button}}
+			</$button>
+		</$let>
+	</td>
+</tr>
+
+
+
+
+<tr>
+
+</tr>

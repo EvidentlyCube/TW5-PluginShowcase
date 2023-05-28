@@ -1,0 +1,9 @@
+title: $:/plugins/EvidentlyCube/TaskList/Inputs/select-list
+type: text/vnd.tiddlywiki
+
+<$select class={{{ [<temp>!has{!!field-name}then[ec_tl-placeholder]] [[ec_tl-input]] +[join[ ]] }}} tiddler=<<temp>> field={{!!field-name}} default="">
+	<option value="">{{!!caption}}...</option>
+	<$list filter="[list{!!meta-source}]" variable="item">
+		<option value=<<item>>><$text text=<<item>> /></option>
+	</$list>
+</$select>

@@ -1,0 +1,6 @@
+text: Takes simple text as an input
+hidden-field: Is not displayed, sets a field to a static value
+hidden-tag: Is not displayed, adds a specific tag to the task item
+select-data: Shows a dropdown taking keys and values from a data dictionary
+select-data-vals: Shows a dropdown taking values from a data dictionary
+select-list: Shows a dropdown taking values from a tiddler's list field

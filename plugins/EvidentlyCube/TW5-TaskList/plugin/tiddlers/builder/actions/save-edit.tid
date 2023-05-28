@@ -1,0 +1,30 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/builder-save-edit
+type: text/vnd.tiddlywiki
+
+\define action-save-edit()
+	<$action-sendmessage $message="tm-close-tiddler" $param=<<tid>>/>
+
+	<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid-base>]">
+		<$action-sendmessage $message="tm-close-tiddler" $param=<<currentTiddler>>/>
+		<$action-deletetiddler $tiddler=<<currentTiddler>>/>
+	</$list>
+	<$list filter="[all[tiddlers]tag[TaskList/Field]field:parent<tid>]">
+		<$action-setfield
+			$tiddler=<<currentTiddler>>
+			parent=<<tid-base>> />
+		<$action-sendmessage
+			$message="tm-rename-tiddler"
+			from=<<currentTiddler>>
+			to={{{ [all[current]removesuffix[.edit]] }}}
+		/>
+	</$list>
+	<$action-deletefield
+		$tiddler=<<tid>>
+		draft.of draft.title
+	/>
+	<$action-sendmessage
+		$message="tm-rename-tiddler"
+		from=<<tid>>
+		to=<<tid-base>>
+	/>
+\end

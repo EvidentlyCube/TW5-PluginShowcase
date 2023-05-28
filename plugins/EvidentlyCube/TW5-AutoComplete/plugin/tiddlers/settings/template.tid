@@ -1,0 +1,196 @@
+title: $:/plugins/EvidentlyCube/AutoComplete/template
+
+\define must-be-defined(field name)
+<$list filter="[{!!$field$}match[]]">
+	<span class="tc-error">
+		$name$ must be defined
+	</span>
+</$list>
+\end
+
+\define must-be-valid-filter(field)
+<$let
+	base-filter={{!!$field$}}
+	suffix=" +[limit[1]]"
+	filter={{{ [<base-filter>addsuffix<suffix>] }}}
+>
+<$list filter=<<filter>>>
+	<$list filter={{{ [<currentTiddler>prefix[Filter error]] }}}>
+		<span class="tc-error">
+			<$text text=<<currentTiddler>>/>
+		</span>
+	</$list>
+</$list>
+</$let>
+\end
+
+<div class="ec_ac-options">
+<h1>Auto complete trigger</h1>
+
+<p>This tiddler defines a trigger for Auto Complete plugin.</p>
+
+<table>
+<colgroup>
+	<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Caption:''<br/>
+		<p class="ec_ac-muted">
+			Optional caption displayed in the Control Panel instead of the tiddler name
+		</p>
+	</td>
+	<td><$edit-text class="ec-tc-disabled" field="caption" default="" placeholder="Caption..."/></td>
+</tr>
+<tr>
+	<td align="center">
+		''Description:''<br/>
+		<p class="ec_ac-muted">
+			A description of this trigger to make it easier to keep things clean.
+		</p>
+	</td>
+	<td><$edit-text class="ec-tc-disabled" field="text" default="" placeholder="Description for this trigger..."/></td>
+</tr>
+<tr>
+	<td align="center">
+		''Trigger:''<br/>
+		<p class="ec_ac-muted">
+			Defines the text which will trigger auto completion.<br/>
+			For example `[[` will cause the auto completion to appear after you type `[[` in any text field.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" field="trigger" placeholder="Trigger..."/>
+		<$list filter="[all[shadows+tiddlers]tag[$:/tags/EC/AutoComplete/Trigger]field:trigger{!!trigger}] -[<currentTiddler>] +[limit[1]]">
+			<span class="tc-error">
+				Trigger already used in: <<currentTiddler>>
+			</span>
+		</$list>
+		<<must-be-defined "trigger" "Trigger">>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Suggestion Filter:''<br/>
+		<p class="ec_ac-muted">
+			This filter generates the list of options that will be displayed in the auto completion.<br/>
+			Use variable `query` to inject the typed text.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" tag="textarea" field="filter" placeholder="Filter..."/>
+		<<must-be-valid-filter "filter">>
+		<<must-be-defined "filter" "Filter">>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Display Filter:''<br/>
+		<p class="ec_ac-muted">
+			Advanced feature!<br/>
+			Transforms how the suggestion will be displayed in auto complete window.<br/>
+			`<currentTiddler>` contains the suggestion being displayed.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" tag="textarea" field="display-filter" placeholder="Display filter..."/>
+		<<must-be-valid-filter "display-filter">>
+		<<must-be-defined "display-filter" "Display filter">>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Transform Filter:''<br/>
+		<p class="ec_ac-muted">
+			Advanced feature!<br/>
+			Transform the selected suggestion before it's inserted.<br/>
+			It's useful when you want to insert tiddler's text or data indexes.<br/>
+			`<currentTiddler>` contains the suggestion selected.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" tag="textarea" field="transform-filter" placeholder="[<currentTiddler>]"/>
+		<<must-be-valid-filter "transform-filter">>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Template:''<br/>
+		<p class="ec_ac-muted">
+			A template that is inserted when you select an option from auto completion.<br/>
+			`$option$` will be replaced by the selected option. <br/>
+			`$caret$` will put the caret on that position after insertion.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" field="template" placeholder="Template..."/>
+		<<must-be-defined "template" "Template">>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Auto trigger on Inputs:''<br/>
+		<p class="ec_ac-muted">
+			If checked auto completion will automatically open as soon as you type the ''trigger'' in a single-line text input.<br/>
+			Otherwise you need to open it manually with a keyboard shortcut.
+		</p>
+	</td>
+	<td>
+		<$checkbox field="auto-trigger-input" checked="1">&nbsp;Auto trigger on Inputs</$checkbox>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Auto trigger on Text Areas:''<br/>
+		<p class="ec_ac-muted">
+			If checked auto completion will automatically open as soon as you type the ''trigger'' in a multi-line text input.<br/>
+			Otherwise you need to open it manually with a keyboard shortcut.
+		</p>
+	</td>
+	<td>
+		<$checkbox field="auto-trigger-textarea" checked="1">&nbsp;Auto trigger on Text Areas</$checkbox>
+	</td>
+</tr>
+</tbody>
+</table>
+
+<h1>Test the filter</h1>
+
+<$let
+	temp=<<qualify "$:/temp/completion-test">>
+	rows={{{ [{$:/plugins/EvidentlyCube/AutoComplete/Config!!rows}floor[]!match[0]else[8]min[99]max[1]] }}}
+	default-transform-filter="[<currentTiddler>]"
+	filter-suffix=" +[limit<rows>]"
+	display-filter={{!!display-filter}}
+	transform-filter={{{ [{!!transform-filter}!match[]else<default-transform-filter>] }}}
+	filter={{{ [{!!filter}addsuffix<filter-suffix>] }}}
+>
+	''Query:'' <$edit-text tag="input" class="ec-tc-disabled" tiddler=<<temp>> field="query" default="" placeholder="Test..."/>
+
+	<p class="ec_ac-muted">Only the first <<rows>> results will be displayed.</p>
+
+	<table>
+	<thead>
+	<tr>
+		<th>Suggestion</th>
+		<th>Displays as</th>
+		<th>After insertion</th>
+	</tr>
+	</thead>
+	<tbody>
+	<$let
+		query={{{ [<temp>get[query]] }}}
+	>
+		<$list filter=<<filter>> emptyMessage="""<tr><td colspan="3" class="ec_ac-muted">No results</td></tr>""">
+			<tr>
+				<td><$text text={{{ [<currentTiddler>] }}} /></td>
+				<td><$text text={{{ [<currentTiddler>subfilter<display-filter>] }}} /></td>
+				<td><$text text={{{ [<currentTiddler>subfilter<transform-filter>] }}} /></td>
+			</tr>
+		</$list>
+	</$let>
+	</tbody>
+	</table>
+</$let>
+</div>

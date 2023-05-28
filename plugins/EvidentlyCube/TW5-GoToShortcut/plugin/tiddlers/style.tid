@@ -1,0 +1,118 @@
+title: $:/plugins/EvidentlyCube/GoToShortcut/style
+tags: $:/tags/Stylesheet
+
+.ec-goto_modal {
+	position: fixed;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+}
+.ec-goto_close {
+	background: <<colour modal-backdrop>>;
+	opacity: 0.75;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+.ec-goto_modal .core {
+	background: <<colour modal-background>>;
+	border: 1px solid black;
+	margin: 2em;
+	width: 600px;
+	padding: 1em;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 1;
+}
+.ec-goto_modal input {
+	width: 100%;
+}
+.ec-goto_modal .help {
+	text-align: center;
+	margin-bottom: 1em;
+	cursor: default;
+}
+
+<$let
+config="$:/plugins/EvidentlyCube/GoToShortcut/Config"
+rows={{{ [<config>get[rows]max[1]min[99]] }}}
+row-height={{{ [<config>get[row-height]] }}}
+is-static={{{ [<config>get[modal-size]compare:string:eq[static]] =[<row-height>compare:string:ne[auto]] +[count[]compare:string:eq[2]then[yes]] }}}
+>
+	<$list filter="[<is-static>compare:string:eq[yes]]">
+		.ec-goto_modal .rows {
+			height: {{{ [<row-height>multiply<rows>] }}}px;
+		}
+	</$list>
+
+	.ec-goto_modal .row {
+		height: {{{ [<row-height>compare:string:eq[auto]] ~[<row-height>addsuffix[px]] }}};
+		overflow: hidden;
+		padding: 0.5em 1em;
+	}
+</$let>
+
+.ec-goto_modal .ec-goto_row ul {
+	margin: 0;
+	list-style: none;
+	opacity: 0.75;
+}
+.ec-goto_modal .ec-goto_row li {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 14px;
+	opacity: 0.75;
+}
+.ec-goto_modal .ec-goto_row header {
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.2em;
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.ec-goto_modal .ec-goto_row .lookup-tags {
+	height: 26px;
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.ec-goto_modal .ec-goto_row .lookup-tags .tc-tag-list-item {
+	margin-right: 0.5em;
+}
+
+.ec-goto_modal .ec-goto_row.selected {
+	background-color: <<colour tiddler-link-foreground>>;
+	color: <<colour background>>;
+}
+.ec-goto_modal .ec-goto_row:not(.meta):hover {
+	background-color: <<colour tiddler-link-foreground>>;
+	color: <<colour background>>;
+	cursor: pointer;
+}
+.ec-goto_modal .row.meta {
+	color: <<colour muted-foreground>>;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	height: 20px
+}
+.ec-goto_modal .row.no-results {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}

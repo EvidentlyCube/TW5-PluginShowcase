@@ -1,0 +1,13 @@
+title: $:/plugins/EvidentlyCube/TaskList/Builder/Inputs/hidden-field
+type: text/vnd.tiddlywiki
+
+<td class="ec_tl-field-cell">
+	<header>Field name:</header>
+	<$edit-text field="meta-name"/>
+	<p class="ec_tl-hint">Name of the field to set the task item.</p>
+</td>
+<td class="ec_tl-field-cell">
+	<header>Field value:</header>
+	<$edit-text field="meta-value"/>
+	<p class="ec_tl-hint">Value to set the field in the task item to.</p>
+</td>

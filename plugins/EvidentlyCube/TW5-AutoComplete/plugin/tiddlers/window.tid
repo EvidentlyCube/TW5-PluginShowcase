@@ -1,0 +1,46 @@
+title: $:/plugins/EvidentlyCube/AutoComplete/window
+tags: $:/tags/PageTemplate
+
+\whitespace trim
+<$let
+	window-id={{{ [<tw-window-id>else[]] }}}
+	count={{{ [list[$:/temp/AutoComplete/completion-data]count[]] }}}
+	base-limit={{$:/plugins/EvidentlyCube/AutoComplete/Config!!rows}}
+	limit={{{ [<base-limit>add[1]compare:number:eq<count>else<base-limit>] }}}
+	half-limit={{{ [<limit>divide[2]ceil[]] }}}
+	max-offset={{{ [<count>subtract<limit>] }}}
+	selected={{$:/temp/AutoComplete/completion-data!!index}}
+	offset={{{ [<selected>subtract<half-limit>min<max-offset>max[0]] }}}
+>
+<$list filter="""
+[{$:/temp/AutoComplete/completion-data!!show}]
+=[{$:/temp/AutoComplete/completion-data!!show-window}match<tv-window-id>then[1]]
+=[{$:/temp/AutoComplete/completion-data!!show-window}match[-1]then[1]]
++[match[1]count[]match[2]]
+""" variable="ignore">
+
+<ul class="ec_ac-completion" style={{$:/temp/AutoComplete/completion-data!!style}}>
+	<$list filter="[<offset>compare:number:gt[0]]">
+		<li class="ec_ac-dots-top">...</li>
+	</$list>
+	<$list
+		filter="[list[$:/temp/AutoComplete/completion-data]rest<offset>first<limit>]"
+		counter="index"
+		emptyMessage="""<li class="label">No results</li>"""
+	>
+		<$list filter="[<index>add<offset>match<selected>]" variable="_" emptyMessage="""
+			<li class="ec_ac-link" data-value=<<currentTiddler>>>
+				<$text text={{{ [<currentTiddler>subfilter{$:/temp/AutoComplete/completion-data!!display-filter}] }}} />
+			</li>
+		""">
+			<li class="ec_ac-link selected" data-value=<<currentTiddler>>>
+				<$text text={{{ [<currentTiddler>subfilter{$:/temp/AutoComplete/completion-data!!display-filter}] }}} />
+			</li>
+		</$list>
+	</$list>
+	<$list filter="[<offset>compare:number:lt<max-offset>]">
+		<li class="ec_ac-dots-bottom">...</li>
+	</$list>
+</ul>
+</$list>
+</$let>

@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/TaskList/list-body-filter
+tags: $:/tags/ViewTemplateBodyFilter
+list-after: $:/config/ViewTemplateBodyFilters/system
+
+[tag[TaskList]then[$:/plugins/EvidentlyCube/TaskList/list-template]]

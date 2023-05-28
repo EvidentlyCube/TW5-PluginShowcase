@@ -1,0 +1,6 @@
+title: $:/plugins/EvidentlyCube/TaskList/Actions/core-cancel-item-edit
+type: text/vnd.tiddlywiki
+
+\define action-cancel-item-edit()
+	<$action-setfield _is-editing="0"/>
+\end
