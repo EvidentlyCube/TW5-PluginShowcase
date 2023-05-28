@@ -19,10 +19,10 @@ Autocompletion integration for Simple text editor
 		editCodeMirrorWidget.prototype.render = monkeypatch.sequence(editCodeMirrorWidget.prototype.render, widgetRender);
 
 		function widgetRender() {
-			this.engine.cm.on('keydown', handleKeydown);
-			this.engine.cm.on('blur', handleBlur);
-			this.engine.cm.on('change', handleEngineInput);
-			this.engine.cm.on('cursorActivity', handleCursorActivity);
+			this.engine.cm.on('keydown', handleKeydown.bind(this));
+			this.engine.cm.on('blur', handleBlur.bind(this));
+			this.engine.cm.on('change', handleEngineInput.bind(this));
+			this.engine.cm.on('cursorActivity', handleCursorActivity.bind(this));
 		}
 
 		function handleKeydown(cm, event) {
@@ -68,7 +68,7 @@ Autocompletion integration for Simple text editor
 				});
 
 				if (triggerData) {
-					startCompletion(triggerData, cm);
+					startCompletion(triggerData, cm, { editedTiddler: this.editTitle });
 					// Prevent codemirror-autocomplete from triggering
 					event.preventDefault();
 					event.stopImmediatePropagation();
@@ -76,7 +76,7 @@ Autocompletion integration for Simple text editor
 			}
 		}
 
-		function startCompletion(triggerData, cm) {
+		function startCompletion(triggerData, cm, options) {
 			activeCm = cm;
 			activeDocument = cm.getInputField().ownerDocument;
 
@@ -86,7 +86,8 @@ Autocompletion integration for Simple text editor
 			selectionStart = cm.getCursor();
 			completionAPI.startCompletion(triggerData, getCaretCoordinates(cm, selectionStart), {
 				onFinish: handleFinishCompletion,
-				windowID: cm.getInputField().ownerDocument._ecAcWindowID
+				windowID: cm.getInputField().ownerDocument._ecAcWindowID,
+				editedTiddler: options.editedTiddler || ''
 			});
 		}
 
@@ -134,7 +135,7 @@ Autocompletion integration for Simple text editor
 
 				if (triggerData) {
 					activeCm = cm;
-					startCompletion(triggerData, cm);
+					startCompletion(triggerData, cm, { editedTiddler: this.editTitle });
 				}
 			}
 		}

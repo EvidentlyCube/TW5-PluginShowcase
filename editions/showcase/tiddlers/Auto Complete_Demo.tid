@@ -1,5 +1,5 @@
 created: 20221209144717238
-modified: 20221209144952821
+modified: 20230528110140688
 tags: 
 title: Auto Complete/Demo
 type: text/vnd.tiddlywiki
@@ -14,6 +14,7 @@ This TiddlyWiki comes with many pre-created auto complete triggers to showcase v
 * `macro:` -- For inserting your own macros; a detailed explanation of how it works is [[available here|Auto Complete: Macro Discovery Filter]]
 * `color:` -- For inserting data from a dictionary tiddler [[Data/ColorsHexInverted]]
 * `emoji:` -- For inserting data from a dictionary tiddler [[Data/Emoji]]; except here we filter by the value but insert the key
+* `from-me:` -- For inserting a field available in the currently edited tiddler
 
 By default use <kbd>Ctrl+Space</kbd> to manually trigger completion.
 

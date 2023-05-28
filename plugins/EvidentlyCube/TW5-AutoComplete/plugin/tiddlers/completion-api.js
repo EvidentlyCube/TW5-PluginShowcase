@@ -86,7 +86,7 @@ API for the modal
 		this.activeState.lastQuery = null;
 		this.activeState.selectedResult = 0;
 		this.activeState.results = [];
-		this.activeState.options = options || {}
+		this.activeState.options = options || {};
 
 		this.updateQuery("");
 
@@ -95,6 +95,7 @@ API for the modal
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'show', null, "1");
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'style', null, newStyle);
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'display-filter', null, trigger.displayFilter);
+		$tw.wiki.setText(DATA_TIDDLER_NAME, 'edited-tiddler', null, options.editedTiddler || '');
 		if (typeof options.windowID !== "undefined") {
 			$tw.wiki.setText(DATA_TIDDLER_NAME, 'show-window', null, options.windowID);
 		} else {
@@ -124,7 +125,10 @@ API for the modal
 		this.activeState.lastQuery = query;
 		this.activeState.selectedResult = 0;
 
-		const results = $tw.wiki.filterTiddlers(this.activeState.trigger.filter, getVariableFauxWidget('query', query));
+		const results = $tw.wiki.filterTiddlers(this.activeState.trigger.filter, getVariableFauxWidget({
+			editedTiddler: this.activeState.options.editedTiddler || '',
+			query
+		}));
 
 		this.activeState.results = results;
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'list', null, this.activeState.results);
@@ -159,7 +163,7 @@ API for the modal
 		const selectedResult = this.activeState.results[this.activeState.selectedResult] || "";
 
 		return selectedResult
-			? $tw.wiki.filterTiddlers(this.activeState.trigger.transformFilter,getVariableFauxWidget('currentTiddler', selectedResult))
+			? $tw.wiki.filterTiddlers(this.activeState.trigger.transformFilter,getVariableFauxWidget({ currentTiddler: selectedResult}))
 			: "";
 	};
 
@@ -234,12 +238,13 @@ API for the modal
 		}
 	};
 
-	function getVariableFauxWidget(name, value) {
+	function getVariableFauxWidget(keyValues) {
 		return {
-			getVariable: function (name_) {
-				if (name_ === name) {
-					return value;
+			getVariable: function (name) {
+				if (typeof keyValues[name] !== 'undefined') {
+					return keyValues[name];
 				}
+
 				return "";
 			}
 		}

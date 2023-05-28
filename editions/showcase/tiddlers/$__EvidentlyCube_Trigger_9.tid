@@ -1,0 +1,13 @@
+auto-trigger-textarea: 1
+caption: Current tiddler's fields
+created: 20230528105554528
+display-filter: [<currentTiddler>] =[[ (]][<editedTiddler>get<currentTiddler>else[n/a]] =[[)]] +[join[]]
+filter: [<editedTiddler>fields[]search:title<query>sort[]]
+modified: 20230528110202849
+tags: $:/tags/EC/AutoComplete/Trigger
+template: $option$$caret$
+title: $:/EvidentlyCube/Trigger/9
+trigger: from-me:
+type: text/vnd.tiddlywiki
+
+Suggests names of fields available in current tiddler

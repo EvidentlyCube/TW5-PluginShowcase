@@ -11,6 +11,7 @@ tags: $:/tags/PageTemplate
 	max-offset={{{ [<count>subtract<limit>] }}}
 	selected={{$:/temp/AutoComplete/completion-data!!index}}
 	offset={{{ [<selected>subtract<half-limit>min<max-offset>max[0]] }}}
+	editedTiddler={{$:/temp/AutoComplete/completion-data!!edited-tiddler}}
 >
 
 <$list filter="""

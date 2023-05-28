@@ -58,12 +58,12 @@ Autocompletion integration for Simple text editor
 				});
 
 				if (triggerData) {
-					startCompletion(triggerData, event.target);
+					startCompletion(triggerData, event.target, this.editTitle);
 				}
 			}
 		}
 
-		function startCompletion(triggerData, dom) {
+		function startCompletion(triggerData, dom, editedTiddler) {
 			// Special handling to avoid confirm to close draft when editing in framed editor
 			activeDocument_keyHook = dom.ownerDocument;
 			activeDocument_mouseHook = activeDocument_keyHook.defaultView.top.document;
@@ -78,7 +78,8 @@ Autocompletion integration for Simple text editor
 			selectionStart = dom.selectionStart;
 			completionAPI.startCompletion(triggerData, getCaretCoordinates(dom, selectionStart), {
 				onFinish: handleFinishCompletion,
-				windowID: dom.ownerDocument.defaultView.top.document._ecAcWindowID
+				windowID: dom.ownerDocument.defaultView.top.document._ecAcWindowID,
+				editedTiddler: editedTiddler
 			});
 		}
 
@@ -141,7 +142,7 @@ Autocompletion integration for Simple text editor
 
 				if (triggerData) {
 					activeDom = event.target;
-					startCompletion(triggerData, event.target);
+					startCompletion(triggerData, event.target, this.widget.editTitle);
 				}
 			}
 		}
