@@ -1,17 +1,24 @@
-var TiddlyWiki = require("tiddlywiki").TiddlyWiki;
+import {TiddlyWiki as TW522} from 'tiddlywiki';
+import {TiddlyWiki as TW530} from 'tw530';
+import {TiddlyWiki as TW531} from 'tw531';
 
 process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
 
-releaseShowcase();
+releaseShowcase(TW522, 'release', '');
+releaseShowcase(TW522, 'release-codemirror', '522-cm/');
+releaseShowcase(TW530, 'release', '530/');
+releaseShowcase(TW530, 'release-codemirror', '530-cm/');
+releaseShowcase(TW531, 'release', '531/');
+releaseShowcase(TW531, 'release-codemirror', '531-cm/');
 releaseLibrary();
 
-function releaseShowcase() {
-	var $tw = TiddlyWiki();
+function releaseShowcase(twBinary, release, path) {
+	var $tw = twBinary();
 
 	// Pass the command line arguments to the boot kernel
 	$tw.boot.argv = [
-		"editions/release", "--verbose", "--output",
-		"docs/",
+		`editions/${release}`, "--verbose", "--output",
+		`docs/${path}`,
 		"--build", "release"
 	];
 
@@ -20,7 +27,7 @@ function releaseShowcase() {
 }
 
 function releaseLibrary() {
-	var $tw = TiddlyWiki();
+	var $tw = TW522();
 
 	// Pass the command line arguments to the boot kernel
 	$tw.boot.argv = [
