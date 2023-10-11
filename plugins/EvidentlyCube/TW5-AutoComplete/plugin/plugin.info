@@ -1,7 +1,7 @@
 {
 	"title": "$:/plugins/EvidentlyCube/AutoComplete",
 	"name": "Auto Complete",
-	"version": "1.0.17",
+	"version": "1.0.18",
 	"core-version": ">=5.2.3",
 	"description": "Enable easy tiddler name completion in various contexts",
 	"author": "Maurycy Zarzycki",

@@ -239,6 +239,11 @@ API for the modal
 	};
 
 	function getVariableFauxWidget(keyValues) {
+		if ($tw.rootWidget.makeFakeWidgetWithVariables) {
+			return $tw.rootWidget.makeFakeWidgetWithVariables(keyValues);
+		}
+
+		// Backwards compatibility for pre 5.3.0 versions
 		return {
 			getVariable: function (name) {
 				if (typeof keyValues[name] !== 'undefined') {

@@ -156,6 +156,9 @@ Autocompletion integration for Simple text editor
 		function handleKeyup(event) {
 			if (!completionAPI.isActive) {
 				return;
+			} else if (!activeDom) {
+				completionAPI.finishCompletion();
+				return;
 			}
 
 			if (activeDom.selectionStart < selectionStart) {
