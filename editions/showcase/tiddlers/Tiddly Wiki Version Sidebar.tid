@@ -5,7 +5,7 @@ tags: $:/tags/SideBarSegment
 title: Tiddly Wiki Version Sidebar
 type: text/vnd.tiddlywiki
 
-TiddlyWiki Version: ''<<version>>''<$list filter="[[$:/plugins/tiddlywiki/codemirror]is[tiddler]]">''-CodeMirror''</$list>
+TiddlyWiki Version: <span data-test-id="tw-edition">''<<version>>''<$list filter="[[$:/plugins/tiddlywiki/codemirror]is[tiddler]]">''-CodeMirror''</$list></span>
 
 * Switch to <a href="index.html">5.2.0</a>
 * Switch to <a href="index-cm.html">5.2.0-CodeMirror</a>
