@@ -4,12 +4,12 @@ import {TiddlyWiki as TW531} from 'tw531';
 
 process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
 
-releaseShowcase(TW522, 'release', '');
-releaseShowcase(TW522, 'release-codemirror', '522-cm/');
-releaseShowcase(TW530, 'release', '530/');
-releaseShowcase(TW530, 'release-codemirror', '530-cm/');
-releaseShowcase(TW531, 'release', '531/');
-releaseShowcase(TW531, 'release-codemirror', '531-cm/');
+releaseShowcase(TW522, 'release', 'index.html');
+releaseShowcase(TW522, 'release-codemirror', 'index-cm.html/');
+releaseShowcase(TW530, 'release', 'index-530.html');
+releaseShowcase(TW530, 'release-codemirror', 'index-530-cm.html');
+releaseShowcase(TW531, 'release', 'index-531.html');
+releaseShowcase(TW531, 'release-codemirror', 'index-531-cm.html');
 releaseLibrary();
 
 function releaseShowcase(twBinary, release, path) {
@@ -18,8 +18,8 @@ function releaseShowcase(twBinary, release, path) {
 	// Pass the command line arguments to the boot kernel
 	$tw.boot.argv = [
 		`editions/${release}`, "--verbose", "--output",
-		`docs/${path}`,
-		"--build", "release"
+		`docs/`,
+		"--rendertiddler", "$:/core/save/all", path, "text/plain"
 	];
 
 	// Boot the TW5 app

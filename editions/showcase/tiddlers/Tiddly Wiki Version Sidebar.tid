@@ -1,8 +1,15 @@
 created: 20231011203339825
 list-after: $:/core/ui/SideBarSegments/site-subtitle
-modified: 20231011204842775
+modified: 20231012154817943
 tags: $:/tags/SideBarSegment
 title: Tiddly Wiki Version Sidebar
 type: text/vnd.tiddlywiki
 
 TiddlyWiki Version: ''<<version>>''<$list filter="[[$:/plugins/tiddlywiki/codemirror]is[tiddler]]">''-CodeMirror''</$list>
+
+* Switch to <a href="index.html">5.2.0</a>
+* Switch to <a href="index-cm.html">5.2.0-CodeMirror</a>
+* Switch to <a href="index-530.html">5.3.0</a>
+* Switch to <a href="index-530-cm.html">5.3.0-CodeMirror</a>
+* Switch to <a href="index-531.html">5.3.1</a>
+* Switch to <a href="index-531-cm.html">5.3.1-CodeMirror</a>
