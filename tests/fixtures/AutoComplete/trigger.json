@@ -1,1 +1,0 @@
-{"created":"20221226122355783","tags":"$:/tags/EC/AutoComplete/Trigger","caption":"Unnamed trigger 1","trigger":"[[","filter":"[all[tiddlers]!is[system]!is[draft]search:title<query>]","display-filter":"[<currentTiddler>]","template":"[[$option$]]$caret$","auto-trigger-textarea":"1","modified":"20221226122355783","title":"$:/EvidentlyCube/Trigger/1"}
