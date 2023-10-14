@@ -19,6 +19,8 @@ type: text/vnd.tiddlywiki
 }
 
 .ec_ac-dots-top {
+	pointer-events: none;
+	user-select: none;
 	position: absolute;
 	font-size: 2em;
 	text-align: center;
@@ -27,6 +29,8 @@ type: text/vnd.tiddlywiki
 	right: 0;
 }
 .ec_ac-dots-bottom {
+	pointer-events: none;
+	user-select: none;
 	position: absolute;
 	font-size: 2em;
 	text-align: center;

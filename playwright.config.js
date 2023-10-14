@@ -45,7 +45,6 @@ export default defineConfig({
 		},
 		{
 			name: 'chromium',
-			dependencies: ['sanity'],
 			use: {
 				...devices['Desktop Chrome'],
 			},

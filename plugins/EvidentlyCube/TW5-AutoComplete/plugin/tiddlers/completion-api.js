@@ -232,8 +232,8 @@ API for the modal
 				trigger: trigger,
 				triggerLastCharacter: trigger.charAt(trigger.length - 1),
 				insertTemplate: insertTemplate,
-				autoTriggerInput: tiddlerFields['auto-trigger-input'],
-				autoTriggerTextArea: tiddlerFields['auto-trigger-textarea'],
+				autoTriggerInput: String(tiddlerFields['auto-trigger-input']) === '1',
+				autoTriggerTextArea: String(tiddlerFields['auto-trigger-textarea']) === '1',
 			});
 		}
 	};

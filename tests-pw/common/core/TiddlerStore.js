@@ -40,4 +40,18 @@ export class TiddlerStore {
 			}
 		}, fixtures);
 	}
+
+	async updateTiddler(title, fields, allowCreate = false) {
+		return this.page.evaluate(({title, fields, allowCreate}) => {
+			const tiddler = $tw.wiki.getTiddler(title)
+				?? (allowCreate ? new $tw.Tiddler({title}, fields) : false);
+
+			if (!tiddler) {
+				throw new Error(`Unable to update tiddler '${title}' because it does not exist`);
+			}
+
+			$tw.wiki.addTiddler(new $tw.Tiddler(tiddler, fields));
+
+		}, {title, fields, allowCreate});
+	}
 }
