@@ -1,5 +1,6 @@
 import test from "playwright/test";
 import { SidebarSearchResultsUi } from "./SidebarSearchResultsUi";
+import { EditTiddlerUi } from "./EditTiddlerUi";
 
 export class SidebarUi {
 	/**
@@ -52,7 +53,7 @@ export class SidebarUi {
 				);
 			}
 
-			return newTiddlerTitle;
-		})
+			return new EditTiddlerUi(this.page, newTiddlerTitle);
+		});
 	}
 }

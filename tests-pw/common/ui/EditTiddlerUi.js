@@ -19,4 +19,12 @@ export class EditTiddlerUi {
 	get unframedBodyTextArea() {
 		return this.self.locator('.tc-edit-texteditor-body');
 	}
+
+	get framedBodyTextArea() {
+		return this.self.frameLocator('iframe.tc-edit-texteditor-body').locator('textarea:not([hidden])');
+	}
+
+	get codeMirrorInputDiv() {
+		return this.self.locator('.CodeMirror-code');
+	}
 }

@@ -11,13 +11,10 @@ EditionSelector.getEditions(undefined).forEach(edition => {
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(false);
 
-		const tiddlerTitle = await test.step("Create test tiddler", async () => {
-			return ui.sidebar.doCreateNewTiddler();
-		});
+		const { self: editorSelf, unframedBodyTextArea } = await ui.sidebar.doCreateNewTiddler();
 
-		const tiddlerEditor = await ui.getTiddlerEdit(tiddlerTitle);
 		await test.step('Trigger auto complete', async () => {
-			await tiddlerEditor.unframedBodyTextArea.pressSequentially('[[1');
+			await unframedBodyTextArea.pressSequentially('[[1');
 		});
 
 		await test.step('Ensure cancel draft dialog does not appear when dismissing completion', async() => {
@@ -26,7 +23,7 @@ EditionSelector.getEditions(undefined).forEach(edition => {
 			});
 
 			expect(dialogs, "Expected no dialogs to appear when dismissing auto complete").toHaveLength(0);
-			await expect(tiddlerEditor.self, "Expected tiddler editor to be still visible").toBeVisible();
+			await expect(editorSelf, "Expected tiddler editor to be still visible").toBeVisible();
 		});
 	});
 });

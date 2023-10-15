@@ -33,8 +33,6 @@ export class EditionSelector {
 	};
 
 	static getEditions(codeMirrorFilter) {
-		return ['tw522'];
-
 		return [
 			codeMirrorFilter !== true ? 'tw522' : null,
 			codeMirrorFilter !== false ? 'tw522CodeMirror' : null,

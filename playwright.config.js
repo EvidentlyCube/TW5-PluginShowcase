@@ -12,7 +12,7 @@ export default defineConfig({
 	timeout: 30 * 1000,
 	expect: {
 		// Default expect timeout
-		timeout: 5000
+		timeout: 500
 	},
 	fullyParallel: true,
 
@@ -27,7 +27,7 @@ export default defineConfig({
 	reporter: 'html',
 
 	use: {
-		actionTimeout: 2000,
+		actionTimeout: 500,
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: 'on-first-retry',
