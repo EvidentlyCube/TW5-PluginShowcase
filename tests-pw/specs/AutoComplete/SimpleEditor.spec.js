@@ -3,6 +3,7 @@ import { test } from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
 
 import { expect } from 'playwright/test';
+import { getNewPage } from '../../common/utils/PageUtils';
 
 EditionSelector.getEditions(false).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Simple Editor -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
@@ -149,7 +150,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Simple Editor -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
-		await pluginUtils.updateTrigger(1, {autoTriggerTextArea: 0});
+		await pluginUtils.updateTrigger(1, { autoTriggerTextArea: 0 });
 		await twConfig.useFramedEditor(false);
 
 		const { autoCompleteWindow } = pluginUi;
@@ -175,5 +176,50 @@ EditionSelector.getEditions(false).forEach(edition => {
 		const { unframedBodyTextArea } = await ui.sidebar.doCreateNewTiddler();
 
 		await pluginUtils.assertDialogPosition("[[1", unframedBodyTextArea, autoCompleteWindow.self);
+	});
+
+	test(`${edition} -> Auto Complete -> Simple Editor -> New Window`, async ({ page: pagePrimary, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+		await selectEdition.initByName(edition);
+		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
+		await twConfig.useFramedEditor(false);
+
+		const title = await store.loadFixture(fixtures.tiddlerEditTextArea);
+		const viewTiddler = await ui.sidebar.doOpenTiddler(title);
+
+		const pageSecondary = await test.step('Open new window', async () => {
+			await viewTiddler.moreActionsButton.click();
+
+			return getNewPage(pagePrimary, async () => {
+				await viewTiddler.openInNewWindowButton.click();
+			});
+		});
+
+		const textAreaPrimary = viewTiddler.self.locator('textarea');
+		const textAreaSecondary = pageSecondary.locator('textarea');
+		const { autoCompleteWindow: autoCompletePrimary } = pluginUi;
+		const { autoCompleteWindow: autoCompleteSecondary } = pluginUi.forPage(pageSecondary);
+
+		await test.step("Triggering completion in primary window won't open it in secondary", async () => {
+			textAreaPrimary.pressSequentially('[[1');
+
+			await expect(autoCompletePrimary.self, "Expected dialog to appear in primary window").toBeVisible();
+			await expect(autoCompleteSecondary.self, "Expected dialog to not appear in secondary window").not.toBeVisible();
+
+			pagePrimary.keyboard.press('Escape');
+		});
+
+		await test.step("Triggering completion in secondary window won't open it in primary", async () => {
+			textAreaSecondary.pressSequentially('[[1');
+
+			await expect(autoCompletePrimary.self, "Expected dialog to not appear in primary window").not.toBeVisible();
+			await expect(autoCompleteSecondary.self, "Expected dialog to appear in secondary window").toBeVisible();
+
+			pageSecondary.keyboard.press('Escape');
+		});
+
+		await test.step("Secondary window: Completion with enter works", async () => {
+			textAreaSecondary.fill('');
+
+		});
 	});
 });

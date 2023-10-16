@@ -1,7 +1,6 @@
 {
 	"title": "$:/EvidentlyCube/Trigger/1",
 	"tags": "$:/tags/EC/AutoComplete/Trigger",
-	"caption": "Unnamed trigger 1",
 	"trigger": "[[1",
 	"filter": "[all[tiddlers]!is[system]!is[draft]search:title<query>]",
 	"display-filter": "[<currentTiddler>]",

@@ -9,7 +9,7 @@ export class EditTiddlerUi {
 	}
 
 	get #selfPrefix() {
-		return `.tc-tiddler-edit-frame[data-tiddler-title="Draft of 'New Tiddler'"]`;
+		return `.tc-tiddler-edit-frame[data-tiddler-title="${this.title}"]`;
 	}
 
 	get self() {

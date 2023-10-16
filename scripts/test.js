@@ -11,20 +11,42 @@ const empty = x => x;
 async function run() {
 	const tests = await getTestsList();
 
-	const test = await selectTest(tests);
+	let selectedTest = await selectTest(tests);
 
+	let lastAnswer = 'Rerun';
+	let debugEnabled = false;
 	while (true) {
-		await runTest(test);
-		const  prompt = new enquirer.BooleanPrompt({
-			message:  'Rerun the test?',
-			initial: true
-		  });
+		await runTest(selectedTest, debugEnabled);
 
-		  const answer = await prompt.run();
+		const prompt = new enquirer.Select({
+			message: 'Rerun the test?',
+			initial: lastAnswer,
+			choices: [
+				'Rerun',
+				'Rerun with debug',
+				'Change test',
+				'Exit'
+			]
+		});
 
-		  if (!answer) {
-			break;
-		  }
+		lastAnswer = await prompt.run();
+
+		switch (lastAnswer) {
+			case 'Rerun':
+				debugEnabled = false;
+				continue;
+			case 'Rerun with debug':
+				debugEnabled = true;
+				continue;
+			case 'Change test':
+				debugEnabled = false;
+				selectedTest = await selectTest(tests);
+				lastAnswer = 'Rerun';
+				continue;
+			default:
+				process.exit();
+				break;
+		}
 	}
 }
 
@@ -86,10 +108,18 @@ async function selectTest(tests) {
 	return tests.find(test => test.id === result);
 }
 
-async function runTest(test) {
+async function runTest(test, debugEnabled) {
 	return new Promise((resolve, reject) => {
 		const safeTitle = test.titlePath.map(title => escapeRegex(title)).join(".+");
-		const pwArgs = ['playwright', 'test', '-g', `/${safeTitle}/i`, '--reporter=line', '--', `tests-pw/${test.file}`];
+		const pwArgs = [
+			'playwright',
+			'test',
+			'-g', `/${safeTitle}/i`,
+			debugEnabled ? '--debug' : '',
+			'--reporter=line',
+			'--',
+			`tests-pw/${test.file}`
+		];
 		const pw = spawn('npx', pwArgs.concat());
 
 		pwArgs[3] = `"${pwArgs[3].replace(/"/, '\\"')}"`;
@@ -112,5 +142,5 @@ async function runTest(test) {
 }
 
 function escapeRegex(string) {
-    return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
+	return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
 }

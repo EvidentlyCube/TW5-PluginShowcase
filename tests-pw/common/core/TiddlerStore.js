@@ -24,13 +24,15 @@ export class TiddlerStore {
 	}
 
 	async loadFixture(fixture) {
-		return this.loadFixtures([fixture]);
+		await this.loadFixtures([fixture]);
+
+		return fixture.title;
 	}
 
 	async loadFixtures(fixtures) {
 		fixtures = Array.isArray(fixtures) ? fixtures : [fixtures];
 
-		return this.page.evaluate(fixtures => {
+		this.page.evaluate(fixtures => {
 			for (const fixture of fixtures) {
 				if (!fixture) {
 					continue;
@@ -39,6 +41,8 @@ export class TiddlerStore {
 				$tw.wiki.addTiddler(new $tw.Tiddler(fixture));
 			}
 		}, fixtures);
+
+		return fixtures.map(fixture => fixture.title);
 	}
 
 	async updateTiddler(title, fields, allowCreate = false) {

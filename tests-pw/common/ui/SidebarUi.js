@@ -1,6 +1,7 @@
-import test from "playwright/test";
+import test, { expect } from "playwright/test";
 import { SidebarSearchResultsUi } from "./SidebarSearchResultsUi";
 import { EditTiddlerUi } from "./EditTiddlerUi";
+import { ViewTiddlerUi } from "./ViewTiddlerUi";
 
 export class SidebarUi {
 	/**
@@ -55,5 +56,23 @@ export class SidebarUi {
 
 			return new EditTiddlerUi(this.page, newTiddlerTitle);
 		});
+	}
+
+	async doOpenTiddler(title) {
+		return await test.step(`Action: Open tiddler titled '${title}'`, async () => {
+			const {searchInput, searchResults} = this;
+			const {keyboard} = this.page;
+
+			await searchInput.fill(title);
+			await keyboard.press('ArrowDown');
+
+			await expect(searchResults.selectedLink, "Expected the first result to be selected").toBeVisible();
+			await keyboard.press('Enter');
+
+			const ui = new ViewTiddlerUi(this.page, title);
+			await expect(ui.self, "Expected the tiddler to be open now").toBeVisible();
+
+			return ui;
+		})
 	}
 }
