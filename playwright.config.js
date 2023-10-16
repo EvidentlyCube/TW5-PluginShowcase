@@ -22,11 +22,11 @@ export default defineConfig({
 	retries: 0,
 
 	// Single worker for now
-	workers: process.env.CI ? 6 : 1,
+	workers: 1,
 
 	reporter: [
 		['html'],
-		['list', {printSteps: true}]
+		['list']
 	],
 
 	use: {
