@@ -2,15 +2,20 @@ import { expect } from "playwright/test";
 import { TiddlerStore } from "../../../common/core/TiddlerStore";
 import { test } from "./AutoCompleteTest";
 import { getBoundingBoxDistance } from "../../../common/utils/BoundingBoxUtils";
-import { repeatUntilNotNull } from "../../../common/utils/FlowUtils";
 
 
 export class AutoCompleteUtils {
 	/**
+	 * @param {import("playwright/test").Page} page
 	 * @param {TiddlerStore} store
 	 */
-	constructor(store) {
+	constructor(page, store) {
+		this.page = page;
 		this.store = store;
+	}
+
+	forPage(page) {
+		return new AutoCompleteUtils(page, new TiddlerStore(page));
 	}
 
 	get defaultDisplayedResults() {
@@ -86,6 +91,8 @@ export class AutoCompleteUtils {
 			for (let i = 0; i < textInputs.length; i++) {
 				const input = textInputs[i];
 				const boundingBox = await test.step(`Retrieve dialog BBox for input #${i} '${input}'`, async() => {
+					// Dismiss completion as in some cases it can obscure the input enough for PW to choke
+					await this.page.keyboard.press('Escape');
 					// Code Mirror needs a click to gain focus
 					await dialogSourceLocator.click();
 					await dialogSourceLocator.press('Control+A');

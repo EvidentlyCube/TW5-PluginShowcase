@@ -3,6 +3,8 @@ import { test } from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
 
 import { expect } from 'playwright/test';
+import { getNewPage } from '../../common/utils/PageUtils';
+import { getBoundingBoxDistance } from '../../common/utils/BoundingBoxUtils';
 
 EditionSelector.getEditions(true).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Code Mirror -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
@@ -164,7 +166,7 @@ EditionSelector.getEditions(true).forEach(edition => {
 		const { codeMirrorInputDiv } = await ui.sidebar.doCreateNewTiddler();
 
 		await test.step("No auto trigger", async () => {
-			await codeMirrorInputDiv.click("[[1");
+			await codeMirrorInputDiv.click();
 			await codeMirrorInputDiv.pressSequentially("[[1");
 			await expect(autoCompleteWindow.self, "Expected the dialog to not appear because auto trigger is disabled").not.toBeVisible();
 		});
@@ -193,5 +195,37 @@ EditionSelector.getEditions(true).forEach(edition => {
 		});
 
 		await pluginUtils.assertDialogPosition("[[1", codeMirrorInputDiv, autoCompleteWindow.self);
+	});
+
+	test(`${edition} -> Auto Complete -> Code Mirror -> Not losing focus`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+		await selectEdition.initByName(edition);
+		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
+		await twConfig.useFramedEditor(true);
+
+		const { autoCompleteWindow } = pluginUi;
+		const { searchInput } = ui.sidebar;
+		const { codeMirrorInputDiv } = await ui.sidebar.doCreateNewTiddler();
+
+		await test.step('Focus on code mirror', async () => {
+			await codeMirrorInputDiv.click();
+			await codeMirrorInputDiv.pressSequentially("x");
+		});
+
+		await test.step('Trigger completion in search input', async () => {
+			await searchInput.pressSequentially('[[1');
+		});
+
+		await test.step("Check that completion dialog is closer to search input that code mirror editor", async () => {
+			const codeMirrorBBox = await codeMirrorInputDiv.boundingBox();
+			const searchInputBBox = await searchInput.boundingBox();
+			const completionDialogBBox = await autoCompleteWindow.self.boundingBox();
+
+			const codeMirrorToCompletionDistance = getBoundingBoxDistance(codeMirrorBBox, completionDialogBBox).distance;
+			const searchToCompletionDistance = getBoundingBoxDistance(searchInputBBox, completionDialogBBox).distance
+			expect(
+				searchToCompletionDistance,
+				"Expected the completion dialog to be closer to search input than code mirror input"
+			).toBeLessThan(codeMirrorToCompletionDistance)
+		});
 	});
 });

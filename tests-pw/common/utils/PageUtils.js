@@ -9,8 +9,6 @@ export async function getNewPage(page, callback) {
 		const newPage = await waitForPagePromise;
 		await newPage.waitForLoadState();
 
-		console.log(await newPage.title());
-
 		return newPage;
 	});
 }

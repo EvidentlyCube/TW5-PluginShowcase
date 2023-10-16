@@ -16,6 +16,10 @@ export class ViewTiddlerUi {
 		return this.page.locator(this.#selfPrefix);
 	}
 
+	get bodyDiv() {
+		return this.self.locator('.tc-tiddler-body');
+	}
+
 	get closeButton() {
 		return this.self.locator('.tc-titlebar button[class*="close"]');
 	}

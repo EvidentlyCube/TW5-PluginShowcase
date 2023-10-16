@@ -3,6 +3,7 @@ import { test } from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
 
 import { expect } from 'playwright/test';
+import { getNewPage } from '../../common/utils/PageUtils';
 
 EditionSelector.getEditions(undefined).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Text Input -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures }) => {
@@ -162,5 +163,79 @@ EditionSelector.getEditions(undefined).forEach(edition => {
 			await page.keyboard.press("Control+Space");
 			await expect(autoCompleteWindow.self, "Expected the dialog to appear from manual trigger").toBeVisible();
 		});
+	});
+
+	test(`${edition} -> Auto Complete -> Text Input -> New Window`, async ({ page: pagePrimary, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+		await selectEdition.initByName(edition);
+		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
+		await twConfig.useFramedEditor(false);
+
+		const title = await store.loadFixture(fixtures.tiddlerEditInput);
+		const viewTiddler = await ui.sidebar.doOpenTiddler(title);
+
+		const pageSecondary = await test.step('Open new window', async () => {
+			await viewTiddler.moreActionsButton.click();
+
+			return getNewPage(pagePrimary, async () => {
+				await viewTiddler.openInNewWindowButton.click();
+			});
+		});
+
+		const inputPrimary = viewTiddler.bodyDiv.locator('input');
+		const inputSecondary = pageSecondary.locator('input');
+		const { autoCompleteWindow: autoCompletePrimary } = pluginUi;
+		const { autoCompleteWindow: autoCompleteSecondary } = pluginUi.forPage(pageSecondary);
+
+		await test.step("Triggering completion in primary window won't open it in secondary", async () => {
+			await inputPrimary.pressSequentially('[[1');
+
+			await expect(autoCompletePrimary.self, "Expected dialog to appear in primary window").toBeVisible();
+			await expect(autoCompleteSecondary.self, "Expected dialog to not appear in secondary window").not.toBeVisible();
+
+			await pagePrimary.keyboard.press('Escape');
+			await inputPrimary.blur(); // NOTES.md#001
+		});
+
+		await test.step("Triggering completion in secondary window won't open it in primary", async () => {
+			await inputSecondary.pressSequentially('[[1');
+
+			await expect(autoCompletePrimary.self, "Expected dialog to not appear in primary window").not.toBeVisible();
+			await expect(autoCompleteSecondary.self, "Expected dialog to appear in secondary window").toBeVisible();
+
+			await pageSecondary.keyboard.press('Escape');
+			await inputSecondary.blur(); // NOTES.md#001
+		});
+
+		await test.step("Secondary window: Completion with enter works", async () => {
+			await inputSecondary.fill('');
+			await inputSecondary.pressSequentially('[[1');
+
+			const selectedText = (await autoCompleteSecondary.selectedLink.textContent()).trim();
+			await pageSecondary.keyboard.press('Enter');
+			await expect(inputPrimary).toHaveValue(`[[${selectedText}]]`);
+			await expect(inputSecondary).toHaveValue(`[[${selectedText}]]`);
+			await expect(inputSecondary, "Expected focus to not be lost on completion").toBeFocused();
+		});
+
+		await test.step("Secondary window: Completion with enter mouse", async () => {
+			await inputSecondary.fill('');
+			await inputSecondary.pressSequentially('[[1');
+
+			const selectedText = (await autoCompleteSecondary.selectedLink.textContent()).trim();
+			await autoCompleteSecondary.selectedLink.click();
+			await expect(inputPrimary).toHaveValue(`[[${selectedText}]]`);
+			await expect(inputSecondary).toHaveValue(`[[${selectedText}]]`);
+			await expect(inputSecondary, "Expected focus to not be lost on completion").toBeFocused();
+		});
+
+		await test.step("Secondary window: Closing with escape works", async () => {
+			await inputSecondary.fill('');
+			await inputSecondary.pressSequentially('[[1');
+			await pageSecondary.keyboard.press('Escape');
+
+			await expect(autoCompleteSecondary.self, "Expected completion dialog to disappear").not.toBeVisible();
+		});
+
+		await pluginUtils.forPage(pageSecondary).assertDialogPosition('[[1', inputSecondary, autoCompleteSecondary.self);
 	});
 });

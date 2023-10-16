@@ -200,26 +200,55 @@ EditionSelector.getEditions(false).forEach(edition => {
 		const { autoCompleteWindow: autoCompleteSecondary } = pluginUi.forPage(pageSecondary);
 
 		await test.step("Triggering completion in primary window won't open it in secondary", async () => {
-			textAreaPrimary.pressSequentially('[[1');
+			await textAreaPrimary.pressSequentially('[[1');
 
 			await expect(autoCompletePrimary.self, "Expected dialog to appear in primary window").toBeVisible();
 			await expect(autoCompleteSecondary.self, "Expected dialog to not appear in secondary window").not.toBeVisible();
 
-			pagePrimary.keyboard.press('Escape');
+			await pagePrimary.keyboard.press('Escape');
+			await textAreaPrimary.blur(); // NOTES.md#001
 		});
 
 		await test.step("Triggering completion in secondary window won't open it in primary", async () => {
-			textAreaSecondary.pressSequentially('[[1');
+			await textAreaSecondary.pressSequentially('[[1');
 
 			await expect(autoCompletePrimary.self, "Expected dialog to not appear in primary window").not.toBeVisible();
 			await expect(autoCompleteSecondary.self, "Expected dialog to appear in secondary window").toBeVisible();
 
-			pageSecondary.keyboard.press('Escape');
+			await pageSecondary.keyboard.press('Escape');
+			await textAreaSecondary.blur(); // NOTES.md#001
 		});
 
 		await test.step("Secondary window: Completion with enter works", async () => {
-			textAreaSecondary.fill('');
+			await textAreaSecondary.fill('');
+			await textAreaSecondary.pressSequentially('[[1');
 
+			const selectedText = (await autoCompleteSecondary.selectedLink.textContent()).trim();
+			await pageSecondary.keyboard.press('Enter');
+			await expect(textAreaPrimary).toHaveValue(`[[${selectedText}]]`);
+			await expect(textAreaSecondary).toHaveValue(`[[${selectedText}]]`);
+			await expect(textAreaSecondary, "Expected focus to not be lost on completion").toBeFocused();
 		});
+
+		await test.step("Secondary window: Completion with enter mouse", async () => {
+			await textAreaSecondary.fill('');
+			await textAreaSecondary.pressSequentially('[[1');
+
+			const selectedText = (await autoCompleteSecondary.selectedLink.textContent()).trim();
+			await autoCompleteSecondary.selectedLink.click();
+			await expect(textAreaPrimary).toHaveValue(`[[${selectedText}]]`);
+			await expect(textAreaSecondary).toHaveValue(`[[${selectedText}]]`);
+			await expect(textAreaSecondary, "Expected focus to not be lost on completion").toBeFocused();
+		});
+
+		await test.step("Secondary window: Closing with escape works", async () => {
+			await textAreaSecondary.fill('');
+			await textAreaSecondary.pressSequentially('[[1');
+			await pageSecondary.keyboard.press('Escape');
+
+			await expect(autoCompleteSecondary.self, "Expected completion dialog to disappear").not.toBeVisible();
+		});
+
+		await pluginUtils.forPage(pageSecondary).assertDialogPosition('[[1', textAreaSecondary, autoCompleteSecondary.self);
 	});
 });

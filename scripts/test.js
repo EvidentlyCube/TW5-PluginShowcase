@@ -1,5 +1,6 @@
 import chalk from 'chalk';
-import { exec, spawn } from 'child_process';
+import { exec } from 'child_process';
+import { spawn } from 'cross-spawn';
 import { promisify } from 'util';
 import enquirer from 'enquirer';
 const execPromise = promisify(exec);
@@ -120,6 +121,7 @@ async function runTest(test, debugEnabled) {
 			'--',
 			`tests-pw/${test.file}`
 		];
+
 		const pw = spawn('npx', pwArgs.concat());
 
 		pwArgs[3] = `"${pwArgs[3].replace(/"/, '\\"')}"`;
@@ -135,8 +137,12 @@ async function runTest(test, debugEnabled) {
 			console.log(chalk.bgRed.white(data.toString()));
 		});
 
-		pw.on('exit', function (code) {
+		pw.on('exit', function () {
 			resolve();
+		});
+
+		pw.on('error', function (e) {
+			console.log(e);
 		});
 	});
 }

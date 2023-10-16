@@ -13,6 +13,6 @@ export const test = baseTest.extend({
 	},
 
 	pluginUtils: async ({store}, use) => {
-		await use(new AutoCompleteUtils(store));
+		await use(new AutoCompleteUtils(store.page, store));
 	}
 });
