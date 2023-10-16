@@ -2,9 +2,10 @@ import { sep, resolve } from 'path';
 import { expect } from 'playwright/test';
 
 const docsPath = resolve(`${process.cwd()}${sep}docs${sep}`);
+// Windows requires adding a slash at the start, while Linux already has it baked in
+const crossPlatformDocsPath = docsPath.replace(/^\/+/, '');
 
 export class EditionSelector {
-
 	constructor(page) {
 		this.page = page;
 	}
@@ -27,7 +28,7 @@ export class EditionSelector {
 	#goto = async (page, suffix, expectedVersion) => {
 		page = page ?? this.page;
 
-		await page.goto(`file:///${docsPath}/index${suffix}.html`);
+		await page.goto(`file:///${crossPlatformDocsPath}/index${suffix}.html`);
 		await expect(page).toHaveTitle(/Evidently Cube TiddlyWiki5 Plugin Showcase/);
 		await expect(page.locator('[data-test-id="tw-edition"]')).toHaveText(expectedVersion, {timeout: 300});
 	};

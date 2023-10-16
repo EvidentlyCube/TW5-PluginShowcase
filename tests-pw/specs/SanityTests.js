@@ -7,5 +7,5 @@ EditionSelector.getEditions().forEach(edition => {
 		test('Each edition loads correctly', async ({ page, selectEdition }) => {
 			await selectEdition.initByName(edition, page);
 		});
-	})
+	});
 })
