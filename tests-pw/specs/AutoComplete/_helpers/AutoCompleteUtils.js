@@ -90,9 +90,12 @@ export class AutoCompleteUtils {
 			let lastBoundingBox = textAreaBounds;
 			for (let i = 0; i < textInputs.length; i++) {
 				const input = textInputs[i];
-				const boundingBox = await test.step(`Retrieve dialog BBox for input #${i} '${input}'`, async() => {
+				const boundingBox = await test.step(`Retrieve dialog BBox for input #${i} '${input}'`, async () => {
 					// Dismiss completion as in some cases it can obscure the input enough for PW to choke
-					await this.page.keyboard.press('Escape');
+					if (await autoCompleteDialogLocator.isVisible()) {
+						await autoCompleteDialogLocator.page().keyboard.press('Escape');
+					}
+
 					// Code Mirror needs a click to gain focus
 					await dialogSourceLocator.click();
 					await dialogSourceLocator.press('Control+A');

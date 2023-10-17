@@ -5,7 +5,7 @@ import { EditionSelector } from '../../common/core/EditionSelector';
 import { expect } from 'playwright/test';
 import { getDialogs } from '../../common/utils/DialogUtils';
 
-EditionSelector.getEditions(undefined).forEach(edition => {
+EditionSelector.getEditions(false).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Edit Tiddler -> Cancel draft popup`, async ({ page, selectEdition, store, ui, twConfig, pluginUi, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);

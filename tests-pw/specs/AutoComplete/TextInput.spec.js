@@ -5,7 +5,7 @@ import { EditionSelector } from '../../common/core/EditionSelector';
 import { expect } from 'playwright/test';
 import { getNewPage } from '../../common/utils/PageUtils';
 
-EditionSelector.getEditions(undefined).forEach(edition => {
+EditionSelector.getEditions(false).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Text Input -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);

@@ -249,6 +249,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 			await expect(autoCompleteSecondary.self, "Expected completion dialog to disappear").not.toBeVisible();
 		});
 
+		await pageSecondary.pause();
 		await pluginUtils.forPage(pageSecondary).assertDialogPosition('[[1', textAreaSecondary, autoCompleteSecondary.self);
 	});
 });
