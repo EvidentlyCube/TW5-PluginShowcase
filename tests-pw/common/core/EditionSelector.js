@@ -1,3 +1,4 @@
+// @ts-check
 import { sep, resolve } from 'path';
 import { expect } from 'playwright/test';
 
@@ -5,27 +6,59 @@ const docsPath = resolve(`${process.cwd()}${sep}docs${sep}`);
 // Windows requires adding a slash at the start, while Linux already has it baked in
 const crossPlatformDocsPath = docsPath.replace(/^\/+/, '');
 
+/**
+ * @typedef {object} EditionEntry
+ * @property {string} suffix Suffix to add to the `index.html` file
+ * @property {string} version Version used for asserting the correct file was loaded
+ * @property {boolean} hasCodeMirror Whether this version includes code mirror
+ */
+
+/**
+ * @type {Object.<string, EditionEntry>}
+ */
+const SUPPORTED_EDITIONS = {
+	tw522: getEdition('', '5.2.2', false),
+	tw522CodeMirror: getEdition('-cm', '5.2.2-CodeMirror', true),
+	tw530: getEdition('-530', '5.3.0', false),
+	tw530CodeMirror: getEdition('-530-cm', '5.3.0-CodeMirror', true),
+	tw531: getEdition('-531', '5.3.1', false),
+	tw531CodeMirror: getEdition('-531-cm', '5.3.1-CodeMirror', true),
+};
+
+/**
+ * Selects and initializes a specific version of Tiddly Wiki for testing
+ */
 export class EditionSelector {
+	/**
+	 * @param {import('playwright-core').Page} page
+	 */
 	constructor(page) {
 		this.page = page;
 	}
 
-	tw522 = async page => this.#goto(page, '', '5.2.2');
-	tw522CodeMirror = async page => this.#goto(page, '-cm', '5.2.2-CodeMirror');
-	tw530 = async page => this.#goto(page, '-530', '5.3.0');
-	tw530CodeMirror = async page => this.#goto(page, '-530-cm', '5.3.0-CodeMirror');
-	tw531 = async page => this.#goto(page, '-531', '5.3.1');
-	tw531CodeMirror = async page => this.#goto(page, '-531-cm', '5.3.1-CodeMirror');
+	/**
+	 * Initializes the given TiddlyWiki edition
+	 *
+	 * @param {string} editionName
+	 * @param {import('playwright-core').Page} [page]
+	 * @return {Promise<void>}
+	 */
+	initByName = async (editionName, page = undefined) => {
+		const edition = SUPPORTED_EDITIONS[editionName];
 
-	initByName = async (name, page) => {
-		if (typeof this[name] !== 'function') {
-			throw new Error(`Unsupported edition '${name}'`);
+		if (!edition) {
+			throw new Error(`Unsupported edition '${editionName}'`);
 		}
 
-		await this[name](page);
+		await this.#init(page, edition.suffix, edition.version);
 	}
 
-	#goto = async (page, suffix, expectedVersion) => {
+	/**
+	 * @param {import('playwright-core').Page|undefined} page
+	 * @param {string} suffix
+	 * @param {string} expectedVersion
+	 */
+	#init = async (page, suffix, expectedVersion) => {
 		page = page ?? this.page;
 
 		await page.goto(`file:///${crossPlatformDocsPath}/index${suffix}.html`);
@@ -33,14 +66,33 @@ export class EditionSelector {
 		await expect(page.locator('[data-test-id="tw-edition"]')).toHaveText(expectedVersion, {timeout: 300});
 	};
 
-	static getEditions(codeMirrorFilter) {
-		return [
-			codeMirrorFilter !== true ? 'tw522' : null,
-			codeMirrorFilter !== false ? 'tw522CodeMirror' : null,
-			codeMirrorFilter !== true ? 'tw530' : null,
-			codeMirrorFilter !== false ? 'tw530CodeMirror' : null,
-			codeMirrorFilter !== true ? 'tw531' : null,
-			codeMirrorFilter !== false ? 'tw531CodeMirror' : null,
-		].filter(x => x);
+	/**
+	 * Returns a list of TW editions that can be passed to `initByName`.
+	 *
+	 * @param {boolean|undefined} codeMirrorFilter If set to true or false will respectively return editions that
+	 * include Code Mirror or ones that don't. When undefined/left empty it returns all editions.
+	 *
+	 * @returns {string[]}
+	 */
+	static getEditions(codeMirrorFilter = undefined) {
+		return Object.keys(SUPPORTED_EDITIONS)
+			.filter(id => {
+				const edition = SUPPORTED_EDITIONS[id];
+
+				return codeMirrorFilter === undefined || edition.hasCodeMirror === codeMirrorFilter
+			});
 	}
+}
+
+/**
+ * Utility to build a list of supported editions.
+ *
+ * @param {string} suffix
+ * @param {string} version
+ * @param {boolean} hasCodeMirror
+ *
+ * @returns {EditionEntry}
+ */
+function getEdition(suffix, version, hasCodeMirror) {
+	return {suffix, version, hasCodeMirror};
 }

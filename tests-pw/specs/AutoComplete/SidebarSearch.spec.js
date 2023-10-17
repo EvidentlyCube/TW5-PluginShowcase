@@ -1,7 +1,6 @@
 // @ts-check
-import { test } from './_helpers/AutoCompleteTest';
+import { autoCompleteTest as test } from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
-import { getTextContent } from '../../common/utils/PlaywrightTextUtils';
 
 import { expect } from 'playwright/test';
 

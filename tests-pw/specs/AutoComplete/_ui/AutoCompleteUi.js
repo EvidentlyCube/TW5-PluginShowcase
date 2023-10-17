@@ -1,7 +1,11 @@
+// @ts-check
+
 import { AutoCompleteWindowUi } from "./AutoCompleteWindowUi";
 
-
 export class AutoCompleteUi {
+	/**
+	 * @param {import("playwright/test").Page} page
+	 */
 	constructor(page) {
 		this.page = page;
 	}

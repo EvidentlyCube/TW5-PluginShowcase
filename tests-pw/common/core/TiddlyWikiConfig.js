@@ -1,10 +1,13 @@
-import fs from 'fs';
-import {sep, resolve} from 'path';
+// @ts-check
 import { TiddlerStore } from './TiddlerStore';
 
+/**
+ * Handy function to change certain configuration options in TiddlyWiki without having to pass
+ * tiddler names.
+ */
 export class TiddlyWikiConfig {
 	/**
-	 * @param {import("@playwright/test").Page} page
+	 * @param {import('playwright/test').Page} page
 	 * @param {TiddlerStore} store
 	 */
 	constructor(page, store) {
@@ -12,15 +15,28 @@ export class TiddlyWikiConfig {
 		this.store = store;
 	}
 
+	/**
+	 * Created a configurator for another page object.
+	 * @param {import('playwright/test').Page} page
+	 * @returns TiddlyWikiConfig
+	 */
 	forPage(page) {
 		return new TiddlyWikiConfig(page, this.store.forPage(page));
 	}
 
+	/**
+	 * Controls whether framed editor is used or not.
+	 * @param {boolean} bool
+	 */
 	async useFramedEditor(bool) {
-		this.store.updateTiddler('$:/config/TextEditor/EnableToolbar', {text: bool ? 'yes' : 'no'}, true);
+		return this.store.updateTiddler('$:/config/TextEditor/EnableToolbar', {text: bool ? 'yes' : 'no'}, true);
 	}
 
+	/**
+	 * Controls whether Code Mirror's Auto Close Tags plugin is active
+	 * @param {boolean} bool
+	 */
 	async codeMirrorAutoCloseTags(bool) {
-		this.store.updateTiddler('$:/config/codemirror/autoCloseTags', {text: bool ? 'true' : 'false'}, true);
+		return this.store.updateTiddler('$:/config/codemirror/autoCloseTags', {text: bool ? 'true' : 'false'}, true);
 	}
 }

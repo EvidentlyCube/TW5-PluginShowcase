@@ -1,6 +1,6 @@
 // @ts-check
-import { test } from '../common/core/Test';
 import { EditionSelector } from '../common/core/EditionSelector';
+import { baseTest as test } from '../common/core/BaseTest';
 
 EditionSelector.getEditions().forEach(edition => {
 	test.describe(`Sanity (${edition})`, async () => {

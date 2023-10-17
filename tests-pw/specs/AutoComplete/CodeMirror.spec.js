@@ -1,13 +1,12 @@
 // @ts-check
-import { test } from './_helpers/AutoCompleteTest';
+import { autoCompleteTest as test } from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
 
 import { expect } from 'playwright/test';
-import { getNewPage } from '../../common/utils/PageUtils';
 import { getBoundingBoxDistance } from '../../common/utils/BoundingBoxUtils';
 
 EditionSelector.getEditions(true).forEach(edition => {
-	test(`${edition} -> Auto Complete -> Code Mirror -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Code Mirror -> Broad test`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(true);
@@ -156,10 +155,11 @@ EditionSelector.getEditions(true).forEach(edition => {
 		});
 	});
 
-	test(`${edition} -> Auto Complete -> Code Mirror -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Code Mirror -> Disable Auto Trigger`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
-		await pluginUtils.updateTrigger(1, {autoTriggerTextArea: 0});
+		await page.pause();
+		await pluginUtils.updateTrigger(1, {autoTriggerTextArea: false});
 		await twConfig.useFramedEditor(true);
 
 		const { autoCompleteWindow } = pluginUi;
@@ -177,7 +177,7 @@ EditionSelector.getEditions(true).forEach(edition => {
 		});
 	});
 
-	test(`${edition} -> Auto Complete -> Code Mirror -> Dialog position`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Code Mirror -> Dialog position`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(true);
@@ -197,7 +197,7 @@ EditionSelector.getEditions(true).forEach(edition => {
 		await pluginUtils.assertDialogPosition("[[1", codeMirrorInputDiv, autoCompleteWindow.self);
 	});
 
-	test(`${edition} -> Auto Complete -> Code Mirror -> Not losing focus`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Code Mirror -> Not losing focus`, async ({ selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(true);

@@ -1,12 +1,12 @@
 // @ts-check
-import { test } from './_helpers/AutoCompleteTest';
+import { autoCompleteTest as test} from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
 
 import { expect } from 'playwright/test';
 import { getDialogs } from '../../common/utils/DialogUtils';
 
 EditionSelector.getEditions(false).forEach(edition => {
-	test(`${edition} -> Auto Complete -> Edit Tiddler -> Cancel draft popup`, async ({ page, selectEdition, store, ui, twConfig, pluginUi, pluginUtils, fixtures }) => {
+	test(`${edition} -> Auto Complete -> Edit Tiddler -> Cancel draft popup`, async ({ page, selectEdition, ui, twConfig, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(false);

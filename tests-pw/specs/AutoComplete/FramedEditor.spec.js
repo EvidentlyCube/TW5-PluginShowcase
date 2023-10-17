@@ -1,11 +1,12 @@
 // @ts-check
-import { test } from './_helpers/AutoCompleteTest';
+import { autoCompleteTest as test } from './_helpers/AutoCompleteTest';
 import { EditionSelector } from '../../common/core/EditionSelector';
 
 import { expect } from 'playwright/test';
+import { getInputSelection } from '../../common/utils/HtmlUtils';
 
 EditionSelector.getEditions(false).forEach(edition => {
-	test(`${edition} -> Auto Complete -> Framed Editor -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Framed Editor -> Broad test`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(true);
@@ -58,9 +59,10 @@ EditionSelector.getEditions(false).forEach(edition => {
 			await expect(framedBodyTextArea, "Expected focus to not be lost on completion").toBeFocused();
 
 			await test.step("Validate caret position", async () => {
-				const [caretStart, caretEnd] = await framedBodyTextArea.evaluate(input => [input.selectionStart, input.selectionEnd]);
-				expect(caretStart, "Expected caret position to not be a selection").toEqual(caretEnd);
-				expect(caretStart, "Expected caret to be placed after the closing bracket").toEqual(4 + selectedText.length);
+				// @ts-ignore
+				const { selectionStart, selectionEnd } = await getInputSelection(framedBodyTextArea);
+				expect(selectionStart, "Expected caret position to not be a selection").toEqual(selectionEnd);
+				expect(selectionStart, "Expected caret to be placed after the closing bracket").toEqual(4 + selectedText.length);
 			});
 		});
 
@@ -75,9 +77,9 @@ EditionSelector.getEditions(false).forEach(edition => {
 			await expect(framedBodyTextArea, "Expected focus to not be lost on completion").toBeFocused();
 
 			await test.step("Validate caret position", async () => {
-				const [caretStart, caretEnd] = await framedBodyTextArea.evaluate(input => [input.selectionStart, input.selectionEnd]);
-				expect(caretStart, "Expected caret position to not be a selection").toEqual(caretEnd);
-				expect(caretStart, "Expected caret to be placed after the closing bracket").toEqual(4 + selectedText.length);
+				const { selectionStart, selectionEnd } = await getInputSelection(framedBodyTextArea);
+				expect(selectionStart, "Expected caret position to not be a selection").toEqual(selectionEnd);
+				expect(selectionStart, "Expected caret to be placed after the closing bracket").toEqual(4 + selectedText.length);
 			});
 		});
 
@@ -94,9 +96,9 @@ EditionSelector.getEditions(false).forEach(edition => {
 			await expect(framedBodyTextArea, "Expected focus to not be lost on completion").toBeFocused();
 
 			await test.step("Validate caret position", async () => {
-				const [caretStart, caretEnd] = await framedBodyTextArea.evaluate(input => [input.selectionStart, input.selectionEnd]);
-				expect(caretStart, "Expected caret position to not be a selection").toEqual(caretEnd);
-				expect(caretStart, "Expected caret to be placed after the closing bracket").toEqual(4 + selectedText.length);
+				const { selectionStart, selectionEnd } = await getInputSelection(framedBodyTextArea);
+				expect(selectionStart, "Expected caret position to not be a selection").toEqual(selectionEnd);
+				expect(selectionStart, "Expected caret to be placed after the closing bracket").toEqual(4 + selectedText.length);
 			});
 		});
 
@@ -149,7 +151,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Simple Editor -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
-		await pluginUtils.updateTrigger(1, {autoTriggerTextArea: 0});
+		await pluginUtils.updateTrigger(1, { autoTriggerTextArea: false });
 		await twConfig.useFramedEditor(true);
 
 		const { autoCompleteWindow } = pluginUi;
