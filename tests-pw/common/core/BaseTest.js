@@ -25,12 +25,12 @@ export const baseTestFixtures = {
 	twConfig: async({page, store}, use) => {
 		await use(new TiddlyWikiConfig(page, store));
 	},
-    selectEdition: async ({page}, use) => {
-        await use(new EditionSelector(page));
-    },
-    ui: async ({page}, use) => {
-        await use(new TiddlyWikiUi(page));
-    }
+	selectEdition: async ({page}, use) => {
+		await use(new EditionSelector(page));
+	},
+	ui: async ({page}, use) => {
+		await use(new TiddlyWikiUi(page));
+	}
 };
 
 export const baseTest = base.test.extend(baseTestFixtures);

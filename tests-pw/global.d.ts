@@ -1,5 +1,6 @@
 class TW_Tiddler {
-	constructor(...fields: Record<string, any>[]);
+	constructor(...fields: (Record<string, unknown>|TW_Tiddler)[]);
+	fields: Record<string, unknown>;
 }
 
 interface TW_Wiki {

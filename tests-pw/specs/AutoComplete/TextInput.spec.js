@@ -7,7 +7,7 @@ import { getNewPage } from '../../common/utils/PageUtils';
 import { getInputSelection } from '../../common/utils/HtmlUtils';
 
 EditionSelector.getEditions(false).forEach(edition => {
-	test(`${edition} -> Auto Complete -> Text Input -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures }) => {
+	test(`${edition} -> Auto Complete -> Text Input -> Broad test`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 
@@ -147,7 +147,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 		});
 	});
 
-	test(`${edition} -> Auto Complete -> Text Input -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures }) => {
+	test(`${edition} -> Auto Complete -> Text Input -> Disable Auto Trigger`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await pluginUtils.updateTrigger(1, {autoTriggerInput: false});

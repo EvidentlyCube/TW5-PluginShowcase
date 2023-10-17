@@ -1,5 +1,5 @@
 // @ts-check
-import { TiddlerStore } from './TiddlerStore';
+
 
 /**
  * Handy function to change certain configuration options in TiddlyWiki without having to pass
@@ -8,7 +8,7 @@ import { TiddlerStore } from './TiddlerStore';
 export class TiddlyWikiConfig {
 	/**
 	 * @param {import('playwright/test').Page} page
-	 * @param {TiddlerStore} store
+	 * @param {import('./TiddlerStore').TiddlerStore} store
 	 */
 	constructor(page, store) {
 		this.page = page;

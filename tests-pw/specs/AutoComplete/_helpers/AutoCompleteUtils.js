@@ -72,11 +72,10 @@ export class AutoCompleteUtils {
 	 * This should work for all except the smallest inputs.
 	 *
 	 * @param {string} trigger
-	 * @param {import("playwright/test").Locator} dialogSourceLocator
-	 * @param {import("playwright/test").Locator} autoCompleteDialogLocator
-	 * @param {import("playwright/test").Locator|null} inputLocator
+	 * @param {import("playwright/test").Locator} dialogSourceLocator Locator pointing to the HTML element that takes the keyboard input
+	 * @param {import("playwright/test").Locator} autoCompleteDialogLocator Locator pointing to the auto complete dialog
 	 */
-	async assertDialogPosition(trigger, dialogSourceLocator, autoCompleteDialogLocator, inputLocator = null) {
+	async assertDialogPosition(trigger, dialogSourceLocator, autoCompleteDialogLocator) {
 		const ALLOWED_AXIS_DISTANCE = 64;
 		const textInputs = [
 			`${trigger}`,
@@ -84,8 +83,6 @@ export class AutoCompleteUtils {
 			`ww ww ${trigger}`,
 			`ww ww ww ${trigger}`,
 		];
-
-		inputLocator = inputLocator || dialogSourceLocator;
 
 		await autoCompleteTest.step("Assert dialog position", async () => {
 			const textAreaBounds = await autoCompleteTest.step('Retrieve source BBox', async () => dialogSourceLocator.boundingBox());

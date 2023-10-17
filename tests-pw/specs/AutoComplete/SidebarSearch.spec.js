@@ -5,7 +5,7 @@ import { EditionSelector } from '../../common/core/EditionSelector';
 import { expect } from 'playwright/test';
 
 EditionSelector.getEditions(false).forEach(edition => {
-	test(`${edition} -> Auto Complete -> Sidebar Search -> Arrow navigation priority`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures }) => {
+	test(`${edition} -> Auto Complete -> Sidebar Search -> Arrow navigation priority`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await pluginUtils.updateTrigger(1, {trigger: 'T'});

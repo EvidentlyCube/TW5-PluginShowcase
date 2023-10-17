@@ -21,9 +21,10 @@ import { AutoCompleteUtils } from './AutoCompleteUtils';
 const autoCompleteTestFixtures = {
 	...baseTestFixtures,
 
-    fixtures: async ({}, use) => {
-        await use(new AutoCompleteFixtures());
-    },
+	// eslint-disable-next-line no-empty-pattern
+	fixtures: async ({}, use) => {
+		await use(new AutoCompleteFixtures());
+	},
 
 	pluginUi: async ({page}, use) => {
 		await use(new AutoCompleteUi(page));

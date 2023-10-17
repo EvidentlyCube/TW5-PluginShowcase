@@ -7,7 +7,7 @@ import { getNewPage } from '../../common/utils/PageUtils';
 import { getInputSelection } from '../../common/utils/HtmlUtils';
 
 EditionSelector.getEditions(false).forEach(edition => {
-	test(`${edition} -> Auto Complete -> Simple Editor -> Broad test`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Simple Editor -> Broad test`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(false);
@@ -148,7 +148,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 		});
 	});
 
-	test(`${edition} -> Auto Complete -> Simple Editor -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Simple Editor -> Disable Auto Trigger`, async ({ page, selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await pluginUtils.updateTrigger(1, { autoTriggerTextArea: false });
@@ -168,7 +168,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 		});
 	});
 
-	test(`${edition} -> Auto Complete -> Simple Editor -> Dialog position`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Simple Editor -> Dialog position`, async ({  selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(false);
