@@ -5,16 +5,6 @@ import { TiddlerStore } from './TiddlerStore';
 import { TiddlyWikiConfig } from './TiddlyWikiConfig';
 
 export const test = baseTest.extend({
-    page: async ({ page }, use, testInfo) => {
-        await use(page);
-
-        if (testInfo.errors.length > 0) {
-            await testInfo.attach('Page content', {
-                body: await page.content(),
-                contentType: 'text/html',
-            });
-        }
-    },
 	store: async({page}, use) => {
 		await use(new TiddlerStore(page));
 	},
