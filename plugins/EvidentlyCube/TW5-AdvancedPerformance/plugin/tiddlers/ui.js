@@ -294,8 +294,9 @@ Cleans up data after a TaskList is removed
 
 			var totalTimeColumn = {
 				name: 'Total time (last 10)',
-				getText: function(m) { return m.totalTimeLastTen.toFixed(2) + 'ms'; },
-				getTitle: function(m) { return m.timesLastTen.map(function(x) { return x.toFixed(2) + 'ms'}).join("\n"); }
+				unit: 'ms',
+				getText: function(m) { return m.totalTimeLastTen.toFixed(2); },
+				getTitle: function(m) { return m.timesLastTen.map(function(x) { return x.toFixed(2)}).join("\n"); }
 			};
 
 			createTable(
@@ -303,11 +304,11 @@ Cleans up data after a TaskList is removed
 				[
 					filterNameColumn,
 					{name: 'Uses', field: 'totalCalls' },
-					{name: 'Total time', getText: function(m) { return m.totalTime.toFixed(2) + 'ms'; }},
+					{name: 'Total time', unit: 'ms', getText: function(m) { return m.totalTime.toFixed(2); }},
 					totalTimeColumn,
-					{name: 'Longest run', getText: function(m) { return m.longestRun.toFixed(2) + 'ms'; }},
-					{name: 'Average time', getText: function(m) { return m.average.toFixed(2) + 'ms'; }},
-					{name: 'Median time', getText: function(m) { return m.median.toFixed(2) + 'ms'; }},
+					{name: 'Longest run', unit: 'ms', getText: function(m) { return m.longestRun.toFixed(2); }},
+					{name: 'Average time', unit: 'ms', getText: function(m) { return m.average.toFixed(2); }},
+					{name: 'Median time', unit: 'ms', getText: function(m) { return m.median.toFixed(2); }},
 				],
 				mostUsedFilters.slice(0, recordsToShow)
 			);
@@ -316,12 +317,12 @@ Cleans up data after a TaskList is removed
 				document.querySelector('#ec_ap--single-longest'),
 				[
 					filterNameColumn,
-					{name: 'Longest run', getText: function(m) { return m.longestRun.toFixed(2) + 'ms'; }},
+					{name: 'Longest run', unit: 'ms', getText: function(m) { return m.longestRun.toFixed(2); }},
 					{name: 'Uses', field: 'totalCalls' },
-					{name: 'Total time', getText: function(m) { return m.totalTime.toFixed(2) + 'ms'; }},
+					{name: 'Total time', unit: 'ms', getText: function(m) { return m.totalTime.toFixed(2); }},
 					totalTimeColumn,
-					{name: 'Average time', getText: function(m) { return m.average.toFixed(2) + 'ms'; }},
-					{name: 'Median time', getText: function(m) { return m.median.toFixed(2) + 'ms'; }},
+					{name: 'Average time', unit: 'ms', getText: function(m) { return m.average.toFixed(2); }},
+					{name: 'Median time', unit: 'ms', getText: function(m) { return m.median.toFixed(2); }},
 				],
 				singleLongestExecution.slice(0, recordsToShow)
 			);
@@ -330,12 +331,12 @@ Cleans up data after a TaskList is removed
 				document.querySelector('#ec_ap--total-longest'),
 				[
 					filterNameColumn,
-					{name: 'Total time', getText: function(m) { return m.totalTime.toFixed(2) + 'ms'; }},
+					{name: 'Total time', unit: 'ms', getText: function(m) { return m.totalTime.toFixed(2); }},
 					{name: 'Uses', field: 'totalCalls' },
 					totalTimeColumn,
-					{name: 'Longest run', getText: function(m) { return m.longestRun.toFixed(2) + 'ms'; }},
-					{name: 'Average time', getText: function(m) { return m.average.toFixed(2) + 'ms'; }},
-					{name: 'Median time', getText: function(m) { return m.median.toFixed(2) + 'ms'; }},
+					{name: 'Longest run', unit: 'ms', getText: function(m) { return m.longestRun.toFixed(2); }},
+					{name: 'Average time', unit: 'ms', getText: function(m) { return m.average.toFixed(2); }},
+					{name: 'Median time', unit: 'ms', getText: function(m) { return m.median.toFixed(2); }},
 				],
 				totalLongestExecution.slice(0, recordsToShow)
 			);
@@ -344,12 +345,12 @@ Cleans up data after a TaskList is removed
 				document.querySelector('#ec_ap--average'),
 				[
 					filterNameColumn,
-					{name: 'Average time', getText: function(m) { return m.average.toFixed(2) + 'ms'; }},
+					{name: 'Average time', unit: 'ms', getText: function(m) { return m.average.toFixed(2); }},
 					{name: 'Uses', field: 'totalCalls' },
-					{name: 'Total time', getText: function(m) { return m.totalTime.toFixed(2) + 'ms'; }},
+					{name: 'Total time', unit: 'ms', getText: function(m) { return m.totalTime.toFixed(2); }},
 					totalTimeColumn,
-					{name: 'Longest run', getText: function(m) { return m.longestRun.toFixed(2) + 'ms'; }},
-					{name: 'Median time', getText: function(m) { return m.median.toFixed(2) + 'ms'; }},
+					{name: 'Longest run', unit: 'ms', getText: function(m) { return m.longestRun.toFixed(2); }},
+					{name: 'Median time', unit: 'ms', getText: function(m) { return m.median.toFixed(2); }},
 				],
 				averageLongest.slice(0, recordsToShow)
 			);
@@ -358,12 +359,12 @@ Cleans up data after a TaskList is removed
 				document.querySelector('#ec_ap--median'),
 				[
 					filterNameColumn,
-					{name: 'Median time', getText: function(m) { return m.median.toFixed(2) + 'ms'; }},
+					{name: 'Median time', unit: 'ms', getText: function(m) { return m.median.toFixed(2); }},
 					{name: 'Uses', field: 'totalCalls' },
-					{name: 'Total time', getText: function(m) { return m.totalTime.toFixed(2) + 'ms'; }},
+					{name: 'Total time', unit: 'ms', getText: function(m) { return m.totalTime.toFixed(2); }},
 					totalTimeColumn,
-					{name: 'Longest run', getText: function(m) { return m.longestRun.toFixed(2) + 'ms'; }},
-					{name: 'Average time', getText: function(m) { return m.average.toFixed(2) + 'ms'; }},
+					{name: 'Longest run', unit: 'ms', getText: function(m) { return m.longestRun.toFixed(2); }},
+					{name: 'Average time', unit: 'ms', getText: function(m) { return m.average.toFixed(2); }},
 				],
 				medianLongest.slice(0, recordsToShow)
 			);
@@ -387,7 +388,13 @@ Cleans up data after a TaskList is removed
 		var createTable = function(tableElement, headers, measures) {
 			var dm = $tw.utils.domMaker;
 			var theadThs = headers.map(function(header) {
-				return dm('th', {text: header.name});
+				const children = [ dm('span', {text: header.name}) ];
+
+				if (header.unit) {
+					children.push(dm('br', {text: header.name}));
+					children.push(dm('span', {class: 'ec_ap-muted', text: '[' + header.unit + ']'}));
+				}
+				return dm('th', { children: children });
 			});
 			var theadTr = dm("tr", {children: theadThs});
 			var tbodyTrs = measures.map(function(measure) {

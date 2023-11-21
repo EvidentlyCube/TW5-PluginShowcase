@@ -1,0 +1,118 @@
+title: $:/plugins/EvidentlyCube/AdvancedPerformance/Style
+tags: $:/tags/Stylesheet
+type: text/vnd.tiddlywiki
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+
+#ec_ap-footer {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: <<colour tiddler-background>>;
+	padding: 4px;
+	border-top: 1px solid #888;
+	height: 24px;
+	line-height: 16px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-around;
+	z-index: 999999;
+}
+.ec_ap-muted {
+	font-style: italic;
+}
+.tc-drafts-list {
+	bottom: 24px;
+}
+#ec_ap-wrap {
+	display: none;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	box-sizing: border-box;
+	padding: 2em;
+	z-index: 999999;
+}
+#ec_ap-cover {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	box-sizing: border-box;
+	background: <<colour modal-backdrop>>;
+	opacity: 0.75;
+}
+#ec_ap-container {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	background: <<colour modal-background>>;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	z-index: 1;
+}
+#ec_ap-container > h1 {
+	padding: 1em;
+	margin: 0;
+	display: flex;
+	width: 100%;
+	gap: 1em;
+}
+#ec_ap-container > h1 span:first-child {
+	flex-grow: 1;
+}
+
+#ec_ap-tab-headers {
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	width: 100%;
+}
+#ec_ap-tab-headers > div{
+	flex: 1 0 auto;
+	text-align: center;
+	font-size: 20px;
+	background: <<colour tiddler-background>>;
+	line-height: 30px;
+	vertical-align: middle;
+	white-space: nowrap;
+	padding: 0 2em;
+	cursor: pointer;
+}
+#ec_ap-tab-headers > div.selected {
+	background: <<colour page-background>>;
+}
+#ec_ap-tabs {
+	background: <<colour page-background>>;
+	flex-grow: 1;
+	padding: 1em;
+	overflow-y: scroll;
+}
+#ec_ap-tabs td {
+	padding: 2px 7px;
+}
+#ec_ap-tabs td:first-child {
+	font-family: monospace;
+	word-break: break-all;
+}
+#ec_ap-tabs td:not(:first-child) {
+	text-align: right;
+}
+.ec_ap-annotated {
+	border-bottom: 1px dotted #888;
+}
+#ec_ap-tabs > *:not(.selected) {
+	display: none;
+}
+.ec_ap-header-button {
+	float: right;
+	font-variant: small-caps;
+	font-size: 0.75em;
+	cursor: pointer;
+}
