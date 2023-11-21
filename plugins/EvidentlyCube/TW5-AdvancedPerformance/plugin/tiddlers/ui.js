@@ -388,7 +388,7 @@ Cleans up data after a TaskList is removed
 		var createTable = function(tableElement, headers, measures) {
 			var dm = $tw.utils.domMaker;
 			var theadThs = headers.map(function(header) {
-				const children = [ dm('span', {text: header.name}) ];
+				var children = [ dm('span', {text: header.name}) ];
 
 				if (header.unit) {
 					children.push(dm('br', {text: header.name}));
@@ -400,9 +400,14 @@ Cleans up data after a TaskList is removed
 			var tbodyTrs = measures.map(function(measure) {
 				var tds = headers.map(function(header) {
 					var title = header.getTitle ? header.getTitle(measure) : '';
+					var innerHTML = header.getText ? header.getText(measure) : measure[header.field];
+
+					if (header.unit) {
+						innerHTML += ' <span class="ec_ap-muted">' + header.unit + "</span>";
+					}
 					var content = dm('span', {
 						class: title ? 'ec_ap-annotated' : '',
-						innerHTML: header.getText ? header.getText(measure) : measure[header.field],
+						innerHTML: innerHTML,
 						attributes: {title: header.getTitle ? header.getTitle(measure) : ''}
 					});
 

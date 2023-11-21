@@ -21,9 +21,6 @@ function validateWorkingDirectory() {
 	const scriptDir = import.meta.url.replace(/file:\/+/g, '').replace(/\\/g, '/').replace(/\/?develop\.js$/, '');
 	const cwd = process.cwd().replace(/\\/g, '/').replace(/\/$/, '');
 
-	console.log(cwd);
-	console.log(scriptDir);
-
 	if (scriptDir === cwd) {
 		console.log(chalk.red("Script must be run from project's root directory, not scripts/ subdirectory!"));
 		process.exit(1);
@@ -88,6 +85,8 @@ async function run() {
 	} else {
 		console.log(chalk.green(`Starting Tiddlywiki ${version}${isCodeMirror ? 'with CodeMirror' : ''}`));
 		const $tw = TW_VERSIONS[version]();
+
+		process.env['TIDDLYWIKI_PLUGIN_PATH'] = 'plugins';
 
 		$tw.boot.argv = [
 			isCodeMirror ? "editions/develop-codemirror" : "editions/develop",

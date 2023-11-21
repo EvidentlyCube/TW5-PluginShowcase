@@ -1,6 +1,7 @@
 title: $:/plugins/EvidentlyCube/AdvancedPerformance/history
 type: text/vnd.tiddlywiki
 
+* ''1.1.5'' -- Style improvements for readability
 * ''1.1.4'' -- Two fixes:
 ** `other` refresh now correctly ignores subfilters when calculating its duration
 ** Tabs ''Median'' and ''Average'' now display subfilters just like other tabs do

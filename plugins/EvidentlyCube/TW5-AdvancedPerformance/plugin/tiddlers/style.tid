@@ -20,6 +20,8 @@ type: text/vnd.tiddlywiki
 	z-index: 999999;
 }
 .ec_ap-muted {
+	color: <<colour foreground>>;
+	opacity: 0.75;
 	font-style: italic;
 }
 .tc-drafts-list {
@@ -50,7 +52,7 @@ type: text/vnd.tiddlywiki
 	width: 100%;
 	height: 100%;
 	margin: auto;
-	background: <<colour modal-background>>;
+	background: <<colour page-background>>;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -78,7 +80,7 @@ type: text/vnd.tiddlywiki
 	flex: 1 0 auto;
 	text-align: center;
 	font-size: 20px;
-	background: <<colour tiddler-background>>;
+	background: <<colour page-background>>;
 	line-height: 30px;
 	vertical-align: middle;
 	white-space: nowrap;
@@ -86,14 +88,19 @@ type: text/vnd.tiddlywiki
 	cursor: pointer;
 }
 #ec_ap-tab-headers > div.selected {
-	background: <<colour page-background>>;
+	background: <<colour tiddler-background>>;
 }
 #ec_ap-tabs {
-	background: <<colour page-background>>;
+	background: <<colour tiddler-background>>;
 	flex-grow: 1;
 	padding: 1em;
 	overflow-y: scroll;
 }
+
+#ec_ap-tabs table {
+	width: 100%;
+}
+
 #ec_ap-tabs td {
 	padding: 2px 7px;
 }
@@ -102,6 +109,8 @@ type: text/vnd.tiddlywiki
 	word-break: break-all;
 }
 #ec_ap-tabs td:not(:first-child) {
+	white-space: nowrap;
+	font-family: monospace;
 	text-align: right;
 }
 .ec_ap-annotated {
