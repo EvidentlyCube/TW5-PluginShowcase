@@ -1,0 +1,47 @@
+title: $:/plugins/EvidentlyCube/AdvancedPerformance/Settings
+tags: $:/tags/EvidentlyCube/SettingsTab
+caption: Advanced Performance
+
+Configuration for the [[Advanced Performance|$:/plugins/EvidentlyCube/AdvancedPerformance]] plugin.
+
+! Config
+
+<div class="ec_ap-options">
+<table>
+<colgroup>
+	<col width="60%"/>
+</colgroup>
+<tbody>
+<tr>
+	<td align="center">
+		''Performance Instrumentation''<br/>
+		<em>{{$:/language/ControlPanel/Settings/PerformanceInstrumentation/Hint}}</em>
+		<em>This controls Tiddly Wiki's native setting which is also used by this plugin. Options to customize the plugin itself are below.</em>
+	</td>
+	<td>
+		<$checkbox
+			tiddler="$:/config/Performance/Instrumentation"
+			field="text"
+			checked="yes"
+			unchecked="no"
+			default="no"
+		>&nbsp;{{$:/language/ControlPanel/Settings/PerformanceInstrumentation/Description}}</$checkbox>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		''Suffix Units''<br/>
+		//Whether to display the units suffix next to the values in the performance tables//
+	</td>
+	<td>
+		<$checkbox
+			tiddler="$:/plugins/EvidentlyCube/AutoComplete/Config" field="suffix_units"
+			checked="1"
+			unchecked="0"
+			default="1"
+		>&nbsp;Suffix Units</$checkbox>
+	</td>
+</tr>
+</tbody>
+</table>
+</div>

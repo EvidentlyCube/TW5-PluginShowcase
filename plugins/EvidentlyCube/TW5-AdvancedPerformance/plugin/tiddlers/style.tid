@@ -4,6 +4,28 @@ type: text/vnd.tiddlywiki
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
 
+
+.ec_ap-options table {
+	width: 100%;
+}
+
+.ec_ap-options p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.ec_ap-options input:not([type="checkbox"]),
+.ec_ap-options textarea {
+	display: block;
+	width: 100%;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.ec_ap-options input[type="checkbox"] {
+	width: auto;
+}
+
+
 #ec_ap-footer {
 	position: fixed;
 	left: 0;

@@ -27,6 +27,7 @@ Cleans up data after a TaskList is removed
 			: "";
 		var isShowingDetails = false;
 		var selectedTab = "ec_ap-tab--refresh-logs";
+		var config = ($tw.wiki.getTiddler('$:/plugins/EvidentlyCube/AutoComplete/Config') || {}).fields || {};
 
 		var onClickCapture = function(event) {
 			switch(event.target.getAttribute('data-ec-ap')) {
@@ -180,14 +181,16 @@ Cleans up data after a TaskList is removed
 
 			refreshTabs();
 
+			config = ($tw.wiki.getTiddler('$:/plugins/EvidentlyCube/AutoComplete/Config') || {}).fields || {};
+
 			var dm = $tw.utils.domMaker;
 
 			createTable(
 				document.querySelector('#ec_ap--last-refreshes'),
 				[
 					{name: 'Refresh time', field: 'time'},
-					{name: 'Total time', getText: function(m) {
-						return Object.values(m.refreshTimes).reduce(function(sum, next) { return sum + next.timeTaken}, 0).toFixed(2) + "ms";
+					{name: 'Total time', unit: "ms", getText: function(m) {
+						return Object.values(m.refreshTimes).reduce(function(sum, next) { return sum + next.timeTaken}, 0).toFixed(2);
 					}},
 					{
 						name: 'Individual times',
@@ -201,8 +204,16 @@ Cleans up data after a TaskList is removed
 									'data-key': key,
 									'data-ec-ap': 'filter-limit'
 								}});
+								var timeTaken = m.refreshTimes[key].timeTaken.toFixed(2);
+								while (timeTaken.length < 8) {
+									timeTaken = " " + timeTaken;
+								}
+								timeTaken = timeTaken.replace(/ /g, '&nbsp;');
 								var text = dm('span', {
-									text: key + ": " + m.refreshTimes[key].timeTaken.toFixed(2) + "ms"
+									innerHTML: key
+										+ ": "
+										+ timeTaken
+										+ ' <span class="ec_ap-muted">ms</span>'
 								});
 								text.innerHTML = "&nbsp;" + text.innerHTML + "&nbsp;";
 
@@ -402,7 +413,7 @@ Cleans up data after a TaskList is removed
 					var title = header.getTitle ? header.getTitle(measure) : '';
 					var innerHTML = header.getText ? header.getText(measure) : measure[header.field];
 
-					if (header.unit) {
+					if (config.suffix_units !== '0' && header.unit) {
 						innerHTML += ' <span class="ec_ap-muted">' + header.unit + "</span>";
 					}
 					var content = dm('span', {
