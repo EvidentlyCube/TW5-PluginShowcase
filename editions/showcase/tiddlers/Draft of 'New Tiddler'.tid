@@ -1,0 +1,11 @@
+created: 20231127201446074
+draft.of: New Tiddler
+draft.title: New Tiddler
+modified: 20231127201754321
+tags: 
+title: Draft of 'New Tiddler'
+type: text/vnd.tiddlywiki
+
+<$let n=<<now "TIMESTAMP">>>
+  {{{ [<n>!timestamp-manip[days],[1]] }}}
+</$let>
