@@ -1,0 +1,23 @@
+created: 20231127093532731
+modified: 20231127123618146
+tags: 
+title: Performance Tests
+type: text/vnd.tiddlywiki
+
+\define runTest()
+  <$action-sendmessage $message="perf-check-run" $param=<<currentTiddler>> />
+\end
+
+<$list filter="[tag[$:/tags/PerformanceCheck]]">
+
+!! <<currentTiddler>>
+
+<div class="muted">
+{{!!description}}
+</div>
+
+<$button actions=<<runTest>>>Run Test</$button>
+
+<pre><$list filter="[[$:/temp/Performance/]addsuffix<currentTiddler>is[tiddler]]" emptyMessage="Run the test first..."><$text text={{!!text}}/></$list></pre>
+
+</$list>
