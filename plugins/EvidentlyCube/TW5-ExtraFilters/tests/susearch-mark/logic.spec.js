@@ -1,6 +1,7 @@
 /* cSpell:disable */
 
-const { runComplexCase } = require('./helpers').helpers;
+import { it, describe } from 'mocha';
+import { runComplexCase } from './helpers.js';
 
 describe('susearch-mark simple cases', () => {
 	it('Mark full phrase', () => {
@@ -97,12 +98,12 @@ Heading-<mark>test</mark>
 pre-<mark>test</mark>
 
 separate-<mark>test</mark>`
-	runComplexCase(
-		'test',
-		ALL_IN_ONE,
-		ALL_IN_ONE_MARKED,
-		['raw-strip']
-	);
+		runComplexCase(
+			'test',
+			ALL_IN_ONE,
+			ALL_IN_ONE_MARKED,
+			['raw-strip']
+		);
 	});
 });
 describe('susearch-mark mode: wikify-strip', () => {

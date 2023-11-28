@@ -1,7 +1,7 @@
 /* cSpell:disable */
 
-const assert = require('assert');
-const { runComplexCase, runSearch, assertResults } = require('./helpers').helpers;
+import { it, describe } from 'mocha';
+import { runComplexCase } from './helpers.js';
 
 const RAW_CASE = ":".repeat(100)
 	+ 'MATCH'

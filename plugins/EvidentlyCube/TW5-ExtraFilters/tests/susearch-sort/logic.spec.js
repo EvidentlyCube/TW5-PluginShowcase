@@ -1,5 +1,6 @@
-const assert = require('assert');
-const { runComplexCase, runSort, assertSort } = require('./helpers').helpers;
+import { it, describe } from 'mocha';
+import assert from 'assert'
+import { runComplexCase, runSort, assertSort } from './helpers.js';
 
 describe('susearch-sort empty query', () => {
 	runComplexCase('', ['a', 'b', 'test']);

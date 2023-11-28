@@ -6,7 +6,7 @@ module-type: filteroperator
 Smart search
 
 \*/
-(function (require) {
+(function () {
 
 	/*jslint node: true, browser: true */
 	/*global $tw: false */
@@ -114,4 +114,4 @@ Smart search
 		return null;
 	}
 
-})(typeof global !== 'undefined' ? global.testRequire : require);
+})();

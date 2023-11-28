@@ -1,5 +1,6 @@
-const assert = require('assert');
-const { runComplexCase, runSearch, assertResults } = require('./helpers').helpers;
+import { describe } from 'mocha';
+import assert from 'assert';
+import { runComplexCase, runSearch, assertResults } from './helpers.js';
 
 describe('susearch empty query returns everything', () => {
 	runComplexCase('', ['', 'b', 'test'], []);
@@ -52,7 +53,7 @@ describe('susearch ordered flag', () => {
 	})
 })
 describe('susearch raw-strip flag', () => {
-	const mashup = (text, prefix="a", suffix="b") => {
+	const mashup = (text, prefix = "a", suffix = "b") => {
 		const prefixes = ['', "\n", "\r\n", `${prefix}\n`, `${prefix}\r\n`];
 		const suffixes = ['', "\n", "\r\n", `\n${suffix}`, `\r\n${suffix}`];
 		return prefixes.reduce((all, prefix) => {
@@ -107,7 +108,7 @@ describe('susearch raw-strip flag', () => {
 				...mashup(MACRO_DEF_MULTILINE_N),
 				...mashup(MACRO_DEF_MULTILINE_RN),
 				...mashup(MACRO_DEF_SINGLELINE1),
-		], ['raw-strip']);
+			], ['raw-strip']);
 	});
 	describe('Arbitrary Pragmas at the start -> Include by default', () => {
 		runComplexCase('test', ['test', ...mashup("\\test", "\n  \r\n")], []);
@@ -122,7 +123,7 @@ describe('susearch raw-strip flag', () => {
 		runComplexCase('test', ['test'], mashup("@@.test"), ['raw-strip']);
 	});
 	describe('Typed blocks -> Include by default', () => {
-		runComplexCase('test', ["test",...mashup("$$$application/test")]);
+		runComplexCase('test', ["test", ...mashup("$$$application/test")]);
 	});
 	describe('Typed blocks -> Exclude in `raw-strip`', () => {
 		runComplexCase('test', ["test"], mashup("$$$application/test"), ['raw-strip']);

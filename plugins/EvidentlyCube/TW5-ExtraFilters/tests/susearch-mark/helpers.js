@@ -1,44 +1,42 @@
-const assert = require('assert');
-const filter = require('../../plugin/susearch-mark')['susearch-mark'];
+import assert from 'assert';
+import { $tw, requireTiddlyWikiModule } from '../../../../../tests/common.js';
 
-const helpers = {
-	runComplexCase(operands, given, then, options, message) {
-		given = !Array.isArray(given) ? [given] : given;
-		then = !Array.isArray(then) ? [then] : then;
+const filter = requireTiddlyWikiModule('plugins/EvidentlyCube/TW5-ExtraFilters/plugin/susearch-mark.js')['susearch-mark'];
 
-		const result = helpers.runMark(
-			given.map(title => ({fields: {title}})),
-			operands,
-			options
-		);
+export function runComplexCase(operands, given, then, options, message) {
+	given = !Array.isArray(given) ? [given] : given;
+	then = !Array.isArray(then) ? [then] : then;
 
-		helpers.assertResults(result, then, message);
-	},
+	const result = runMark(
+		given.map(title => ({ fields: { title } })),
+		operands,
+		options
+	);
 
-	runMark(tiddlers, operands, options) {
-		options = options || [];
-		operands = Array.isArray(operands) ? operands : [operands];
-
-		return filter(
-			callback =>{
-				for (const tiddler of tiddlers) {
-					callback(tiddler, tiddler.fields.title);
-				}
-			},
-			{
-				operand: operands[0],
-				operands,
-				suffixes: [options]
-			},
-			{
-				wiki: global.$tw.wiki
-			}
-		);
-	},
-
-	assertResults(givenTitles, expectedTitles, message) {
-		assert.deepStrictEqual(expectedTitles.concat().sort(), givenTitles.concat().sort(), message);
-	}
+	assertResults(result, then, message);
 }
 
-exports.helpers = helpers;
+export function runMark(tiddlers, operands, options) {
+	options = options || [];
+	operands = Array.isArray(operands) ? operands : [operands];
+
+	return filter(
+		callback => {
+			for (const tiddler of tiddlers) {
+				callback(tiddler, tiddler.fields.title);
+			}
+		},
+		{
+			operand: operands[0],
+			operands,
+			suffixes: [options]
+		},
+		{
+			wiki: $tw.wiki
+		}
+	);
+}
+
+export function assertResults(givenTitles, expectedTitles, message) {
+	assert.deepStrictEqual(expectedTitles.concat().sort(), givenTitles.concat().sort(), message);
+}

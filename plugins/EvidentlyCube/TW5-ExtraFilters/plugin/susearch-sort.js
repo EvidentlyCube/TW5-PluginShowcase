@@ -6,7 +6,7 @@ module-type: filteroperator
 Smart sorting of search results
 
 \*/
-(function(require){
+(function(){
 
 	/*jslint node: true, browser: true */
 	/*global $tw: false */
@@ -187,4 +187,4 @@ Smart sorting of search results
 		return field;
 	}
 
-})(typeof global !== 'undefined' ? global.testRequire : require);
+})();

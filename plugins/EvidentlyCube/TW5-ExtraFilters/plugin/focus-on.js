@@ -6,7 +6,7 @@ module-type: filteroperator
 Extract part of text focusing on the first occurrence
 
 \*/
-(function (require) {
+(function () {
 	/*jslint node: true, browser: true */
 	/*global $tw: false */
 	"use strict";
@@ -150,4 +150,4 @@ Extract part of text focusing on the first occurrence
 
 		return String(value);
 	}
-})(typeof global !== 'undefined' ? global.testRequire : require);
+})();
