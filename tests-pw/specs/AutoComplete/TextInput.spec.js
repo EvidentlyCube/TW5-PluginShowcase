@@ -218,10 +218,11 @@ EditionSelector.getEditions(false).forEach(edition => {
 			await expect(inputSecondary, "Expected focus to not be lost on completion").toBeFocused();
 		});
 
-		await test.step("Secondary window: Completion with enter mouse", async () => {
+		await test.step("Secondary window: Completion with mouse works", async () => {
 			await inputSecondary.fill('');
 			await inputSecondary.pressSequentially('[[1');
 
+			await pageSecondary.pause();
 			const selectedText = (await autoCompleteSecondary.selectedLink.textContent()).trim();
 			await autoCompleteSecondary.selectedLink.click();
 			await expect(inputPrimary).toHaveValue(`[[${selectedText}]]`);

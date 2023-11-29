@@ -1,3 +1,4 @@
+import ora from 'ora';
 import chalk from 'chalk';
 import { exec } from 'child_process';
 import { spawn } from 'cross-spawn';
@@ -10,7 +11,10 @@ run();
 const empty = x => x;
 
 async function run() {
+	const spinner = ora('Loading test list').start();
 	const tests = await getTestsList();
+
+	spinner.stop();
 
 	let selectedTest = await selectTest(tests);
 
@@ -102,6 +106,8 @@ async function selectTest(tests) {
 		return input.split(' ').filter(empty).map(word => new RegExp(escapeRegexp(word), 'gi'));
 	};
 
+	console.log(`Total tests: ${tests.length}\n`);
+
 	const prompt = new enquirer.AutoComplete({
 		message: 'Pick test to run',
 		limit: 10,
@@ -114,7 +120,10 @@ async function selectTest(tests) {
 			const matches = inputToMatches(typed);
 
 			return choices.filter(choice => {
-				const missingMatch = matches.findIndex(match => !match.test(choice.message));
+				const missingMatch = matches.findIndex(match => {
+					match.lastIndex = 0;
+					return !match.test(choice.message);
+				});
 
 				return missingMatch === -1;
 			});
@@ -123,7 +132,6 @@ async function selectTest(tests) {
 			if (this.state.status !== 'pending') {
 				return await enquirer.Select.prototype.render.call(this);
 			}
-			const hl = this.options.highlight || this.styles.complement;
 
 			if (!this.input) {
 				return await enquirer.Select.prototype.render.call(this);
@@ -142,7 +150,7 @@ async function selectTest(tests) {
 				await enquirer.Select.prototype.render.call(this);
 				this.choices = choices;
 			}
-		  }
+		}
 	});
 
 	const result = await prompt.run();
@@ -151,8 +159,8 @@ async function selectTest(tests) {
 }
 
 async function runTest(test, debugEnabled) {
-	return new Promise((resolve, reject) => {
-		const safeTitle = test.titlePath.map(title => escapeRegexp(title)).join(".+");
+	return new Promise(resolve => {
+		const safeTitle = escapeRegexp(test.project) + ".+" + test.titlePath.map(title => escapeRegexp(title)).join(".+");
 		const pwArgs = [
 			'playwright',
 			'test',
@@ -169,8 +177,12 @@ async function runTest(test, debugEnabled) {
 
 		console.log(``);
 		console.log(`npx ${pwArgs.join(' ')}`);
+		console.log(``);
+
+		const spinner = ora(`Starting test [${test.project}] ${test.titlePath.join(" -> ")}`).start();
 
 		pw.stdout.on('data', function (data) {
+			spinner.stop();
 			console.log(data.toString());
 		});
 
