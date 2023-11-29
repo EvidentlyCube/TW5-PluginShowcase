@@ -39,17 +39,31 @@ export default defineConfig({
 
 	projects: [
 		{
-			name: 'sanity',
+			name: 'sanity-chrome',
 			fullyParallel: true,
-            testMatch: /SanityTests\.js/,
+			testMatch: /SanityTests\.js/,
 			use: {
 				...devices['Desktop Chrome'],
+			},
+		},
+		{
+			name: 'sanity-firefox',
+			fullyParallel: true,
+			testMatch: /SanityTests\.js/,
+			use: {
+				...devices['Desktop Firefox'],
 			},
 		},
 		{
 			name: 'chromium',
 			use: {
 				...devices['Desktop Chrome'],
+			},
+		},
+		{
+			name: 'firefox',
+			use: {
+				...devices['Desktop Firefox'],
 			},
 		}
 	],
