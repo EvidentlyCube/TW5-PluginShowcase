@@ -222,8 +222,8 @@ EditionSelector.getEditions(false).forEach(edition => {
 			await inputSecondary.fill('');
 			await inputSecondary.pressSequentially('[[1');
 
-			await pageSecondary.pause();
 			const selectedText = (await autoCompleteSecondary.selectedLink.textContent()).trim();
+
 			await autoCompleteSecondary.selectedLink.click();
 			await expect(inputPrimary).toHaveValue(`[[${selectedText}]]`);
 			await expect(inputSecondary).toHaveValue(`[[${selectedText}]]`);

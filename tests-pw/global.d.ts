@@ -10,7 +10,6 @@ interface TW_Wiki {
 	deleteTiddler(title: string): void;
 }
 
-
 interface TW {
 	Tiddler: typeof TW_Tiddler;
 	wiki: TW_Wiki;
