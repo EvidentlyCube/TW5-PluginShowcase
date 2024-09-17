@@ -1,17 +1,17 @@
 created: 20240917081707989
 modified: 20240917092343595
-tags: 
+tags:
 title: Task List Showcase - Dynamic Filtering
 type: text/vnd.tiddlywiki
 
 <p class="muted">We're using the same task list as in [[Task List Showcase - Extracting Data]].</p>
 
-The macro `ec-task-list` which displays the task list accepts an optional argument parameter `custom-filter` which is appended to the existing filter that returns items to display. 
+The macro `ec-task-list` which displays the task list accepts an optional argument parameter `custom-filter` which is appended to the existing filter that returns items to display.
 
 ! Filter By:
 
-* Search in text: <$edit-text tag="input" tiddler="$:/temp/task-list/by-name" />
-* Search in color: <$edit-text tag="input" tiddler="$:/temp/task-list/by-color" />
+* Search in text: <$edit-text tag="input" tiddler="$:/temp/task-list/by-name" default="" />
+* Search in color: <$edit-text tag="input" tiddler="$:/temp/task-list/by-color" default="" />
 
 ! Filtered Task List:
 
@@ -28,9 +28,9 @@ The macro `ec-task-list` which displays the task list accepts an optional argume
 >
 
 <div style="margin: 0 2em">
-  <$macrocall 
-    $name=ec-task-list 
-    tiddler="Task List Description" 
+  <$macrocall
+    $name=ec-task-list
+    tiddler="Task List Description"
     custom-filter=<<custom-filter>>
   />
 </div>
@@ -44,7 +44,7 @@ It's recommended to check the source of this tiddler to see how the filtering is
 * `<$let>` widget is used to generate the filter we'll be using.
 * Both sub-filters follow the same steps to be generated:
 ** Store the search value in `by-name` -- this makes the rest simpler.
-** Store the filter we'll use `:filter[search:text<by-name>]` in variable `base-filter-name` -- it's hardcoded and depends on the variable we just declared. 
+** Store the filter we'll use `:filter[search:text<by-name>]` in variable `base-filter-name` -- it's hardcoded and depends on the variable we just declared.
 ** Calculate `by-name-filter` -- if `by-name` is empty it's set to nothing; otherwise it's set to our hardcoded `base-filter-name`.
 * Then combine those two filters into one and store it in `custom-filter`:
 ** `[<by-name-filter>] [<by-color-filter>]` -- combines two filter runs, which will create a list of 0-2 elements
