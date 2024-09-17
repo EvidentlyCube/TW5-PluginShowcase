@@ -1,6 +1,7 @@
 title: $:/plugins/EvidentlyCube/AutoComplete/history
 type: text/vnd.tiddlywiki
 
+* ''1.0.19'': Registered triggers in the settings now display without any accidental parsing
 * ''1.0.18'':
 ** Fixed RSOD in TW 5.3.0+ caused by new API not being supported
 ** Fixed RSOD when earlier keyup causes the focus to be changed -- can be triggered by setting `sidebar-search` shortcut to the same key as manually triggering auto complete.

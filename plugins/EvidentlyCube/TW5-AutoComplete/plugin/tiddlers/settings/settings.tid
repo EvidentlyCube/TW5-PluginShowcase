@@ -36,7 +36,7 @@ Configuration for the [[Auto Complete|$:/plugins/EvidentlyCube/AutoComplete]] pl
 
 <ul>
 	<$list filter="[all[shadows+tiddlers]tag[$:/tags/EC/AutoComplete/Trigger]!is[draft]sortan[title]sortan[caption]]">
-		<li><$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link> (Trigger <code>{{!!trigger}}</code>)</li>
+		<li><$link to=<<currentTiddler>>><$view field="caption"><$view field="title"/></$view></$link> (Trigger <code><$text text={{!!trigger}} /></code>)</li>
 	</$list>
 	<li><$button actions=<<action-new-trigger>>>Create a new trigger</$button></li>
 </ul>
