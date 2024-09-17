@@ -4,15 +4,17 @@ import figures from 'figures';
 import chalk from 'chalk';
 import nodemon from 'nodemon';
 
-import {TiddlyWiki as TW522} from 'tiddlywiki';
-import {TiddlyWiki as TW530} from 'tw530';
-import {TiddlyWiki as TW531} from 'tw531';
+import { TiddlyWiki as TW522 } from 'tiddlywiki';
+import { TiddlyWiki as TW530 } from 'tw530';
+import { TiddlyWiki as TW531 } from 'tw531';
 
 const TW_VERSIONS = {
 	'5.2.2': TW522,
 	'5.3.0': TW530,
 	'5.3.1': TW531,
 };
+
+process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
 
 validateWorkingDirectory();
 run();
