@@ -2,7 +2,12 @@ title: $:/plugins/EvidentlyCube/TaskList/core-macro
 type: text/vnd.tiddlywiki
 tags: $:/tags/Macro
 
-\define ec-task-list(tiddler)
+<!--
+ @param custom-filter - Accepts additional filter runs to extend the internal filters
+ that return list items. Filtering out value of "0" is to support old task lists
+ created back when the macro accepted "editing" argument.
+-->
+\define ec-task-list(tiddler, custom-filter:"")
 \whitespace trim
 
 	<$importvariables
@@ -20,22 +25,35 @@ tags: $:/tags/Macro
 		tid-edit={{{ [<tid>addsuffix[.edit]] }}}
 		tid-base={{{ [<tid>removesuffix[.edit]else<tid>] }}}
 		temp=<<qualify "$:/temp/ec-task-list">>
+		custom-filter={{{ [<__custom-filter__>compare:string:ne[0]] }}}
+		filter-not-done={{{ [{!!tl-filter-not-done}addsuffix[ ]addsuffix<custom-filter>] }}}
+		filter-done={{{ [{!!tl-filter-done}addsuffix[ ]addsuffix<custom-filter>] }}}
 	>
 		<div class={{{ [[ec_tl-container]] [<tid>slugify[]addprefix[tasklist-]] +[join[ ]] }}}>
 			{{||$:/plugins/EvidentlyCube/TaskList/core-input-row}}
 			<div class="ec_tl-tasks">
-				<$list filter={{!!tl-filter-not-done}}>
-					<$transclude tiddler={{{
-						[all[current]field:_is-editing[1]then[$:/plugins/EvidentlyCube/TaskList/core-item-edit]else[$:/plugins/EvidentlyCube/TaskList/core-item]]
-					}}}/>
+				<$list filter=<<filter-not-done>> >
+					<$list
+						filter="[<currentTiddler>!prefix[Filter error:]]"
+						emptyMessage=<<currentTiddler>>
+					>
+						<$transclude tiddler={{{
+							[all[current]field:_is-editing[1]then[$:/plugins/EvidentlyCube/TaskList/core-item-edit]else[$:/plugins/EvidentlyCube/TaskList/core-item]]
+						}}}/>
+					</$list>
 				</$list>
 			</div>
 
 			<div class="ec_tl-tasks">
-				<$list filter={{!!tl-filter-done}}>
-					<$transclude tiddler={{{
-						[all[current]field:_is-editing[1]then[$:/plugins/EvidentlyCube/TaskList/core-item-edit]else[$:/plugins/EvidentlyCube/TaskList/core-item]]
-					}}}/>
+				<$list filter=<<filter-done>> >
+					<$list
+						filter="[<currentTiddler>!prefix[Filter error:]]"
+						emptyMessage=<<currentTiddler>>
+					>
+						<$transclude tiddler={{{
+							[all[current]field:_is-editing[1]then[$:/plugins/EvidentlyCube/TaskList/core-item-edit]else[$:/plugins/EvidentlyCube/TaskList/core-item]]
+						}}}/>
+					</$list>
 				</$list>
 			</div>
 		</div>

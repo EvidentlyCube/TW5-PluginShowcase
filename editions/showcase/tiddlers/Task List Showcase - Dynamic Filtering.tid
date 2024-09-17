@@ -1,0 +1,66 @@
+created: 20240917081707989
+modified: 20240917092343595
+tags: 
+title: Task List Showcase - Dynamic Filtering
+type: text/vnd.tiddlywiki
+
+<p class="muted">We're using the same task list as in [[Task List Showcase - Extracting Data]].</p>
+
+The macro `ec-task-list` which displays the task list accepts an optional argument parameter `custom-filter` which is appended to the existing filter that returns items to display. 
+
+! Filter By:
+
+* Search in text: <$edit-text tag="input" tiddler="$:/temp/task-list/by-name" />
+* Search in color: <$edit-text tag="input" tiddler="$:/temp/task-list/by-color" />
+
+! Filtered Task List:
+
+<$let
+  base-filter-name=":filter[search:text<by-name>]"
+  by-name={{$:/temp/task-list/by-name!!text}}
+  by-name-filter={{{ [<by-name>compare:string:ne[]then<base-filter-name>] }}}
+
+  base-filter-color=":filter[search:color<by-color>]"
+  by-color={{$:/temp/task-list/by-color!!text}}
+  by-color-filter={{{ [<by-color>compare:string:ne[]then<base-filter-color>] }}}
+
+  custom-filter={{{ [<by-name-filter>] [<by-color-filter>] +[join[ ]] }}}
+>
+
+<div style="margin: 0 2em">
+  <$macrocall 
+    $name=ec-task-list 
+    tiddler="Task List Description" 
+    custom-filter=<<custom-filter>>
+  />
+</div>
+</$let>
+
+!! How does it work
+
+It's recommended to check the source of this tiddler to see how the filtering is implemented. But step by step breakdown is:
+
+* Both inputs are stored into temp tiddlers `$:/temp/task-list/by-name` and `$:/temp/task-list/by-color`.
+* `<$let>` widget is used to generate the filter we'll be using.
+* Both sub-filters follow the same steps to be generated:
+** Store the search value in `by-name` -- this makes the rest simpler.
+** Store the filter we'll use `:filter[search:text<by-name>]` in variable `base-filter-name` -- it's hardcoded and depends on the variable we just declared. 
+** Calculate `by-name-filter` -- if `by-name` is empty it's set to nothing; otherwise it's set to our hardcoded `base-filter-name`.
+* Then combine those two filters into one and store it in `custom-filter`:
+** `[<by-name-filter>] [<by-color-filter>]` -- combines two filter runs, which will create a list of 0-2 elements
+** And then `join[ ]` will combine them with spaces between.
+* Finally pass the custom filter to `custom-filter` parameter in the macro call
+
+Some additional notes:
+
+* `:filter` is used to ensure we work on the list of already found task items.
+* Multiple `:filter` runs can be stacked to filter down the list more and more.
+* If you pass a broken filter into `custom-filter` it'll be reported in the list.
+* The reason for hardcoding the filters is because otherwise it'd be difficult to construct the filter inside a filter because of the usage of square brackets -- you can't do `addsuffix[[]` as `[` is a character with a special meaning.
+* Similarly, the reason the searched string in stored in a variable and referenced rather than making it a direct part of the filter itself is because if square quotes were used it would break the resulting filter:
+** (assuming `lb`/`rb` are variables that contain `[`/`]` respectively) A filter could be constructed with `[addsuffix[:filter]addsuffix<lb>addsuffix<by-name>addsuffix<rb>]`
+** Then if you searched for `[` this would generate `:filter[[]` which is not valid filter
+* `custom-filter` could be replaced with `{{{ [<base-filter-name>] [<base-filter-color>] +[join[ ]] }}}`:
+** Searching for empty string always returns true for everything so if empty it would have not filter out any results.
+** Then `by-name-filter` and `by-color-filter` could be completely removed.
+** But the way the example is structure allows for a more complicated behavior, eg. checkbox that filters by date range when enabled.

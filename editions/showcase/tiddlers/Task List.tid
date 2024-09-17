@@ -1,7 +1,7 @@
 created: 20221013095514764
 github: https://github.com/EvidentlyCube/TW5-PluginShowcase/tree/main/plugins/EvidentlyCube/TW5-TaskList
 image: Task List Image
-modified: 20221209151628230
+modified: 20240917092413038
 plugin: $:/plugins/EvidentlyCube/TaskList
 priority: 1
 tagline: Customizable TaskList/Todo module.
@@ -32,4 +32,5 @@ See the demo [[here|Task List/Demo]].
 ! Additional Information
 
 * [[Task List Showcase - Extracting Data]] --- examples of ways to extract the data from the task lists.
+* [[Task List Showcase - Dynamic Filtering]] --- examples of how to filter the items in the list.
 * [[Task List Internals]] --- explains how Task List works internally which might be helpful if you want to mod it in any way.

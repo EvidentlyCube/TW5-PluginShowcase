@@ -24,7 +24,7 @@ type: text/vnd.tiddlywiki
 		</$list>
 		<$list filter="[<fields-count>!match[0]]" variable="ignore">
 
-			<$macrocall $name="ec-task-list" tiddler=<<currentTiddler>> editable="1"/>
+			<$macrocall $name="ec-task-list" tiddler=<<currentTiddler>>/>
 		</$list>
 	</$list>
 </$let>
