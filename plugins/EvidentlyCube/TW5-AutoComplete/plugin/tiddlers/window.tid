@@ -19,7 +19,12 @@ tags: $:/tags/PageTemplate
 =[{$:/temp/AutoComplete/completion-data!!show-window}match<tv-window-id>then[1]]
 =[{$:/temp/AutoComplete/completion-data!!show-window}match[-1]then[1]]
 +[match[1]count[]match[2]]
-""" variable="ignore">
+"""
+emptyMessage="""
+<ul class="ec_ac-completion" style="display: none"></ul>
+"""
+variable="ignore"
+>
 
 <ul class="ec_ac-completion" style={{$:/temp/AutoComplete/completion-data!!style}}>
 	<$list filter="[<offset>compare:number:gt[0]]">

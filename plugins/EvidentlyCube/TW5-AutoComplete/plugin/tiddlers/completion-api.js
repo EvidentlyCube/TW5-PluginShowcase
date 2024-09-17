@@ -90,6 +90,8 @@ API for the modal
 
 		this.updateQuery("");
 
+		fixDoubledMargins(position);
+
 		const newStyle = `left: ${position.left.toFixed(4)}px; top: ${position.top.toFixed(4)}px`;
 
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'show', null, "1");
@@ -163,11 +165,11 @@ API for the modal
 		const selectedResult = this.activeState.results[this.activeState.selectedResult] || "";
 
 		return selectedResult
-			? $tw.wiki.filterTiddlers(this.activeState.trigger.transformFilter,getVariableFauxWidget({ currentTiddler: selectedResult}))
+			? $tw.wiki.filterTiddlers(this.activeState.trigger.transformFilter, getVariableFauxWidget({ currentTiddler: selectedResult }))
 			: "";
 	};
 
-	EC_AutoComplete.prototype.setSelectionByValue = function(value) {
+	EC_AutoComplete.prototype.setSelectionByValue = function (value) {
 		const index = this.activeState.results.indexOf(value);
 
 		if (index !== -1) {
@@ -237,6 +239,38 @@ API for the modal
 			});
 		}
 	};
+
+	/**
+	 * ISSUE: if the used theme has margins or left/top applied to any of the parents
+	 * that contain the Autocomplete window and the input AND also has a parent with `position: relative`
+	 * then the provided caret position will be offset by those margins/lefts/tops
+	 * and once again will be applied because of the fact the Autocomplete widget lives
+	 * under the same parents - effectively applying those offsets twice.
+	 *
+	 * This fixes it by subtracting one set of offsets.
+	 */
+	function fixDoubledMargins(caretPosition) {
+		let acContainer = document.querySelector('.ec_ac-completion');
+
+		if (!acContainer) {
+			return;
+		}
+
+		// The assumption is if we set the absolute position to (0,0) then whatever
+		// the global in-page position is will be the value of a single set
+		// of offsets, exactly what we need to subtract
+		const oldDisplay = acContainer.style.display;
+		acContainer.style.display = "block";
+		acContainer.style.left = "0px";
+		acContainer.style.top = "0px";
+
+		const position = acContainer.getBoundingClientRect();
+
+		caretPosition.left -= position.left;
+		caretPosition.top -= position.top;
+
+		acContainer.style.display = oldDisplay;
+	}
 
 	function getVariableFauxWidget(keyValues) {
 		if ($tw.rootWidget.makeFakeWidgetWithVariables) {

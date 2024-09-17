@@ -8,7 +8,7 @@ Autocompletion integration for Simple text editor
 \*/
 (function () {
 
-	exports.patch = function(completionAPI, monkeypatch) {
+	exports.patch = function (completionAPI, monkeypatch) {
 		var editTextWidget = require('$:/core/modules/widgets/edit-text.js')['edit-text'];
 		var simpleEngine = require('$:/core/modules/editor/engines/simple.js').SimpleEngine;
 		var framedEngine = require('$:/core/modules/editor/engines/framed.js').FramedEngine;
@@ -43,14 +43,14 @@ Autocompletion integration for Simple text editor
 
 		function handleWidgetKeydown(event) {
 			if (completionAPI.isActive) {
-				switch(event.key) {
+				switch (event.key) {
 					case "ArrowUp":
 					case "ArrowDown":
 						completionAPI.changeSelection(event.key === "ArrowUp" ? -1 : 1);
 						event.stopImmediatePropagation();
 						event.preventDefault();
 						return false;
-					}
+				}
 
 			} else if (completionAPI.isManualTrigger(event)) {
 				var triggerData = completionAPI.getMatchingTrigger("", event.target.tagName, function (length) {
@@ -110,7 +110,7 @@ Autocompletion integration for Simple text editor
 			if (!completionAPI.isActive) {
 				return;
 			}
-			switch(event.key) {
+			switch (event.key) {
 				case 'Escape':
 					completionAPI.finishCompletion();
 					event.stopImmediatePropagation();
@@ -193,24 +193,24 @@ Autocompletion integration for Simple text editor
 			const domDocument = activeDom.getRootNode();
 			const domWindow = domDocument.defaultView;
 			const caretCoords = getBaseCaretCoordinates(activeDom, selectionStart);
-			const domScroll = {left: -activeDom.scrollLeft, top: -activeDom.scrollTop};
+			const domScroll = { left: -activeDom.scrollLeft, top: -activeDom.scrollTop };
 			const containingIframe = getContainingIframe(activeDom);
 			const iframeCoords = getIframeOffset(containingIframe);
 			const parentWindowCoords = containingIframe
-				? {left: containingIframe.ownerDocument.defaultView.scrollX, top: containingIframe.ownerDocument.defaultView.scrollY}
-				: {left: 0, top: 0};
+				? { left: containingIframe.ownerDocument.defaultView.scrollX, top: containingIframe.ownerDocument.defaultView.scrollY }
+				: { left: 0, top: 0 };
 
 			const totalCoords = sumCoords([baseCoords, caretCoords, iframeCoords, parentWindowCoords, domScroll]);
 
 			return {
 				left: totalCoords.left + domWindow.scrollX,
-				top:  totalCoords.top  + domWindow.scrollY + caretCoords.height
+				top: totalCoords.top + domWindow.scrollY + caretCoords.height
 			}
 		}
 
 		function sumCoords(coords) {
-			const totalCoords = {left: 0, top: 0};
-			for(const coord of coords) {
+			const totalCoords = { left: 0, top: 0 };
+			for (const coord of coords) {
 				totalCoords.left += coord.left;
 				totalCoords.top += coord.top;
 			}
@@ -241,7 +241,7 @@ Autocompletion integration for Simple text editor
 		function getIframeOffset(containingIframe) {
 			return containingIframe
 				? containingIframe.getBoundingClientRect()
-				: {top: 0, left: 0};
+				: { top: 0, left: 0 };
 		}
 	}
 })();
