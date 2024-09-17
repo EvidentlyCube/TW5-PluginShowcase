@@ -72,7 +72,7 @@ async function run() {
 				TIDDLYWIKI_PLUGIN_PATH: 'plugins'
 			},
 			watch: [
-				"plugins/**"
+				"plugins"
 			],
 			ext: 'tid,meta,css,js,html,info,md',
 			cwd: process.cwd()
@@ -109,10 +109,10 @@ async function enableWatch(args) {
 		return false;
 	}
 
-	return await customCliSelect({
+	return (await customCliSelect({
 		yes: "Enable watch",
 		no: "Disable watch",
-	}) === 'yes';
+	})).id === 'yes';
 }
 
 async function selectTiddlywikiVersion(args) {
@@ -140,8 +140,8 @@ async function enableCodeMirror(args) {
 		return false;
 	}
 
-	return await customCliSelect({
+	return (await customCliSelect({
 		yes: "With CodeMirror",
 		no: "Without CodeMirror",
-	}) === 'yes';
+	})).id === 'yes';
 }
