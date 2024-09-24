@@ -266,8 +266,8 @@ API for the modal
 
 		const position = acContainer.getBoundingClientRect();
 
-		caretPosition.left -= position.left;
-		caretPosition.top -= position.top;
+		caretPosition.left -= position.left + window.scrollX;
+		caretPosition.top -= position.top + window.scrollY;
 
 		acContainer.style.display = oldDisplay;
 	}

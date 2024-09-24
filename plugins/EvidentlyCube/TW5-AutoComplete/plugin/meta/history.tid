@@ -1,6 +1,7 @@
 title: $:/plugins/EvidentlyCube/AutoComplete/history
 type: text/vnd.tiddlywiki
 
+* ''1.0.20'': Fix offset issue caused by previous update which doubled scrolling offsets
 * ''1.0.19'':
 ** Registered triggers in the settings now display without any accidental parsing
 ** Fix extraneous offset when using a theme that has left-top offsets/margins
