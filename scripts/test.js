@@ -2,7 +2,13 @@ import chalk from 'chalk';
 import { exec, spawn } from 'child_process';
 import { promisify } from 'util';
 import enquirer from 'enquirer';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { join } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const execPromise = promisify(exec);
+const testsPwPath = join(__dirname, '..', 'tests-pw');
 
 run();
 
@@ -51,7 +57,7 @@ async function run() {
 }
 
 async function getTestsList() {
-	const { stdout, stderr } = await execPromise('npx playwright test --list --reporter=json');
+	const { stdout, stderr } = await execPromise(`npx playwright test -c ${testsPwPath} --list --reporter=json`);
 
 	if (stderr) {
 		console.error(chalk.red(stderr));
@@ -114,6 +120,7 @@ async function runTest(test, debugEnabled) {
 		const pwArgs = [
 			'playwright',
 			'test',
+			'-c', testsPwPath,
 			'-g', `/${safeTitle}/i`,
 			debugEnabled ? '--debug' : '',
 			'--reporter=line',

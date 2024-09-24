@@ -3,12 +3,12 @@
 	"version": "1.0.0",
 	"author": "Maurycy Zarzycki",
 	"description": "Evidently Cube TiddlyWiki5 Plugin Showcase",
-	"type": "module",
+	"type": "commonjs",
 	"scripts": {
 		"develop": "node scripts/develop.js",
 		"release": "node scripts/release.js",
 		"test": "mocha --recursive -b ./plugins/EvidentlyCube/**/*.spec.js",
-		"playwright": "playwright test",
+		"playwright": "playwright test -c tests-pw",
 		"playwright:one": "node scripts/test.js",
 		"playwright:lint": "npx eslint tests-pw/**/*.js",
 		"playwright:lint-fix": "npx eslint tests-pw/**/*.js --fix"

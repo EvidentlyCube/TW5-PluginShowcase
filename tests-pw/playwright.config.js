@@ -6,7 +6,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @type {import('@playwright/test').PlaywrightTestConfig}
  */
 export default defineConfig({
-	testDir: './tests-pw',
+	testDir: './',
 
 	// Maximum time
 	timeout: 30 * 1000,
@@ -38,7 +38,7 @@ export default defineConfig({
 		{
 			name: 'sanity',
 			fullyParallel: true,
-            testMatch: /SanityTests\.js/,
+			testMatch: /SanityTests\.js/,
 			use: {
 				...devices['Desktop Chrome'],
 			},

@@ -1,7 +1,11 @@
-import { sep, resolve } from 'path';
+import { resolve } from 'path';
 import { expect } from 'playwright/test';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const docsPath = resolve(`${process.cwd()}${sep}docs${sep}`);
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const docsPath = resolve(__dirname, '..', '..', '..', 'docs');
 // Windows requires adding a slash at the start, while Linux already has it baked in
 const crossPlatformDocsPath = docsPath.replace(/^\/+/, '');
 
@@ -30,7 +34,7 @@ export class EditionSelector {
 
 		await page.goto(`file:///${crossPlatformDocsPath}/index${suffix}.html`);
 		await expect(page).toHaveTitle(/Evidently Cube TiddlyWiki5 Plugin Showcase/);
-		await expect(page.locator('[data-test-id="tw-edition"]')).toHaveText(expectedVersion, {timeout: 300});
+		await expect(page.locator('[data-test-id="tw-edition"]')).toHaveText(expectedVersion, { timeout: 300 });
 	};
 
 	static getEditions(codeMirrorFilter) {

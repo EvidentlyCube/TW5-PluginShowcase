@@ -1,6 +1,6 @@
-import {TiddlyWiki as TW522} from 'tiddlywiki';
-import {TiddlyWiki as TW530} from 'tw530';
-import {TiddlyWiki as TW531} from 'tw531';
+import { TiddlyWiki as TW522 } from 'tiddlywiki';
+import { TiddlyWiki as TW530 } from 'tw530';
+import { TiddlyWiki as TW531 } from 'tw531';
 
 process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
 

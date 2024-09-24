@@ -1,0 +1,9 @@
+{
+	"type": "module",
+	"scripts": {
+		"playwright": "playwright test",
+		"playwright:one": "node scripts/test.js",
+		"playwright:lint": "npx eslint ./**/*.js",
+		"playwright:lint-fix": "npx eslint ./**/*.js --fix"
+	}
+}
