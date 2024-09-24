@@ -167,7 +167,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 		});
 	});
 
-	test(`${edition} -> Auto Complete -> Simple Editor -> Dialog position`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
+	test(`${edition} -> Auto Complete -> Simple Editor -> Dialog position`, async ({ selectEdition, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
 		await twConfig.useFramedEditor(false);

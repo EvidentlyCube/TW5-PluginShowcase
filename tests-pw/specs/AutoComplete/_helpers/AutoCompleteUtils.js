@@ -64,9 +64,8 @@ export class AutoCompleteUtils {
 	 * @param {string} trigger
 	 * @param {import("playwright/test").Locator} dialogSourceLocator
 	 * @param {import("playwright/test").Locator} autoCompleteDialogLocator
-	 * @param {import("playwright/test").Locator|null} inputLocator
 	 */
-	async assertDialogPosition(trigger, dialogSourceLocator, autoCompleteDialogLocator, inputLocator = null) {
+	async assertDialogPosition(trigger, dialogSourceLocator, autoCompleteDialogLocator) {
 		const ALLOWED_AXIS_DISTANCE = 64;
 		const textInputs = [
 			`${trigger}`,
@@ -74,8 +73,6 @@ export class AutoCompleteUtils {
 			`ww ww ${trigger}`,
 			`ww ww ww ${trigger}`,
 		];
-
-		inputLocator = inputLocator || dialogSourceLocator;
 
 		await test.step("Assert dialog position", async () => {
 			const textAreaBounds = await test.step('Retrieve source BBox', async () => dialogSourceLocator.boundingBox());
@@ -85,7 +82,7 @@ export class AutoCompleteUtils {
 			let lastBoundingBox = textAreaBounds;
 			for (let i = 0; i < textInputs.length; i++) {
 				const input = textInputs[i];
-				const boundingBox = await test.step(`Retrieve dialog BBox for input #${i} '${input}'`, async() => {
+				const boundingBox = await test.step(`Retrieve dialog BBox for input #${i} '${input}'`, async () => {
 					// Code Mirror needs a click to gain focus
 					await dialogSourceLocator.click();
 					await dialogSourceLocator.press('Control+A');
@@ -98,10 +95,11 @@ export class AutoCompleteUtils {
 				expect(boundingBox, "Expected auto complete bounding box to be retrieved").not.toBeFalsy();
 
 				await test.step(`Assert distance of input #${i} '${input}' from previous input is less than ${ALLOWED_AXIS_DISTANCE} in each dimension`, async () => {
-					const distance = getBoundingBoxDistance(lastBoundingBox, boundingBox);
-					expect(distance.x, "Expected X distance to be under the threshold").toBeLessThan(ALLOWED_AXIS_DISTANCE);
-					expect(distance.y, "Expected Y distance to be under the threshold").toBeLessThan(ALLOWED_AXIS_DISTANCE);
-					expect(distance.x, "Expected X distance to change").toBeGreaterThan(0);
+					const { x, y } = getBoundingBoxDistance(lastBoundingBox, boundingBox);
+
+					expect(x, "Expected X distance to be under the threshold").toBeLessThan(ALLOWED_AXIS_DISTANCE);
+					expect(y, "Expected Y distance to be under the threshold").toBeLessThan(ALLOWED_AXIS_DISTANCE);
+					expect(x, "Expected X distance to change").toBeGreaterThan(0);
 				});
 
 				lastBoundingBox = boundingBox;
