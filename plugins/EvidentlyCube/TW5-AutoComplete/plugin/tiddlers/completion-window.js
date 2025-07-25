@@ -20,8 +20,15 @@ Adds support for auto complete in tiddlers opened in a new window
 
 	exports.startup = function () {
 		const innerListener = $tw.rootWidget.eventListeners['tm-open-window'];
+		// Support for multiple listeners for an event was added in TW 5.3.7.
+		// For older versions we still replace the old function and need to call the old listener.
+		// For newer versions we just rely on the new mechanism
+		const hasMultiListenerSupport = Array.isArray(innerListener);
+
 		$tw.rootWidget.addEventListener("tm-open-window", function (event) {
-			innerListener(event);
+			if (!hasMultiListenerSupport) {
+				innerListener(event);
+			}
 
 			var title = event.param || event.tiddlerTitle;
 			var paramObject = event.paramObject || {};
@@ -34,7 +41,7 @@ Adds support for auto complete in tiddlers opened in a new window
 				parentWidget: $tw.rootWidget,
 				variables: {
 					'tv-window-id': windowID
-				 }
+				}
 			});
 			const refreshHandler = function (changes) {
 				widgetNode.refresh(changes);
