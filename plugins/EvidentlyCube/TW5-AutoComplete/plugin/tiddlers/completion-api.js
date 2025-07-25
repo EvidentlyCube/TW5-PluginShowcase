@@ -98,6 +98,7 @@ API for the modal
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'style', null, newStyle);
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'display-filter', null, trigger.displayFilter);
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'edited-tiddler', null, options.editedTiddler || '');
+		$tw.wiki.setText(DATA_TIDDLER_NAME, 'edited-field', null, options.editedField || '');
 		if (typeof options.windowID !== "undefined") {
 			$tw.wiki.setText(DATA_TIDDLER_NAME, 'show-window', null, options.windowID);
 		} else {
@@ -129,6 +130,7 @@ API for the modal
 
 		const results = $tw.wiki.filterTiddlers(this.activeState.trigger.filter, getVariableFauxWidget({
 			editedTiddler: this.activeState.options.editedTiddler || '',
+			editedField: this.activeState.options.editedField || '',
 			query
 		}));
 

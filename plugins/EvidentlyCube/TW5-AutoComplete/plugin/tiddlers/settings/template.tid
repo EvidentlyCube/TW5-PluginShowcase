@@ -76,7 +76,8 @@ title: $:/plugins/EvidentlyCube/AutoComplete/template
 		<p class="ec_ac-muted">
 			This filter generates the list of options that will be displayed in the auto completion.<br/>
 			Use variable `query` to inject the typed text.<br/>
-			Variable `<editedTiddler>` contains the name of the tiddler that is being modified by the widget that triggered auto completion.
+			Variable `<editedTiddler>` contains the name of the tiddler that is being modified by the widget that triggered auto completion.<br/>
+			Variable `<editedField>` contains the name of the field that is being modified by the widget that triggered auto completion.
 		</p>
 	</td>
 	<td>
@@ -92,7 +93,8 @@ title: $:/plugins/EvidentlyCube/AutoComplete/template
 			Advanced feature!<br/>
 			Transforms how the suggestion will be displayed in auto complete window.<br/>
 			`<currentTiddler>` contains the suggestion being displayed.<br/>
-			Variable `<editedTiddler>` contains the name of the tiddler that is being modified by the widget that triggered auto completion.
+			Variable `<editedTiddler>` contains the name of the tiddler that is being modified by the widget that triggered auto completion.<br/>
+			Variable `<editedField>` contains the name of the field that is being modified by the widget that triggered auto completion.
 		</p>
 	</td>
 	<td>
@@ -184,6 +186,7 @@ title: $:/plugins/EvidentlyCube/AutoComplete/template
 	<$let
 		query={{{ [<temp>get[query]] }}}
 		editedTiddler=<<temp>>
+		editedField="text"
 	>
 		<$list filter=<<filter>> emptyMessage="""<tr><td colspan="3" class="ec_ac-muted">No results</td></tr>""">
 			<tr>

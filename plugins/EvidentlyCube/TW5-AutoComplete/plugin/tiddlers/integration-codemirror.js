@@ -8,7 +8,7 @@ Autocompletion integration for Simple text editor
 \*/
 (function () {
 
-	exports.patch = function(completionAPI, monkeypatch) {
+	exports.patch = function (completionAPI, monkeypatch) {
 		var editCodeMirrorWidget = require('$:/plugins/tiddlywiki/codemirror/edit-codemirror.js')['edit-codemirror'];
 
 		var selectionStart = -1;
@@ -27,7 +27,7 @@ Autocompletion integration for Simple text editor
 
 		function handleKeydown(cm, event) {
 			if (completionAPI.isActive) {
-				switch(event.key) {
+				switch (event.key) {
 					case "ArrowUp":
 					case "ArrowDown":
 						completionAPI.changeSelection(event.key === "ArrowUp" ? -1 : 1);
@@ -54,7 +54,7 @@ Autocompletion integration for Simple text editor
 							event.preventDefault();
 						}
 						break;
-					}
+				}
 
 			} else if (completionAPI.isManualTrigger(event)) {
 				var triggerData = completionAPI.getMatchingTrigger("", "", function (length) {
@@ -68,7 +68,10 @@ Autocompletion integration for Simple text editor
 				});
 
 				if (triggerData) {
-					startCompletion(triggerData, cm, { editedTiddler: this.editTitle });
+					startCompletion(triggerData, cm, {
+						editedTiddler: this.editTitle,
+						editedField: this.editField,
+					});
 					// Prevent codemirror-autocomplete from triggering
 					event.preventDefault();
 					event.stopImmediatePropagation();
@@ -87,7 +90,8 @@ Autocompletion integration for Simple text editor
 			completionAPI.startCompletion(triggerData, getCaretCoordinates(cm, selectionStart), {
 				onFinish: handleFinishCompletion,
 				windowID: cm.getInputField().ownerDocument._ecAcWindowID,
-				editedTiddler: options.editedTiddler || ''
+				editedTiddler: options.editedTiddler || '',
+				editedField: options.editedField || '',
 			});
 		}
 
@@ -135,7 +139,10 @@ Autocompletion integration for Simple text editor
 
 				if (triggerData) {
 					activeCm = cm;
-					startCompletion(triggerData, cm, { editedTiddler: this.editTitle });
+					startCompletion(triggerData, cm, {
+						editedTiddler: this.editTitle,
+						editedField: this.editField,
+					});
 				}
 			}
 		}
