@@ -1,6 +1,7 @@
 import { expect } from "playwright/test";
 import { SidebarUi } from "./SidebarUi";
 import { EditTiddlerUi } from "./EditTiddlerUi";
+import { TiddlyWikiChange } from "../core/TiddlyWikiChange";
 
 export class TiddlyWikiUi {
 	/**
@@ -8,6 +9,11 @@ export class TiddlyWikiUi {
 	 */
 	constructor(page) {
 		this.page = page;
+		this.changes = new TiddlyWikiChange(page);
+	}
+
+	async waitForChange(callback) {
+		await this.changes.wait(callback);
 	}
 
 	forPage(page) {
@@ -23,7 +29,7 @@ export class TiddlyWikiUi {
 	}
 
 	get sidebar() {
-		return new SidebarUi(this.page);
+		return new SidebarUi(this.page, this);
 	}
 
 }

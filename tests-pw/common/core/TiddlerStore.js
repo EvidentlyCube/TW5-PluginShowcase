@@ -1,6 +1,3 @@
-import fs from 'fs';
-import {sep, resolve} from 'path';
-
 export class TiddlerStore {
 	/**
 	 * @param {import("@playwright/test").Page} page
@@ -46,9 +43,9 @@ export class TiddlerStore {
 	}
 
 	async updateTiddler(title, fields, allowCreate = false) {
-		return this.page.evaluate(({title, fields, allowCreate}) => {
+		return this.page.evaluate(({ title, fields, allowCreate }) => {
 			const tiddler = $tw.wiki.getTiddler(title)
-				?? (allowCreate ? new $tw.Tiddler({title}, fields) : false);
+				?? (allowCreate ? new $tw.Tiddler({ title }, fields) : false);
 
 			if (!tiddler) {
 				throw new Error(`Unable to update tiddler '${title}' because it does not exist`);
@@ -56,6 +53,6 @@ export class TiddlerStore {
 
 			$tw.wiki.addTiddler(new $tw.Tiddler(tiddler, fields));
 
-		}, {title, fields, allowCreate});
+		}, { title, fields, allowCreate });
 	}
 }

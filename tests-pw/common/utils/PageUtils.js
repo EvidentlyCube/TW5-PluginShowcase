@@ -12,3 +12,7 @@ export async function getNewPage(page, callback) {
 		return newPage;
 	});
 }
+
+export async function sleep(durationMs) {
+	return new Promise(resolve => setTimeout(() => resolve(), durationMs));
+}

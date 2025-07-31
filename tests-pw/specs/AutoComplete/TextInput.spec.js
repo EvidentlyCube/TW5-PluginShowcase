@@ -87,7 +87,6 @@ EditionSelector.getEditions(undefined).forEach(edition => {
 			const lastLink = await autoCompleteWindow.links.last();
 			const selectedText = (await lastLink.textContent()).trim();
 
-			await page.pause();
 			await lastLink.click();
 			await expect(searchInput).toHaveValue(`[[${selectedText}]]`);
 			await expect(searchInput, "Expected focus to not be lost on completion").toBeFocused();
@@ -148,7 +147,7 @@ EditionSelector.getEditions(undefined).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Text Input -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
-		await pluginUtils.updateTrigger(1, {autoTriggerInput: 0});
+		await pluginUtils.updateTrigger(1, { autoTriggerInput: 0 });
 
 		const { autoCompleteWindow } = pluginUi;
 		const { searchInput } = ui.sidebar;

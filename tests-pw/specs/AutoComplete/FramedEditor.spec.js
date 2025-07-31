@@ -88,7 +88,6 @@ EditionSelector.getEditions(false).forEach(edition => {
 			const lastLink = await autoCompleteWindow.links.last();
 			const selectedText = (await lastLink.textContent()).trim();
 
-			await page.pause();
 			await lastLink.click();
 			await expect(framedBodyTextArea).toHaveValue(`[[${selectedText}]]`);
 			await expect(framedBodyTextArea, "Expected focus to not be lost on completion").toBeFocused();
@@ -149,7 +148,7 @@ EditionSelector.getEditions(false).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Simple Editor -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
-		await pluginUtils.updateTrigger(1, {autoTriggerTextArea: 0});
+		await pluginUtils.updateTrigger(1, { autoTriggerTextArea: 0 });
 		await twConfig.useFramedEditor(true);
 
 		const { autoCompleteWindow } = pluginUi;

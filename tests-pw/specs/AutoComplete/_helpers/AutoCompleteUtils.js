@@ -2,15 +2,17 @@ import { expect } from "playwright/test";
 import { TiddlerStore } from "../../../common/core/TiddlerStore";
 import { test } from "./AutoCompleteTest";
 import { getBoundingBoxDistance } from "../../../common/utils/BoundingBoxUtils";
-import { repeatUntilNotNull } from "../../../common/utils/FlowUtils";
+import { TiddlyWikiUi } from "../../../common/ui/TiddlyWikiUi";
 
 
 export class AutoCompleteUtils {
 	/**
 	 * @param {TiddlerStore} store
+	 * @param {TiddlyWikiUi} ui
 	 */
-	constructor(store) {
+	constructor(store, ui) {
 		this.store = store;
+		this.ui = ui;
 	}
 
 	get defaultDisplayedResults() {
@@ -83,11 +85,13 @@ export class AutoCompleteUtils {
 			for (let i = 0; i < textInputs.length; i++) {
 				const input = textInputs[i];
 				const boundingBox = await test.step(`Retrieve dialog BBox for input #${i} '${input}'`, async () => {
-					// Code Mirror needs a click to gain focus
-					await dialogSourceLocator.click();
-					await dialogSourceLocator.press('Control+A');
-					await dialogSourceLocator.press('Delete');
-					await dialogSourceLocator.pressSequentially(input);
+					await this.ui.waitForChange(async () => {
+						// Code Mirror needs a click to gain focus
+						await dialogSourceLocator.click();
+						await dialogSourceLocator.press('Control+A');
+						await dialogSourceLocator.press('Delete');
+						await dialogSourceLocator.pressSequentially(input);
+					})
 
 					return autoCompleteDialogLocator.boundingBox();
 				});

@@ -4,15 +4,15 @@ import { AutoCompleteUi } from '../_ui/AutoCompleteUi';
 import { AutoCompleteUtils } from './AutoCompleteUtils';
 
 export const test = baseTest.extend({
-    fixtures: async ({}, use) => {
-        await use(new AutoCompleteFixtures());
-    },
+	fixtures: async ({ }, use) => {
+		await use(new AutoCompleteFixtures());
+	},
 
-	pluginUi: async ({page}, use) => {
+	pluginUi: async ({ page }, use) => {
 		await use(new AutoCompleteUi(page));
 	},
 
-	pluginUtils: async ({store}, use) => {
-		await use(new AutoCompleteUtils(store));
+	pluginUtils: async ({ store, ui }, use) => {
+		await use(new AutoCompleteUtils(store, ui));
 	}
 });

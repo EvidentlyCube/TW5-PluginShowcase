@@ -2,13 +2,17 @@ import test, { expect } from "playwright/test";
 import { SidebarSearchResultsUi } from "./SidebarSearchResultsUi";
 import { EditTiddlerUi } from "./EditTiddlerUi";
 import { ViewTiddlerUi } from "./ViewTiddlerUi";
+import { sleep } from "../utils/PageUtils";
+import { TiddlyWikiUi } from "./TiddlyWikiUi";
 
 export class SidebarUi {
 	/**
 	 * @param {import("@playwright/test").Page} page
+	 * @param {TiddlyWikiUi} ui
 	 */
-	constructor(page) {
+	constructor(page, ui) {
 		this.page = page;
+		this.ui = ui;
 	}
 
 	get searchResults() {
@@ -41,7 +45,9 @@ export class SidebarUi {
 		return await test.step("Action: Create a new tiddler and return its title", async () => {
 			const existingTiddlers = await this.getOpenTiddlerTitles();
 
-			await this.createNewTiddlerButton.click();
+			await this.ui.waitForChange(async () => {
+				await this.createNewTiddlerButton.click();
+			});
 
 			const newTiddlers = await this.getOpenTiddlerTitles();
 			const newTiddlerTitle = newTiddlers.find(titles => !existingTiddlers.includes(titles));
@@ -60,8 +66,8 @@ export class SidebarUi {
 
 	async doOpenTiddler(title) {
 		return await test.step(`Action: Open tiddler titled '${title}'`, async () => {
-			const {searchInput, searchResults} = this;
-			const {keyboard} = this.page;
+			const { searchInput, searchResults } = this;
+			const { keyboard } = this.page;
 
 			await searchInput.fill(title);
 			await keyboard.press('ArrowDown');

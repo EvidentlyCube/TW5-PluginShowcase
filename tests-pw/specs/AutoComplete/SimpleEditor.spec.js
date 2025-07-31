@@ -89,7 +89,6 @@ EditionSelector.getEditions(false).forEach(edition => {
 			const lastLink = await autoCompleteWindow.links.last();
 			const selectedText = (await lastLink.textContent()).trim();
 
-			await page.pause();
 			await lastLink.click();
 			await expect(unframedBodyTextArea).toHaveValue(`[[${selectedText}]]`);
 			await expect(unframedBodyTextArea, "Expected focus to not be lost on completion").toBeFocused();

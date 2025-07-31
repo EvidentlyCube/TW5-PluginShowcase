@@ -97,7 +97,6 @@ EditionSelector.getEditions(true).forEach(edition => {
 			const lastLink = await autoCompleteWindow.links.last();
 			const selectedText = (await lastLink.textContent()).trim();
 
-			await page.pause();
 			await lastLink.click();
 			await expect(codeMirrorInputDiv).toContainText(`[[${selectedText}]]`);
 
@@ -157,7 +156,7 @@ EditionSelector.getEditions(true).forEach(edition => {
 	test(`${edition} -> Auto Complete -> Code Mirror -> Disable Auto Trigger`, async ({ page, selectEdition, store, ui, pluginUi, pluginUtils, fixtures, twConfig }) => {
 		await selectEdition.initByName(edition);
 		await pluginUtils.initTriggers(fixtures.triggerSearchInTitle);
-		await pluginUtils.updateTrigger(1, {autoTriggerTextArea: 0});
+		await pluginUtils.updateTrigger(1, { autoTriggerTextArea: 0 });
 		await twConfig.useFramedEditor(true);
 
 		const { autoCompleteWindow } = pluginUi;
