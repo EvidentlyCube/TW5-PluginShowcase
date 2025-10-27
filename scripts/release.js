@@ -2,6 +2,7 @@ import { TiddlyWiki as TW522 } from 'tiddlywiki';
 import { TiddlyWiki as TW530 } from 'tw530';
 import { TiddlyWiki as TW531 } from 'tw531';
 import { TiddlyWiki as TW537 } from 'tw537';
+import { TiddlyWiki as TW538 } from 'tw538';
 
 process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
 
@@ -13,6 +14,8 @@ releaseShowcase(TW531, 'release', 'index-531.html');
 releaseShowcase(TW531, 'release-codemirror', 'index-531-cm.html');
 releaseShowcase(TW537, 'release', 'index-537.html');
 releaseShowcase(TW537, 'release-codemirror', 'index-537-cm.html');
+releaseShowcase(TW538, 'release', 'index-538.html');
+releaseShowcase(TW538, 'release-codemirror', 'index-538-cm.html');
 releaseLibrary();
 
 function releaseShowcase(twBinary, release, path) {

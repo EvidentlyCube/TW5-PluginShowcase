@@ -22,6 +22,8 @@ export class EditionSelector {
 	tw531CodeMirror = async page => this.#goto(page, '-531-cm', '5.3.1-CodeMirror');
 	tw537 = async page => this.#goto(page, '-537', '5.3.7');
 	tw537CodeMirror = async page => this.#goto(page, '-537-cm', '5.3.7-CodeMirror');
+	tw538 = async page => this.#goto(page, '-538', '5.3.8');
+	tw538CodeMirror = async page => this.#goto(page, '-538-cm', '5.3.8-CodeMirror');
 
 	initByName = async (name, page) => {
 		if (typeof this[name] !== 'function') {
@@ -49,6 +51,8 @@ export class EditionSelector {
 			codeMirrorFilter !== false ? 'tw531CodeMirror' : null,
 			codeMirrorFilter !== true ? 'tw537' : null,
 			codeMirrorFilter !== false ? 'tw537CodeMirror' : null,
+			codeMirrorFilter !== true ? 'tw538' : null,
+			codeMirrorFilter !== false ? 'tw538CodeMirror' : null,
 		].filter(x => x);
 	}
 }

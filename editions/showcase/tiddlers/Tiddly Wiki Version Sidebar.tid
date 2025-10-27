@@ -15,3 +15,5 @@ TiddlyWiki Version: <span data-test-id="tw-edition">''<<version>>''<$list filter
 * Switch to <a href="index-531-cm.html">5.3.1-CodeMirror</a>
 * Switch to <a href="index-537.html">5.3.7</a>
 * Switch to <a href="index-537-cm.html">5.3.7-CodeMirror</a>
+* Switch to <a href="index-538.html">5.3.8</a>
+* Switch to <a href="index-538-cm.html">5.3.8-CodeMirror</a>

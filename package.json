@@ -17,7 +17,8 @@
 		"tiddlywiki": "npm:tiddlywiki@5.2.2",
 		"tw530": "npm:tiddlywiki@5.3.0",
 		"tw531": "npm:tiddlywiki@5.3.1",
-		"tw537": "npm:tiddlywiki@5.3.7"
+		"tw537": "npm:tiddlywiki@5.3.7",
+		"tw538": "npm:tiddlywiki@5.3.8"
 	},
 	"engines": {
 		"node": ">=0.8.2"
@@ -30,7 +31,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.54.1",
-		"@typescript-eslint/eslint-plugin": "^6.8.0",
+		"@typescript-eslint/eslint-plugin": "^8.46.2",
 		"chalk": "^5.3.0",
 		"cli-select": "^1.1.2",
 		"enquirer": "^2.4.1",

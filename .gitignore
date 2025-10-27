@@ -8,3 +8,5 @@ Thumbs.db
 /playwright-report/
 /playwright/.cache/
 /tests-pw/playwright-report/
+/tests-pw/text-results/
+/tests-pw/.playwright-artifacts*
