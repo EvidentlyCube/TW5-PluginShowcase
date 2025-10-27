@@ -1,0 +1,7 @@
+title: $:/plugins/EvidentlyCube/AutoComplete/window-tiddlyflex-comp
+tags: $:/tags/BottomToolbar
+
+\whitespace trim
+<$list filter="""[[$:/layout]get[text]match[$:/plugins/BTC/TiddlyFlex/ui/Layout]]""">
+	<$transclude tiddler="$:/plugins/EvidentlyCube/AutoComplete/window"/>
+</$list>

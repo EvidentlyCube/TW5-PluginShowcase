@@ -36,6 +36,7 @@ Inspired by Snowgoon88's [[TW5-extendedit|https://github.com/snowgoon88/TW5-exte
  ** Also with its plugin ''CodeMirror Autocomplete'', this plugin's dialog will take priority over the CodeMirror one and will prevent both of them from spawning at the same time
  * [[Streams|https://saqimtiaz.github.io/streams/]] by //saqimtiaz// -- Pressing Enter to Auto Complete won't trigger a new stream insertion
  * [[SideEditor|http://sideeditor.tiddlyspot.com/]] by //Mat von Twaddle// -- Auto Completion only appears in the currently focused window
+ * [[TiddlyFlex Layout|https://burningtreec.github.io/TiddlyFlex/]] by //Simon Huber// -- The layout doesn't transclude tiddlers tagged with `$:/tags/PageTemplate` so a compatibility tiddler `$:/plugins/EvidentlyCube/AutoComplete/window-tiddlyflex-comp` was added that will include the auto completion window instead.
 
 ! Installation
 
