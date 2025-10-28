@@ -1,0 +1,5 @@
+title: $:/plugins/EvidentlyCube/AutoComplete/template-cascade-tiddlyflex-comp
+tags: $:/tags/TiddlyFlex/ViewTemplateBodyFilter
+list-after: $:/config/TiddlyFlex/ViewTemplateBodyFilters/system
+
+[tag[$:/tags/EC/AutoComplete/Trigger]then[$:/plugins/EvidentlyCube/AutoComplete/template]]

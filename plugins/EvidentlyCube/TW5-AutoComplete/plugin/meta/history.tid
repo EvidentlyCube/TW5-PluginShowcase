@@ -1,6 +1,7 @@
 title: $:/plugins/EvidentlyCube/AutoComplete/history
 type: text/vnd.tiddlywiki
 
+* ''1.0.24'': Editing triggers now works with `TiddlyFlex` plugin/layout
 * ''1.0.23'': Plugin now works with `TiddlyFlex` plugin/layout
 * ''1.0.22'': Exposed variable `<editedField>` which allows to retrieve info on the field edited by the edit widget.
 * ''1.0.21'':
