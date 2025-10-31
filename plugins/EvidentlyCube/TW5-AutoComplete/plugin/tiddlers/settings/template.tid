@@ -120,6 +120,21 @@ title: $:/plugins/EvidentlyCube/AutoComplete/template
 </tr>
 <tr>
 	<td align="center">
+		''Actions:''<br/>
+		<p class="ec_ac-muted">
+			Advanced feature!<br/>
+			Executes the provided Actions on selecting an option.<br/>
+			It's useful when you want to add tags, fields or the like instead of inserting just text.<br/>
+			`<currentTiddler>` contains the suggestion being displayed.<br/>
+			Variable `<editedTiddler>` contains the name of the tiddler that is being modified by the widget that triggered auto completion.
+		</p>
+	</td>
+	<td>
+		<$edit-text class="ec-tc-disabled" tag="textarea" field="actions"/>
+	</td>
+</tr>
+<tr>
+	<td align="center">
 		''Template:''<br/>
 		<p class="ec_ac-muted">
 			A template that is inserted when you select an option from auto completion.<br/>

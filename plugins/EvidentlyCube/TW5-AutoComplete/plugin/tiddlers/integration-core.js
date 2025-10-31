@@ -100,6 +100,7 @@ Autocompletion integration for Simple text editor
 			}
 
 			const value = target.getAttribute('data-value');
+			$tw.rootWidget.invokeActionString(completionAPI.getActions(),$tw.rootWidget,event,completionAPI.getActionVariables());
 
 			completionAPI.setSelectionByValue(value);
 			insertSelection(completionAPI.getSelected());
@@ -121,6 +122,7 @@ Autocompletion integration for Simple text editor
 				case 'Enter':
 					if (!event.ctrlKey && !event.shiftKey && !event.altKey) {
 						const option = completionAPI.getSelected();
+						$tw.rootWidget.invokeActionString(completionAPI.getActions(),$tw.rootWidget,event,completionAPI.getActionVariables());
 
 						if (option) {
 							insertSelection(option);
