@@ -97,6 +97,7 @@ API for the modal
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'show', null, "1");
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'style', null, newStyle);
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'display-filter', null, trigger.displayFilter);
+		$tw.wiki.setText(DATA_TIDDLER_NAME, 'actions', null, trigger.actions);
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'edited-tiddler', null, options.editedTiddler || '');
 		$tw.wiki.setText(DATA_TIDDLER_NAME, 'edited-field', null, options.editedField || '');
 		if (typeof options.windowID !== "undefined") {
@@ -171,6 +172,17 @@ API for the modal
 			: "";
 	};
 
+	EC_AutoComplete.prototype.getActions = function () {
+		return this.activeState.trigger.actions
+	};
+
+	EC_AutoComplete.prototype.getActionVariables = function () {
+		return {
+			editedTiddler: this.activeState.options.editedTiddler || '',
+			currentTiddler: this.activeState.results[this.activeState.selectedResult] || ""
+		}
+	};
+
 	EC_AutoComplete.prototype.setSelectionByValue = function (value) {
 		const index = this.activeState.results.indexOf(value);
 
@@ -232,6 +244,7 @@ API for the modal
 			this.options.triggers.push({
 				filter: tiddlerFields.filter,
 				displayFilter: tiddlerFields['display-filter'],
+				actions: tiddlerFields['actions'],
 				transformFilter: tiddlerFields['transform-filter'] || "[<currentTiddler>]",
 				trigger: trigger,
 				triggerLastCharacter: trigger.charAt(trigger.length - 1),
