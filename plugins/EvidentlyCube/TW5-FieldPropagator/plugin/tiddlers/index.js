@@ -21,9 +21,7 @@ module-type: indexer
 		this.index = null;
 
 		this.childrenMap = new Map();
-		this.parents = null;
-		this.trackedFields = null;
-		this.queuedToRebuild = [];
+		this.rebuild();
 	}
 
 	PropagatorIndexer.prototype.rebuild = function () {

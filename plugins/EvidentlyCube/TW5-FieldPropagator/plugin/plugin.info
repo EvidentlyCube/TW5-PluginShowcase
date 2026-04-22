@@ -1,11 +1,11 @@
 {
 	"title": "$:/plugins/EvidentlyCube/FieldPropagator",
 	"name": "Field Propagator",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"core-version": ">=5.2.0",
 	"description": "Propagates a field value upwards through parent tiddlers",
 	"author": "Maurycy Zarzycki",
-	"source": "https://github.com/EvidentlyCube/TW5-FieldPropagator",
+	"source": "https://github.com/EvidentlyCube/TW5-PluginShowcase",
 	"plugin-type": "plugin",
 	"list": "readme license history"
 }
