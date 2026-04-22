@@ -9,6 +9,7 @@ import { TiddlyWiki as TW530 } from 'tw530';
 import { TiddlyWiki as TW531 } from 'tw531';
 import { TiddlyWiki as TW537 } from 'tw537';
 import { TiddlyWiki as TW538 } from 'tw538';
+import { TiddlyWiki as TW540 } from 'tw540';
 
 const TW_VERSIONS = {
 	'5.2.2': TW522,
@@ -16,6 +17,7 @@ const TW_VERSIONS = {
 	'5.3.1': TW531,
 	'5.3.7': TW537,
 	'5.3.8': TW538,
+	'5.4.0': TW540,
 };
 
 process.env.TIDDLYWIKI_PLUGIN_PATH = 'plugins';
