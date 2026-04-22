@@ -1,27 +1,26 @@
 /*\
 title: $:/plugins/EvidentlyCube/AdvancedPerformance/perf.js
 type: application/javascript
-module-type: startup
+module-type: config
 
-Cleans up data after a TaskList is removed
+Logic for the performance module.
 \*/
 
-(function(){
+(function () {
+	/*jslint node: false, browser: true */
+	/*global $tw: false */
+	"use strict";
 
-/*jslint node: false, browser: true */
-/*global $tw: false */
-"use strict";
-
-// Export name and synchronous status
-exports.name = "evidentlycube-adv-perf--performance";
-exports.before = ["startup"];
-exports.synchronous = true;
-exports.startup = function() {
-	if ($tw.node) {
+	if ($tw.node || $tw.Performance._EC_AdvancedPerformance_isRegistered) {
 		return;
 	}
 
-	$tw.Performance.prototype.showGreeting = function() {
+	$tw.Performance._EC_AdvancedPerformance_isRegistered = true;
+
+	const showGreetingOriginal = $tw.Performance.prototype.showGreeting;
+	$tw.Performance.prototype.showGreeting = function () {
+		showGreetingOriginal.apply(this);
+
 		this.refreshTimes = {};
 		this.refreshTimesHistory = [];
 		this.currentRefreshName = "other";
@@ -29,14 +28,14 @@ exports.startup = function() {
 		this.resetRefreshTimes();
 	};
 
-	$tw.Performance.prototype.log = function() {
+	$tw.Performance.prototype.log = function () {
 		console.log("Please use the UI instead");
 	};
 
-	$tw.Performance.prototype.report = function(name,fn) {
+	$tw.Performance.prototype.report = function (name, fn) {
 		var self = this;
-		if(this.enabled) {
-			return function() {
+		if (this.enabled) {
+			return function () {
 				self.currentRefreshName = name;
 				self.refreshTimes[name] = {
 					timeTaken: 0,
@@ -44,7 +43,7 @@ exports.startup = function() {
 				};
 
 				var startTime = $tw.utils.timer(),
-					result = fn.apply(this,arguments),
+					result = fn.apply(this, arguments),
 					timeTaken = $tw.utils.timer(startTime);
 
 				self.refreshTimes[name].timeTaken = timeTaken;
@@ -57,7 +56,7 @@ exports.startup = function() {
 		}
 	};
 
-	$tw.Performance.prototype.resetRefreshTimes = function() {
+	$tw.Performance.prototype.resetRefreshTimes = function () {
 		this.refreshTimes = {
 			other: {
 				timeTaken: 0,
@@ -66,7 +65,7 @@ exports.startup = function() {
 		};
 	};
 
-	$tw.Performance.prototype.storeRefresh = function(log) {
+	$tw.Performance.prototype.storeRefresh = function (log) {
 		this.refreshTimesHistory.push(log);
 
 		if (this.refreshTimesHistory.length > 50) {
@@ -74,14 +73,14 @@ exports.startup = function() {
 		}
 	}
 
-	$tw.Performance.prototype.measure = function(name,fn) {
+	$tw.Performance.prototype.measure = function (name, fn) {
 		var self = this;
-		if(this.enabled) {
-			var storeLog = function(name, takenTime, measures) {
+		if (this.enabled) {
+			var storeLog = function (name, takenTime, measures) {
 				if (self.isInsideFilter) {
 					name = `~${name}`;
 				}
-				if(!(name in measures)) {
+				if (!(name in measures)) {
 					measures[name] = {
 						lastUse: 0,
 						longestRun: 0,
@@ -100,13 +99,13 @@ exports.startup = function() {
 				measures[name].times.push(takenTime);
 			};
 
-			return function() {
+			return function () {
 				var startTime = $tw.utils.timer();
 				var isInsideFilter = self.isInsideFilter || false;
 				if (!isInsideFilter) {
 					self.isInsideFilter = true;
 				}
-				var result = fn.apply(this,arguments);
+				var result = fn.apply(this, arguments);
 				if (!isInsideFilter) {
 					self.isInsideFilter = false;
 				}
@@ -121,6 +120,4 @@ exports.startup = function() {
 			return fn;
 		}
 	};
-};
-
 })();
